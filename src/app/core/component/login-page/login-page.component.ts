@@ -14,6 +14,10 @@ export class LoginPageComponent {
   }
 
   public onClickLogin(){
-
+    if(this.loginParam.username == 'weeraphon' && this.loginParam.password == '1234'){
+      alert("Login Success!");
+    }else{
+      alert("Invalid Username or Password!")
+    }
   }
 }
