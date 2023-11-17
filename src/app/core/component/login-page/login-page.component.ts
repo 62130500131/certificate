@@ -18,7 +18,7 @@ export class LoginPageComponent {
       alert("Login Success!");
     }else if(this.loginParam.username == 'supakarn' && this.loginParam.password == '1234'){
       alert("Login Success!");
-      this.router.navigate(['customer'])
+      this.router.navigate(['customer-entry'])
     }
     else{
       alert("Invalid Username or Password!")
