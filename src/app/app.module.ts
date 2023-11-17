@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { CustomerPageComponent } from './customer/component/customer-page/customer-page.component';
 import { MappingMaterialComponent } from './master/component/mapping-material/mapping-material.component';
 import { CertificateListComponent } from './certificate/component/certificate-list/certificate-list.component';
+import { DxDataGridComponent } from 'devextreme-angular/ui/data-grid';
 
 @NgModule({
   declarations: [
@@ -20,9 +21,11 @@ import { CertificateListComponent } from './certificate/component/certificate-li
   imports: [
     FormsModule,
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    DxDataGridComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
