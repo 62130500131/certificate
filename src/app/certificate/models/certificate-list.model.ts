@@ -17,3 +17,23 @@ export class searchParamCertificateList {
         this.uploadDate = '';
     }
 }
+
+export class certificateListViewModel {
+    certNo: string;
+    mill: string;
+    totalMaterial: number;
+    certDate: string;
+    uploadDate: string;
+    modifiedBy: string;
+    modifiedTime: string;
+
+    public constructor() {
+        this.certNo = ''
+        this.mill = ''
+        this.totalMaterial = 0
+        this.certDate = ''
+        this.uploadDate = ''
+        this.modifiedBy = ''
+        this.modifiedTime = ''
+    }
+}
