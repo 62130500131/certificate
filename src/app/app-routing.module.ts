@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponent } from './core/component/login-page/login-page.component';
 import { CustomerPageComponent } from './customer/component/customer-page/customer-page.component';
 import { MappingMaterialComponent } from './master/component/mapping-material/mapping-material.component';
+import { CertificateListComponent } from './certificate/component/certificate-list/certificate-list.component';
 
 const routes: Routes = [
   { path: 'login-page', component: LoginPageComponent },
   { path: 'customer-entry', component: CustomerPageComponent },
   { path: 'mapping-material', component: MappingMaterialComponent },
+  { path: 'certificate-list', component: CertificateListComponent },
   {
     path: '',
     redirectTo: 'login-page',

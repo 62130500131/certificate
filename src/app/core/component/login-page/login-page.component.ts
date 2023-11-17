@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { auth } from '../../model/auth.model';
+import { auth } from '../../models/auth.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,6 +16,7 @@ export class LoginPageComponent {
   public onClickLogin(){
     if(this.loginParam.username == 'weeraphon' && this.loginParam.password == '1234'){
       alert("Login Success!");
+      this.router.navigate(['certificate-list'])
     }else if(this.loginParam.username == 'supakarn' && this.loginParam.password == '1234'){
       alert("Login Success!");
       this.router.navigate(['customer-entry'])

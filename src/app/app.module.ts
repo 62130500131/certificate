@@ -7,18 +7,20 @@ import { LoginPageComponent } from './core/component/login-page/login-page.compo
 import { FormsModule } from '@angular/forms';
 import { CustomerPageComponent } from './customer/component/customer-page/customer-page.component';
 import { MappingMaterialComponent } from './master/component/mapping-material/mapping-material.component';
+import { CertificateListComponent } from './certificate/component/certificate-list/certificate-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     CustomerPageComponent,
-    MappingMaterialComponent
+    MappingMaterialComponent,
+    CertificateListComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
