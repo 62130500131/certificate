@@ -26,7 +26,7 @@ export class certificateListViewModel {
     uploadDate: any;
     modifiedBy: string;
     modifiedTime: any;
-    dataSource: any;
+    dataSource: certificateListDetailViewModel[];
 
     public constructor() {
         this.certNo = ''
@@ -37,5 +37,23 @@ export class certificateListViewModel {
         this.modifiedBy = ''
         this.modifiedTime = ''
         this.dataSource = [];
+    }
+}
+
+export class certificateListDetailViewModel {
+    material: string;
+    materialDesc: string;
+    grade: string;
+    heatNo: string;
+    quantity: number;
+    unit: string;
+
+    public constructor() {
+        this.material = '';
+        this.materialDesc = '';
+        this.grade = '';
+        this.heatNo = '';
+        this.quantity = 0;
+        this.unit = '';
     }
 }
