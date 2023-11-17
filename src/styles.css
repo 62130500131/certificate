@@ -7,3 +7,13 @@
 .action:hover {
     color: #0055ff;
 }
+
+.dx-datagrid-action.dx-cell-focus-disabled {
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
+.dx-datagrid-headers .dx-datagrid-table{
+    background-color: #3C3C8C;
+    color: #ffffff;
+}

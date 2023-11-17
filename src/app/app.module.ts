@@ -8,8 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { CustomerPageComponent } from './customer/component/customer-page/customer-page.component';
 import { MappingMaterialComponent } from './master/component/mapping-material/mapping-material.component';
 import { CertificateListComponent } from './certificate/component/certificate-list/certificate-list.component';
-import { DxDataGridComponent, DxDataGridModule } from 'devextreme-angular/ui/data-grid';
-
+import { DxDataGridModule } from 'devextreme-angular/ui/data-grid';
+import { CertificateListDetailComponent } from './certificate/component/certificate-list-detail/certificate-list-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,12 +17,13 @@ import { DxDataGridComponent, DxDataGridModule } from 'devextreme-angular/ui/dat
     CustomerPageComponent,
     MappingMaterialComponent,
     CertificateListComponent,
+    CertificateListDetailComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    DxDataGridModule
+    DxDataGridModule,
   ],
   providers: [ ],
   bootstrap: [AppComponent]

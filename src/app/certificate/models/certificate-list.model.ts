@@ -22,10 +22,11 @@ export class certificateListViewModel {
     certNo: string;
     mill: string;
     totalMaterial: number;
-    certDate: string;
-    uploadDate: string;
+    certDate: any;
+    uploadDate: any;
     modifiedBy: string;
-    modifiedTime: string;
+    modifiedTime: any;
+    dataSource: any;
 
     public constructor() {
         this.certNo = ''
@@ -35,5 +36,6 @@ export class certificateListViewModel {
         this.uploadDate = ''
         this.modifiedBy = ''
         this.modifiedTime = ''
+        this.dataSource = [];
     }
 }
