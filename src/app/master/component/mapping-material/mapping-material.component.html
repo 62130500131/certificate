@@ -1,8 +1,9 @@
-<div class="container container justify-content-center">
+<div class="container container justify-content-center pt-2">
     <div class="row mt-2">
-        <h6>Mapping Material</h6>    
-        <hr>
+        <h6>Mapping Material</h6>
+
     </div>
+    <hr>
 
     <div class="row mt-4">
         <div class="col-2 offset-1 text-end pt-2">
@@ -11,7 +12,7 @@
         <div class="col-3">
             <input id="materialcode" class="form-control" type="text">
         </div>
-        <div class="col-2 offset-1 text-end pt-2">
+        <div class="col-2 text-end pt-2">
             <label class="form-label" for="materialdesc">Material Description</label>
         </div>
         <div class="col-3">
@@ -19,10 +20,160 @@
         </div>
     </div>
 
-    <div class="row mt-2">
-        <div class="col-2 text-end">
+    <div class="row p-2">
+        <div class="col offset-3">
             <button class="btn btn-success">Search</button>
-            <button class="btn btn-clear mx-2">Clear</button>
+            <button class="btn btn-secondary ms-2">Clear</button>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-10">
+            <button class="btn btn-primary">Add</button>
+        </div>
+        <div class="col-2 text-end">
+            <button class="btn btn-success">Import</button>
+            <button class="btn btn-success ms-2">Export</button>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-12">
+            <dx-data-grid id="gridContainer" [dataSource]="data" [remoteOperations]="false"
+                [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'"
+                [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
+
+
+                <dxi-column width="60" alignment="center" cellTemplate="toolsTemplate">
+                    <div *dxTemplate="let cell of 'toolsTemplate'">
+                        <label>E</label>
+                        <label class="ms-2">D</label>
+                    </div>
+                </dxi-column>
+
+
+                <dxi-column dataField="index" caption="No" dataType="number" [width]="40"
+                    alignment="center"></dxi-column>
+                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="200"
+                    alignment="left"></dxi-column>
+                <dxi-column dataField="materialDesc" caption="Material Description" dataType="number" [minWidth]="200"
+                    alignment="left"></dxi-column>
+                <dxi-column dataField="modifiedBy" caption="Modified By" dataType="string" [width]="150"
+                    alignment="left"></dxi-column>
+                <dxi-column dataField="modifiedTime" caption="Modified Time" dataType="data" [width]="150"
+                    alignment="center" cellTemplate="dateTemplate">
+                    <div *dxTemplate="let cell of 'dateTemplate'">
+                        {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
+                    </div>
+                </dxi-column>
+
+
+
+            </dx-data-grid>
+
+        </div>
+    </div>
+
+    
 </div>
+
+<ng-template #addMappingMaterial>
+    <div class="modal-header">
+        <h5 class="modal-title">Add Mapping Material</h5>
+        <span class="close-modal" name="close-modal-import" (click)="onClickExitAddModal()">&times;</span>
+    </div>
+
+    <div class="modal-body">
+        <!-- <div class="row">
+            <error-panel name="error-panel" #errorPanelModal></error-panel>
+        </div> -->
+
+        <div class="row">
+            <div class="col-2 offset-1 text-end pt-2">
+                <label class="form-label">Material</label>
+            </div>
+            <div class="col-3">
+                <label></label>
+            </div>
+            <div class="col-2 text-end pt-2">
+                <label class="form-label" for="materialdesc">Material Description</label>
+            </div>
+            <div class="col-3">
+                <label></label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <dx-data-grid id="gridContainer" [remoteOperations]="false" [allowColumnReordering]="true"
+                    [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'" [showColumnLines]="true"
+                    [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
+
+
+                    <dxi-column width="60" alignment="center" cellTemplate="addTemplate">
+                        <div *dxTemplate="let cell of 'addTemplate'">
+                            <label>Add</label>
+                        </div>
+                    </dxi-column>
+
+                    <dxi-column caption="Mill" [width]="100" alignment="left"></dxi-column>
+                    <dxi-column caption="Material Description" dataType="string"
+                        [minWidth]="200" alignment="left" cellTemplate="millMaterial">
+                        <div *dxTemplate="let cell of 'millMaterial'">
+                            <input class="form-control" type="text">
+                        </div>
+                    </dxi-column>
+
+                </dx-data-grid>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 textCenter">
+                <button (onClick)="onClickConfirmAddMappingMaterial()">Confirm</button>
+                <button class="ms-2" (click)="onClickExitAddMappingMaterial()">Exit</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #importMappingMaterial>
+    <div class="modal-header">
+        <h5 class="modal-title">Import Mapping Material</h5>
+        <span class="close-modal" name="close-modal-import" (click)="onClickExitImportModal()">&times;</span>
+    </div>
+
+    <div class="modal-body">
+        <!-- <div class="row">
+            <error-panel name="error-panel" #errorPanelModal></error-panel>
+        </div> -->
+
+        <div class="row">
+            <div class="col-2 offset-1 text-end pt-2">
+                <label class="form-label">File</label>
+            </div>
+            <div class="col-3">
+                <label></label>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-light">Import</button>
+            </div>
+            <div class="col-2 text-end pt-2">
+                <button class="btn btn-success" (click)="downloadTemplate()">Download</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 textCenter">
+                <button (onClick)="onClickConfirmImportMappingMaterial()">Confirm</button>
+                <button class="ms-2" (click)="onClickExitImportMappingMaterial()">Exit</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
