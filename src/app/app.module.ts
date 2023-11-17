@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { LoginPageComponent } from './core/component/login-page/login-page.component';
 import { FormsModule } from '@angular/forms';
 import { CustomerPageComponent } from './customer/component/customer-page/customer-page.component';
+import { MappingMaterialComponent } from './master/component/mapping-material/mapping-material.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
-    CustomerPageComponent
+    CustomerPageComponent,
+    MappingMaterialComponent
   ],
   imports: [
     FormsModule,
