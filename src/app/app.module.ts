@@ -15,7 +15,7 @@ import { CertificateListComponent } from './certificate/component/certificate-li
     LoginPageComponent,
     CustomerPageComponent,
     MappingMaterialComponent,
-    CertificateListComponent
+    CertificateListComponent,
   ],
   imports: [
     FormsModule,
