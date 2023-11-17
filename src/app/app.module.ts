@@ -10,6 +10,8 @@ import { MappingMaterialComponent } from './master/component/mapping-material/ma
 import { CertificateListComponent } from './certificate/component/certificate-list/certificate-list.component';
 import { DxDataGridModule } from 'devextreme-angular/ui/data-grid';
 import { CertificateListDetailComponent } from './certificate/component/certificate-list-detail/certificate-list-detail.component';
+import { DoPageComponent } from './map-do/component/do-page/do-page.component';
+import { DoShipmentEntryComponent } from './map-do/component/do-shipment-entry/do-shipment-entry.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +19,9 @@ import { CertificateListDetailComponent } from './certificate/component/certific
     CustomerPageComponent,
     MappingMaterialComponent,
     CertificateListComponent,
-    CertificateListDetailComponent
+    CertificateListDetailComponent,
+    DoPageComponent,
+    DoShipmentEntryComponent
   ],
   imports: [
     FormsModule,

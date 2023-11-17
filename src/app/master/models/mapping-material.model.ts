@@ -1,4 +1,4 @@
-export class mappingMaterial {
+export class mappingMaterialViewModel {
     index?: number;
     materialCode?: string;
     materialDesc?: string;

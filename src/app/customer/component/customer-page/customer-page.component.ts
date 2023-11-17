@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { customerHistory } from '../../models/customer-history.model';
+import { customerHistoryViewModel } from '../../models/customer-history.model';
 
 @Component({
   selector: 'customer-page',
@@ -7,7 +7,7 @@ import { customerHistory } from '../../models/customer-history.model';
   styleUrls: ['./customer-page.component.css']
 })
 export class CustomerPageComponent {
-  public data: customerHistory[] = [
+  public dataSource: customerHistoryViewModel[] = [
     {
       doNo: "21567891",
       date: new Date,
@@ -58,10 +58,10 @@ export class CustomerPageComponent {
   }
 
   public onClickSearch(): void {
-    
+
   }
 
   public onClickClear(): void {
-    
+
   }
 }

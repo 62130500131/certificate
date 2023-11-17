@@ -1,4 +1,4 @@
-export class customerHistory {
+export class customerHistoryViewModel {
     doNo?: string;
     date?: Date;
     itemNo?: number;

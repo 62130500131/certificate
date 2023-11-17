@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { mappingMaterial } from '../../models/mapping-material.model';
+import { mappingMaterialViewModel } from '../../models/mapping-material.model';
 
 @Component({
   selector: 'mapping-material',
@@ -8,7 +8,7 @@ import { mappingMaterial } from '../../models/mapping-material.model';
 })
 export class MappingMaterialComponent {
 
-  public data: mappingMaterial[] = [
+  public dataSource: mappingMaterialViewModel[] = [
     {
       index: 1,
       materialCode: "2CTFB",
