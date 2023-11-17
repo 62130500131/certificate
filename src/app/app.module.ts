@@ -19,10 +19,11 @@ import { DxDataGridComponent } from 'devextreme-angular/ui/data-grid';
   imports: [
     FormsModule,
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule
+  ],
+  providers: [
     DxDataGridComponent
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
