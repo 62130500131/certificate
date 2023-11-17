@@ -58,6 +58,13 @@
         </div>
     </div>
 
+    <div class="row mt-4 text-center">
+        <div class="col-4">
+            <button class="btn btn-success">Search</button>
+            <button class="btn btn-success ms-2">Clear</button>
+        </div>
+    </div>
+
     <div class="row mt-4">
 
         <div class="col-12">
@@ -66,20 +73,27 @@
                 [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'"
                 [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
 
+                <dxo-master-detail [enabled]="true" template="detail"></dxo-master-detail>
+                <div *dxTemplate="let detail of 'detail'" >
+                    <certificate-list-detail [dataSource]="detail.data.dataSource"></certificate-list-detail>
+                </div>
                 <dxi-column width="150" caption="Certificate No." alignment="center" dataField="certNo"></dxi-column>
                 <dxi-column minWidth="40" caption="Mill" alignment="left" dataField="mill"></dxi-column>
                 <dxi-column width="150" caption="Total Material" alignment="right"
                     dataField="totalMaterial"></dxi-column>
-                <dxi-column width="150" caption="Certificate Date" alignment="right" dataField="certDate"></dxi-column>
-                <dxi-column width="150" caption="Upload Date" alignment="right" dataField="uploadDate"></dxi-column>
-                <dxi-column width="150" caption="Modified By" alignment="right" dataField="modifiedBy"></dxi-column>
-                <dxi-column width="150" caption="Modified Time" alignment="right" dataField="modifiedTime"></dxi-column>
+                <dxi-column width="150" caption="Certificate Date" alignment="center" dataField="certDate"></dxi-column>
+                <dxi-column width="150" caption="Upload Date" alignment="center" dataField="uploadDate"></dxi-column>
+                <dxi-column width="150" caption="Modified By" alignment="center" dataField="modifiedBy"></dxi-column>
+                <dxi-column width="150" caption="Modified Time" alignment="center" dataField="modifiedTime"></dxi-column>
 
                 <dxi-column width="40" cellTemplate="deleteTemplate" alignment="center">
                     <div *dxTemplate="let cell of 'deleteTemplate'">
                         d
                     </div>
                 </dxi-column>
+                <div *dxTemplate="let cell of 'dateTemplate'">
+                    {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}                    
+                </div>
 
             </dx-data-grid>
         </div>

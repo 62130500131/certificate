@@ -13,10 +13,31 @@ export class CertificateListComponent {
       certNo: "42523050483",
       mill: "SSI",
       totalMaterial: 10,
-      certDate: Date.now().toString(),
-      uploadDate: Date.now().toString(),
-      modifiedBy: "weeraphon",
-      modifiedTime: Date.now().toString()
+      certDate: new Date(),
+      uploadDate: new Date(),
+      modifiedBy: "Connex",
+      modifiedTime: new Date(),
+      dataSource: []
+    },
+    {
+      certNo: "42523050484",
+      mill: "GJS",
+      totalMaterial: 20,
+      certDate: new Date(),
+      uploadDate: new Date(),
+      modifiedBy: "Connex",
+      modifiedTime: new Date(),
+      dataSource: []
+    },
+    {
+      certNo: "42523050496",
+      mill: "GJ",
+      totalMaterial: 2,
+      certDate: new Date(),
+      uploadDate: new Date(),
+      modifiedBy: "Connex",
+      modifiedTime: new Date(),
+      dataSource: []
     }
   ];
 
