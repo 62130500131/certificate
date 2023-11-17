@@ -1,32 +1,57 @@
-<div class="row p-2 mt-2">
-    <div class="col offset-2">
-        <h6 >ประวัติการสั่งซื้อ</h6>
-    </div>
-</div>
+<div class="container container justify-content-center pt-2">
+    <div class="row mt-2">
+        <h6>ประวัติการสั่งซื้อ</h6>
 
-<div class="row p-2 text-center">
-    <div class="col-2 text-end pt-2">
-        <label class="form-label" for="materialdesc">Material Description</label>
     </div>
-    <div class="col-2">
-        <input id="materialdesc" class="form-control" type="text">
-    </div>
-    <div class="col-2 text-end pt-2">
-        <label class="form-label">Date</label>
-    </div>
-    <div class="col-2">
-        <input class="form-control" type="date">
-    </div>
-</div>
+    <hr>
 
-<div class="row p-2 text-center">
-    <div class="col-5 ms-2">
-        <button class="btn btn-success">Search</button>
-        <button class="btn btn-clear m-2">Clear</button>
+    <div class="row mt-4">
+        <div class="col-2 offset-1 text-end pt-2">
+            <label class="form-label" for="materialdesc">Material Description</label>
+        </div>
+        <div class="col-3">
+            <input id="materialdesc" class="form-control" type="text">
+        </div>
+        <div class="col-2 text-end pt-2">
+            <label class="form-label">Date</label>
+        </div>
+        <div class="col-3">
+            <input class="form-control" type="date">
+        </div>
     </div>
-</div>
 
-<div class="row p-2 text-center">
-    <div class="col">
+    <div class="row p-2">
+        <div class="col offset-3">
+            <button class="btn btn-success">Search</button>
+            <button class="btn btn-secondary m-2">Clear</button>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <dx-data-grid id="gridContainer" [dataSource]="dataSource" [remoteOperations]="false"
+                [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'"
+                [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
+
+
+                <dxi-column dataField="doNo" caption="DO" dataType="string" [width]="120"
+                    alignment="center"></dxi-column>
+                <dxi-column dataField="date" caption="Date" dataType="date" [width]="100"
+                    alignment="center"></dxi-column>
+                <dxi-column dataField="itemNo" caption="Item No." dataType="number" [width]="70"
+                    alignment="center"></dxi-column>
+                <dxi-column dataField="materialDesc" caption="Material Description" dataType="string" [minWidth]="150"
+                    alignment="left"></dxi-column>
+                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="80"
+                    alignment="right"></dxi-column>
+
+                <dxi-column width="130" alignment="center" cellTemplate="downloadTemplate">
+                    <div *dxTemplate="let cell of 'downloadTemplate'">
+                        <button class="btn btn-info" (click)="onClickDownload()">Download</button>
+                    </div>
+                </dxi-column>
+
+            </dx-data-grid>
+        </div>
     </div>
 </div>

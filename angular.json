@@ -27,7 +27,9 @@
             "styles": [
               "node_modules/devextreme/dist/css/dx.light.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/font-google/Kanit.css",
+              "src/assets/font-google/Roboto.css"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
