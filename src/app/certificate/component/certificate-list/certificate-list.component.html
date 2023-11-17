@@ -1,6 +1,6 @@
 <div class="container justify-content-center">
     <div class="row mt-2">
-        <h6>Certificate Info</h6>    
+        <h6>Certificate Info</h6>
         <hr>
     </div>
 
@@ -42,7 +42,7 @@
             <input id="heatNo" type="text" class="form-control">
         </div>
     </div>
-    
+
     <div class="row mt-4 text-center">
         <div class="col-2 offset-1 text-end">
             <label for="mill" class="from-label pt-1">Certificate Date</label>
@@ -56,6 +56,34 @@
         <div class="col-3">
             <input id="heatNo" type="text" class="form-control">
         </div>
+    </div>
+
+    <div class="row mt-4">
+
+        <div class="col-12">
+            <dx-data-grid
+                id="gridContainer" [dataSource]="list" [remoteOperations]="false"
+                [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'"
+                [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
+
+                <dxi-column width="150" caption="Certificate No." alignment="center" dataField="certNo"></dxi-column>
+                <dxi-column minWidth="40" caption="Mill" alignment="left" dataField="mill"></dxi-column>
+                <dxi-column width="150" caption="Total Material" alignment="right"
+                    dataField="totalMaterial"></dxi-column>
+                <dxi-column width="150" caption="Certificate Date" alignment="right" dataField="certDate"></dxi-column>
+                <dxi-column width="150" caption="Upload Date" alignment="right" dataField="uploadDate"></dxi-column>
+                <dxi-column width="150" caption="Modified By" alignment="right" dataField="modifiedBy"></dxi-column>
+                <dxi-column width="150" caption="Modified Time" alignment="right" dataField="modifiedTime"></dxi-column>
+
+                <dxi-column width="40" cellTemplate="deleteTemplate" alignment="center">
+                    <div *dxTemplate="let cell of 'deleteTemplate'">
+                        d
+                    </div>
+                </dxi-column>
+
+            </dx-data-grid>
+        </div>
+
     </div>
 
 
