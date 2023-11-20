@@ -21,3 +21,11 @@
 .click{
     cursor: pointer;
 }
+
+.icon-edit {
+    color: orange;
+}
+
+.icon-delete {
+    color: red;
+}
