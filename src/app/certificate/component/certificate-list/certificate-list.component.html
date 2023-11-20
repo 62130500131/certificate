@@ -147,8 +147,8 @@
         </div>
         <div class="row mt-4">
             <div class="col-12 text-center">
-                <button class="btn btn-primary"><i class="fa-solid fa-upload"></i> Upload</button>
-                <button class="btn btn-secondary ms-2"><i class="fa-solid fa-ban"></i> Cancel</button>
+                <button class="btn btn-primary" (click)="onClickConfirmUpload()"><i class="fa-solid fa-upload"></i> Upload</button>
+                <button class="btn btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i> Cancel</button>
             </div>
         </div>
     </div>

@@ -57,3 +57,25 @@ export class certificateListDetailViewModel {
         this.unit = '';
     }
 }
+
+export class certificateEntryListViewModel {
+    millDesc: string;
+    tmtMaterial: string;
+    tmtDesc: string;
+    grade: string;
+    heatNo: string;
+    quantity: number;
+    unit: string;
+    remark: string;
+
+    public constructor() {
+        this.millDesc = '';
+        this.tmtMaterial = '';
+        this.tmtDesc = '';
+        this.grade = '';
+        this.heatNo = '';
+        this.quantity = 0;
+        this.unit = '';
+        this.remark = '';
+    }
+}
