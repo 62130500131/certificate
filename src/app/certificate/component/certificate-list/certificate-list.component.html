@@ -18,13 +18,13 @@
             <label for="material" class="from-label pt-1">Material</label>
         </div>
         <div class="col-3">
-            <input id="material" type="text" class="form-control">
+            <dx-select-box displayExpr="text" valueExpr="value" [items]="materialDataSource"></dx-select-box>
         </div>
         <div class="col-2 text-end">
             <label for="grade" class="from-label pt-1">Grade</label>
         </div>
         <div class="col-3">
-            <input id="grade" type="text" class="form-control">
+            <dx-select-box displayExpr="text" valueExpr="value" [items]="gradeDataSource"></dx-select-box>
         </div>
     </div>
 
@@ -33,7 +33,7 @@
             <label for="mill" class="from-label pt-1">Mill</label>
         </div>
         <div class="col-3">
-            <input id="mill" type="text" class="form-control">
+            <dx-select-box displayExpr="text" valueExpr="value" [items]="millDataSource"></dx-select-box>
         </div>
         <div class="col-2 text-end">
             <label for="heatNo" class="from-label pt-1">Heat No.</label>
@@ -74,7 +74,7 @@
 
     <div class="row mt-2">
         <div class="col-12 text-end">
-            <button class="btn btn-primary"><i class="fa-solid fa-upload"></i> Upload</button>
+            <button class="btn btn-primary" (click)="onClickUpload()"><i class="fa-solid fa-upload"></i> Upload</button>
         </div>
     </div>
     <div class="row mt-4">
@@ -90,17 +90,19 @@
                 </div>
                 <dxi-column width="150" caption="Certificate No." alignment="center" dataField="certNo"></dxi-column>
                 <dxi-column minWidth="40" caption="Mill" alignment="left" dataField="mill"></dxi-column>
-                <dxi-column width="150" caption="Total Material" alignment="right"
+                <dxi-column width="120" caption="Total Material" alignment="right"
                     dataField="totalMaterial"></dxi-column>
-                <dxi-column width="150" caption="Certificate Date" alignment="center" dataField="certDate"></dxi-column>
-                <dxi-column width="150" caption="Upload Date" alignment="center" dataField="uploadDate"></dxi-column>
+                <dxi-column width="150" caption="Certificate Date" alignment="center" dataField="certDate"
+                    cellTemplate="dateTemplate"></dxi-column>
+                <dxi-column width="150" caption="Upload Date" alignment="center" dataField="uploadDate"
+                    cellTemplate="dateTemplate"></dxi-column>
                 <dxi-column width="150" caption="Modified By" alignment="center" dataField="modifiedBy"></dxi-column>
-                <dxi-column width="150" caption="Modified Time" alignment="center"
-                    dataField="modifiedTime"></dxi-column>
+                <dxi-column width="150" caption="Modified Time" alignment="center" dataField="modifiedTime"
+                    cellTemplate="dateTemplate"></dxi-column>
 
                 <dxi-column width="40" cellTemplate="deleteTemplate" alignment="center">
                     <div *dxTemplate="let cell of 'deleteTemplate'">
-                        <i class="fa-solid fa-trash"></i>
+                        <i class="fa-solid fa-trash click"></i>
                     </div>
                 </dxi-column>
                 <div *dxTemplate="let cell of 'dateTemplate'">
@@ -121,3 +123,33 @@
 
 
 </div>
+
+<ng-template #importTemplate>
+    <div class="modal-header">
+        <h5 class="modal-title">Upload Certificate</h5>
+        <span class="click" name="close-modal-import" (click)="modalRef.hide()">&times;</span>
+    </div>
+
+    <div class="modal-body">
+        <div class="row mt-4">
+            <div class="col-2 offset-1 text-end">
+                <label for="mill-upload" class="pt-1">Mill</label>
+            </div>
+            <div class="col-7">
+                <dx-select-box displayExpr="text" valueExpr="value" [items]="millDataSource"></dx-select-box>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-7 offset-3">
+                <input #fileInput class="form-control rounded-pill" #myInput type="file" name="filename"
+                    (change)="handleFileInput($event)">
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12 text-center">
+                <button class="btn btn-primary"><i class="fa-solid fa-upload"></i> Upload</button>
+                <button class="btn btn-secondary ms-2"><i class="fa-solid fa-ban"></i> Cancel</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
