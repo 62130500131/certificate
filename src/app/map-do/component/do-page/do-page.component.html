@@ -22,8 +22,8 @@
 
     <div class="row p-2">
         <div class="col offset-3">
-            <button class="btn btn-success">Search</button>
-            <button class="btn btn-secondary m-2">Clear</button>
+            <button class="btn btn-success"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+            <button class="btn btn-secondary ms-2"><i class="fa-solid fa-broom"></i> Clear</button>
         </div>
     </div>
 
@@ -35,14 +35,19 @@
 
 
                 <dxi-column dataField="shipmentCode" caption="Shipment" dataType="number" [width]="200"
-                    alignment="center"></dxi-column>
+                    alignment="center" cellTemplate="shipmentTemplate"></dxi-column>
                 <dxi-column dataField="customerCode" caption="Customer Code" dataType="number" [width]="150"
                     alignment="center"></dxi-column>
                 <dxi-column dataField="customerName" caption="Customer Name" dataType="string" [minWidth]="150"
                     alignment="left"></dxi-column>
                 <dxi-column dataField="heatNo" caption="Heat No." dataType="string" [width]="150"
                     alignment="left"></dxi-column>
-            
+
+                <div *dxTemplate="let cell of 'shipmentTemplate'">
+                    <span class="action" (click)="onClickShipment(cell.data)">
+                        {{ cell.value }}
+                    </span>
+                </div>
             </dx-data-grid>
         </div>
     </div>

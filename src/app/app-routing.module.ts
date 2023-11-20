@@ -6,6 +6,7 @@ import { MappingMaterialComponent } from './master/component/mapping-material/ma
 import { CertificateListComponent } from './certificate/component/certificate-list/certificate-list.component';
 import { DoPageComponent } from './map-do/component/do-page/do-page.component';
 import { CertificateEntryComponent } from './certificate/component/certificate-entry/certificate-entry.component';
+import { DoShipmentEntryComponent } from './map-do/component/do-shipment-entry/do-shipment-entry.component';
 
 const routes: Routes = [
   { path: 'login-page', component: LoginPageComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'mapping-material', component: MappingMaterialComponent },
   { path: 'certificate-list', component: CertificateListComponent },
   { path: 'do-page', component: DoPageComponent },
+  { path: 'do-entry', component: DoShipmentEntryComponent },
   { path: 'certificate-entry', component: CertificateEntryComponent },
   {
     path: '',
