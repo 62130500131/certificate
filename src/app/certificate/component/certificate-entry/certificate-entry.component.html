@@ -1,123 +1,113 @@
+<div class="row mt-2">
+  <h6>Certificate Entry</h6>
+  <hr>
+</div>
 
-  <div class="row mt-2">
-    <h6>Certificate Entry</h6>
-    <hr>
-  </div>
-
-  <div class="row">
-    <div class="col-4">
-      <!-- <embed src="/src/assets/SYS.-4253050483.pdf" width="800px" height="2100px" />
+<div class="row">
+  <div class="col-4">
+    <!-- <embed src="/src/assets/SYS.-4253050483.pdf" width="800px" height="2100px" />
       <img src="/src/assets/SYS.-4253050483.pdf"> -->
-    </div>
-    <div class="col-8">
-
-      <div class="row">
-        <div class="col-12">
-          <h6>Certificate Info</h6>
-          <hr>
-        </div>
-      </div>
-
-      <div class="row mt-2">
-        <div class="col-2 text-end">
-          <label>Mill</label>
-        </div>
-        <div class="col-3">
-          <label>SYS</label>
-        </div>
-
-        <div class="col-2  text-end">
-          <label>Upload Date</label>
-        </div>
-        <div class="col-3">
-          {{ today }}
-          <!-- {{ today | date: 'dd-MMM-yyyy HH:mm' }} -->
-        </div>
-      </div>
-
-      <div class="row mt-2">
-        <div class="col-2 text-end pt-1">
-          <label for="certNo">Certificate No.</label>
-        </div>
-        <div class="col-3">
-          <input type="text" id="certNo" class="form-control">
-        </div>
-
-        <div class="col-2 text-end pt-1">
-          <label for="certDate">Certificate Date</label>
-        </div>
-        <div class="col-3">
-          <input type="text" id="certDate" class="form-control">
-        </div>
-      </div>
-
-      <div class="row mt-2">
-        <div class="col-2 text-end pt-1">
-          <label for="remark">Remark</label>
-        </div>
-        <div class="col">
-          <textarea type="text" id="remark" class="form-control">
-          </textarea>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-12">
-          <h6>Material Detail</h6>
-          <hr>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-12 text-end">
-          <button class="btn btn-success"><i class="fa-solid fa-plus"></i> Add</button>
-          <button class="btn btn-primary ms-2"><i class="fa-solid fa-file"></i> Read PDF</button>
-        </div>
-      </div>
-
-      <div class="overflow-auto mt-2">
-        <dx-data-grid id="gridContainer" [dataSource]="list" [remoteOperations]="false" [allowColumnReordering]="true"
-          [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'" [showColumnLines]="true"
-          [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
-
-          <dxi-column width="250" caption="Material Description" alignment="left" dataField="millDesc"></dxi-column>
-          <dxi-column width="120" caption="Material" alignment="left" dataField="tmtMaterial"></dxi-column>
-          <dxi-column width="250" caption="Description" alignment="left" dataField="tmtDesc"></dxi-column>
-          <dxi-column width="80"  caption="Grade" alignment="center" dataField="grade"></dxi-column>
-          <dxi-column width="100" caption="Heat No." alignment="center" dataField="heatNo"></dxi-column>
-          <dxi-column width="100" caption="Quantity" alignment="right" dataField="quantity"></dxi-column>
-          <dxi-column width="100" caption="Unit" alignment="center" dataField="unit"></dxi-column>
-          <dxi-column width="100" caption="Remark" alignment="center" dataField="remark"></dxi-column>
-
-        </dx-data-grid>
-        <!-- <div class="row">
-          <div style="width: 150px;">
-            Material Description
-          </div>
-          <div style="width: 150px;">
-            Material
-          </div>
-          <div style="width: 150px;">
-            Description
-          </div>
-          <div style="width: 150px;">
-            Grade
-          </div>
-          <div style="width: 150px;">
-            Heat No.
-          </div>
-          <div style="width: 150px;">
-            Quantity
-          </div>
-          <div style="width: 150px;">
-            Unit
-          </div>
-          <div style="width: 150px;">
-            Remark
-          </div>
-          <div style="width: 150px;"></div>
-        </div> -->
-      </div>
-
-    </div>
   </div>
+  <div class="col-8">
+
+    <div class="row">
+      <div class="col-12">
+        <h6>Certificate Info</h6>
+        <hr>
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-2 text-end">
+        <label>Mill</label>
+      </div>
+      <div class="col-3">
+        <label>SYS</label>
+      </div>
+
+      <div class="col-2  text-end">
+        <label>Upload Date</label>
+      </div>
+      <div class="col-3">
+        {{ today }}
+        <!-- {{ today | date: 'dd-MMM-yyyy HH:mm' }} -->
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-2 text-end pt-1">
+        <label for="certNo">Certificate No.</label>
+      </div>
+      <div class="col-3">
+        <input type="text" id="certNo" class="form-control">
+      </div>
+
+      <div class="col-2 text-end pt-1">
+        <label for="certDate">Certificate Date</label>
+      </div>
+      <div class="col-3">
+        <input type="text" id="certDate" class="form-control">
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-2 text-end pt-1">
+        <label for="remark">Remark</label>
+      </div>
+      <div class="col">
+        <textarea type="text" id="remark" class="form-control">
+          </textarea>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <h6>Material Detail</h6>
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 text-end">
+        <button class="btn btn-success"><i class="fa-solid fa-plus"></i> Add</button>
+        <button class="btn btn-primary ms-2"><i class="fa-solid fa-file"></i> Read PDF</button>
+      </div>
+    </div>
+
+    <div class="overflow-auto mt-2">
+      <dx-data-grid id="gridContainer" [dataSource]="list" [remoteOperations]="false" [allowColumnReordering]="true"
+        [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'" [showColumnLines]="true"
+        [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
+
+        <dxi-column width="250" caption="Material Description" alignment="left" dataField="millDesc"></dxi-column>
+        <dxi-column width="120" caption="Material" alignment="left" dataField="tmtMaterial"></dxi-column>
+        <dxi-column width="250" caption="Description" alignment="left" dataField="tmtDesc"></dxi-column>
+        <dxi-column width="80" caption="Grade" alignment="center" dataField="grade"></dxi-column>
+        <dxi-column width="100" caption="Heat No." alignment="center" dataField="heatNo"></dxi-column>
+        <dxi-column width="100" caption="Quantity" alignment="right" dataField="quantity"></dxi-column>
+        <dxi-column width="100" caption="Unit" alignment="center" dataField="unit"></dxi-column>
+        <dxi-column width="100" caption="Remark" alignment="center" dataField="remark"></dxi-column>
+        <dxi-column width="40" cellTemplate="deleteTemplate" alignment="center">
+          <div *dxTemplate="let cell of 'deleteTemplate'">
+            <i class="fa-solid fa-trash click"></i>
+          </div>
+        </dxi-column>
+
+      </dx-data-grid>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-12 text-end">
+        <span class="legend"><i class="fa-solid fa-trash mx-2"></i>Delete</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 text-center">
+        <button class="btn btn-success" (click)="onClickSave()"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+        <button class="btn btn-secondary ms-2" (click)="onClickExit()"><i class="fa-solid fa-xmark"></i> Exit</button>
+      </div>
+    </div>
+
+  </div>
+</div>

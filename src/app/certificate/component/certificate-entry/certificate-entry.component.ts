@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { certificateEntryListViewModel } from '../../models/certificate-list.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-certificate-entry',
@@ -49,9 +50,17 @@ export class CertificateEntryComponent implements OnInit {
     unit: '',
     remark: '',
   }];
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  public onClickExit():void {
+    this.router.navigate(['certificate-list']);
+  }
+
+  public onClickSave():void {
+    this.router.navigate(['certificate-list']);
   }
 
 }
