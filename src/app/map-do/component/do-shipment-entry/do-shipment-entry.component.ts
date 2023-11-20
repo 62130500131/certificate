@@ -17,31 +17,31 @@ export class DoShipmentEntryComponent {
       doNo: '210000001',
       dataSource: [
         {
-          itemIndex: '001',
+          itemIndex: 1,
           material: '2CTFB',
-          heatNo: '000',
-          quantity:  20, 
+          heatNo: 'DB1077',
+          quantity:  40, 
           status: 'Select'
         },
         {
-          itemIndex: '001',
+          itemIndex: 2,
           material: '2CTFB',
-          heatNo: '000',
+          heatNo: 'DB1078',
           quantity:  20, 
           status: 'Edit'
         },
         {
-          itemIndex: '001',
+          itemIndex: 3,
           material: '2CTFB',
-          heatNo: '000',
-          quantity:  20, 
+          heatNo: 'DB1079',
+          quantity:  40, 
           status: 'Select'
         },
         {
-          itemIndex: '001',
+          itemIndex: 4,
           material: '2CTFB',
-          heatNo: '000',
-          quantity:  20, 
+          heatNo: 'DB1077',
+          quantity:  30, 
           status: 'Select'
         }
       ]
@@ -50,10 +50,10 @@ export class DoShipmentEntryComponent {
       doNo: '210000002',
       dataSource: [
         {
-          itemIndex: '001',
+          itemIndex: 1,
           material: '2CTFB',
-          heatNo: '000',
-          quantity:  20, 
+          heatNo: 'DB1077',
+          quantity:  22, 
           status: 'Select'
         }
       ]
@@ -62,9 +62,9 @@ export class DoShipmentEntryComponent {
       doNo: '210000003',
       dataSource: [
         {
-          itemIndex: '001',
+          itemIndex: 1,
           material: '2CTFB',
-          heatNo: '000',
+          heatNo: 'DB1079',
           quantity:  20, 
           status: 'Select'
         }
@@ -79,7 +79,7 @@ export class DoShipmentEntryComponent {
       itemIndex : 1,
       material : '2CTFB',
       materialDesc : 'เหล็กดำ ตัดซอยตามขนาด',
-      heatNo : '123456',
+      heatNo : 'DB1077',
       mill : 'SYS',
       remain : 20, 
       quantity : 20 
@@ -89,7 +89,7 @@ export class DoShipmentEntryComponent {
       itemIndex : 2,
       material : '2CTFB',
       materialDesc : 'เหล็กดำ ตัดซอยตามขนาด',
-      heatNo : '123456',
+      heatNo : 'DB1077',
       mill : 'SYS',
       remain : 20, 
       quantity : 20 
@@ -99,7 +99,7 @@ export class DoShipmentEntryComponent {
       itemIndex : 3,
       material : '2CTFB',
       materialDesc : 'เหล็กดำ ตัดซอยตามขนาด',
-      heatNo : '123456',
+      heatNo : 'DB1099',
       mill : 'SYS',
       remain : 20, 
       quantity : 20 

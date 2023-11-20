@@ -15,14 +15,14 @@ export class DoShipmentEntryViewModel {
 }
 
 export class DoShipmentDetail {
-    itemIndex: string;
+    itemIndex: number;
     material: string;
     heatNo: string;
     quantity: number;
     status: string;
 
     constructor() {
-        this.itemIndex = '';
+        this.itemIndex = 0;
         this.material = '';
         this.heatNo = '';
         this.quantity = 0;

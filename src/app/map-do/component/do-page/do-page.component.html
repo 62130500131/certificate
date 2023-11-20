@@ -41,7 +41,7 @@
                 <dxi-column dataField="customerName" caption="Customer Name" dataType="string" [minWidth]="150"
                     alignment="left"></dxi-column>
                 <dxi-column dataField="heatNo" caption="Heat No." dataType="string" [width]="150"
-                    alignment="left"></dxi-column>
+                    alignment="center"></dxi-column>
 
                 <div *dxTemplate="let cell of 'shipmentTemplate'">
                     <span class="action" (click)="onClickShipment(cell.data)">
