@@ -17,3 +17,7 @@
     background-color: #3C3C8C;
     color: #ffffff;
 }
+
+.click{
+    cursor: pointer;
+}

@@ -13,6 +13,8 @@ import { CertificateListDetailComponent } from './certificate/component/certific
 import { DoPageComponent } from './map-do/component/do-page/do-page.component';
 import { DoShipmentEntryComponent } from './map-do/component/do-shipment-entry/do-shipment-entry.component';
 import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
+import { DxSelectBoxModule } from 'devextreme-angular/ui/select-box';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +32,7 @@ import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
     BrowserModule,
     AppRoutingModule,
     DxDataGridModule,
+    DxSelectBoxModule,
     ModalModule
   ],
   providers: [BsModalService],
