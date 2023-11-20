@@ -14,6 +14,6 @@ export class NavBarComponent implements OnInit {
   }
 
   public get isShow(){
-    return this.router.url != '/login-page'
+    return this.router.url != '/login-page' && this.router.url != '/customer-entry'
   }
 }

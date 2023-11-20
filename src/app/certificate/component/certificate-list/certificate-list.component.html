@@ -5,7 +5,7 @@
     </div>
 
     <div class="row mt-4">
-        <div class="col-2 offset-1 text-end">
+        <div class="col-2 text-end">
             <label for="certificateNo" class="from-label pt-1">Certificate No.</label>
         </div>
         <div class="col-3">
@@ -14,7 +14,7 @@
     </div>
 
     <div class="row mt-4 text-center">
-        <div class="col-2 offset-1 text-end">
+        <div class="col-2 text-end">
             <label for="material" class="from-label pt-1">Material</label>
         </div>
         <div class="col-3">
@@ -29,7 +29,7 @@
     </div>
 
     <div class="row mt-4 text-center">
-        <div class="col-2 offset-1 text-end">
+        <div class="col-2 text-end">
             <label for="mill" class="from-label pt-1">Mill</label>
         </div>
         <div class="col-3">
@@ -44,22 +44,24 @@
     </div>
 
     <div class="row mt-4">
-        <div class="col-2 offset-1 text-end">
+        <div class="col-2 text-end">
             <label for="certDate" class="from-label pt-1">Certificate Date</label>
         </div>
         <div class="col-3">
-            <input id="certDate" type="date" class="form-control" [(ngModel)]="searchParam.certDate">
+            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource" [(ngModel)]="searchParam.certDate" class="mb-4"></dx-select-box>
+            <input *ngIf="searchParam.certDate == 0" id="certDate" type="date" class="form-control" [(ngModel)]="searchParam.certFrom">
         </div>
         <div class="col-2 text-end">
             <label for="uploadDate" class="from-label pt-1">Upload Date</label>
         </div>
         <div class="col-3">
-            <input id="uploadDate" type="date" class="form-control" [(ngModel)]="searchParam.uploadDate">
+            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource" [(ngModel)]="searchParam.uploadDate" class="mb-4"></dx-select-box>
+            <input *ngIf="searchParam.uploadDate == 0" id="uploadDate" type="date" class="form-control" [(ngModel)]="searchParam.uploadFrom">
         </div>
     </div>
 
     <div class="row mt-4">
-        <div class="col-3 offset-3">
+        <div class="col-3 offset-2">
             <button class="btn btn-success"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
             <button class="btn btn-secondary ms-2" (click)="onClickClear()"><i class="fa-solid fa-broom"></i> Clear</button>
         </div>
@@ -141,7 +143,7 @@
                 <label for="mill-upload" class="pt-1">Mill</label>
             </div>
             <div class="col-7">
-                <dx-select-box displayExpr="text" valueExpr="value" [items]="millDataSource"></dx-select-box>
+                <dx-select-box displayExpr="text" valueExpr="value" [items]="millDataSource" [(ngModel)]="millForUpload"></dx-select-box>
             </div>
         </div>
         <div class="row mt-4">
@@ -152,7 +154,7 @@
         </div>
         <div class="row mt-4">
             <div class="col-12 text-center">
-                <button class="btn btn-primary" (click)="onClickConfirmUpload()"><i class="fa-solid fa-upload"></i> Upload</button>
+                <button class="btn btn-primary" [disabled]="!millForUpload || !fileToUpload" (click)="onClickConfirmUpload()"><i class="fa-solid fa-upload"></i> Upload</button>
                 <button class="btn btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i> Cancel</button>
             </div>
         </div>
