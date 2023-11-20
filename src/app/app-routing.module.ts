@@ -5,6 +5,7 @@ import { CustomerPageComponent } from './customer/component/customer-page/custom
 import { MappingMaterialComponent } from './master/component/mapping-material/mapping-material.component';
 import { CertificateListComponent } from './certificate/component/certificate-list/certificate-list.component';
 import { DoPageComponent } from './map-do/component/do-page/do-page.component';
+import { CertificateEntryComponent } from './certificate/component/certificate-entry/certificate-entry.component';
 
 const routes: Routes = [
   { path: 'login-page', component: LoginPageComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'mapping-material', component: MappingMaterialComponent },
   { path: 'certificate-list', component: CertificateListComponent },
   { path: 'do-page', component: DoPageComponent },
+  { path: 'certificate-entry', component: CertificateEntryComponent },
   {
     path: '',
     redirectTo: 'login-page',
@@ -24,7 +26,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { 
+export class AppRoutingModule {
 
 
 }

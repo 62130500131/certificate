@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './core/component/login-page/login-page.component';
@@ -14,6 +13,7 @@ import { DoPageComponent } from './map-do/component/do-page/do-page.component';
 import { DoShipmentEntryComponent } from './map-do/component/do-shipment-entry/do-shipment-entry.component';
 import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 import { DxSelectBoxModule } from 'devextreme-angular/ui/select-box';
+import { CertificateEntryComponent } from './certificate/component/certificate-entry/certificate-entry.component';
 
 @NgModule({
   declarations: [
@@ -24,10 +24,10 @@ import { DxSelectBoxModule } from 'devextreme-angular/ui/select-box';
     CertificateListComponent,
     CertificateListDetailComponent,
     DoPageComponent,
-    DoShipmentEntryComponent
+    DoShipmentEntryComponent,
+    CertificateEntryComponent
   ],
   imports: [
-    
     FormsModule,
     BrowserModule,
     AppRoutingModule,

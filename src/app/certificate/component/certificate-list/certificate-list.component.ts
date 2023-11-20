@@ -1,6 +1,7 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { certificateListViewModel, searchParamCertificateList } from '../../models/certificate-list.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-certificate-list',
@@ -119,7 +120,8 @@ export class CertificateListComponent {
     }
   ];
 
-  constructor(private modalService: BsModalService) {
+  constructor(private modalService: BsModalService,
+              private router: Router) {
 
   }
 
@@ -139,6 +141,11 @@ export class CertificateListComponent {
     this.modalRef = this.modalService.show(this.importTemplate, {
       class: 'modal-lg'
     })
+  }
+
+  public onClickConfirmUpload():void{
+    this.router.navigate(['certificate-entry']);
+    this.modalRef.hide();
   }
 
 }
