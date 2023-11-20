@@ -134,7 +134,11 @@ export class CertificateListComponent {
   }
 
   public onClickClear(): void {
+    this.searchParam = new searchParamCertificateList();
+  }
 
+  public onClickCertNo():void {
+    this.router.navigate(['certificate-entry']);
   }
 
   public onClickUpload(): void {
