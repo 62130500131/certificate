@@ -60,32 +60,32 @@
 
     <div class="row mt-4">
         <div class="col-3 offset-3">
-            <button class="btn btn-success">Search</button>
-            <button class="btn btn-secondary ms-2">Clear</button>
+            <button class="btn btn-success"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+            <button class="btn btn-secondary ms-2"><i class="fa-solid fa-broom"></i> Clear</button>
         </div>
     </div>
 
     <div class="row mt-2">
         <div class="col-6 text-start">
             <h6>Certificate Detail</h6>
-        </div><hr>
+        </div>
+        <hr>
     </div>
 
     <div class="row mt-2">
         <div class="col-12 text-end">
-            <button class="btn btn-primary">Upload</button>
+            <button class="btn btn-primary"><i class="fa-solid fa-upload"></i> Upload</button>
         </div>
     </div>
     <div class="row mt-4">
 
         <div class="col-12">
-            <dx-data-grid
-                id="gridContainer" [dataSource]="list" [remoteOperations]="false"
+            <dx-data-grid id="gridContainer" [dataSource]="list" [remoteOperations]="false"
                 [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'"
                 [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
 
                 <dxo-master-detail [enabled]="true" template="detail"></dxo-master-detail>
-                <div *dxTemplate="let detail of 'detail'" >
+                <div *dxTemplate="let detail of 'detail'">
                     <certificate-list-detail [dataSource]="detail.data.dataSource"></certificate-list-detail>
                 </div>
                 <dxi-column width="150" caption="Certificate No." alignment="center" dataField="certNo"></dxi-column>
@@ -95,7 +95,8 @@
                 <dxi-column width="150" caption="Certificate Date" alignment="center" dataField="certDate"></dxi-column>
                 <dxi-column width="150" caption="Upload Date" alignment="center" dataField="uploadDate"></dxi-column>
                 <dxi-column width="150" caption="Modified By" alignment="center" dataField="modifiedBy"></dxi-column>
-                <dxi-column width="150" caption="Modified Time" alignment="center" dataField="modifiedTime"></dxi-column>
+                <dxi-column width="150" caption="Modified Time" alignment="center"
+                    dataField="modifiedTime"></dxi-column>
 
                 <dxi-column width="40" cellTemplate="deleteTemplate" alignment="center">
                     <div *dxTemplate="let cell of 'deleteTemplate'">
@@ -103,10 +104,16 @@
                     </div>
                 </dxi-column>
                 <div *dxTemplate="let cell of 'dateTemplate'">
-                    {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}                    
+                    {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
                 </div>
 
             </dx-data-grid>
+
+        </div>
+        <div class="row mt-2">
+            <div class="col text-end">
+                <span class="legend"><i class="fa-solid fa-trash mx-2"></i>Delete</span>
+            </div>
         </div>
 
     </div>

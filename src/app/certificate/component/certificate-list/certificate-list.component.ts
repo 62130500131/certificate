@@ -44,7 +44,24 @@ export class CertificateListComponent {
       uploadDate: new Date(),
       modifiedBy: "Connex",
       modifiedTime: new Date(),
-      dataSource: []
+      dataSource: [
+        {
+        material : '2CTFB',
+        materialDesc : 'เหล็กแผ่นดำ ตัดซอยตามขนาด',
+        grade : 'SS400',
+        heatNo : 'DB10177',
+        quantity : 8,
+        unit: 'PC'
+        },
+        {
+          material : '2CTFB020-0060-1180',
+          materialDesc : 'เหล็กแผ่นดำ 2.00 x 60 x 1180 mm SS400',
+          grade : 'SS400',
+          heatNo : 'DB10178',
+          quantity : 12,
+          unit: 'PC'
+          }
+      ]
     },
     {
       certNo: "42523050496",
@@ -54,7 +71,16 @@ export class CertificateListComponent {
       uploadDate: new Date(),
       modifiedBy: "Connex",
       modifiedTime: new Date(),
-      dataSource: []
+      dataSource: [
+        {
+          material : '2CTFB020-0060-1180',
+          materialDesc : 'เหล็กแผ่นดำ 2.00 x 60 x 1180 mm SS400',
+          grade : 'SS400',
+          heatNo : 'DB10178',
+          quantity : 2,
+          unit: 'PC'
+          }
+      ]
     }
   ];
 
