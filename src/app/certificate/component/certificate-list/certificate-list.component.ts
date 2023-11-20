@@ -13,6 +13,7 @@ export class CertificateListComponent {
   public searchParam: searchParamCertificateList = new searchParamCertificateList();
   public modalRef!: BsModalRef;
   public fileToUpload: any;
+  public millForUpload: string = '';
   public materialDataSource = [
     {
       text: '2CTFB : เหล็กแผ่นดำ ตัดซอยตามขนาด',
@@ -23,7 +24,47 @@ export class CertificateListComponent {
     {
       text: 'SS400',
       value: 'SS400'
-    }
+    },
+    {
+      text: 'SS490',
+      value: 'SS490'
+    },
+    {
+      text: 'SM490YA',
+      value: 'SM490YA'
+    },
+    {
+      text: 'SM490A',
+      value: 'SM490A'
+    },
+    {
+      text: 'SM400',
+      value: 'SM400'
+    },
+    {
+      text: 'S275JR',
+      value: 'S275JR'
+    },
+    {
+      text: 'S335JR',
+      value: 'S335JR'
+    },
+    {
+      text: 'HR-1',
+      value: 'HR-1'
+    },
+    {
+      text: 'SPHC',
+      value: 'SPHC'
+    },
+    {
+      text: 'A36',
+      value: 'A36'
+    },
+    {
+      text: 'A516',
+      value: 'A516'
+    },
   ];
   public millDataSource = [
     {
@@ -35,16 +76,72 @@ export class CertificateListComponent {
       value: 'GJ'
     },
     {
-      text: 'GJS',
-      value: 'GJS'
-    },
-    {
       text: 'SYS',
       value: 'SYS'
     },
+    {
+      text: 'FMS',
+      value: 'FMS'
+    },
+    {
+      text: 'Posco',
+      value: 'Posco'
+    },
+    {
+      text: 'SPM',
+      value: 'SPM'
+    },
+    {
+      text: 'Other',
+      value: 'Other'
+    }
+
 
   ];
   public list: certificateListViewModel[] = [
+    {
+      certNo: "42523050482",
+      mill: "SYS",
+      totalMaterial: 80,
+      certDate: new Date(),
+      uploadDate: new Date(),
+      modifiedBy: "Connex",
+      modifiedTime: new Date(),
+      dataSource: [
+        {
+          material: '2CTFB',
+          materialDesc: 'เหล็กแผ่นดำ ตัดซอยตามขนาด',
+          grade: 'SS400',
+          heatNo: 'DB10177',
+          quantity: 20,
+          unit: 'PC'
+        },
+        {
+          material: '2CTFB020-0060-1180',
+          materialDesc: 'เหล็กแผ่นดำ 2.00 x 60 x 1180 mm SS400',
+          grade: 'SS400',
+          heatNo: 'DB10177',
+          quantity: 20,
+          unit: 'PC'
+        },
+        {
+          material: '2CTFB020-0818-2128',
+          materialDesc: 'เหล็กแผ่นดำ 2.00 x 818 x 2128 mm SS400',
+          grade: 'SS400',
+          heatNo: 'DB10177',
+          quantity: 20,
+          unit: 'PC'
+        },
+        {
+          material: '2CTFB020-0820-1762',
+          materialDesc: 'เหล็กแผ่นดำ 2.00 x 820 x 1762 mm SS400',
+          grade: 'SS400',
+          heatNo: 'DB10177',
+          quantity: 20,
+          unit: 'PC'
+        }
+      ]
+    },
     {
       certNo: "42523050483",
       mill: "SSI",
@@ -142,6 +239,7 @@ export class CertificateListComponent {
   }
 
   public onClickUpload(): void {
+    this.millForUpload = '';
     this.modalRef = this.modalService.show(this.importTemplate, {
       class: 'modal-lg'
     })
