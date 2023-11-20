@@ -116,33 +116,33 @@
         </div>
 
         <div class="row pt-2 text-center" >
-            <div class="col-1 text-center">
-                <i style="cursor: pointer;" class="fa-solid fa-plus " (click)="onClickAddItem()"></i>
+            <div class="col-2 text-end mx-1" >
+                <i style="cursor: pointer;" class="fa-solid fa-plus" (click)="onClickAddItem()"></i>
             </div>
-            <div class="col">
+            <div class="col-4">
                 Mill
             </div>
-            <div class="col">
+            <div class="col-4">
                 Mill Material
             </div>
         </div>
         <div class="row pt-2 text-center" *ngFor="let info of addMaterial;let index = index">
-            <div class="col-1 pt-0 text-center" style="padding-top: 5px;">
-                <div style="width: 100%; height: 100%;">
+            <div class="col-2 text-end mx-1" style="padding-top: 5px;">
+                <div style="width: 100%; height: 100%;margin-top: 2px;">
                     <i class="fa-solid fa-trash icon-delete" (click)="onClickDeleteItem(index)"></i>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-4">
                 <dx-select-box [(ngModel)]="info.materialCode" placeholder="Select Mill" [items]="mill"
                     [showClearButton]="true"></dx-select-box>
             </div>
-            <div class="col">
+            <div class="col-4">
                 <input type="text" name="millMaterial" maxlength="500" class="form-control rounded-pill"
                     [(ngModel)]="info.millMaterial" />
             </div>
         </div>
 
-        <div class="row pt-2">
+        <div class="row pt-4">
             <div class="col-12 text-center">
                 <button class="btn btn-success" (onClick)="onClickConfirmAddMappingMaterial()"><i
                         class="fa-solid fa-circle-check me-1"></i>Confirm</button>
@@ -251,63 +251,63 @@
         </div>
 
         <div class="row pt-2 text-center">
-            <div class="col-1 text-center">
+            <div class="col-2 text-end mx-1">
                 <i style="cursor: pointer;" class="fa-solid fa-plus" (click)="onClickAddItem()"></i>
             </div>
-            <div class="col">
+            <div class="col-4">
                 Mill
             </div>
-            <div class="col">
+            <div class="col-4">
                 Mill Material
             </div>
         </div>
         <div class="row pt-2 text-center">
-            <div class="col-1 pt-0 text-center" style="padding-top: 5px;">
-                <div style="width: 100%; height: 100%;">
-                    <i class="fa-solid fa-trash"></i>
+            <div class="col-2 text-end mx-1" style="padding-top: 5px;">
+                <div style="width: 100%; height: 100%;margin-top: 4px;">
+                    <i class="fa-solid fa-trash icon-delete"></i>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-4">
                 <dx-select-box placeholder="Select Mill" [items]="mill" [showClearButton]="true"
                     [value]="mill[0]"></dx-select-box>
             </div>
-            <div class="col">
+            <div class="col-4">
                 <input type="text" name="millMaterial" maxlength="500" class="form-control rounded-pill"
                     [value]="'H SS400 x 200 x 6.0mm x 6m'" />
             </div>
         </div>
         <div class="row pt-2 text-center">
-            <div class="col-1 pt-0 text-center" style="padding-top: 5px;">
-                <div style="width: 100%; height: 100%;">
-                    <i class="fa-solid fa-trash"></i>
+            <div class="col-2 text-end mx-1" style="padding-top: 5px;">
+                <div style="width: 100%; height: 100%;margin-top: 4px;">
+                    <i class="fa-solid fa-trash icon-delete"></i>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-4">
                 <dx-select-box placeholder="Select Mill" [items]="mill" [showClearButton]="true"
                     [value]="mill[1]"></dx-select-box>
             </div>
-            <div class="col">
+            <div class="col-4">
                 <input type="text" name="millMaterial" maxlength="500" class="form-control rounded-pill"
                     [value]="'H SS400 x 200 x 6.0mm x 6m'" />
             </div>
         </div>
         <div class="row pt-2 text-center">
-            <div class="col-1 pt-0 text-center" style="padding-top: 5px;">
-                <div style="width: 100%; height: 100%;">
-                    <i class="fa-solid fa-trash"></i>
+            <div class="col-2 text-end mx-1" style="padding-top: 5px;">
+                <div style="width: 100%; height: 100%;margin-top: 4px;">
+                    <i class="fa-solid fa-trash icon-delete"></i>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-4">
                 <dx-select-box placeholder="Select Mill" [items]="mill" [showClearButton]="true"
                     [value]="mill[2]"></dx-select-box>
             </div>
-            <div class="col">
+            <div class="col-4">
                 <input type="text" name="millMaterial" maxlength="500" class="form-control rounded-pill"
                     [value]="'H SS400 x 200 x 6.0mm x 6m'" />
             </div>
         </div>
 
-        <div class="row pt-2">
+        <div class="row pt-4">
             <div class="col-12 text-center">
                 <button class="btn btn-success" (onClick)="onClickSaveEditMappingMaterial()"><i
                         class="fa-solid fa-circle-check me-1"></i>Confirm</button>
