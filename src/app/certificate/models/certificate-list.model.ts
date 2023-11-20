@@ -4,8 +4,12 @@ export class searchParamCertificateList {
     grade: string;
     mill: string;
     heatNo: string;
-    certDate: string;
-    uploadDate: string;
+    certDate: number;
+    uploadDate: number;
+    certFrom: string;
+    certTo: string;
+    uploadFrom: string;
+    uploadTo: string;
 
     public constructor() {
         this.certNo = '';
@@ -13,8 +17,12 @@ export class searchParamCertificateList {
         this.grade = '';
         this.mill = '';
         this.heatNo = '';
-        this.certDate = '';
-        this.uploadDate = '';
+        this.certDate = 90;
+        this.uploadDate = 90;
+        this.certFrom = '';
+        this.certTo = '';
+        this.uploadFrom = '';
+        this.uploadTo = '';
     }
 }
 

@@ -217,6 +217,29 @@ export class CertificateListComponent {
     }
   ];
 
+  public dateDataSource: any[] = [
+    {
+      text: 'ภายใน 90 วัน',
+      value: 90
+    },
+    {
+      text: 'ภายใน 60 วัน',
+      value: 60
+    },
+    {
+      text: 'ภายใน 30 วัน',
+      value: 30
+    },
+    {
+      text: 'ภายใน 7 วัน',
+      value: 7
+    },
+    {
+      text: 'ระบุเอง',
+      value: 0
+    }
+  ]
+
   constructor(private modalService: BsModalService,
               private router: Router) {
 

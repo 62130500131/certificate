@@ -48,13 +48,15 @@
             <label for="certDate" class="from-label pt-1">Certificate Date</label>
         </div>
         <div class="col-3">
-            <input id="certDate" type="date" class="form-control" [(ngModel)]="searchParam.certDate">
+            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource" [(ngModel)]="searchParam.certDate" class="mb-4"></dx-select-box>
+            <input *ngIf="searchParam.certDate == 0" id="certDate" type="date" class="form-control" [(ngModel)]="searchParam.certFrom">
         </div>
         <div class="col-2 text-end">
             <label for="uploadDate" class="from-label pt-1">Upload Date</label>
         </div>
         <div class="col-3">
-            <input id="uploadDate" type="date" class="form-control" [(ngModel)]="searchParam.uploadDate">
+            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource" [(ngModel)]="searchParam.uploadDate" class="mb-4"></dx-select-box>
+            <input *ngIf="searchParam.uploadDate == 0" id="uploadDate" type="date" class="form-control" [(ngModel)]="searchParam.uploadFrom">
         </div>
     </div>
 
