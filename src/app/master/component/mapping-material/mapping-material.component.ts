@@ -15,10 +15,15 @@ export class MappingMaterialComponent implements OnInit {
   public fileToUpload!: File;
   public dataForUpload!: Array<any>;
 
+  public materialCode?: string;
+  public materialDesc?: string;
+
+  public addMaterial: any[] = [];
+
   @ViewChild('addMappingMaterial') public addMappingMaterial!: TemplateRef<any>;
   @ViewChild('importMappingMaterial') public importMappingMaterial!: TemplateRef<any>;
   @ViewChild('editMappingMaterial') public editMappingMaterial!: TemplateRef<any>;
-  
+
   public dataSource: mappingMaterialViewModel[] = [
     {
       index: 1,
@@ -73,8 +78,19 @@ export class MappingMaterialComponent implements OnInit {
     this.modalRef.hide();
   }
 
+  public onClickAddItem(): void {
+    this.addMaterial.push({ materialCode: '', materialDesc: '' });
+  }
+
+  public onClickDeleteItem(index: number): void {
+    let confirmDelete = confirm('Do you want to delete?');
+    if (confirmDelete) {
+      this.addMaterial.splice(index, 1);
+    }
+  }
+
   public onClickConfirmAddMappingMaterial(): void {
-    
+
   }
 
   public onClickExitAddMappingMaterial(): void {
@@ -92,12 +108,12 @@ export class MappingMaterialComponent implements OnInit {
     this.fileToUpload = $event?.target?.files[0];
   }
 
-  public uploadFile() : void {
+  public uploadFile(): void {
 
   }
 
-  public onClearFile(fileInput: any) : void {
-    
+  public onClearFile(fileInput: any): void {
+
   }
 
 
@@ -123,14 +139,12 @@ export class MappingMaterialComponent implements OnInit {
 
   }
 
-  public materialCode?: string;
-  public materialDesc?: string;
 
   //Edit
-  public onClickEditMappingMaterial(template: TemplateRef<any>,cell: any): void {
+  public onClickEditMappingMaterial(template: TemplateRef<any>, cell: any): void {
     this.materialCode = cell.data.materialCode;
     this.materialDesc = cell.data.materialDesc;
-    
+
     this.modalRef = this.modalService.show(this.editMappingMaterial, {
       class: 'modal-xl'
     });
