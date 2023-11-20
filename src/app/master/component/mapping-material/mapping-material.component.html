@@ -1,3 +1,5 @@
+<nav-bar></nav-bar>
+
 <div class="container container justify-content-center pt-2">
     <div class="row mt-2">
         <h6>Mapping Material</h6>
@@ -48,9 +50,9 @@
 
                 <dxi-column width="60" alignment="center" cellTemplate="toolsTemplate">
                     <div *dxTemplate="let cell of 'toolsTemplate'">
-                        <i style="cursor: pointer;" class="fa-solid fa-pen-to-square"
+                        <i style="cursor: pointer;" class="fa-solid fa-pen-to-square icon-edit"
                             (click)="onClickEditMappingMaterial(editMappingMaterial,cell)"></i>
-                        <i style="cursor: pointer;" class="ms-2 fa-solid fa-trash"
+                        <i style="cursor: pointer;" class="ms-2 fa-solid fa-trash icon-delete"
                             (click)="onClickDeleteMappingMaterial()"></i>
                     </div>
                 </dxi-column>
@@ -77,8 +79,8 @@
 
             <div class="row mt-2">
                 <div class="col text-end">
-                    <i class="fa-solid fa-pen-to-square"></i> <label class="ms-2">Edit</label>
-                    <i class="ms-2 fa-solid fa-trash"></i> <label class="ms-2">Delete</label>
+                    <i class="fa-solid fa-pen-to-square icon-edit"></i> <label class="ms-2">Edit</label>
+                    <i class="ms-2 fa-solid fa-trash icon-delete"></i> <label class="ms-2">Delete</label>
                 </div>
             </div>
 

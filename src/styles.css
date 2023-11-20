@@ -25,3 +25,10 @@
 .dx-datagrid-content .dx-datagrid-table .dx-row > td, .dx-datagrid-content .dx-datagrid-table .dx-row > tr > td{
     vertical-align: middle !important;
 }
+.icon-edit {
+    color: orange;
+}
+
+.icon-delete {
+    color: red;
+}
