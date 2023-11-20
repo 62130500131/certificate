@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { doViewModel } from '../../model/do.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'do-page',
@@ -28,4 +29,11 @@ export class DoPageComponent {
       heatNo: "A123456"
     }
   ]
+
+  constructor(private router: Router){
+  }
+
+  public onClickShipment(data: any):void {
+    this.router.navigate(['do-entry'])
+  }
 }

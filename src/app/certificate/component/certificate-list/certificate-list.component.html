@@ -88,7 +88,7 @@
                 <div *dxTemplate="let detail of 'detail'">
                     <certificate-list-detail [dataSource]="detail.data.dataSource"></certificate-list-detail>
                 </div>
-                <dxi-column width="150" caption="Certificate No." alignment="center" dataField="certNo"></dxi-column>
+                <dxi-column width="150" caption="Certificate No." alignment="center" dataField="certNo" cellTemplate="actionTemplate"></dxi-column>
                 <dxi-column minWidth="40" caption="Mill" alignment="left" dataField="mill"></dxi-column>
                 <dxi-column width="120" caption="Total Material" alignment="right"
                     dataField="totalMaterial"></dxi-column>
@@ -107,6 +107,11 @@
                 </dxi-column>
                 <div *dxTemplate="let cell of 'dateTemplate'">
                     {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
+                </div>
+                <div *dxTemplate="let cell of 'actionTemplate'">
+                    <span class="action">
+                        {{ cell.value }}
+                    </span>
                 </div>
 
             </dx-data-grid>

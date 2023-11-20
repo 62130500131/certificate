@@ -1,1 +1,54 @@
-<p>do-shipment-entry works!</p>
+<div class="container justify-content-center">
+    <div class="row mt-2">
+        <h6>Shipment</h6>
+        <hr>
+    </div>
+
+    <div class="row" *ngFor="let item of list">
+        <div class="col-12">
+            <div class="row mt-4">
+                <div class="col-10 offset-1">
+                    <h6>DO {{item.doNo}}</h6>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-10 offset-1">
+                    <dx-data-grid id="gridContainer" [dataSource]="item.dataSource" [remoteOperations]="false"
+                        [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true"
+                        [width]="'100%'" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
+                        [rowAlternationEnabled]="true">
+                        <dxi-column dataField="itemIndex" caption="Item" [width]="80" alignment="right"></dxi-column>
+                        <dxi-column dataField="material" caption="Material" minWidth="150" alignment="left"></dxi-column>
+                        <dxi-column dataField="heatNo" caption="Heat No." [width]="150" alignment="center"></dxi-column>
+                        <dxi-column dataField="quantity" caption="Quantity" [width]="80" alignment="right"></dxi-column>
+                        <dxi-column [width]="150" alignment="center" cellTemplate="selectTemplate">
+                            <div *dxTemplate="let cell of 'selectTemplate'">
+                                <button style="width: 90px;" *ngIf="cell.data.status == 'Select'" class="btn btn-success"><i class="fa-solid fa-check"></i> Select</button>
+                                <button style="width: 90px;" *ngIf="cell.data.status != 'Select'" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                            </div>
+                        </dxi-column>
+                        <dxi-column [width]="150" alignment="center" cellTemplate="addDetailTemplate">
+                            <div *dxTemplate="let cell of 'addDetailTemplate'">
+                                <button class="btn btn-secondary"><i class="fa-solid fa-pen-to-square"></i> Add Detail</button>
+                            </div>
+                        </dxi-column>
+                        <dxi-column [width]="150" alignment="center" cellTemplate="sentLinkTemplate">
+                            <div *dxTemplate="let cell of 'sentLinkTemplate'">
+                                <button class="btn btn-info"><i class="fa-regular fa-paper-plane"></i> Sent Link</button>
+                            </div>
+                        </dxi-column>
+                    </dx-data-grid>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 text-center mt-4">
+            <button class="btn btn-secondary ms-2" (click)="onClickExit()"><i class="fa-solid fa-xmark"></i> Exit</button>
+        </div>
+    </div>
+
+
+</div>
