@@ -29,4 +29,25 @@ export class DoShipmentDetail {
         this.status = 'Select';
     }
 }
+export class SelectQuantity {
+    isSelected: boolean;
+    itemIndex: number;
+    material: string;
+    materialDesc: string;
+    heatNo: string;
+    mill: string;
+    remain: number;
+    quantity: number;
+
+    constructor() {
+        this.isSelected = false;
+        this.itemIndex = 0;
+        this.material = '';
+        this.materialDesc = '';
+        this.heatNo = '';
+        this.mill = '';
+        this.remain = 0;
+        this.quantity = 0;
+    }
+}
 
