@@ -5,3 +5,4 @@ export class mappingMaterialViewModel {
     modifiedBy?: string;
     modifiedTime?: Date;
 }
+

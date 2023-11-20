@@ -14,6 +14,7 @@ import { DoShipmentEntryComponent } from './map-do/component/do-shipment-entry/d
 import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 import { DxSelectBoxModule } from 'devextreme-angular/ui/select-box';
 import { CertificateEntryComponent } from './certificate/component/certificate-entry/certificate-entry.component';
+import { NavBarComponent } from './shared/common/components/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CertificateEntryComponent } from './certificate/component/certificate-e
     CertificateListDetailComponent,
     DoPageComponent,
     DoShipmentEntryComponent,
-    CertificateEntryComponent
+    CertificateEntryComponent,
+    NavBarComponent
   ],
   imports: [
     FormsModule,
