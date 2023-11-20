@@ -12,6 +12,7 @@ import { DxDataGridModule } from 'devextreme-angular/ui/data-grid';
 import { CertificateListDetailComponent } from './certificate/component/certificate-list-detail/certificate-list-detail.component';
 import { DoPageComponent } from './map-do/component/do-page/do-page.component';
 import { DoShipmentEntryComponent } from './map-do/component/do-shipment-entry/do-shipment-entry.component';
+import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,12 +25,14 @@ import { DoShipmentEntryComponent } from './map-do/component/do-shipment-entry/d
     DoShipmentEntryComponent
   ],
   imports: [
+    
     FormsModule,
     BrowserModule,
     AppRoutingModule,
     DxDataGridModule,
+    ModalModule
   ],
-  providers: [ ],
+  providers: [BsModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
