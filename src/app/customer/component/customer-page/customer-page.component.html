@@ -22,8 +22,8 @@
 
     <div class="row p-2">
         <div class="col offset-3">
-            <button class="btn btn-success">Search</button>
-            <button class="btn btn-secondary m-2">Clear</button>
+            <button class="btn btn-success"><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
+            <button class="btn btn-secondary ms-2"><i class="fa-solid fa-broom me-1"></i>Clear</button>
         </div>
     </div>
 
@@ -47,7 +47,9 @@
 
                 <dxi-column width="130" alignment="center" cellTemplate="downloadTemplate">
                     <div *dxTemplate="let cell of 'downloadTemplate'">
-                        <button class="btn btn-info" (click)="onClickDownload()">Download</button>
+                        <button class="btn btn-sm btn-outline-info rounded-pill mx-2" (click)="onClickDownload()">
+                            <i class="fa-solid fa-download"></i> Download
+                        </button>
                     </div>
                 </dxi-column>
 
