@@ -22,18 +22,18 @@
 
     <div class="row p-2">
         <div class="col offset-3">
-            <button class="btn btn-success">Search</button>
-            <button class="btn btn-secondary ms-2">Clear</button>
+            <button class="btn btn-success"><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
+            <button class="btn btn-secondary ms-2"><i class="fa-solid fa-broom me-1"></i>Clear</button>
         </div>
     </div>
 
     <div class="row">
         <div class="col-10">
-            <button class="btn btn-primary">Add</button>
+            <button class="btn btn-primary" (click)="onClickAdd()"><i class="fa-solid fa-plus me-1"></i>Add</button>
         </div>
         <div class="col-2 text-end">
-            <button class="btn btn-success">Import</button>
-            <button class="btn btn-success ms-2">Export</button>
+            <button class="btn btn-success" (click)="onClickImport()"><i class="fa-solid fa-file-import me-1"></i>Import</button>
+            <button class="btn btn-success ms-2" (click)="onClickExport()"><i class="fa-solid fa-file-excel me-1"></i>Export</button>
         </div>
     </div>
 
@@ -46,8 +46,8 @@
 
                 <dxi-column width="60" alignment="center" cellTemplate="toolsTemplate">
                     <div *dxTemplate="let cell of 'toolsTemplate'">
-                        <label>E</label>
-                        <label class="ms-2">D</label>
+                        <i style="cursor: pointer;" class="fa-solid fa-pen-to-square" (click)="onClickEditMappingMaterial(editMappingMaterial,cell)"></i>
+                        <i style="cursor: pointer;" class="ms-2 fa-solid fa-trash"></i>
                     </div>
                 </dxi-column>
 
@@ -71,23 +71,24 @@
 
             </dx-data-grid>
 
-            <div class="row">
+            <div class="row mt-2">
                 <div class="col text-end">
-                    <label>Edit</label>
-                    <label class="ms-2">Delete</label>
+                    <i class="fa-solid fa-pen-to-square" ></i> <label class="ms-2">Edit</label>
+                    <i class="ms-2 fa-solid fa-trash"></i> <label class="ms-2">Delete</label>
                 </div>
             </div>
 
         </div>
     </div>
 
-    
+
 </div>
 
 <ng-template #addMappingMaterial>
     <div class="modal-header">
         <h5 class="modal-title">Add Mapping Material</h5>
-        <span class="close-modal" name="close-modal-import" (click)="onClickExitAddModal()">&times;</span>
+        <span style="cursor: pointer;" class="close-modal" name="close-modal-import"
+            (click)="onClickExitAddModal()">&times;</span>
     </div>
 
     <div class="modal-body">
@@ -95,22 +96,22 @@
             <error-panel name="error-panel" #errorPanelModal></error-panel>
         </div> -->
 
-        <div class="row">
+        <div class="row pt-2">
             <div class="col-2 offset-1 text-end pt-2">
-                <label class="form-label">Material</label>
+                <label class="form-label" for="materialCode">Material</label>
             </div>
             <div class="col-3">
-                <label></label>
+                <input id="materialCode" class="form-control">
             </div>
             <div class="col-2 text-end pt-2">
-                <label class="form-label" for="materialdesc">Material Description</label>
+                <label class="form-label" for="materialDesc">Material Description</label>
             </div>
             <div class="col-3">
-                <label></label>
+                <input id="materialDesc" class="form-control">
             </div>
         </div>
 
-        <div class="row">
+        <div class="row pt-2">
             <div class="col">
                 <dx-data-grid id="gridContainer" [remoteOperations]="false" [allowColumnReordering]="true"
                     [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'" [showColumnLines]="true"
@@ -123,9 +124,9 @@
                         </div>
                     </dxi-column>
 
-                    <dxi-column caption="Mill" [width]="100" alignment="left"></dxi-column>
-                    <dxi-column caption="Material Description" dataType="string"
-                        [minWidth]="200" alignment="left" cellTemplate="millMaterial">
+                    <dxi-column caption="Mill" [width]="100" alignment="center"></dxi-column>
+                    <dxi-column caption="Material Description" dataType="string" [minWidth]="200" alignment="center"
+                        cellTemplate="millMaterial">
                         <div *dxTemplate="let cell of 'millMaterial'">
                             <input class="form-control" type="text">
                         </div>
@@ -135,10 +136,10 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-12 textCenter">
-                <button (onClick)="onClickConfirmAddMappingMaterial()">Confirm</button>
-                <button class="ms-2" (click)="onClickExitAddMappingMaterial()">Exit</button>
+        <div class="row pt-2">
+            <div class="col-12 text-center">
+                <button class="btn btn-success" (onClick)="onClickConfirmAddMappingMaterial()"><i class="fa-solid fa-circle-check me-1"></i>Confirm</button>
+                <button class="ms-2 btn btn-secondary" (click)="onClickExitAddMappingMaterial()"><i class="fa-solid fa-ban me-1"></i>Exit</button>
             </div>
         </div>
     </div>
@@ -147,7 +148,8 @@
 <ng-template #importMappingMaterial>
     <div class="modal-header">
         <h5 class="modal-title">Import Mapping Material</h5>
-        <span class="close-modal" name="close-modal-import" (click)="onClickExitImportModal()">&times;</span>
+        <span style="cursor: pointer;" class="close-modal" name="close-modal-import"
+            (click)="onClickExitImportModal()">&times;</span>
     </div>
 
     <div class="modal-body">
@@ -155,31 +157,117 @@
             <error-panel name="error-panel" #errorPanelModal></error-panel>
         </div> -->
 
-        <div class="row">
-            <div class="col-2 offset-1 text-end pt-2">
-                <label class="form-label">File</label>
+        <div class="row mb-3">
+            <div class="col-2 col-form-label text-end">
+                <label>File</label>
+            </div>
+            <div class="col-6">
+                <input [disabled]="clickImport" #fileInput class="form-control rounded-pill" #myInput type="file"
+                    name="filename" (change)="handleFileInput($event)">
             </div>
             <div class="col-3">
-                <label></label>
-            </div>
-            <div class="col-3">
-                <button class="btn btn-light">Import</button>
-            </div>
-            <div class="col-2 text-end pt-2">
-                <button class="btn btn-success" (click)="downloadTemplate()">Download</button>
+                <button *ngIf="!clickImport" name="btn-importFile" (click)="uploadFile()"
+                    class="btn btn-sm btn-outline-secondary rounded-pill" [disabled]="!fileToUpload">
+                    <i class="fas fa-file-upload"></i> Import
+                </button>
+                <button *ngIf="clickImport" name="btn-clear-import" (click)="onClearFile(fileInput)"
+                    class="btn btn-sm btn-outline-secondary rounded-pill">
+                    <i class="far fa-times-circle"></i> Clear
+                </button>
+                <button class="btn btn-sm btn-outline-success rounded-pill mx-2" (click)="onClickDownloadTemplate()">
+                    <i class="fa-solid fa-download"></i> Download
+                </button>
             </div>
         </div>
 
         <div class="row">
+            <div class="col-12 mb-2">
+                <dx-data-grid #importGrid name="dg-import" [dataSource]="dataForUpload" [height]="500">
+                    <dxo-sorting [mode]="'none'">
+                    </dxo-sorting>
+                    <dxi-column width="250" cellTemplate="issueTemplate" alignment="center" caption="Issue" dataField="issue"
+                        dataType="string">
+                        <div *dxTemplate="let cell of 'issueTemplate'">
+                            <span class="error-message" [innerText]="cell.value.join('\n')"></span>
+                        </div>
+                    </dxi-column>
+                    <dxi-column width="200" caption="Material" dataField="materialCode" alignment="center">
+                    </dxi-column>
+                    <dxi-column minWidth="200" caption="Description" dataField="description" alignment="center">
+                    </dxi-column>
+                    <dxi-column width="80" caption="Mill" dataField="mill" alignment="center">
+                    </dxi-column>
+                    <dxi-column width="200" caption="Mill Description" dataField="millMaterial" alignment="center">
+                    </dxi-column>
+                </dx-data-grid>
+            </div>
+        </div>
+
+        <div class="row pt-2">
+            <div class="col-12 text-center">
+                <button class="btn btn-success" (onClick)="onClickConfirmImportMappingMaterial()"><i class="fa-solid fa-circle-check me-1"></i> Confirm</button>
+                <button class="ms-2 btn btn-secondary" (click)="onClickExitImportMappingMaterial()"><i class="fa-solid fa-ban me-1"></i>Exit</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #editMappingMaterial>
+    <div class="modal-header">
+        <h5 class="modal-title">Edit Mapping Material</h5>
+        <span style="cursor: pointer;" class="close-modal" name="close-modal-import"
+            (click)="onClickExitEditMappingMaterial()">&times;</span>
+    </div>
+
+    <div class="modal-body">
+        <!-- <div class="row">
+            <error-panel name="error-panel" #errorPanelModal></error-panel>
+        </div> -->
+
+        <div class="row pt-2">
+            <div class="col-2 offset-1 text-end">
+                <label class="form-label">Material</label>
+            </div>
+            <div class="col-3">
+                <label>{{ materialCode }}</label>
+            </div>
+            <div class="col-2 text-end">
+                <label class="form-label">Material Description</label>
+            </div>
+            <div class="col-3">
+                <label>{{ materialDesc }}</label>
+            </div>
+        </div>
+
+        <div class="row pt-2">
             <div class="col">
-                
+                <dx-data-grid id="gridContainer" [remoteOperations]="false" [allowColumnReordering]="true"
+                    [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'" [showColumnLines]="true"
+                    [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
+
+
+                    <dxi-column width="60" alignment="center" cellTemplate="addTemplate">
+                        <div *dxTemplate="let cell of 'addTemplate'">
+                            <label>Add</label>
+                        </div>
+                    </dxi-column>
+
+                    <dxi-column caption="Mill" [width]="100" alignment="center"></dxi-column>
+                    <dxi-column caption="Material Description" dataType="string" [minWidth]="200" alignment="center"
+                        cellTemplate="millMaterial">
+                        <div *dxTemplate="let cell of 'millMaterial'">
+                            <input class="form-control" type="text">
+                        </div>
+                    </dxi-column>
+
+                </dx-data-grid>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-12 textCenter">
-                <button (onClick)="onClickConfirmImportMappingMaterial()">Confirm</button>
-                <button class="ms-2" (click)="onClickExitImportMappingMaterial()">Exit</button>
+        <div class="row pt-2">
+            <div class="col-12 text-center">
+                <button class="btn btn-success" (onClick)="onClickSaveEditMappingMaterial()"><i class="fa-solid fa-circle-check me-1"></i>Confirm</button>
+                <button class="ms-2 btn btn-secondary" (click)="onClickCancelEditMappingMaterial()"><i class="fa-solid fa-ban me-1"></i>Exit</button>
             </div>
         </div>
     </div>
