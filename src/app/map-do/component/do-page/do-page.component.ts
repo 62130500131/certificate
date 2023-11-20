@@ -14,19 +14,19 @@ export class DoPageComponent {
       shipmentCode: 2311092790,
       customerCode: 10000217,
       customerName: "บริษัท ธุรกิจเหล็กดี จำกัด",
-      heatNo: "A123456"
+      heatNo: "DB1077"
     },
     {
       shipmentCode: 2311092791,
       customerCode: 10000217,
       customerName: "บริษัท ธุรกิจเหล็กดี จำกัด",
-      heatNo: "A123456"
+      heatNo: "DB1077"
     },
     {
       shipmentCode: 2311092792,
       customerCode: 10000217,
       customerName: "บริษัท ธุรกิจเหล็กดี จำกัด",
-      heatNo: "A123456"
+      heatNo: "DB1077"
     }
   ]
 
