@@ -24,6 +24,13 @@ export class MappingMaterialComponent implements OnInit {
   @ViewChild('importMappingMaterial') public importMappingMaterial!: TemplateRef<any>;
   @ViewChild('editMappingMaterial') public editMappingMaterial!: TemplateRef<any>;
 
+  public mill: string[] = [
+    'GJ',
+    'SYS',
+    'SSI',
+    'GJS',
+  ];
+  
   public dataSource: mappingMaterialViewModel[] = [
     {
       index: 1,
@@ -50,7 +57,7 @@ export class MappingMaterialComponent implements OnInit {
   ];
 
   constructor(private modalService: BsModalService) {
-
+    
   }
 
   ngOnInit(): void {
@@ -69,6 +76,10 @@ export class MappingMaterialComponent implements OnInit {
 
   // Add
   public onClickAdd(): void {
+    this.addMaterial=[];
+    if (this.addMaterial.length == 0){
+      this.onClickAddItem();
+    }
     this.modalRef = this.modalService.show(this.addMappingMaterial, {
       class: 'modal-xl'
     });
@@ -159,12 +170,12 @@ export class MappingMaterialComponent implements OnInit {
   }
 
   public onClickCancelEditMappingMaterial(): void {
-
+    this.modalRef.hide();
   }
 
   //Delete
   public onClickDeleteMappingMaterial(): void {
-
+    let confirmDelete = confirm('Do you want to delete?');
   }
 
 
