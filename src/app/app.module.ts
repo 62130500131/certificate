@@ -15,6 +15,8 @@ import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 import { DxSelectBoxModule } from 'devextreme-angular/ui/select-box';
 import { CertificateEntryComponent } from './certificate/component/certificate-entry/certificate-entry.component';
 import { NavBarComponent } from './shared/common/components/nav-bar/nav-bar.component';
+import { ExamplePdfViewerComponent } from './example-pdf-viewer/example-pdf-viewer.component';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { NavBarComponent } from './shared/common/components/nav-bar/nav-bar.comp
     DoPageComponent,
     DoShipmentEntryComponent,
     CertificateEntryComponent,
-    NavBarComponent
+    NavBarComponent,
+    ExamplePdfViewerComponent
   ],
   imports: [
     FormsModule,
@@ -35,7 +38,8 @@ import { NavBarComponent } from './shared/common/components/nav-bar/nav-bar.comp
     AppRoutingModule,
     DxDataGridModule,
     DxSelectBoxModule,
-    ModalModule
+    ModalModule,
+    NgxExtendedPdfViewerModule
   ],
   providers: [BsModalService],
   bootstrap: [AppComponent]

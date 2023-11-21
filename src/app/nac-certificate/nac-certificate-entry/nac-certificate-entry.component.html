@@ -1,0 +1,197 @@
+<div class="row mt-2">
+  <h6>Certificate Entry</h6>
+  <hr>
+</div>
+
+<div class="row">
+  <div class="col-4">
+    
+  </div>
+  <div class="col-8">
+
+    <div class="row">
+      <div class="col-12">
+        <h6>Certificate Info</h6>
+        <hr>
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-2 text-end">
+        <label>Customer Address</label>
+      </div>
+      <div class="col-3">
+        <input type="text" id="certNo" class="form-control">
+      </div>
+
+      <div class="col-2  text-end">
+        <label>Upload Date</label>
+      </div>
+      <div class="col-3">
+        {{ today }}
+        <!-- {{ today | date: 'dd-MMM-yyyy HH:mm' }} -->
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-2 text-end pt-1">
+        <label for="certNo">Certificate No.</label>
+      </div>
+      <div class="col-3">
+        <input type="text" id="certNo" class="form-control">
+      </div>
+
+      <div class="col-2 text-end pt-1">
+        <label for="certDate">Requested Date</label>
+      </div>
+      <div class="col-3">
+        <input type="text" id="certDate" class="form-control">
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-2 text-end pt-1">
+        <label for="certNo">Commodity</label>
+      </div>
+      <div class="col-3">
+        <input type="text" id="certNo" class="form-control">
+      </div>
+
+      <div class="col-2 text-end pt-1">
+        <label for="certDate">Grade</label>
+      </div>
+      <div class="col-3">
+        <input type="text" id="certDate" class="form-control">
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-2 text-end pt-1">
+        <label for="certNo">Standard Product</label>
+      </div>
+      <div class="col-3">
+        <input type="text" id="certNo" class="form-control">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <h6>Test Method/Machine</h6>
+        <hr>
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-2 text-end">
+        <label>Tensile Test</label>
+      </div>
+      <div class="col-3">
+        <input type="text" id="certNo" class="form-control">
+      </div>
+
+      <div class="col-2  text-end">
+        <label>Test Date</label>
+      </div>
+      <div class="col-3">
+        <input type="date" id="certNo" class="form-control">
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-2 text-end">
+        <label>Chemical Test</label>
+      </div>
+      <div class="col-3">
+        <input type="text" id="certNo" class="form-control">
+      </div>
+
+      <div class="col-2  text-end">
+        <label>Test Date</label>
+      </div>
+      <div class="col-3">
+        <input type="date" id="certNo" class="form-control">
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-2 text-end">
+        <label>Hardness Test</label>
+      </div>
+      <div class="col-3">
+        <input type="text" id="certNo" class="form-control">
+      </div>
+
+      <div class="col-2  text-end">
+        <label>Test Date</label>
+      </div>
+      <div class="col-3">
+        <input type="date" id="certNo" class="form-control">
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-2 text-end">
+        <label>Bend Test</label>
+      </div>
+      <div class="col-3">
+        <input type="text" id="certNo" class="form-control">
+      </div>
+
+      <div class="col-2  text-end">
+        <label>Test Date</label>
+      </div>
+      <div class="col-3">
+        <input type="date" id="certNo" class="form-control">
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-2 text-end">
+        <label>Flattening Test</label>
+      </div>
+      <div class="col-3">
+        <input type="text" id="certNo" class="form-control">
+      </div>
+
+      <div class="col-2  text-end">
+        <label>Test Date</label>
+      </div>
+      <div class="col-3">
+        <input type="date" id="certNo" class="form-control">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <h6>Material Detail</h6>
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 text-end">
+        <button class="btn btn-success"><i class="fa-solid fa-plus"></i> Add</button>
+        <button class="btn btn-primary ms-2"><i class="fa-solid fa-file"></i> Read PDF</button>
+      </div>
+    </div>
+
+    <div class="overflow-auto mt-2">
+
+    </div>
+
+
+    <div class="row mt-2">
+      <div class="col-12 text-end">
+        <span class="legend"><i class="fa-solid fa-trash icon-delete mx-2"></i>Delete</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 text-center">
+        <button class="btn btn-success" (click)="onClickSave()"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+        <button class="btn btn-secondary ms-2" (click)="onClickExit()"><i class="fa-solid fa-xmark"></i> Exit</button>
+      </div>
+    </div>
+
+  </div>
+</div>
