@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { certificateEntryListViewModel } from 'src/app/certificate/models/certificate-list.model';
+import { CertificateEntryListViewModel } from 'src/app/certificate/models/certificate-list.model';
 import { NgxExtendedPdfViewerService, pdfDefaultOptions } from 'ngx-extended-pdf-viewer';
 
 @Component({
@@ -11,7 +11,7 @@ import { NgxExtendedPdfViewerService, pdfDefaultOptions } from 'ngx-extended-pdf
 export class NacCertificateEntryComponent implements OnInit {
 
   public today = '20-Nov-2023';
-  public list: certificateEntryListViewModel[] = [{
+  public list: CertificateEntryListViewModel[] = [{
     millDesc: 'H 148x100x6x12.00M',
     tmtMaterial: '',
     tmtDesc: '',

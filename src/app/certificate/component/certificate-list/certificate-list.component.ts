@@ -1,5 +1,5 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
-import { certificateListViewModel, searchParamCertificateList } from '../../models/certificate-list.model';
+import { CertificateListViewModel, SearchParamCertificateList } from '../../models/certificate-list.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class CertificateListComponent {
   @ViewChild('importTemplate') importTemplate!: TemplateRef<any>;
-  public searchParam: searchParamCertificateList = new searchParamCertificateList();
+  public searchParam: SearchParamCertificateList = new SearchParamCertificateList();
   public modalRef!: BsModalRef;
   public fileToUpload: any;
   public millForUpload: string = '';
@@ -98,7 +98,7 @@ export class CertificateListComponent {
 
 
   ];
-  public list: certificateListViewModel[] = [
+  public list: CertificateListViewModel[] = [
     {
       certNo: "42523050482",
       mill: "SYS",
@@ -254,7 +254,7 @@ export class CertificateListComponent {
   }
 
   public onClickClear(): void {
-    this.searchParam = new searchParamCertificateList();
+    this.searchParam = new SearchParamCertificateList();
   }
 
   public onClickCertNo():void {

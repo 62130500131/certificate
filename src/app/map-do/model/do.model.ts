@@ -1,4 +1,4 @@
-export class doViewModel {
+export class DoViewModel {
     shipmentCode?: number;
     customerCode?: number;
     customerName?: string;

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { customerHistoryViewModel } from '../../models/customer-history.model';
+import { CustomerHistoryViewModel } from '../../models/customer-history.model';
 
 @Component({
   selector: 'customer-page',
@@ -7,7 +7,7 @@ import { customerHistoryViewModel } from '../../models/customer-history.model';
   styleUrls: ['./customer-page.component.css']
 })
 export class CustomerPageComponent {
-  public dataSource: customerHistoryViewModel[] = [
+  public dataSource: CustomerHistoryViewModel[] = [
     {
       doNo: "21567891",
       date: new Date,

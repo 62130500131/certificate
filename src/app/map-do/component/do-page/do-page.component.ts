@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { doViewModel } from '../../model/do.model';
+import { DoViewModel } from '../../model/do.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class DoPageComponent {
 
-  public dataSource: doViewModel[] = [
+  public dataSource: DoViewModel[] = [
     {
       shipmentCode: 2311092790,
       customerCode: 10000217,

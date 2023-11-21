@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { certificateEntryListViewModel } from '../../models/certificate-list.model';
+import { CertificateEntryListViewModel } from '../../models/certificate-list.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ export class CertificateEntryComponent implements OnInit {
 
   // public today = new Date();
   public today = '20-Nov-2023';
-  public list: certificateEntryListViewModel[] = [{
+  public list: CertificateEntryListViewModel[] = [{
     millDesc: 'H 148x100x6x12.00M',
     tmtMaterial: '',
     tmtDesc: '',

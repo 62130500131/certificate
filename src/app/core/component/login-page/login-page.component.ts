@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { auth } from '../../models/auth.model';
+import { Auth } from '../../models/auth.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent {
-  public loginParam: auth = new auth();
+  public loginParam: Auth = new Auth();
 
   constructor(private router: Router){
   }
