@@ -11,7 +11,7 @@ import { DatePipe } from '@angular/common';
 })
 export class CertificateListComponent {
   @ViewChild('importTemplate') importTemplate!: TemplateRef<any>;
-  public searchParam: SearchParamCertificateList = new SearchParamCertificateList();
+  public param: SearchParamCertificateList = new SearchParamCertificateList();
   public modalRef!: BsModalRef;
   public fileToUpload: any;
   public millForUpload: string = '';
@@ -248,22 +248,22 @@ export class CertificateListComponent {
   }
 
   public onUplodeDateRangeChanged($event: any): void {
-    this.searchParam.uploadFrom = $event.value.startDate;
-    this.searchParam.uploadTo = $event.value.endDate;
+    this.param.uploadFrom = $event.value.startDate;
+    this.param.uploadTo = $event.value.endDate;
   }
 
   public onCertificateDateRangeChanged($event: any): void {
-    this.searchParam.certFrom = $event.value.startDate;
-    this.searchParam.certTo = $event.value.endDate;
+    this.param.certFrom = $event.value.startDate;
+    this.param.certTo = $event.value.endDate;
   }
 
   public priceValidDate(): string {
-    if (!this.searchParam.uploadFrom || !this.searchParam.uploadTo)
+    if (!this.param.uploadFrom || !this.param.uploadTo)
       return "";
 
     const datePipe = new DatePipe('en-US');
-    const uploadFrom = datePipe.transform(this.searchParam.uploadFrom, 'dd-MMM-yyyy');
-    const uploadTo = datePipe.transform(this.searchParam.uploadTo, 'dd-MMM-yyyy');
+    const uploadFrom = datePipe.transform(this.param.uploadFrom, 'dd-MMM-yyyy');
+    const uploadTo = datePipe.transform(this.param.uploadTo, 'dd-MMM-yyyy');
 
     return uploadFrom + ' - ' + uploadTo;
   }
@@ -277,7 +277,7 @@ export class CertificateListComponent {
   }
 
   public onClickClear(): void {
-    this.searchParam = new SearchParamCertificateList();
+    this.param = new SearchParamCertificateList();
   }
 
   public onClickCertNo(): void {
