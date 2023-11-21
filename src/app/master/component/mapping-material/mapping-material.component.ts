@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { mappingMaterialViewModel } from '../../models/mapping-material.model';
+import { MappingMaterialSearchParam, MappingMaterialViewModel } from '../../models/mapping-material.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
@@ -8,6 +8,8 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
   styleUrls: ['./mapping-material.component.css']
 })
 export class MappingMaterialComponent implements OnInit {
+
+  public param: MappingMaterialSearchParam = new MappingMaterialSearchParam();
 
   public modalRef!: BsModalRef;
 
@@ -30,28 +32,35 @@ export class MappingMaterialComponent implements OnInit {
     'SSI',
     'GJS',
   ];
+
+  public materialDataSource = [
+    {
+      text: '2CTFB : เหล็กแผ่นดำ ตัดซอยตามขนาด',
+      value: '2CTFB'
+    }
+  ];
   
-  public dataSource: mappingMaterialViewModel[] = [
+  public dataSource: MappingMaterialViewModel[] = [
     {
       index: 1,
       materialCode: "2CTFB",
       materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
       modifiedBy: "CONNEX",
-      modifiedTime: new Date,
+      modifiedTime: "",
     },
     {
       index: 2,
       materialCode: "2CTFB020-0060-1180",
       materialDesc: "เหล็กแผ่นดำ 2.00 x 60 x 1180mm SS400",
       modifiedBy: "CONNEX",
-      modifiedTime: new Date,
+      modifiedTime: "",
     },
     {
       index: 3,
       materialCode: "2CTFB020-0789-2144",
       materialDesc: "เหล็กแผ่นดำ 2.00 x 789 x 2144mm SS400",
       modifiedBy: "CONNEX",
-      modifiedTime: new Date,
+      modifiedTime: "",
     }
 
   ];
@@ -71,7 +80,7 @@ export class MappingMaterialComponent implements OnInit {
   }
 
   public onClickClear(): void {
-
+    this.param = new MappingMaterialSearchParam();
   }
 
   // Add
