@@ -20,6 +20,7 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { DxDateBoxModule } from 'devextreme-angular/ui/date-box';
 import { DatePickerComponent } from './shared/common/components/date-picker/date-picker/date-picker.component';
 import { DateRangeComponent } from './shared/common/components/date-range/date-range/date-range.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { DateRangeComponent } from './shared/common/components/date-range/date-r
     NgxExtendedPdfViewerModule,
     DxDateBoxModule
   ],
-  providers: [BsModalService],
+  providers: [BsModalService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
