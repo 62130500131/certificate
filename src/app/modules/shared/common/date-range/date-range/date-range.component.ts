@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { DateRangeConfig } from '../../helper/date-range.helper';
+import { DateRangeConfig } from '../../../helper/date-range.helper';
 
 @Component({
   selector: 'date-range',
