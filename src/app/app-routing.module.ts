@@ -7,6 +7,8 @@ import { CertificateListComponent } from './certificate/components/certificate-l
 import { DoPageComponent } from './map-do/components/do-page/do-page.component';
 import { CertificateEntryComponent } from './certificate/components/certificate-entry/certificate-entry.component';
 import { DoShipmentEntryComponent } from './map-do/components/do-shipment-entry/do-shipment-entry.component';
+import { NacCertificateEntryComponent } from './nac-certificate/nac-certificate-entry/nac-certificate-entry.component';
+import { ExamplePdfViewerComponent } from './example-pdf-viewer/example-pdf-viewer.component';
 
 const routes: Routes = [
   { path: 'login-page', component: LoginPageComponent },
@@ -16,6 +18,8 @@ const routes: Routes = [
   { path: 'do-page', component: DoPageComponent },
   { path: 'do-entry', component: DoShipmentEntryComponent },
   { path: 'certificate-entry', component: CertificateEntryComponent },
+  { path: 'nac-certificate-entry', component: NacCertificateEntryComponent },
+  { path: 'pdf', component: ExamplePdfViewerComponent },
   {
     path: '',
     redirectTo: 'login-page',
