@@ -35,3 +35,11 @@
 .dx-datagrid-content .dx-datagrid-table .dx-row > td, .dx-datagrid-content .dx-datagrid-table .dx-row > tr > td{
     vertical-align: middle !important;
 }
+
+html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+}
