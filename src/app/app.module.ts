@@ -29,7 +29,8 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     DoPageComponent,
     DoShipmentEntryComponent,
     CertificateEntryComponent,
-    NavBarComponent
+    NavBarComponent,
+    ExamplePdfViewerComponent
   ],
   imports: [
     FormsModule,
