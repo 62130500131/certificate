@@ -16,7 +16,10 @@
             <label class="form-label">Date</label>
         </div>
         <div class="col-3">
-            <input class="form-control" type="date">
+            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource" [(ngModel)]="param.dateFrom"
+                class="mb-4"></dx-select-box>
+            <input *ngIf="param.dateFrom == 0" id="uploadDate" type="date" class="form-control"
+                [(ngModel)]="param.dateFrom">
         </div>
     </div>
 
