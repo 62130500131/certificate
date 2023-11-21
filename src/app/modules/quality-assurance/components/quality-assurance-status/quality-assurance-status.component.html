@@ -1,0 +1,51 @@
+<div class="container container justify-content-center pt-2">
+  <div class="row mt-2">
+      <h6>Production Status</h6>
+
+  </div>
+  <hr>
+
+  <div class="row mt-4">
+      <div class="col-2 offset-1 text-end pt-2">
+          <label class="form-label" for="materialCode">Material</label>
+      </div>
+      <div class="col-3">
+          <input id="materialCode" class="form-control" type="text" [(ngModel)]="param.materialCode">
+      </div>
+      <div class="col-2 text-end pt-2">
+          <label class="form-label">Production Date</label>
+      </div>
+      <div class="col-3">
+          <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource"
+              [(ngModel)]="param.productionDate" class="mb-2"></dx-select-box>
+          <!-- <date-range *ngIf="param.productionDate == 0" [start-date]="param.productionFrom" [end-date]="param.productionTo"
+              (onUpdate)="onProductionDateRangeChanged($event)">
+          </date-range> -->
+      </div>
+  </div>
+
+  <div class="row mt-4">
+      <div class="col-2 offset-1 text-end pt-2">
+          <label class="form-label" for="materialdesc">Status</label>
+      </div>
+      <div class="col-3">
+          
+      </div>
+  </div>
+
+  <div class="row p-2">
+      <div class="col offset-3">
+          <button class="btn btn-success"><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
+          <button class="btn btn-secondary ms-2" (click)="onClickClear()"><i class="fa-solid fa-broom me-1"></i>Clear</button>
+      </div>
+  </div>
+
+  <div class="row mt-4">
+      <div class="col-12">
+          
+
+
+
+      </div>
+  </div>
+</div>

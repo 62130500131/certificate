@@ -1,0 +1,5 @@
+<dx-date-box [name]="'datebox-'+name" class="form-control-xs" #datebox [value]="mValue"
+    [disabled]="disabled" [displayFormat]="displayFormat" [max]="max" [min]="min" (onValueChanged)="dateChange($event)"
+    [type]="type" [pickerType]="pickerType" [width]="isFixWidth ? 145 : ''"
+    [dateSerializationFormat]="dateSerializationFormat">
+</dx-date-box>
