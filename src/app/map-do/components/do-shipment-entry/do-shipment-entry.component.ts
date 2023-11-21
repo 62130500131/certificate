@@ -1,5 +1,5 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
-import { DoShipmentEntryViewModel, SelectQuantity } from '../../model/do.model';
+import { DoShipmentEntryViewModel, SelectQuantity } from '../../models/do.model';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 

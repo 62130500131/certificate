@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginPageComponent } from './core/component/login-page/login-page.component';
-import { CustomerPageComponent } from './customer/component/customer-page/customer-page.component';
-import { MappingMaterialComponent } from './master/component/mapping-material/mapping-material.component';
-import { CertificateListComponent } from './certificate/component/certificate-list/certificate-list.component';
-import { DoPageComponent } from './map-do/component/do-page/do-page.component';
-import { CertificateEntryComponent } from './certificate/component/certificate-entry/certificate-entry.component';
-import { DoShipmentEntryComponent } from './map-do/component/do-shipment-entry/do-shipment-entry.component';
+import { LoginPageComponent } from './core/components/login-page/login-page.component';
+import { CustomerPageComponent } from './customer/components/customer-page/customer-page.component';
+import { MappingMaterialComponent } from './master/components/mapping-material/mapping-material.component';
+import { CertificateListComponent } from './certificate/components/certificate-list/certificate-list.component';
+import { DoPageComponent } from './map-do/components/do-page/do-page.component';
+import { CertificateEntryComponent } from './certificate/components/certificate-entry/certificate-entry.component';
+import { DoShipmentEntryComponent } from './map-do/components/do-shipment-entry/do-shipment-entry.component';
 
 const routes: Routes = [
   { path: 'login-page', component: LoginPageComponent },

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { doViewModel } from '../../model/do.model';
+import { doViewModel } from '../../models/do.model';
 import { Router } from '@angular/router';
 
 @Component({
