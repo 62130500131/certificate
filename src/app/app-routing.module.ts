@@ -5,7 +5,7 @@ import { CustomerPageComponent } from './modules/customer/components';
 import { MappingMaterialComponent } from './modules/master/components';
 import { CertificateEntryComponent, CertificateListComponent } from './modules/certificate/components';
 import { DoPageComponent, DoShipmentEntryComponent } from './modules/map-certificate/components';
-import { NacCertificateEntryComponent } from './modules/quality-assurance/components';
+import { NacCertificateEntryComponent, QualityAssuranceStatusComponent } from './modules/quality-assurance/components';
 import { ExamplePdfViewerComponent } from './modules/shared/common/components/example-pdf-viewer/example-pdf-viewer.component';
 
 const routes: Routes = [
@@ -39,6 +39,14 @@ const routes: Routes = [
   },
   { 
     path: 'nac-certificate-entry', component: NacCertificateEntryComponent,
+    loadChildren: () => import('./modules/quality-assurance/quality-assurance.module').then(m => m.QualityAssuranceModule) 
+  },
+  { 
+    path: 'quality-assurance-status', component: QualityAssuranceStatusComponent,
+    loadChildren: () => import('./modules/quality-assurance/quality-assurance.module').then(m => m.QualityAssuranceModule) 
+  },
+  { 
+    path: 'production-status', component: QualityAssuranceStatusComponent,
     loadChildren: () => import('./modules/quality-assurance/quality-assurance.module').then(m => m.QualityAssuranceModule) 
   },
   {
