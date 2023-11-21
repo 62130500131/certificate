@@ -17,12 +17,14 @@ export class CustomerHistoryViewModel {
 
 export class CustomerHistorySearchParam {
     materialDesc: string;
-    dateFrom: number;
-    dateTo: number;
-    
+    date: number;
+    dateFrom: string;
+    dateTo: string;
+
     constructor() {
-        this.materialDesc = '' ;
-        this.dateFrom = 90;
-        this.dateTo = 90;
+        this.materialDesc = '';
+        this.date = 90;
+        this.dateFrom = '';
+        this.dateTo = '';
     }
 }

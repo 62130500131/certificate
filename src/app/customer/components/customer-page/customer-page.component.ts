@@ -78,6 +78,11 @@ export class CustomerPageComponent {
     }
   ]
 
+  public onDateRangeChanged($event: any): void {
+    this.param.dateFrom = $event.value.startDate;
+    this.param.dateTo = $event.value.endDate;
+  }
+
   public onClickDownload(): void {
     alert("Download Success!");
   }

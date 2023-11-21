@@ -16,10 +16,11 @@
             <label class="form-label">Date</label>
         </div>
         <div class="col-3">
-            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource" [(ngModel)]="param.dateFrom"
-                class="mb-4"></dx-select-box>
-            <input *ngIf="param.dateFrom == 0" id="uploadDate" type="date" class="form-control"
-                [(ngModel)]="param.dateFrom">
+            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource"
+                [(ngModel)]="param.date" class="mb-2"></dx-select-box>
+            <date-range *ngIf="param.date == 0" [start-date]="param.dateFrom" [end-date]="param.dateTo"
+                (onUpdate)="onDateRangeChanged($event)">
+            </date-range>
         </div>
     </div>
 
