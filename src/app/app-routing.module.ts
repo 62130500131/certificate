@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponent } from './modules/core/components';
 import { CustomerPageComponent } from './modules/customer/components';
-import { MappingMaterialComponent } from './modules/master/components';
+import { CustomerContractComponent, MappingMaterialComponent } from './modules/master/components';
 import { CertificateEntryComponent, CertificateListComponent } from './modules/certificate/components';
 import { DoPageComponent, DoShipmentEntryComponent } from './modules/map-certificate/components';
 import { NacCertificateEntryComponent, QualityAssuranceStatusComponent } from './modules/quality-assurance/components';
@@ -48,6 +48,10 @@ const routes: Routes = [
   { 
     path: 'production-status', component: QualityAssuranceStatusComponent,
     loadChildren: () => import('./modules/quality-assurance/quality-assurance.module').then(m => m.QualityAssuranceModule) 
+  },
+  { 
+    path: 'customer-contract', component: CustomerContractComponent,
+    loadChildren: () => import('./modules/master/master.module').then(m => m.MasterModule) 
   },
   {
     path: '',
