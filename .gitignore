@@ -1,2 +1,7 @@
 /node_modules
 /.angular
+/dist
+/.firebase
+/public
+/.firebaserc
+/firebase.json

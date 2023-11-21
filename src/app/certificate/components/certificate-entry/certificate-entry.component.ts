@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class CertificateEntryComponent implements OnInit {
 
-  // public today = new Date();
+  public src = 'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf'
   public today = '20-Nov-2023';
   public list: CertificateEntryListViewModel[] = [{
     millDesc: 'H 148x100x6x12.00M',
@@ -55,11 +55,11 @@ export class CertificateEntryComponent implements OnInit {
   ngOnInit() {
   }
 
-  public onClickExit():void {
+  public onClickExit(): void {
     this.router.navigate(['certificate-list']);
   }
 
-  public onClickSave():void {
+  public onClickSave(): void {
     this.router.navigate(['certificate-list']);
   }
 
