@@ -6,9 +6,14 @@ import { CoreModule } from '../core/core.module';
 import { CommonModule } from '@angular/common';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { ExamplePdfViewerComponent } from './common/components/example-pdf-viewer/example-pdf-viewer.component';
+import { DxDateBoxModule } from 'devextreme-angular/ui/date-box';
+import { DatePickerComponent } from './common/date-picker/date-picker/date-picker.component';
+import { DateRangeComponent } from './common/date-range/date-range/date-range.component';
 @NgModule({
     declarations: [
-        ExamplePdfViewerComponent
+        ExamplePdfViewerComponent,
+        DatePickerComponent,
+        DateRangeComponent
     ],
     imports: [
         FormsModule,
@@ -16,7 +21,8 @@ import { ExamplePdfViewerComponent } from './common/components/example-pdf-viewe
         DxSelectBoxModule,
         CommonModule,
         ReactiveFormsModule,
-        NgxExtendedPdfViewerModule
+        NgxExtendedPdfViewerModule,
+        DxDateBoxModule
     ],
     exports: [
         FormsModule,
@@ -24,7 +30,10 @@ import { ExamplePdfViewerComponent } from './common/components/example-pdf-viewe
         DxSelectBoxModule,
         CommonModule,
         ReactiveFormsModule,
-        ExamplePdfViewerComponent
+        ExamplePdfViewerComponent,
+        DxDateBoxModule,
+        DatePickerComponent,
+        DateRangeComponent
         // NgxExtendedPdfViewerModule,
     ]
 })

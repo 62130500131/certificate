@@ -4,7 +4,7 @@ import { SharedModule } from '../shared/shared.module';
 @NgModule({
     declarations: [
         comps.NacCertificateEntryComponent,
-        comps.QualityAssuranceStatusComponent
+        comps.QualityAssuranceStatusComponent,
     ],
     imports: [
         SharedModule,
