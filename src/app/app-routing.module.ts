@@ -8,7 +8,7 @@ import { DoPageComponent } from './map-do/components/do-page/do-page.component';
 import { CertificateEntryComponent } from './certificate/components/certificate-entry/certificate-entry.component';
 import { DoShipmentEntryComponent } from './map-do/components/do-shipment-entry/do-shipment-entry.component';
 import { NacCertificateEntryComponent } from './nac-certificate/nac-certificate-entry/nac-certificate-entry.component';
-import { ExamplePdfViewerComponent } from './example-pdf-viewer/example-pdf-viewer.component';
+import { ExamplePdfViewerComponent } from './shared/common/components/example-pdf-viewer/example-pdf-viewer.component';
 
 const routes: Routes = [
   { path: 'login-page', component: LoginPageComponent },

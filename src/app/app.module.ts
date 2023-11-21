@@ -15,7 +15,7 @@ import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 import { DxSelectBoxModule } from 'devextreme-angular/ui/select-box';
 import { CertificateEntryComponent } from './certificate/components/certificate-entry/certificate-entry.component';
 import { NavBarComponent } from './shared/common/components/nav-bar/nav-bar.component';
-import { ExamplePdfViewerComponent } from './example-pdf-viewer/example-pdf-viewer.component';
+import { ExamplePdfViewerComponent } from './shared/common/components/example-pdf-viewer/example-pdf-viewer.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 
 @NgModule({
