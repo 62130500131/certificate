@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DxDataGridModule } from 'devextreme-angular/ui/data-grid';
 import { DxSelectBoxModule } from 'devextreme-angular/ui/select-box';
-import { CoreModule } from '../core/core.module';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { ExamplePdfViewerComponent } from './common/components/example-pdf-viewer/example-pdf-viewer.component';
 import { DxDateBoxModule } from 'devextreme-angular/ui/date-box';
@@ -24,6 +23,9 @@ import { DateRangeComponent } from './common/date-range/date-range/date-range.co
         NgxExtendedPdfViewerModule,
         DxDateBoxModule
     ],
+    providers: [
+        DatePipe
+    ],
     exports: [
         FormsModule,
         DxDataGridModule,
@@ -33,7 +35,8 @@ import { DateRangeComponent } from './common/date-range/date-range/date-range.co
         ExamplePdfViewerComponent,
         DxDateBoxModule,
         DatePickerComponent,
-        DateRangeComponent
+        DateRangeComponent,
+        DatePipe
         // NgxExtendedPdfViewerModule,
     ]
 })
