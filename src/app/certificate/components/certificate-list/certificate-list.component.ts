@@ -2,6 +2,7 @@ import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { CertificateListViewModel, SearchParamCertificateList } from '../../models/certificate-list.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-certificate-list',
@@ -98,6 +99,7 @@ export class CertificateListComponent {
 
 
   ];
+
   public list: CertificateListViewModel[] = [
     {
       certNo: "42523050482",
@@ -241,8 +243,29 @@ export class CertificateListComponent {
   ]
 
   constructor(private modalService: BsModalService,
-              private router: Router) {
+    private router: Router) {
 
+  }
+
+  public onUplodeDateRangeChanged($event: any): void {
+    this.searchParam.uploadFrom = $event.value.startDate;
+    this.searchParam.uploadTo = $event.value.endDate;
+  }
+
+  public onCertificateDateRangeChanged($event: any): void {
+    this.searchParam.certFrom = $event.value.startDate;
+    this.searchParam.certTo = $event.value.endDate;
+  }
+
+  public priceValidDate(): string {
+    if (!this.searchParam.uploadFrom || !this.searchParam.uploadTo)
+      return "";
+
+    const datePipe = new DatePipe('en-US');
+    const uploadFrom = datePipe.transform(this.searchParam.uploadFrom, 'dd-MMM-yyyy');
+    const uploadTo = datePipe.transform(this.searchParam.uploadTo, 'dd-MMM-yyyy');
+
+    return uploadFrom + ' - ' + uploadTo;
   }
 
   public handleFileInput($event: any): void {
@@ -257,7 +280,7 @@ export class CertificateListComponent {
     this.searchParam = new SearchParamCertificateList();
   }
 
-  public onClickCertNo():void {
+  public onClickCertNo(): void {
     this.router.navigate(['certificate-entry']);
   }
 
@@ -268,7 +291,7 @@ export class CertificateListComponent {
     })
   }
 
-  public onClickConfirmUpload():void{
+  public onClickConfirmUpload(): void {
     this.router.navigate(['certificate-entry']);
     this.modalRef.hide();
   }

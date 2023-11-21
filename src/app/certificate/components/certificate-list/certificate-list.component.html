@@ -18,13 +18,15 @@
             <label for="material" class="from-label pt-1">Material</label>
         </div>
         <div class="col-3">
-            <dx-select-box displayExpr="text" valueExpr="value" [items]="materialDataSource" [(ngModel)]="searchParam.material"></dx-select-box>
+            <dx-select-box displayExpr="text" valueExpr="value" [items]="materialDataSource"
+                [(ngModel)]="searchParam.material"></dx-select-box>
         </div>
         <div class="col-2 text-end">
             <label for="grade" class="from-label pt-1">Grade</label>
         </div>
         <div class="col-3">
-            <dx-select-box displayExpr="text" valueExpr="value" [items]="gradeDataSource" [(ngModel)]="searchParam.grade"></dx-select-box>
+            <dx-select-box displayExpr="text" valueExpr="value" [items]="gradeDataSource"
+                [(ngModel)]="searchParam.grade"></dx-select-box>
         </div>
     </div>
 
@@ -33,7 +35,8 @@
             <label for="mill" class="from-label pt-1">Mill</label>
         </div>
         <div class="col-3">
-            <dx-select-box displayExpr="text" valueExpr="value" [items]="millDataSource" [(ngModel)]="searchParam.mill"></dx-select-box>
+            <dx-select-box displayExpr="text" valueExpr="value" [items]="millDataSource"
+                [(ngModel)]="searchParam.mill"></dx-select-box>
         </div>
         <div class="col-2 text-end">
             <label for="heatNo" class="from-label pt-1">Heat No.</label>
@@ -48,22 +51,29 @@
             <label for="certDate" class="from-label pt-1">Certificate Date</label>
         </div>
         <div class="col-3">
-            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource" [(ngModel)]="searchParam.certDate" class="mb-4"></dx-select-box>
-            <input *ngIf="searchParam.certDate == 0" id="certDate" type="date" class="form-control" [(ngModel)]="searchParam.certFrom">
+            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource"
+                [(ngModel)]="searchParam.certDate" class="mb-4"></dx-select-box>
+            <date-range *ngIf="searchParam.certDate == 0" [start-date]="searchParam.certFrom" [end-date]="searchParam.certTo"
+                (onUpdate)="onCertificateDateRangeChanged($event)">
+            </date-range>
         </div>
         <div class="col-2 text-end">
             <label for="uploadDate" class="from-label pt-1">Upload Date</label>
         </div>
         <div class="col-3">
-            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource" [(ngModel)]="searchParam.uploadDate" class="mb-4"></dx-select-box>
-            <input *ngIf="searchParam.uploadDate == 0" id="uploadDate" type="date" class="form-control" [(ngModel)]="searchParam.uploadFrom">
+            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource"
+                [(ngModel)]="searchParam.uploadDate" class="mb-4"></dx-select-box>
+            <date-range *ngIf="searchParam.uploadDate == 0" [start-date]="searchParam.uploadFrom" [end-date]="searchParam.uploadTo"
+                (onUpdate)="onUplodeDateRangeChanged($event)">
+            </date-range>
         </div>
     </div>
 
     <div class="row mt-4">
         <div class="col-3 offset-2">
             <button class="btn btn-success"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
-            <button class="btn btn-secondary ms-2" (click)="onClickClear()"><i class="fa-solid fa-broom"></i> Clear</button>
+            <button class="btn btn-secondary ms-2" (click)="onClickClear()"><i class="fa-solid fa-broom"></i>
+                Clear</button>
         </div>
     </div>
 
@@ -90,7 +100,8 @@
                 <div *dxTemplate="let detail of 'detail'">
                     <certificate-list-detail [dataSource]="detail.data.dataSource"></certificate-list-detail>
                 </div>
-                <dxi-column width="150" caption="Certificate No." alignment="center" dataField="certNo" cellTemplate="actionTemplate"></dxi-column>
+                <dxi-column width="150" caption="Certificate No." alignment="center" dataField="certNo"
+                    cellTemplate="actionTemplate"></dxi-column>
                 <dxi-column minWidth="40" caption="Mill" alignment="left" dataField="mill"></dxi-column>
                 <dxi-column width="120" caption="Total Material" alignment="right"
                     dataField="totalMaterial"></dxi-column>
@@ -143,7 +154,8 @@
                 <label for="mill-upload" class="pt-1">Mill</label>
             </div>
             <div class="col-7">
-                <dx-select-box displayExpr="text" valueExpr="value" [items]="millDataSource" [(ngModel)]="millForUpload"></dx-select-box>
+                <dx-select-box displayExpr="text" valueExpr="value" [items]="millDataSource"
+                    [(ngModel)]="millForUpload"></dx-select-box>
             </div>
         </div>
         <div class="row mt-4">
@@ -154,8 +166,10 @@
         </div>
         <div class="row mt-4">
             <div class="col-12 text-center">
-                <button class="btn btn-primary" [disabled]="!millForUpload || !fileToUpload" (click)="onClickConfirmUpload()"><i class="fa-solid fa-upload"></i> Upload</button>
-                <button class="btn btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i> Cancel</button>
+                <button class="btn btn-primary" [disabled]="!millForUpload || !fileToUpload"
+                    (click)="onClickConfirmUpload()"><i class="fa-solid fa-upload"></i> Upload</button>
+                <button class="btn btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
+                    Cancel</button>
             </div>
         </div>
     </div>
