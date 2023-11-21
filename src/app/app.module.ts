@@ -17,6 +17,9 @@ import { CertificateEntryComponent } from './certificate/components/certificate-
 import { NavBarComponent } from './shared/common/components/nav-bar/nav-bar.component';
 import { ExamplePdfViewerComponent } from './example-pdf-viewer/example-pdf-viewer.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { DxDateBoxModule } from 'devextreme-angular/ui/date-box';
+import { DatePickerComponent } from './shared/common/components/date-picker/date-picker/date-picker.component';
+import { DateRangeComponent } from './shared/common/components/date-range/date-range/date-range.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,9 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     DoShipmentEntryComponent,
     CertificateEntryComponent,
     NavBarComponent,
-    ExamplePdfViewerComponent
+    ExamplePdfViewerComponent,
+    DatePickerComponent,
+    DateRangeComponent
   ],
   imports: [
     FormsModule,
@@ -39,7 +44,8 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     DxDataGridModule,
     DxSelectBoxModule,
     ModalModule,
-    NgxExtendedPdfViewerModule
+    NgxExtendedPdfViewerModule,
+    DxDateBoxModule
   ],
   providers: [BsModalService],
   bootstrap: [AppComponent]
