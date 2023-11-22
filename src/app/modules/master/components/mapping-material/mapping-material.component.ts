@@ -1,6 +1,13 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { mappingMaterialViewModel } from '../../models/mapping-material.model';
+import { MappingMaterialViewModel } from '../../models/mapping-material.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { MappingMaterialService } from '../../services/map-material.service';
+import { catchError, finalize, throwError } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+import { DxDataGridComponent } from 'devextreme-angular';
+import { exportDataGrid } from 'devextreme/excel_exporter';
+import { Workbook } from 'exceljs';
+import * as saveAs from 'file-saver';
 
 @Component({
   selector: 'mapping-material',
@@ -9,9 +16,11 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 })
 export class MappingMaterialComponent implements OnInit {
 
+  @ViewChild('grid') grid!: DxDataGridComponent;
   public modalRef!: BsModalRef;
 
-  public clickImport!: true;
+  public clickImport: boolean = false;
+  public canClick: boolean = false;
   public fileToUpload!: File;
   public dataForUpload!: Array<any>;
 
@@ -31,7 +40,7 @@ export class MappingMaterialComponent implements OnInit {
     'GJS',
   ];
   
-  public dataSource: mappingMaterialViewModel[] = [
+  public dataSource: MappingMaterialViewModel[] = [
     {
       index: 1,
       materialCode: "2CTFB",
@@ -56,7 +65,8 @@ export class MappingMaterialComponent implements OnInit {
 
   ];
 
-  constructor(private modalService: BsModalService) {
+  constructor(private modalService: BsModalService,
+              private service: MappingMaterialService) {
     
   }
 
@@ -109,7 +119,11 @@ export class MappingMaterialComponent implements OnInit {
   }
 
   // Import
-  public onClickImport(): void {
+  public onClickImport() {
+    this.fileToUpload = '' as any;
+    this.clickImport = false;
+    this.canClick = false;
+    this.dataForUpload = [];
     this.modalRef = this.modalService.show(this.importMappingMaterial, {
       class: 'modal-xl'
     });
@@ -120,12 +134,33 @@ export class MappingMaterialComponent implements OnInit {
   }
 
   public uploadFile(): void {
-
+    this.canClick = false;
+    this.service.importMapMaterial(this.fileToUpload.name)
+    .pipe(
+      catchError((httpErrorResponse: HttpErrorResponse) => {
+        const error = httpErrorResponse.error as HttpErrorResponse;
+        // errorPanelModal?.setError(error.messages);
+        return throwError(httpErrorResponse);
+      }),
+      finalize(() => {
+        this.clickImport = true;
+      })
+    )
+      .subscribe(res => {
+        this.dataForUpload = res;
+        this.canClick = this.dataForUpload.map(item => item.issue).every(item => item.length == 0);
+      })
+    
   }
 
   public onClearFile(fileInput: any): void {
-
+    this.clickImport = false;
+    this.canClick = false;
+    fileInput.value = '';
+    this.fileToUpload = fileInput.value;
+    this.dataForUpload = [];
   }
+
 
 
   public onClickExitImportModal(): void {
@@ -137,6 +172,21 @@ export class MappingMaterialComponent implements OnInit {
   }
 
   public onClickConfirmImportMappingMaterial(): void {
+    this.service.confirmImportMapMaterial()
+      .pipe(
+        catchError((httpErrorResponse: HttpErrorResponse) => {
+          const error = httpErrorResponse.error as HttpErrorResponse;
+          // errorPanelModal?.setError(error.messages);
+          return throwError(httpErrorResponse);
+        }),
+        finalize(() => {
+          this.grid.instance.refresh();
+        })
+      )
+      .subscribe(res => {
+        this.dataSource = res
+        this.modalRef.hide();
+      })
 
   }
 
@@ -146,10 +196,26 @@ export class MappingMaterialComponent implements OnInit {
 
   //export
 
-  public onClickExport(): void {
+  public onClickExport() {
+    const workbook = new Workbook();
+    const worksheet = workbook.addWorksheet('Main sheet');
+    const component = this.grid?.instance;
+    this.grid?.instance.columnOption('result', 'visible', true);
+    exportDataGrid({
+      component: component,
+      worksheet: worksheet,
+      customizeCell: (options) => {
+        options.excelCell.font = { name: 'Arial', size: 12 };
+        options.excelCell.alignment = { horizontal: 'left' };
+      }
+    }).then(() => {
+      workbook.xlsx.writeBuffer()
+        .then(function (buffer: BlobPart) {
+          saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'MappingMaterial.xlsx');
+        });
+    }).then(() => this.grid?.instance.columnOption('result', 'visible', false));
 
   }
-
 
   //Edit
   public onClickEditMappingMaterial(template: TemplateRef<any>, cell: any): void {
@@ -159,10 +225,6 @@ export class MappingMaterialComponent implements OnInit {
     this.modalRef = this.modalService.show(this.editMappingMaterial, {
       class: 'modal-xl'
     });
-  }
-
-  public onClickExitEditMappingMaterial(): void {
-    this.modalRef.hide();
   }
 
   public onClickSaveEditMappingMaterial(): void {

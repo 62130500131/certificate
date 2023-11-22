@@ -243,8 +243,8 @@ export class CustomerContractService {
         }
     }
 
-    public confirmImportCustomerContract(): CustomerContractViewModel[] {
-        return this.confirmImportResult;
+    public confirmImportCustomerContract(): Observable<CustomerContractViewModel[]> {
+        return of(this.confirmImportResult);
     }
 
 }
