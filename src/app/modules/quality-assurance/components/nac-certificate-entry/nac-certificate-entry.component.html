@@ -1,174 +1,66 @@
-<div class="row mt-2">
-  <h6>Certificate Entry</h6>
-  <hr>
-</div>
-
 <div class="row">
   <div class="col-4">
-    
+    <ngx-extended-pdf-viewer [src]="'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf'">
+    </ngx-extended-pdf-viewer>
   </div>
   <div class="col-8">
 
-    <div class="row">
+    <div class="row pt-2">
       <div class="col-12">
-        <h6>Certificate Info</h6>
+        <h6>Upload Test Result</h6>
         <hr>
       </div>
     </div>
 
     <div class="row mt-2">
       <div class="col-2 text-end">
-        <label>Customer Address</label>
+        <label>Certificate No.</label>
       </div>
       <div class="col-3">
         <input type="text" id="certNo" class="form-control">
       </div>
 
       <div class="col-2  text-end">
-        <label>Upload Date</label>
+        <label>Date of Test.</label>
       </div>
       <div class="col-3">
-        {{ today }}
-        <!-- {{ today | date: 'dd-MMM-yyyy HH:mm' }} -->
+        <input type="date" id="date" class="form-control">
       </div>
     </div>
 
     <div class="row mt-2">
       <div class="col-2 text-end pt-1">
-        <label for="certNo">Certificate No.</label>
+        <label for="stardardSpecific">Standard/Specific</label>
+      </div>
+      <div class="col-3">
+        <input type="text" id="stardardSpecific" class="form-control">
+      </div>
+
+      <div class="col-2 text-end pt-1">
+        <label for="commodity">Commodity</label>
+      </div>
+      <div class="col-3">
+        <input type="text" id="commodity" class="form-control">
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-2 text-end pt-1">
+        <label for="certNo">Testing Machine No.</label>
       </div>
       <div class="col-3">
         <input type="text" id="certNo" class="form-control">
       </div>
 
       <div class="col-2 text-end pt-1">
-        <label for="certDate">Requested Date</label>
+        <label for="certDate">Order No.</label>
       </div>
       <div class="col-3">
         <input type="text" id="certDate" class="form-control">
       </div>
     </div>
 
-    <div class="row mt-2">
-      <div class="col-2 text-end pt-1">
-        <label for="certNo">Commodity</label>
-      </div>
-      <div class="col-3">
-        <input type="text" id="certNo" class="form-control">
-      </div>
-
-      <div class="col-2 text-end pt-1">
-        <label for="certDate">Grade</label>
-      </div>
-      <div class="col-3">
-        <input type="text" id="certDate" class="form-control">
-      </div>
-    </div>
-
-    <div class="row mt-2">
-      <div class="col-2 text-end pt-1">
-        <label for="certNo">Standard Product</label>
-      </div>
-      <div class="col-3">
-        <input type="text" id="certNo" class="form-control">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12">
-        <h6>Test Method/Machine</h6>
-        <hr>
-      </div>
-    </div>
-
-    <div class="row mt-2">
-      <div class="col-2 text-end">
-        <label>Tensile Test</label>
-      </div>
-      <div class="col-3">
-        <input type="text" id="certNo" class="form-control">
-      </div>
-
-      <div class="col-2  text-end">
-        <label>Test Date</label>
-      </div>
-      <div class="col-3">
-        <input type="date" id="certNo" class="form-control">
-      </div>
-    </div>
-
-    <div class="row mt-2">
-      <div class="col-2 text-end">
-        <label>Chemical Test</label>
-      </div>
-      <div class="col-3">
-        <input type="text" id="certNo" class="form-control">
-      </div>
-
-      <div class="col-2  text-end">
-        <label>Test Date</label>
-      </div>
-      <div class="col-3">
-        <input type="date" id="certNo" class="form-control">
-      </div>
-    </div>
-
-    <div class="row mt-2">
-      <div class="col-2 text-end">
-        <label>Hardness Test</label>
-      </div>
-      <div class="col-3">
-        <input type="text" id="certNo" class="form-control">
-      </div>
-
-      <div class="col-2  text-end">
-        <label>Test Date</label>
-      </div>
-      <div class="col-3">
-        <input type="date" id="certNo" class="form-control">
-      </div>
-    </div>
-
-    <div class="row mt-2">
-      <div class="col-2 text-end">
-        <label>Bend Test</label>
-      </div>
-      <div class="col-3">
-        <input type="text" id="certNo" class="form-control">
-      </div>
-
-      <div class="col-2  text-end">
-        <label>Test Date</label>
-      </div>
-      <div class="col-3">
-        <input type="date" id="certNo" class="form-control">
-      </div>
-    </div>
-
-    <div class="row mt-2">
-      <div class="col-2 text-end">
-        <label>Flattening Test</label>
-      </div>
-      <div class="col-3">
-        <input type="text" id="certNo" class="form-control">
-      </div>
-
-      <div class="col-2  text-end">
-        <label>Test Date</label>
-      </div>
-      <div class="col-3">
-        <input type="date" id="certNo" class="form-control">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12">
-        <h6>Material Detail</h6>
-        <hr>
-      </div>
-    </div>
-
-    <div class="row">
+    <div class="row pt-2">
       <div class="col-12 text-end">
         <button class="btn btn-success"><i class="fa-solid fa-plus"></i> Add</button>
         <button class="btn btn-primary ms-2"><i class="fa-solid fa-file"></i> Read PDF</button>
@@ -176,6 +68,43 @@
     </div>
 
     <div class="overflow-auto mt-2">
+      <dx-data-grid id="gridContainer" [dataSource]="dataSourceCeritificate" [remoteOperations]="false"
+        [allowColumnReordering]="false" [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'"
+        [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
+
+
+        <dxi-column dataField="dimention" caption="Dimention" dataType="string" [minWidth]="300"
+          alignment="left"></dxi-column>
+        <dxi-column [width]="60" caption="C" dataField="c" alignment="center">
+        </dxi-column>
+        <dxi-column [width]="60" caption="Si" dataField="si" alignment="center">
+        </dxi-column>
+        <dxi-column [width]="60" caption="Mn" dataField="mn" alignment="center">
+        </dxi-column>
+        <dxi-column [width]="60" caption="P" dataField="p" alignment="center">
+        </dxi-column>
+        <dxi-column [width]="60" caption="S" dataField="s" alignment="center">
+        </dxi-column>
+        <dxi-column [width]="130" caption="Y.S." dataField="ys" alignment="center">
+        </dxi-column>
+        <dxi-column [width]="130" caption="T.S." dataField="ts" alignment="center">
+        </dxi-column>
+        <dxi-column [width]="130" caption="Elongation" dataField="elongation" alignment="center">
+        </dxi-column>
+        <dxi-column [width]="130" caption="Hardness" dataField="hardness" alignment="center">
+        </dxi-column>
+        <dxi-column [width]="130" caption="Bend Test" dataField="bendTest" alignment="center">
+        </dxi-column>
+        <dxi-column [width]="130" caption="Compression" dataField="compression" alignment="center">
+        </dxi-column>
+        <dxi-column [width]="130" caption="Impact Energy" dataField="impactEnergy" alignment="center"
+          cellTemplate="impactEnergyTemplate">
+          <div *dxTemplate="let cell of 'impactEnergyTemplate'">
+            <label *ngIf="cell.data.impactEnergy == 0">{{ '-' || cell.data.impactEnergy }}</label>
+          </div>
+        </dxi-column>
+
+      </dx-data-grid>
 
     </div>
 
@@ -188,8 +117,10 @@
 
     <div class="row">
       <div class="col-12 text-center">
-        <button class="btn btn-success" (click)="onClickSave()"><i class="fa-solid fa-floppy-disk"></i> Save</button>
-        <button class="btn btn-secondary ms-2" (click)="onClickExit()"><i class="fa-solid fa-xmark"></i> Exit</button>
+        <button class="btn btn-success" (click)="onClickConfrim()"><i class="fa-solid fa-floppy-disk"></i>
+          Confrim</button>
+        <button class="btn btn-secondary ms-2" (click)="onClickCancel()"><i class="fa-solid fa-xmark"></i>
+          Cancel</button>
       </div>
     </div>
 
