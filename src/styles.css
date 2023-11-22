@@ -13,18 +13,24 @@
     vertical-align: middle !important;
 }
 
-.dx-datagrid-headers .dx-datagrid-table{
+.error-message {
+    color: red;
+}
+
+.dx-datagrid-headers .dx-datagrid-table {
     background-color: #3C3C8C;
     color: #ffffff;
 }
 
-.click{
+.click {
     cursor: pointer;
 }
 
-.dx-datagrid-content .dx-datagrid-table .dx-row > td, .dx-datagrid-content .dx-datagrid-table .dx-row > tr > td{
+.dx-datagrid-content .dx-datagrid-table .dx-row>td,
+.dx-datagrid-content .dx-datagrid-table .dx-row>tr>td {
     vertical-align: middle !important;
 }
+
 .icon-edit {
     color: orange;
 }
@@ -40,14 +46,16 @@
 .icon-update-status {
     color: rgb(0, 177, 247);
 }
-.dx-datagrid-content .dx-datagrid-table .dx-row > td, .dx-datagrid-content .dx-datagrid-table .dx-row > tr > td{
+
+.dx-datagrid-content .dx-datagrid-table .dx-row>td,
+.dx-datagrid-content .dx-datagrid-table .dx-row>tr>td {
     vertical-align: middle !important;
 }
 
-html{
+html {
     height: 100%;
 }
 
-body{
+body {
     height: 100%;
 }

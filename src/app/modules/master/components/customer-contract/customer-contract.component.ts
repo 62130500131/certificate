@@ -100,11 +100,11 @@ export class CustomerContractComponent implements OnInit {
     }).then(() => {
       workbook.xlsx.writeBuffer()
         .then(function (buffer: BlobPart) {
-          saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'Follow up.xlsx');
+          saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'CustomerContact.xlsx');
         });
-    }).then(()=>this.grid?.instance.columnOption('result', 'visible', false));
-    
-}
+    }).then(() => this.grid?.instance.columnOption('result', 'visible', false));
+
+  }
 
   public onClickImport() {
     this.fileToUpload = '' as any;
@@ -127,21 +127,21 @@ export class CustomerContractComponent implements OnInit {
   public uploadFile(): void {
     this.canClick = false;
     this.service.importCustomerContract(this.fileToUpload.name)
-    .pipe(
-      catchError((httpErrorResponse: HttpErrorResponse) => {
-        const error = httpErrorResponse.error as HttpErrorResponse;
-        // errorPanelModal?.setError(error.messages);
-        return throwError(httpErrorResponse);
-      }),
-      finalize(() => {
-        this.clickImport = true;
-      })
-    )
+      .pipe(
+        catchError((httpErrorResponse: HttpErrorResponse) => {
+          const error = httpErrorResponse.error as HttpErrorResponse;
+          // errorPanelModal?.setError(error.messages);
+          return throwError(httpErrorResponse);
+        }),
+        finalize(() => {
+          this.clickImport = true;
+        })
+      )
       .subscribe(res => {
         this.dataForUpload = res;
         this.canClick = this.dataForUpload.map(item => item.issue).every(item => item.length == 0);
       })
-    
+
   }
 
   public onClearFile(fileInput: any): void {
@@ -153,14 +153,48 @@ export class CustomerContractComponent implements OnInit {
   }
 
   public onClickDownloadTemplate(): void {
-
+    const temp = this.dataSource;
+    this.dataSource = []
+    const workbook = new Workbook();
+    const worksheet = workbook.addWorksheet('Main sheet');
+    const component = this.grid?.instance;
+    this.grid?.instance.columnOption('result', 'visible', true);
+    exportDataGrid({
+      component: component,
+      worksheet: worksheet,
+      customizeCell: (options) => {
+        options.excelCell.font = { name: 'Arial', size: 12 };
+        options.excelCell.alignment = { horizontal: 'left' };
+      }
+    }).then(() => {
+      workbook.xlsx.writeBuffer()
+        .then(function (buffer: BlobPart) {
+          saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'CustomerContact.xlsx');
+        });
+    }).then(() => {
+      this.grid?.instance.columnOption('result', 'visible', false)
+      this.dataSource = temp;
+    }
+    );
   }
 
   public onClickConfirmImport(): void {
-    console.log('confirm')
-    this.dataSource = this.service.confirmImportCustomerContract();
-    this.modalRef.hide();
-    this.grid.instance.refresh();
+    this.service.confirmImportCustomerContract()
+      .pipe(
+        catchError((httpErrorResponse: HttpErrorResponse) => {
+          const error = httpErrorResponse.error as HttpErrorResponse;
+          // errorPanelModal?.setError(error.messages);
+          return throwError(httpErrorResponse);
+        }),
+        finalize(() => {
+          this.grid.instance.refresh();
+        })
+      )
+      .subscribe(res => {
+        this.dataSource = res
+        this.modalRef.hide();
+      })
+
   }
 
 }

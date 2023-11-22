@@ -45,7 +45,7 @@
 
     <div class="row mt-2">
         <div class="col-12">
-            <dx-data-grid id="gridContainer" [dataSource]="dataSource" [remoteOperations]="false"
+            <dx-data-grid #grid id="gridContainer" [dataSource]="dataSource" [remoteOperations]="false"
                 [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'"
                 [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
 
@@ -161,8 +161,6 @@
 <ng-template #importMappingMaterial>
     <div class="modal-header">
         <h5 class="modal-title">Import Mapping Material</h5>
-        <span style="cursor: pointer;" class="close-modal" name="close-modal-import"
-            (click)="onClickExitImportModal()">&times;</span>
     </div>
 
     <div class="modal-body">
@@ -178,7 +176,7 @@
                 <input [disabled]="clickImport" #fileInput class="form-control rounded-pill" #myInput type="file"
                     name="filename" (change)="handleFileInput($event)">
             </div>
-            <div class="col-3">
+            <div class="col-3 pt-1">
                 <button *ngIf="!clickImport" name="btn-importFile" (click)="uploadFile()"
                     class="btn btn-sm btn-outline-secondary rounded-pill" [disabled]="!fileToUpload">
                     <i class="fas fa-file-upload"></i> Import
@@ -206,11 +204,11 @@
                     </dxi-column>
                     <dxi-column width="200" caption="Material" dataField="materialCode" alignment="center">
                     </dxi-column>
-                    <dxi-column minWidth="200" caption="Description" dataField="description" alignment="center">
+                    <dxi-column minWidth="250" caption="Description" dataField="materialDesc" alignment="center">
                     </dxi-column>
                     <dxi-column width="80" caption="Mill" dataField="mill" alignment="center">
                     </dxi-column>
-                    <dxi-column width="200" caption="Mill Description" dataField="millMaterial" alignment="center">
+                    <dxi-column minWidth="250" caption="Mill Description" dataField="millDesc" alignment="center">
                     </dxi-column>
                 </dx-data-grid>
             </div>
@@ -218,7 +216,7 @@
 
         <div class="row pt-2">
             <div class="col-12 text-center">
-                <button class="btn btn-success" (onClick)="onClickConfirmImportMappingMaterial()"><i
+                <button class="btn btn-success" [disabled]="!canClick" (click)="onClickConfirmImportMappingMaterial()"><i
                         class="fa-solid fa-circle-check me-1"></i> Confirm</button>
                 <button class="ms-2 btn btn-secondary" (click)="onClickExitImportMappingMaterial()"><i
                         class="fa-solid fa-ban me-1"></i>Exit</button>
@@ -231,7 +229,7 @@
     <div class="modal-header">
         <h5 class="modal-title">Edit Mapping Material</h5>
         <span style="cursor: pointer;" class="close-modal" name="close-modal-import"
-            (click)="onClickExitEditMappingMaterial()">&times;</span>
+            (click)="modalRef.hide()">&times;</span>
     </div>
 
     <div class="modal-body">
