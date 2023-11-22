@@ -47,10 +47,6 @@ const routes: Routes = [
     loadChildren: () => import('./modules/quality-assurance/quality-assurance.module').then(m => m.QualityAssuranceModule) 
   },
   { 
-    path: 'production-status', component: QualityAssuranceStatusComponent,
-    loadChildren: () => import('./modules/quality-assurance/quality-assurance.module').then(m => m.QualityAssuranceModule) 
-  },
-  { 
     path: 'customer-contract', component: CustomerContractComponent,
     loadChildren: () => import('./modules/master/master.module').then(m => m.MasterModule) 
   },

@@ -47,7 +47,7 @@
                     class="fa-solid fa-broom me-1"></i>Clear</button>
         </div>
     </div>
-
+    <hr>
     <div class="row mt-4">
         <div class="col-12">
 
@@ -193,8 +193,8 @@
         </div>
         <div class="row mt-4">
             <div class="col-12 text-center">
-                <button class="btn btn-primary" [disabled]="!fileToUpload" (click)="onClickConfirmUpload()"><i
-                        class="fa-solid fa-upload"></i> Upload</button>
+                <button class="btn btn-primary" [disabled]="!materialTypeUpload || !fileToUpload"
+                    (click)="onClickConfirmUpload()"><i class="fa-solid fa-upload"></i> Upload</button>
                 <button class="btn btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
                     Cancel</button>
             </div>
