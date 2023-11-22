@@ -22,8 +22,10 @@
 
     <div class="row p-2">
         <div class="col-3 offset-2">
-            <button class="btn btn-success" (click)="onClickSearch()"><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
-            <button class="btn btn-secondary ms-2" (click)="onClickClear()"><i class="fa-solid fa-broom me-1"></i>Clear</button>
+            <button class="btn btn-success" (click)="onClickSearch()"><i
+                    class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
+            <button class="btn btn-secondary ms-2" (click)="onClickClear()"><i
+                    class="fa-solid fa-broom me-1"></i>Clear</button>
         </div>
     </div>
 
@@ -188,6 +190,8 @@
                 <button class="btn btn-sm btn-outline-success rounded-pill mx-2" (click)="onClickDownloadTemplate()">
                     <i class="fa-solid fa-download"></i> Download
                 </button>
+                <!-- <a class="btn btn-sm btn-outline-success rounded-pill mx-2"
+                    href="/TemplateExcel/TemplateBankGuarantee.xlsx" download><i class="fa-solid fa-download"></i>Download</a> -->
             </div>
         </div>
 
@@ -216,8 +220,9 @@
 
         <div class="row pt-2">
             <div class="col-12 text-center">
-                <button class="btn btn-success" [disabled]="!canClick" (click)="onClickConfirmImportMappingMaterial()"><i
-                        class="fa-solid fa-circle-check me-1"></i> Confirm</button>
+                <button class="btn btn-success" [disabled]="!canClick"
+                    (click)="onClickConfirmImportMappingMaterial()"><i class="fa-solid fa-circle-check me-1"></i>
+                    Confirm</button>
                 <button class="ms-2 btn btn-secondary" (click)="onClickExitImportMappingMaterial()"><i
                         class="fa-solid fa-ban me-1"></i>Exit</button>
             </div>

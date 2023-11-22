@@ -8,6 +8,7 @@ import { DoPageComponent, DoShipmentEntryComponent } from './modules/map-certifi
 import { NacCertificateEntryComponent, QualityAssuranceStatusComponent } from './modules/quality-assurance/components';
 import { ExamplePdfViewerComponent } from './modules/shared/common/components/example-pdf-viewer/example-pdf-viewer.component';
 import { ProductionStatusComponent } from './modules/production/components/production-status/production-status.component';
+import { PageNotFoundComponent } from './modules/core/components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -59,6 +60,10 @@ const routes: Routes = [
     redirectTo: 'login-page',
     pathMatch: 'full'
   },
+  {
+    path: '**',
+    component: PageNotFoundComponent
+  }
   // {
   //   path: '**',
   //   component: PageNotFoundComponent
