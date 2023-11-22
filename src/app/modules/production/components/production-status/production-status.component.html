@@ -1,12 +1,12 @@
 <div class="container container justify-content-center pt-2">
     <div class="row mt-2">
-        <h6>Production Status</h6>
+        <h6>Production Monitor</h6>
 
     </div>
     <hr>
 
     <div class="row mt-4">
-        <div class="col-2 offset-1 text-end pt-2">
+        <div class="col-2 text-end pt-2">
             <label class="form-label" for="materialCode">Material</label>
         </div>
         <div class="col-3">
@@ -25,23 +25,23 @@
     </div>
 
     <div class="row mt-2">
-        <div class="col-2 offset-1 text-end pt-2">
+        <div class="col-2 text-end pt-2">
             <label class="form-label" for="materialdesc">Status</label>
         </div>
-        <div class="col-4 mt-2">
-            <input type="checkbox" id="complete">
-            <label for="complete" class="mx-2">Complete</label>
+        <div class="col-6 mt-2">
             <input type="checkbox" id="waitSample">
             <label for="waitSample" class="mx-2">Wait Sample</label>
             <input type="checkbox" id="waitFilm">
             <label for="waitFilm" class="mx-2">Wait Film</label>
-            <input type="checkbox" id="cancel">
-            <label for="cancel" class="mx-2">Cancel</label>
+            <input type="checkbox" id="sampleReady">
+            <label for="sampleReady" class="mx-2">Sample Ready</label>
+            <input type="checkbox" id="filmReady">
+            <label for="filmReady" class="mx-2">Film Ready</label>
         </div>
     </div>
 
     <div class="row p-2">
-        <div class="col offset-3">
+        <div class="col-3 offset-2">
             <button class="btn btn-success"><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
             <button class="btn btn-secondary ms-2" (click)="onClickClear()"><i
                     class="fa-solid fa-broom me-1"></i>Clear</button>
@@ -49,7 +49,7 @@
     </div>
 
     <hr>
-    
+
     <div class="row mt-4">
         <div class="col-12">
 
@@ -66,7 +66,7 @@
                     alignment="left"></dxi-column>
                 <dxi-column dataField="materialDesc" caption="Material Description" dataType="string" [minWidth]="200"
                     alignment="left"></dxi-column>
-                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="100" alignment="center">
+                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="100" alignment="right">
                 </dxi-column>
                 <dxi-column dataField="soldTo" caption="Sold to" dataType="string" [width]="80"
                     alignment="left"></dxi-column>
@@ -83,7 +83,7 @@
                     cellTemplate="statusTemplate">
                     <div *dxTemplate="let cell of 'statusTemplate'">
                         <label
-                            [ngClass]="{'wait': cell.data.status == 'wait film' || cell.data.status == 'wait sample' , 'ready': cell.data.status == 'sample ready' || cell.data.status == 'film ready' }">{{
+                            [ngClass]="{'wait': cell.data.status == 'Wait Film' || cell.data.status == 'Wait Sample' , 'ready': cell.data.status == 'Sample Ready' || cell.data.status == 'Film Ready' }">{{
                             cell.data.status }}</label>
                     </div>
                 </dxi-column>
@@ -93,7 +93,7 @@
                     <div *dxTemplate="let cell of 'toolsTemplate'">
                         <i style="cursor: pointer;" class="fa-solid fa-circle-up icon-update-status"
                             (click)="OnClickUpdateStatus(cell)"
-                            [ngClass]="{'fa-solid fa-circle-up icon-update-status': cell.data.status == 'wait film' || cell.data.status == 'wait sample' , '': cell.data.status == 'film ready' || cell.data.status == 'sample ready'}"></i>
+                            [ngClass]="{'fa-solid fa-circle-up icon-update-status': cell.data.status == 'Wait Film' || cell.data.status == 'Wait Sample' , '': cell.data.status == 'Film Ready' || cell.data.status == 'Sample Ready'}"></i>
                     </div>
                 </dxi-column>
 
@@ -107,6 +107,55 @@
 
         </div>
     </div>
+</div>
+
+<div class="container container justify-content-center pt-2">
+    <div class="row mt-2">
+        <h6>Production Complete</h6>
+
+    </div>
+    <hr>
+
+    <div class="row mt-4">
+        <div class="col-2 text-end pt-2">
+            <label class="form-label" for="materialCode">Material</label>
+        </div>
+        <div class="col-3">
+            <input id="materialCode" class="form-control" type="text" [(ngModel)]="param.materialCode">
+        </div>
+        <div class="col-2 text-end pt-2">
+            <label class="form-label">Production Date</label>
+        </div>
+        <div class="col-3">
+            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource"
+                [(ngModel)]="param.productionDate" class="mb-2"></dx-select-box>
+            <date-range *ngIf="param.productionDate == 0" [start-date]="param.productionFrom"
+                [end-date]="param.productionTo" (onUpdate)="onProductionDateRangeChanged($event)">
+            </date-range>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-2 text-end pt-2">
+            <label class="form-label" for="materialdesc">Status</label>
+        </div>
+        <div class="col-4 mt-2">
+            <input type="checkbox" id="waitSample">
+            <label for="waitSample" class="mx-2">Complete</label>
+            <input type="checkbox" id="waitFilm">
+            <label for="waitFilm" class="mx-2">Cancel</label>
+        </div>
+    </div>
+
+    <div class="row p-2">
+        <div class="col-3 offset-2">
+            <button class="btn btn-success"><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
+            <button class="btn btn-secondary ms-2" (click)="onClickClear()"><i
+                    class="fa-solid fa-broom me-1"></i>Clear</button>
+        </div>
+    </div>
+
+    <hr>
 
     <div class="row mt-4">
         <div class="col-12">
@@ -124,7 +173,7 @@
                     alignment="left"></dxi-column>
                 <dxi-column dataField="materialDesc" caption="Material Description" dataType="string" [minWidth]="200"
                     alignment="left"></dxi-column>
-                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="100" alignment="center">
+                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="100" alignment="right">
                 </dxi-column>
                 <dxi-column dataField="soldTo" caption="Sold to" dataType="string" [width]="80"
                     alignment="left"></dxi-column>
@@ -141,7 +190,7 @@
                     cellTemplate="statusTemplate">
                     <div *dxTemplate="let cell of 'statusTemplate'">
                         <label
-                            [ngClass]="{'cancel': cell.data.status == 'cancel' , 'complete': cell.data.status == 'complete' }">{{
+                            [ngClass]="{'cancel': cell.data.status == 'Cancel' , 'complete': cell.data.status == 'Complete' }">{{
                             cell.data.status }}</label>
                     </div>
                 </dxi-column>
@@ -150,7 +199,7 @@
                     <div *dxTemplate="let cell of 'toolsTemplate'">
                         <i style="cursor: pointer;" class="fa-solid fa-circle-down icon-delete"
                             (click)="OnClickDownStatus()"
-                            [ngClass]="{'fa-solid fa-circle-down icon-delete': cell.data.status == 'cancel', '': cell.data.status == 'complete'}"></i>
+                            [ngClass]="{'fa-solid fa-circle-down icon-delete': cell.data.status == 'Cancel', '': cell.data.status == 'Complete'}"></i>
                     </div>
                 </dxi-column>
 
@@ -167,7 +216,7 @@
     </div>
 </div>
 
-<ng-template #updateStatus>
+<ng-template #updateStatusWaitSample>
     <div class="modal-header">
         <h5 class="modal-title">Production Order No. {{productionOrder}}</h5>
         <span style="cursor: pointer;" class="close-modal" name="close-modal-import"
@@ -175,27 +224,152 @@
     </div>
 
     <div class="modal-body">
-        <!-- <div class="row">
-            <error-panel name="error-panel" #errorPanelModal></error-panel>
-        </div> -->
-        <div class="row mt-2">
-            <div class="col-2 text-end">
-                <label class="form-label">Status</label>
-                
-            </div>
-            <div class="col">
-                <input value="sampleReady" name="status" type="radio"
-                id="sampleReady" class="me-2"><label for="sampleReady" class="me-2">Sample Ready</label>
-            <input value="cancelRadio" name="status" type="radio"
-                id="cancelRadio" class="mx-2"><label for="cancelRadio">Cancel</label>
-            </div>
-        </div>
 
         <div class="row mt-2">
             <div class="col-2 text-end">
+                <label class="form-label">Status</label>
+
+            </div>
+            <div class="col">
+                <input [(ngModel)]="selectedStatus" value="sampleReady" name="status" type="radio" id="sampleReady"
+                    class="me-2"><label for="sampleReady" class="me-2">Sample Ready</label>
+                <input [(ngModel)]="selectedStatus" value="cancelRadio" name="status" type="radio" id="cancelRadio"
+                    class="mx-2"><label for="cancelRadio">Cancel</label>
+            </div>
+        </div>
+
+        <div *ngIf="selectedStatus == 'sampleReady'">
+            <div class="row pt-2">
+                <div class="col-2 text-end">
+                    <label for="dateSampleReady" class="form-label mt-2">Date</label>
+                </div>
+                <div class="col-3">
+                    <input [value]="dateSampleReady | date: 'dd-MMM-yyyy HH:mm'" id="dateSampleReady"
+                        class="form-control">
+                </div>
+                <div class="col-2 text-end">
+                    <label for="customerName" class="form-label mt-2">Customer Name</label>
+                </div>
+                <div class="col-3">
+                    <input [value]="customerName" id="customerName" class="form-control">
+                </div>
+            </div>
+
+            <div class="row pt-2">
+                <div class="col-2 text-end">
+                    <label for="productionOrder" class="form-label mt-2">Production Order</label>
+                </div>
+                <div class="col-3">
+                    <input [value]="productionOrder" id="productionOrder" class="form-control">
+                </div>
+                <div class="col-2 text-end">
+                    <label for="materialDesc" class="form-label mt-2">Material Description</label>
+                </div>
+                <div class="col-3">
+                    <input [value]="materialDesc" id="materialDesc" class="form-control">
+                </div>
+            </div>
+
+            <div class="row pt-2">
+                <div class="col-2 text-end">
+                    <label for="coilNo" class="form-label mt-2">Coil No.</label>
+                </div>
+                <div class="col-3">
+                    <input [value]="coilNo" id="coilNo" class="form-control">
+                </div>
+                <div class="col-2 text-end">
+                    <label for="heatNo" class="form-label mt-2">Heat No.</label>
+                </div>
+                <div class="col-3">
+                    <input [value]="heatNo" id="heatNo" class="form-control">
+                </div>
+            </div>
+
+            <div class="row pt-2">
+                <div class="col-2 text-end">
+                    <label for="machine" class="form-label mt-2">เครื่องจักร</label>
+                </div>
+                <div class="col-3">
+                    <input [value]="machine" id="machine" class="form-control">
+                </div>
+                <div class="col-2 text-end">
+                    <label for="grade" class="form-label mt-2">Grade</label>
+                </div>
+                <div class="col-3">
+                    <input [value]="grade" id="grade" class="form-control">
+                </div>
+            </div>
+
+            <div class="row pt-2">
+                <div class="col-2 text-end">
+                    <label for="detail">Remark</label>
+                </div>
+                <div class="col-8">
+                    <textarea type="text" id="detail" class="form-control" rows="4"></textarea>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row mt-2" *ngIf="selectedStatus == 'cancelRadio'">
+            <div class="col-2 text-end">
                 <label for="detail">Remark</label>
             </div>
-            <div class="col-9">
+            <div class="col-8">
+                <textarea type="text" id="detail" class="form-control" rows="4"></textarea>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-12 text-center">
+                <button class="btn btn-success" (click)="onClickConfirm()"><i class="fa-regular fa-circle-check"></i>
+                    Confirm</button>
+                <button class="btn btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
+                    Cancel</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #updateStatusWaitFilm>
+    <div class="modal-header">
+        <h5 class="modal-title">Production Order No. {{productionOrder}}</h5>
+        <span style="cursor: pointer;" class="close-modal" name="close-modal-import"
+            (click)="modalRef.hide()">&times;</span>
+    </div>
+
+    <div class="modal-body">
+
+        <div class="row mt-2">
+            <div class="col-2 text-end">
+                <label class="form-label">Status</label>
+
+            </div>
+            <div class="col">
+                <input [(ngModel)]="selectedStatusFilm" value="filmReady" name="status" type="radio" id="filmReady"
+                    class="me-2"><label for="filmReady" class="me-2">Film Ready</label>
+                <input [(ngModel)]="selectedStatusFilm" value="cancelRadio" name="status" type="radio" id="cancelRadio"
+                    class="mx-2"><label for="cancelRadio">Cancel</label>
+            </div>
+        </div>
+
+        <div *ngIf="selectedStatusFilm == 'filmReady'">
+            <div class="row pt-2">
+                <div class="col-2 text-end">
+                    <label for="detail">Remark</label>
+                </div>
+                <div class="col-8">
+                    <textarea type="text" id="detail" class="form-control" rows="4"></textarea>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row mt-2" *ngIf="selectedStatusFilm == 'cancelRadio'">
+            <div class="col-2 text-end">
+                <label for="detail">Remark</label>
+            </div>
+            <div class="col-8">
                 <textarea type="text" id="detail" class="form-control" rows="4"></textarea>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { CertificateData, QaStatusCompleteViewModel, QaStatusMonitorViewModel, QaStatusSearchParam } from '../../models/qa-status.model';
+import { CertificateData, QaStatusCompleteSearchParam, QaStatusCompleteViewModel, QaStatusMonitorViewModel, QaStatusSearchParam } from '../../models/qa-status.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
 
@@ -20,6 +20,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
   @ViewChild('uploadTestResult') public uploadTestResult!: TemplateRef<any>;
 
   public param: QaStatusSearchParam = new QaStatusSearchParam();
+  public paramComplete: QaStatusCompleteSearchParam = new QaStatusCompleteSearchParam();
 
   public dataSourceMonitorStatus: QaStatusMonitorViewModel[] = [{
     productionOrder: "1080035252",
@@ -30,7 +31,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
     soldTo: "10000001",
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
-    status: "wait sample",
+    status: "Wait Sample",
   },
   {
     productionOrder: "1080035293",
@@ -41,7 +42,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
     soldTo: "10000001",
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
-    status: "sample ready",
+    status: "Sample Ready",
   },
   {
     productionOrder: "1080035294",
@@ -52,18 +53,18 @@ export class QualityAssuranceStatusComponent implements OnInit {
     soldTo: "10000001",
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
-    status: "wait film",
+    status: "Wait Film",
   },
   {
     productionOrder: "1080035295",
     itemNo: 4,
     materialCode: "1HC10000-015L",
-    materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
+    materialDesc: "เหล็กม้วนดำ SS400 1.50mmxกว้างใดๆxC Long",
     qty: 5,
     soldTo: "10000001",
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
-    status: "film ready",
+    status: "Film Ready",
   }
   ];
 
@@ -76,7 +77,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
     soldTo: "10000001",
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
-    status: "complete",
+    status: "Complete",
   },
   {
     productionOrder: "1080035294",
@@ -87,7 +88,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
     soldTo: "10000001",
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
-    status: "cancel",
+    status: "Cancel",
   },
   {
     productionOrder: "1080035295",
@@ -98,18 +99,18 @@ export class QualityAssuranceStatusComponent implements OnInit {
     soldTo: "10000001",
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
-    status: "cancel",
+    status: "Cancel",
   },
   {
     productionOrder: "1080035252",
     itemNo: 4,
     materialCode: "1HC10000-015L",
-    materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
+    materialDesc: "เหล็กม้วนดำ SS400 1.50mmxกว้างใดๆxC Long",
     qty: 5,
     soldTo: "10000001",
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
-    status: "complete",
+    status: "Complete",
   }
   ];
 
@@ -179,9 +180,16 @@ export class QualityAssuranceStatusComponent implements OnInit {
     this.param.productionFrom = $event.value.startDate;
     this.param.productionTo = $event.value.endDateDate;
   }
+  public onProductionCompleteDateRangeChanged($event: any): void {
+    this.paramComplete.productionFrom = $event.value.startDate;
+    this.paramComplete.productionTo = $event.value.endDateDate;
+  }
 
   public onClickClear(): void {
     this.param = new QaStatusSearchParam();
+  }
+  public onClickClearComplete(): void {
+    this.paramComplete = new QaStatusCompleteSearchParam();
   }
 
   public OnClickUpdateStatus(cell: any): void {

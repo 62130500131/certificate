@@ -12,6 +12,20 @@ export class QaStatusSearchParam {
         this.productionTo = '';
     }
 }
+export class QaStatusCompleteSearchParam {
+
+    materialCode: string;
+    productionDate: number;
+    productionFrom: string;
+    productionTo: string;
+
+    constructor() {
+        this.materialCode = '';
+        this.productionDate = 90;
+        this.productionFrom = '';
+        this.productionTo = '';
+    }
+}
 
 export class QaStatusMonitorViewModel {
 
