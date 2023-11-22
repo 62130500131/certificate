@@ -224,18 +224,112 @@
         <!-- <div class="row">
             <error-panel name="error-panel" #errorPanelModal></error-panel>
         </div> -->
+        <div *ngIf="status == 'Sample Ready'">
 
-        <div class="row mt-4">
-            <div class="col-2 offset-1 text-end">
+            <div class="row ">
+                <div class="col-2">
+                    <h6>Sticker Detail</h6>
+                </div>
+            </div>
+            <hr class="mt-2">
+            <div class="row">
+                <div class="col-2 text-end">
+                    <label for="dateSampleReady" class="form-label mt-2">Date</label>
+                </div>
+                <div class="col-3">
+                    <input [value]="dateSampleReady | date: 'dd-MMM-yyyy'" id="dateSampleReady"
+                        class="form-control">
+                </div>
+                <div class="col-2 text-end">
+                    <label for="customerName" class="form-label mt-2">Customer Name</label>
+                </div>
+                <div class="col-3">
+                    <input [value]="customerName" id="customerName" class="form-control">
+                </div>
+            </div>
+
+            <div class="row pt-2">
+                <div class="col-2 text-end">
+                    <label for="productionOrder" class="form-label mt-2">Production Order</label>
+                </div>
+                <div class="col-3">
+                    <input [value]="productionOrder" id="productionOrder" class="form-control">
+                </div>
+                <div class="col-2 text-end">
+                    <label for="materialDesc" class="form-label mt-2">Material Description</label>
+                </div>
+                <div class="col-3">
+                    <input [value]="materialDesc" id="materialDesc" class="form-control">
+                </div>
+            </div>
+
+            <div class="row pt-2">
+                <div class="col-2 text-end">
+                    <label for="coilNo" class="form-label mt-2">Coil No.</label>
+                </div>
+                <div class="col-3">
+                    <input [value]="coilNo" id="coilNo" class="form-control">
+                </div>
+                <div class="col-2 text-end">
+                    <label for="heatNo" class="form-label mt-2">Heat No.</label>
+                </div>
+                <div class="col-3">
+                    <input [value]="heatNo" id="heatNo" class="form-control">
+                </div>
+            </div>
+
+            <div class="row pt-2">
+                <div class="col-2 text-end">
+                    <label for="machine" class="form-label mt-2">เครื่องจักร</label>
+                </div>
+                <div class="col-3">
+                    <input [value]="machine" id="machine" class="form-control">
+                </div>
+                <div class="col-2 text-end">
+                    <label for="grade" class="form-label mt-2">Grade</label>
+                </div>
+                <div class="col-3">
+                    <input [value]="grade" id="grade" class="form-control">
+                </div>
+            </div>
+
+            <div class="row pt-2">
+                <div class="col-2 text-end">
+                    <label for="detail">Remark</label>
+                </div>
+                <div class="col-8">
+                    <textarea type="text" id="detail" class="form-control" rows="4"></textarea>
+                </div>
+            </div>
+
+            <hr>
+        </div>
+
+        <div *ngIf="status == 'Film Ready'">
+            <div class="row pt-2">
+                <div class="col-2 text-end">
+                    <label for="detail">Remark</label>
+                </div>
+                <div class="col-8">
+                    <textarea type="text" id="detail" class="form-control" rows="4"></textarea>
+                </div>
+            </div>
+
+            <hr>
+        </div>
+
+
+        <div class="row mt-4 text-center">
+            <div class="col-2 offset-2 text-end">
                 <label for="mill-upload" class="pt-1">ประเภทเหล็ก</label>
             </div>
-            <div class="col-7">
+            <div class="col-5">
                 <dx-select-box displayExpr="text" valueExpr="value" [items]="materialTypeDataSource"
                     [(ngModel)]="materialTypeUpload"></dx-select-box>
             </div>
         </div>
-        <div class="row mt-4">
-            <div class="col-7 offset-3">
+        <div class="row mt-2 text-center">
+            <div class="col-6 offset-3 text-center">
                 <input #fileInput class="form-control rounded-pill" #myInput type="file" name="filename"
                     (change)="handleFileInput($event)">
             </div>

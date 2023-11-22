@@ -231,10 +231,10 @@
 
             </div>
             <div class="col">
-                <input [(ngModel)]="selectedStatus" value="sampleReady" name="status" type="radio" id="sampleReady"
-                    class="me-2"><label for="sampleReady" class="me-2">Sample Ready</label>
+                <input [(ngModel)]="selectedStatus" value="sampleReady" name="status" type="radio" id="sampleReadyRadio"
+                    class="me-2 click"><label for="sampleReadyRadio" class="me-2 click">Sample Ready</label>
                 <input [(ngModel)]="selectedStatus" value="cancelRadio" name="status" type="radio" id="cancelRadio"
-                    class="mx-2"><label for="cancelRadio">Cancel</label>
+                    class="mx-2 click"><label for="cancelRadio" class="click">Cancel</label>
             </div>
         </div>
 
@@ -244,7 +244,7 @@
                     <label for="dateSampleReady" class="form-label mt-2">Date</label>
                 </div>
                 <div class="col-3">
-                    <input [value]="dateSampleReady | date: 'dd-MMM-yyyy HH:mm'" id="dateSampleReady"
+                    <input [value]="dateSampleReady | date: 'dd-MMM-yyyy'" id="dateSampleReady"
                         class="form-control">
                 </div>
                 <div class="col-2 text-end">
