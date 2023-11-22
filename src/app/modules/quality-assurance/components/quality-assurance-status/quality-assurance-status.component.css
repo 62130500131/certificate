@@ -1,0 +1,35 @@
+.wait {
+    font-size: 14px;
+    color: white;
+    background-color: rgb(255, 68, 0);
+    min-width: 100px;
+    padding: 2px;
+    border-radius:5px;
+}
+
+.ready {
+    font-size: 14px;
+    color: white;
+    background-color: rgb(0, 255, 0);
+    min-width: 100px;
+    padding: 2px;
+    border-radius:5px;
+}
+
+.complete {
+    font-size: 14px;
+    color: white;
+    background-color: green;
+    min-width: 100px;
+    padding: 2px;
+    border-radius:5px;
+}
+
+.cancel {
+    font-size: 14px;
+    color: white;
+    background-color: gray;
+    min-width: 100px;
+    padding: 2px;
+    border-radius:5px;
+}

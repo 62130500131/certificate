@@ -62,3 +62,36 @@ export class QaStatusCompleteViewModel {
         this.status = '';
     }
 }
+
+export class CertificateData {
+
+    dimention: string;
+    c: number;
+    si: number;
+    mn: number;
+    p: number;
+    s: number;
+    ys: number;
+    ts: number;
+    elongation: number;
+    hardness: string;
+    bendTest: string;
+    compression: string;
+    impactEnergy: number;
+
+    constructor() {
+        this.dimention = '';
+        this.c = 0;
+        this.si = 0;
+        this.mn = 0;
+        this.p = 0;
+        this.s = 0;
+        this.ys = 0;
+        this.ts = 0;
+        this.elongation = 0;
+        this.hardness = '';
+        this.bendTest = '';
+        this.compression = '';
+        this.impactEnergy = 0;
+    }
+}

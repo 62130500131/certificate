@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxExtendedPdfViewerService, pdfDefaultOptions } from 'ngx-extended-pdf-viewer';
 import { certificateEntryListViewModel } from 'src/app/modules/certificate/models/certificate-list.model';
+import { CertificateData } from '../../models/qa-status.model';
 
 @Component({
   selector: 'nac-certificate-entry',
@@ -11,59 +12,39 @@ import { certificateEntryListViewModel } from 'src/app/modules/certificate/model
 export class NacCertificateEntryComponent implements OnInit {
 
   public today = '20-Nov-2023';
-  public list: certificateEntryListViewModel[] = [{
-    millDesc: 'H 148x100x6x12.00M',
-    tmtMaterial: '',
-    tmtDesc: '',
-    grade: 'SS400',
-    heatNo: 'DB1077',
-    quantity: 20,
-    unit: '',
-    remark: '',
-  },
-  {
-    millDesc: 'H 148x100x6x12.00M',
-    tmtMaterial: '',
-    tmtDesc: '',
-    grade: 'SS400',
-    heatNo: 'DB1077',
-    quantity: 20,
-    unit: '',
-    remark: '',
-  },
-  {
-    millDesc: 'H 148x100x6x12.00M',
-    tmtMaterial: '',
-    tmtDesc: '',
-    grade: 'SS400',
-    heatNo: 'DB1077',
-    quantity: 20,
-    unit: '',
-    remark: '',
-  }, {
-    millDesc: 'H 148x100x6x12.00M',
-    tmtMaterial: '',
-    tmtDesc: '',
-    grade: 'SS400',
-    heatNo: 'DB1077',
-    quantity: 20,
-    unit: '',
-    remark: '',
-  }];
+
+  public dataSourceCeritificate: CertificateData[] = [
+    {
+      dimention: "เหล็กฉากขาเท่ากัน 40x40x3.20 x6000mm",
+      c: 0.107,
+      si: 0.0097,
+      mn: 0.484,
+      p: 0.0126,
+      s: 0.0076,
+      ys: 319,
+      ts: 440,
+      elongation: 36,
+      hardness: "-",
+      bendTest: "-",
+      compression: "-",
+      impactEnergy: 0,
+    }
+  ];
+
   constructor(private router: Router,
     private pdfService: NgxExtendedPdfViewerService) { }
 
   ngOnInit() {
   }
 
-  public onClickExit(): void {
-    this.router.navigate(['certificate-list']);
+  public onClickCancel(): void {
+    this.router.navigate(['quality-assurance-status']);
   }
 
-  public onClickSave(): void {
-    this.router.navigate(['certificate-list']);
+  public onClickConfrim(): void {
+    this.router.navigate(['quality-assurance-status']);
   }
 
 }
 
-  
+

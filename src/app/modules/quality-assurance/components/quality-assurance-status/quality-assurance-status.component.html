@@ -24,12 +24,19 @@
         </div>
     </div>
 
-    <div class="row mt-4">
+    <div class="row mt-2">
         <div class="col-2 offset-1 text-end pt-2">
             <label class="form-label" for="materialdesc">Status</label>
         </div>
-        <div class="col-3">
-
+        <div class="col-4 mt-2">
+            <input type="checkbox" id="complete">
+            <label for="complete" class="mx-2">Complete</label>
+            <input type="checkbox" id="waitSample">
+            <label for="waitSample" class="mx-2">Wait Sample</label>
+            <input type="checkbox" id="waitFilm">
+            <label for="waitFilm" class="mx-2">Wait Film</label>
+            <input type="checkbox" id="cancel">
+            <label for="cancel" class="mx-2">Cancel</label>
         </div>
     </div>
 
@@ -44,9 +51,154 @@
     <div class="row mt-4">
         <div class="col-12">
 
+            <dx-data-grid id="gridContainer" [dataSource]="dataSourceMonitorStatus" [remoteOperations]="false"
+                [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'"
+                [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
 
+
+                <dxi-column dataField="productionOrder" caption="Production Order" dataType="number" [width]="130"
+                    alignment="center"></dxi-column>
+                <dxi-column dataField="itemNo" caption="Item No." dataType="number" [width]="70"
+                    alignment="center"></dxi-column>
+                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="150"
+                    alignment="left"></dxi-column>
+                <dxi-column dataField="materialDesc" caption="Material Description" dataType="string" [minWidth]="200"
+                    alignment="left"></dxi-column>
+                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="100" alignment="center">
+                </dxi-column>
+                <dxi-column dataField="soldTo" caption="Sold to" dataType="string" [width]="80"
+                    alignment="left"></dxi-column>
+                <dxi-column dataField="soldToName" caption="Sold to Name" dataType="string" [width]="100"
+                    alignment="left"></dxi-column>
+                <dxi-column dataField="grDate" caption="GR Date" dataType="string" [width]="130" alignment="center"
+                    cellTemplate="dateTemplate">
+                    <div *dxTemplate="let cell of 'dateTemplate'">
+                        {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
+                    </div>
+                </dxi-column>
+
+                <dxi-column dataField="status" caption="Status" dataType="string" [width]="120" alignment="center"
+                    cellTemplate="statusTemplate">
+                    <div *dxTemplate="let cell of 'statusTemplate'">
+                        <label
+                            [ngClass]="{'wait': cell.data.status == 'wait film' || cell.data.status == 'wait sample' , 'ready': cell.data.status == 'sample ready' || cell.data.status == 'film ready' }">{{
+                            cell.data.status }}</label>
+                    </div>
+                </dxi-column>
+
+                <dxi-column width="60" alignment="center" cellTemplate="toolsTemplate">
+                    <div *dxTemplate="let cell of 'toolsTemplate'">
+                        <i style="cursor: pointer;" class="fa-solid fa-file-arrow-up icon-update"
+                            (click)="OnClickUpdateStatus(cell)"
+                            [ngClass]="{'': cell.data.status == 'wait film' || cell.data.status == 'wait sample' , 'fa-solid fa-file-arrow-up icon-update': cell.data.status == 'film ready' || cell.data.status == 'sample ready'}"></i>
+                    </div>
+                </dxi-column>
+
+            </dx-data-grid>
+
+            <div class="row mt-2">
+                <div class="col text-end">
+                    <i class="fa-solid fa-file-arrow-up icon-update"></i> <label class="ms-2">Upload Test Result</label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+
+            <dx-data-grid id="gridContainer" [dataSource]="dataSourceCompleteStatus" [remoteOperations]="false"
+                [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'"
+                [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
+
+
+                <dxi-column dataField="productionOrder" caption="Production Order" dataType="string" [width]="130"
+                    alignment="center"></dxi-column>
+                <dxi-column dataField="itemNo" caption="Item No." dataType="number" [width]="70"
+                    alignment="center"></dxi-column>
+                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="150"
+                    alignment="left"></dxi-column>
+                <dxi-column dataField="materialDesc" caption="Material Description" dataType="string" [minWidth]="200"
+                    alignment="left"></dxi-column>
+                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="100" alignment="center">
+                </dxi-column>
+                <dxi-column dataField="soldTo" caption="Sold to" dataType="string" [width]="80"
+                    alignment="left"></dxi-column>
+                <dxi-column dataField="soldToName" caption="Sold to Name" dataType="string" [width]="100"
+                    alignment="left"></dxi-column>
+                <dxi-column dataField="grDate" caption="GR Date" dataType="string" [width]="130" alignment="center"
+                    cellTemplate="dateTemplate">
+                    <div *dxTemplate="let cell of 'dateTemplate'">
+                        {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
+                    </div>
+                </dxi-column>
+
+                <dxi-column dataField="status" caption="Status" dataType="string" [width]="120" alignment="center"
+                    cellTemplate="statusTemplate">
+                    <div *dxTemplate="let cell of 'statusTemplate'">
+                        <label
+                            [ngClass]="{'cancel': cell.data.status == 'cancel' , 'complete': cell.data.status == 'complete' }">{{
+                            cell.data.status }}</label>
+                    </div>
+                </dxi-column>
+
+                <dxi-column width="60" alignment="center" cellTemplate="toolsTemplate">
+                    <div *dxTemplate="let cell of 'toolsTemplate'">
+                        <i style="cursor: pointer;" class="fa-solid fa-circle-down icon-delete"
+                            (click)="OnClickDownStatus()"
+                            [ngClass]="{'': cell.data.status == 'cancel', 'fa-solid fa-circle-down icon-delete': cell.data.status == 'complete'}"></i>
+                    </div>
+                </dxi-column>
+
+            </dx-data-grid>
+
+            <div class="row mt-2">
+                <div class="col text-end">
+                    <i class="fa-solid fa-circle-down icon-delete"></i> <label class="ms-2">Down Status</label>
+                </div>
+            </div>
 
 
         </div>
     </div>
 </div>
+
+<ng-template #uploadTestResult>
+    <div class="modal-header">
+        <h5 class="modal-title">Production Order No. {{productionOrder}}</h5>
+        <span style="cursor: pointer;" class="close-modal" name="close-modal-import"
+            (click)="onClickExitUpdateStatus()">&times;</span>
+    </div>
+
+    <div class="modal-body">
+        <!-- <div class="row">
+            <error-panel name="error-panel" #errorPanelModal></error-panel>
+        </div> -->
+
+        <div class="row mt-4">
+            <div class="col-2 offset-1 text-end">
+                <label for="mill-upload" class="pt-1">ประเภทเหล็ก</label>
+            </div>
+            <div class="col-7">
+                <dx-select-box displayExpr="text" valueExpr="value" [items]="materialTypeDataSource"
+                    [(ngModel)]="materialTypeUpload"></dx-select-box>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-7 offset-3">
+                <input #fileInput class="form-control rounded-pill" #myInput type="file" name="filename"
+                    (change)="handleFileInput($event)">
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12 text-center">
+                <button class="btn btn-primary" [disabled]="!fileToUpload" (click)="onClickConfirmUpload()"><i
+                        class="fa-solid fa-upload"></i> Upload</button>
+                <button class="btn btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
+                    Cancel</button>
+            </div>
+        </div>
+
+    </div>
+</ng-template>

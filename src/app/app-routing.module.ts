@@ -7,6 +7,7 @@ import { CertificateEntryComponent, CertificateListComponent } from './modules/c
 import { DoPageComponent, DoShipmentEntryComponent } from './modules/map-certificate/components';
 import { NacCertificateEntryComponent, QualityAssuranceStatusComponent } from './modules/quality-assurance/components';
 import { ExamplePdfViewerComponent } from './modules/shared/common/components/example-pdf-viewer/example-pdf-viewer.component';
+import { ProductionStatusComponent } from './modules/production/components/production-status/production-status.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
   { 
     path: 'customer-contract', component: CustomerContractComponent,
     loadChildren: () => import('./modules/master/master.module').then(m => m.MasterModule) 
+  },
+  { 
+    path: 'production-status', component: ProductionStatusComponent,
+    loadChildren: () => import('./modules/production/production.module').then(m => m.ProductionModule) 
   },
   {
     path: '',
