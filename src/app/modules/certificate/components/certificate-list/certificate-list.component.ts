@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class CertificateListComponent {
   @ViewChild('importTemplate') importTemplate!: TemplateRef<any>;
-  public searchParam: searchParamCertificateList = new searchParamCertificateList();
+  public param: searchParamCertificateList = new searchParamCertificateList();
   public modalRef!: BsModalRef;
   public fileToUpload: any;
   public millForUpload: string = '';
@@ -254,7 +254,7 @@ export class CertificateListComponent {
   }
 
   public onClickClear(): void {
-    this.searchParam = new searchParamCertificateList();
+    this.param= new searchParamCertificateList();
   }
 
   public onClickCertNo():void {
@@ -271,6 +271,14 @@ export class CertificateListComponent {
   public onClickConfirmUpload():void{
     this.router.navigate(['certificate-entry']);
     this.modalRef.hide();
+  }
+
+  public onUploadDateRangeChanged(event: any):void{
+
+  }
+
+  public onCertDateRangeChanged(event: any):void{
+
   }
 
 }

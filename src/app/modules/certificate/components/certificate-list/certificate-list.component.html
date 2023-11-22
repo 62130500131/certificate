@@ -9,7 +9,7 @@
             <label for="certificateNo" class="from-label pt-1">Certificate No.</label>
         </div>
         <div class="col-3">
-            <input id="certificateNo" type="text" class="form-control" [(ngModel)]="searchParam.certNo">
+            <input id="certificateNo" type="text" class="form-control" [(ngModel)]="param.certNo">
         </div>
     </div>
 
@@ -18,13 +18,13 @@
             <label for="material" class="from-label pt-1">Material</label>
         </div>
         <div class="col-3">
-            <dx-select-box displayExpr="text" valueExpr="value" [items]="materialDataSource" [(ngModel)]="searchParam.material"></dx-select-box>
+            <dx-select-box displayExpr="text" valueExpr="value" [items]="materialDataSource" [(ngModel)]="param.material"></dx-select-box>
         </div>
         <div class="col-2 text-end">
             <label for="grade" class="from-label pt-1">Grade</label>
         </div>
         <div class="col-3">
-            <dx-select-box displayExpr="text" valueExpr="value" [items]="gradeDataSource" [(ngModel)]="searchParam.grade"></dx-select-box>
+            <dx-select-box displayExpr="text" valueExpr="value" [items]="gradeDataSource" [(ngModel)]="param.grade"></dx-select-box>
         </div>
     </div>
 
@@ -33,13 +33,13 @@
             <label for="mill" class="from-label pt-1">Mill</label>
         </div>
         <div class="col-3">
-            <dx-select-box displayExpr="text" valueExpr="value" [items]="millDataSource" [(ngModel)]="searchParam.mill"></dx-select-box>
+            <dx-select-box displayExpr="text" valueExpr="value" [items]="millDataSource" [(ngModel)]="param.mill"></dx-select-box>
         </div>
         <div class="col-2 text-end">
             <label for="heatNo" class="from-label pt-1">Heat No.</label>
         </div>
         <div class="col-3">
-            <input id="heatNo" type="text" class="form-control" [(ngModel)]="searchParam.heatNo">
+            <input id="heatNo" type="text" class="form-control" [(ngModel)]="param.heatNo">
         </div>
     </div>
 
@@ -48,15 +48,19 @@
             <label for="certDate" class="from-label pt-1">Certificate Date</label>
         </div>
         <div class="col-3">
-            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource" [(ngModel)]="searchParam.certDate" class="mb-4"></dx-select-box>
-            <input *ngIf="searchParam.certDate == 0" id="certDate" type="date" class="form-control" [(ngModel)]="searchParam.certFrom">
+            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource" [(ngModel)]="param.certDate" class="mb-4"></dx-select-box>
+            <date-range *ngIf="param.certDate == 0" [start-date]="param.certFrom"
+                [end-date]="param.certTo" (onUpdate)="onCertDateRangeChanged($event)">
+            </date-range>
         </div>
         <div class="col-2 text-end">
             <label for="uploadDate" class="from-label pt-1">Upload Date</label>
         </div>
         <div class="col-3">
-            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource" [(ngModel)]="searchParam.uploadDate" class="mb-4"></dx-select-box>
-            <input *ngIf="searchParam.uploadDate == 0" id="uploadDate" type="date" class="form-control" [(ngModel)]="searchParam.uploadFrom">
+            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource" [(ngModel)]="param.uploadDate" class="mb-4"></dx-select-box>
+            <date-range *ngIf="param.uploadDate == 0" [start-date]="param.uploadFrom"
+                [end-date]="param.uploadTo" (onUpdate)="onUploadDateRangeChanged($event)">
+            </date-range>
         </div>
     </div>
 

@@ -4,7 +4,9 @@ import { SharedModule } from '../shared/shared.module';
 import { CommonModule } from '@angular/common';
 @NgModule({
     declarations: [
-        comps.MappingMaterialComponent
+        comps.MappingMaterialComponent,
+        comps.CustomerContractComponent
+
     ],
     imports: [
         SharedModule
