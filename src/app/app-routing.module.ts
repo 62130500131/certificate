@@ -54,6 +54,10 @@ const routes: Routes = [
     path: 'customer-contract', component: CustomerContractComponent,
     loadChildren: () => import('./modules/master/master.module').then(m => m.MasterModule) 
   },
+  { 
+    path: 'production-status', component: ProductionStatusComponent,
+    loadChildren: () => import('./modules/production/production.module').then(m => m.ProductionModule) 
+  },
   {
     path: '',
     redirectTo: 'login-page',
