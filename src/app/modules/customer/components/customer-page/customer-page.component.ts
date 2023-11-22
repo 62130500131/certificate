@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { customerHistoryViewModel } from '../../models/customer-history.model';
+import { CustomerHistorySearchParam, CustomerHistoryViewModel } from '../../models/customer-history.model';
 
 @Component({
   selector: 'customer-page',
@@ -7,7 +7,32 @@ import { customerHistoryViewModel } from '../../models/customer-history.model';
   styleUrls: ['./customer-page.component.css']
 })
 export class CustomerPageComponent {
-  public dataSource: customerHistoryViewModel[] = [
+  public param: CustomerHistorySearchParam = new CustomerHistorySearchParam();
+
+  public dateDataSource: any[] = [
+    {
+      text: 'ภายใน 90 วัน',
+      value: 90
+    },
+    {
+      text: 'ภายใน 60 วัน',
+      value: 60
+    },
+    {
+      text: 'ภายใน 30 วัน',
+      value: 30
+    },
+    {
+      text: 'ภายใน 7 วัน',
+      value: 7
+    },
+    {
+      text: 'ระบุเอง',
+      value: 0
+    }
+  ];
+
+  public dataSource: CustomerHistoryViewModel[] = [
     {
       doNo: "21567891",
       date: new Date,
@@ -62,6 +87,13 @@ export class CustomerPageComponent {
   }
 
   public onClickClear(): void {
-
+    console.log("dsadasd")
+    this.param = new CustomerHistorySearchParam();
   }
+
+  public onDateRangeChanged($event: any): void {
+    this.param.dateFrom = $event.data.value.startDate;
+    this.param.dateTo = $event.data.value.endDateDate;
+  }
+
 }

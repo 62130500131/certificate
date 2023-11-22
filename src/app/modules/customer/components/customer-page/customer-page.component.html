@@ -6,24 +6,28 @@
     <hr>
 
     <div class="row mt-4">
-        <div class="col-2 offset-1 text-end pt-2">
+        <div class="col-2 text-end pt-2">
             <label class="form-label" for="materialdesc">Material Description</label>
         </div>
         <div class="col-3">
-            <input id="materialdesc" class="form-control" type="text">
+            <input [(ngModel)]="param.materialDesc" id="materialdesc" class="form-control" type="text">
         </div>
         <div class="col-2 text-end pt-2">
-            <label class="form-label">Date</label>
+            <label  class="form-label">Date</label>
         </div>
         <div class="col-3">
-            <input class="form-control" type="date">
+            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource"
+                [(ngModel)]="param.dateDo" class="mb-2"></dx-select-box>
+            <date-range *ngIf="param.dateDo == 0" [start-date]="param.dateFrom"
+                [end-date]="param.dateTo" (onUpdate)="onDateRangeChanged($event)">
+            </date-range>
         </div>
     </div>
 
     <div class="row p-2">
-        <div class="col offset-3">
+        <div class="col-3 offset-2">
             <button class="btn btn-success"><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
-            <button class="btn btn-secondary ms-2"><i class="fa-solid fa-broom me-1"></i>Clear</button>
+            <button class="btn btn-secondary ms-2" (click)="onClickClear()"><i class="fa-solid fa-broom me-1"></i>Clear</button>
         </div>
     </div>
     <hr>
