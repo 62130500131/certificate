@@ -36,6 +36,10 @@
 .icon-update {
     color: green;
 }
+
+.icon-update-status {
+    color: rgb(0, 177, 247);
+}
 .dx-datagrid-content .dx-datagrid-table .dx-row > td, .dx-datagrid-content .dx-datagrid-table .dx-row > tr > td{
     vertical-align: middle !important;
 }

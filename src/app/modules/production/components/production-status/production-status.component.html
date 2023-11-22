@@ -1,3 +1,212 @@
-<p>
-  production-status works!
-</p>
+<div class="container container justify-content-center pt-2">
+    <div class="row mt-2">
+        <h6>Production Status</h6>
+
+    </div>
+    <hr>
+
+    <div class="row mt-4">
+        <div class="col-2 offset-1 text-end pt-2">
+            <label class="form-label" for="materialCode">Material</label>
+        </div>
+        <div class="col-3">
+            <input id="materialCode" class="form-control" type="text" [(ngModel)]="param.materialCode">
+        </div>
+        <div class="col-2 text-end pt-2">
+            <label class="form-label">Production Date</label>
+        </div>
+        <div class="col-3">
+            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource"
+                [(ngModel)]="param.productionDate" class="mb-2"></dx-select-box>
+            <date-range *ngIf="param.productionDate == 0" [start-date]="param.productionFrom"
+                [end-date]="param.productionTo" (onUpdate)="onProductionDateRangeChanged($event)">
+            </date-range>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-2 offset-1 text-end pt-2">
+            <label class="form-label" for="materialdesc">Status</label>
+        </div>
+        <div class="col-4 mt-2">
+            <input type="checkbox" id="complete">
+            <label for="complete" class="mx-2">Complete</label>
+            <input type="checkbox" id="waitSample">
+            <label for="waitSample" class="mx-2">Wait Sample</label>
+            <input type="checkbox" id="waitFilm">
+            <label for="waitFilm" class="mx-2">Wait Film</label>
+            <input type="checkbox" id="cancel">
+            <label for="cancel" class="mx-2">Cancel</label>
+        </div>
+    </div>
+
+    <div class="row p-2">
+        <div class="col offset-3">
+            <button class="btn btn-success"><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
+            <button class="btn btn-secondary ms-2" (click)="onClickClear()"><i
+                    class="fa-solid fa-broom me-1"></i>Clear</button>
+        </div>
+    </div>
+
+    <hr>
+    
+    <div class="row mt-4">
+        <div class="col-12">
+
+            <dx-data-grid id="gridContainer" [dataSource]="dataSourceMonitorStatus" [remoteOperations]="false"
+                [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'"
+                [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
+
+
+                <dxi-column dataField="productionOrder" caption="Production Order" dataType="number" [width]="130"
+                    alignment="center"></dxi-column>
+                <dxi-column dataField="itemNo" caption="Item No." dataType="number" [width]="70"
+                    alignment="center"></dxi-column>
+                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="150"
+                    alignment="left"></dxi-column>
+                <dxi-column dataField="materialDesc" caption="Material Description" dataType="string" [minWidth]="200"
+                    alignment="left"></dxi-column>
+                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="100" alignment="center">
+                </dxi-column>
+                <dxi-column dataField="soldTo" caption="Sold to" dataType="string" [width]="80"
+                    alignment="left"></dxi-column>
+                <dxi-column dataField="soldToName" caption="Sold to Name" dataType="string" [width]="100"
+                    alignment="left"></dxi-column>
+                <dxi-column dataField="grDate" caption="GR Date" dataType="string" [width]="130" alignment="center"
+                    cellTemplate="dateTemplate">
+                    <div *dxTemplate="let cell of 'dateTemplate'">
+                        {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
+                    </div>
+                </dxi-column>
+
+                <dxi-column dataField="status" caption="Status" dataType="string" [width]="120" alignment="center"
+                    cellTemplate="statusTemplate">
+                    <div *dxTemplate="let cell of 'statusTemplate'">
+                        <label
+                            [ngClass]="{'wait': cell.data.status == 'wait film' || cell.data.status == 'wait sample' , 'ready': cell.data.status == 'sample ready' || cell.data.status == 'film ready' }">{{
+                            cell.data.status }}</label>
+                    </div>
+                </dxi-column>
+
+
+                <dxi-column width="60" alignment="center" cellTemplate="toolsTemplate">
+                    <div *dxTemplate="let cell of 'toolsTemplate'">
+                        <i style="cursor: pointer;" class="fa-solid fa-circle-up icon-update-status"
+                            (click)="OnClickUpdateStatus(cell)"
+                            [ngClass]="{'fa-solid fa-circle-up icon-update-status': cell.data.status == 'wait film' || cell.data.status == 'wait sample' , '': cell.data.status == 'film ready' || cell.data.status == 'sample ready'}"></i>
+                    </div>
+                </dxi-column>
+
+            </dx-data-grid>
+
+            <div class="row mt-2">
+                <div class="col text-end">
+                    <i class="fa-solid fa-circle-up icon-update-status"></i> <label class="ms-2">Update Status</label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+
+            <dx-data-grid id="gridContainer" [dataSource]="dataSourceCompleteStatus" [remoteOperations]="false"
+                [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'"
+                [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
+
+
+                <dxi-column dataField="productionOrder" caption="Production Order" dataType="string" [width]="130"
+                    alignment="center"></dxi-column>
+                <dxi-column dataField="itemNo" caption="Item No." dataType="number" [width]="70"
+                    alignment="center"></dxi-column>
+                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="150"
+                    alignment="left"></dxi-column>
+                <dxi-column dataField="materialDesc" caption="Material Description" dataType="string" [minWidth]="200"
+                    alignment="left"></dxi-column>
+                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="100" alignment="center">
+                </dxi-column>
+                <dxi-column dataField="soldTo" caption="Sold to" dataType="string" [width]="80"
+                    alignment="left"></dxi-column>
+                <dxi-column dataField="soldToName" caption="Sold to Name" dataType="string" [width]="100"
+                    alignment="left"></dxi-column>
+                <dxi-column dataField="grDate" caption="GR Date" dataType="string" [width]="130" alignment="center"
+                    cellTemplate="dateTemplate">
+                    <div *dxTemplate="let cell of 'dateTemplate'">
+                        {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
+                    </div>
+                </dxi-column>
+
+                <dxi-column dataField="status" caption="Status" dataType="string" [width]="120" alignment="center"
+                    cellTemplate="statusTemplate">
+                    <div *dxTemplate="let cell of 'statusTemplate'">
+                        <label
+                            [ngClass]="{'cancel': cell.data.status == 'cancel' , 'complete': cell.data.status == 'complete' }">{{
+                            cell.data.status }}</label>
+                    </div>
+                </dxi-column>
+
+                <dxi-column width="60" alignment="center" cellTemplate="toolsTemplate">
+                    <div *dxTemplate="let cell of 'toolsTemplate'">
+                        <i style="cursor: pointer;" class="fa-solid fa-circle-down icon-delete"
+                            (click)="OnClickDownStatus()"
+                            [ngClass]="{'fa-solid fa-circle-down icon-delete': cell.data.status == 'cancel', '': cell.data.status == 'complete'}"></i>
+                    </div>
+                </dxi-column>
+
+            </dx-data-grid>
+
+            <div class="row mt-2">
+                <div class="col text-end">
+                    <i class="fa-solid fa-circle-down icon-delete"></i> <label class="ms-2">Down Status</label>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<ng-template #updateStatus>
+    <div class="modal-header">
+        <h5 class="modal-title">Production Order No. {{productionOrder}}</h5>
+        <span style="cursor: pointer;" class="close-modal" name="close-modal-import"
+            (click)="modalRef.hide()">&times;</span>
+    </div>
+
+    <div class="modal-body">
+        <!-- <div class="row">
+            <error-panel name="error-panel" #errorPanelModal></error-panel>
+        </div> -->
+        <div class="row mt-2">
+            <div class="col-2 text-end">
+                <label class="form-label">Status</label>
+                
+            </div>
+            <div class="col">
+                <input value="sampleReady" name="status" type="radio"
+                id="sampleReady" class="me-2"><label for="sampleReady" class="me-2">Sample Ready</label>
+            <input value="cancelRadio" name="status" type="radio"
+                id="cancelRadio" class="mx-2"><label for="cancelRadio">Cancel</label>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-2 text-end">
+                <label for="detail">Remark</label>
+            </div>
+            <div class="col-9">
+                <textarea type="text" id="detail" class="form-control" rows="4"></textarea>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-12 text-center">
+                <button class="btn btn-success" (click)="onClickConfirm()"><i class="fa-regular fa-circle-check"></i>
+                    Confirm</button>
+                <button class="btn btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
+                    Cancel</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
