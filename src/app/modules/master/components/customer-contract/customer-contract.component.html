@@ -1,6 +1,6 @@
 <div class="container container justify-content-center pt-2">
   <div class="row mt-2">
-    <h6>Customer Contract</h6>
+    <h6>Customer Contact</h6>
   </div>
   <hr>
 
@@ -48,7 +48,7 @@
 
   <div class="row mt-2">
     <div class="col-12">
-      <dx-data-grid id="grid" [dataSource]="dataSource" [remoteOperations]="false"
+      <dx-data-grid #grid id="grid" [dataSource]="dataSource" [remoteOperations]="false"
         [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'"
         [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
 
@@ -73,7 +73,7 @@
 
 <ng-template #importTemplate>
   <div class="modal-header">
-    <h5 class="modal-title">Import Customer Contract</h5>
+    <h5 class="modal-title">Import Customer Contact</h5>
   </div>
 
   <div class="modal-body">
@@ -113,6 +113,12 @@
             dataType="string">
             <div *dxTemplate="let cell of 'issueTemplate'">
               <span class="error-message" [innerText]="cell.value.join('\n')"></span>
+            </div>
+          </dxi-column>
+
+          <dxi-column caption="No." width="50" alignment="center" cellTemplate="indexTemplate">
+            <div *dxTemplate="let cell of 'indexTemplate'">
+              <span>{{cell.rowIndex+1}}</span>
             </div>
           </dxi-column>
           <dxi-column dataField="customerCode" caption="Customer Code" width="120" alignment="center"></dxi-column>

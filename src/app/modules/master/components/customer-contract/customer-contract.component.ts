@@ -5,6 +5,9 @@ import { CustomerContractService } from '../../services/customer-contract.servic
 import { DxDataGridComponent } from 'devextreme-angular/ui/data-grid';
 import { catchError, finalize, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import * as saveAs from 'file-saver';
+import { Workbook } from 'exceljs';
+import { exportDataGrid } from "devextreme/excel_exporter";
 @Component({
   selector: 'app-customer-contract',
   templateUrl: './customer-contract.component.html',
@@ -83,23 +86,23 @@ export class CustomerContractComponent implements OnInit {
 
 
   public onClickExport() {
-    // const workbook = new Workbook();
-    // const worksheet = workbook.addWorksheet('Main sheet');
-    // const component = dataGrid?.instance;
-    // dataGrid?.instance.columnOption('result', 'visible', true);
-    // exportDataGrid({
-    //   component: component,
-    //   worksheet: worksheet,
-    //   customizeCell: (options) => {
-    //     options.excelCell.font = { name: 'Arial', size: 12 };
-    //     options.excelCell.alignment = { horizontal: 'left' };
-    //   }
-    // }).then(() => {
-    //   workbook.xlsx.writeBuffer()
-    //     .then(function (buffer: BlobPart) {
-    //       saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'Follow up.xlsx');
-    //     });
-    // }).then(()=>dataGrid?.instance.columnOption('result', 'visible', false));
+    const workbook = new Workbook();
+    const worksheet = workbook.addWorksheet('Main sheet');
+    const component = this.grid?.instance;
+    this.grid?.instance.columnOption('result', 'visible', true);
+    exportDataGrid({
+      component: component,
+      worksheet: worksheet,
+      customizeCell: (options) => {
+        options.excelCell.font = { name: 'Arial', size: 12 };
+        options.excelCell.alignment = { horizontal: 'left' };
+      }
+    }).then(() => {
+      workbook.xlsx.writeBuffer()
+        .then(function (buffer: BlobPart) {
+          saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'Follow up.xlsx');
+        });
+    }).then(()=>this.grid?.instance.columnOption('result', 'visible', false));
     
 }
 

@@ -3,9 +3,16 @@
   <hr>
 </div>
 
-<div class="row">
+<div class="row" style="width: 100%;">
   <div class="col-4">
-    <ngx-extended-pdf-viewer [src]="'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf'">
+    <ngx-extended-pdf-viewer 
+    [showBookModeButton]="false" 
+    [showHandToolButton]="false" 
+    [showPropertiesButton]="false" 
+    [showOpenFileButton]="false" 
+    [showPropertiesButton]="false" 
+    [showPrintButton]="false" 
+    [src]="'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf'">
     </ngx-extended-pdf-viewer>
   </div>
   <div class="col-8">
