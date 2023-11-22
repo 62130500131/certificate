@@ -9,12 +9,22 @@ import { BsModalService } from 'ngx-bootstrap/modal';
   styleUrls: ['./production-status.component.css']
 })
 export class ProductionStatusComponent implements OnInit {
-[x: string]: any;
+
   public modalRef!: BsModalRef;
   public param: ProductionStatusSearchParam = new ProductionStatusSearchParam();
   public productionOrder!: string;
-  
-  @ViewChild('updateStatus') public updateStatus!: TemplateRef<any>;
+  public dateSampleReady!: Date;
+  public customerName!: string;
+  public materialDesc!: string;
+  public coilNo!: string;
+  public heatNo!: string;
+  public machine!: string;
+  public grade!: string;
+  public selectedStatus: string = "sampleReady";
+  public selectedStatusFilm: string = "filmReady";
+
+  @ViewChild('updateStatusWaitSample') public updateStatusWaitSample!: TemplateRef<any>;
+  @ViewChild('updateStatusWaitFilm') public updateStatusWaitFilm!: TemplateRef<any>;
 
   public dataSourceMonitorStatus: ProductionStatusMonitorViewModel[] = [{
     productionOrder: "1080035252",
@@ -25,7 +35,7 @@ export class ProductionStatusComponent implements OnInit {
     soldTo: "10000001",
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
-    status: "wait sample",
+    status: "Wait Sample",
   },
   {
     productionOrder: "1080035293",
@@ -36,7 +46,7 @@ export class ProductionStatusComponent implements OnInit {
     soldTo: "10000001",
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
-    status: "sample ready",
+    status: "Sample Ready",
   },
   {
     productionOrder: "1080035294",
@@ -47,7 +57,7 @@ export class ProductionStatusComponent implements OnInit {
     soldTo: "10000001",
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
-    status: "wait film",
+    status: "Wait Film",
   },
   {
     productionOrder: "1080035295",
@@ -58,7 +68,7 @@ export class ProductionStatusComponent implements OnInit {
     soldTo: "10000001",
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
-    status: "film ready",
+    status: "Film Ready",
   }
   ];
 
@@ -71,7 +81,7 @@ export class ProductionStatusComponent implements OnInit {
     soldTo: "10000001",
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
-    status: "complete",
+    status: "Complete",
   },
   {
     productionOrder: "1080035294",
@@ -82,7 +92,7 @@ export class ProductionStatusComponent implements OnInit {
     soldTo: "10000001",
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
-    status: "cancel",
+    status: "Cancel",
   },
   {
     productionOrder: "1080035295",
@@ -93,7 +103,7 @@ export class ProductionStatusComponent implements OnInit {
     soldTo: "10000001",
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
-    status: "cancel",
+    status: "Cancel",
   },
   {
     productionOrder: "1080035252",
@@ -104,7 +114,7 @@ export class ProductionStatusComponent implements OnInit {
     soldTo: "10000001",
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
-    status: "complete",
+    status: "Complete",
   }
   ];
 
@@ -145,12 +155,27 @@ export class ProductionStatusComponent implements OnInit {
     this.param = new ProductionStatusSearchParam();
   }
 
-  public OnClickUpdateStatus(cell: any): void {
-    this.productionOrder = cell.data.productionOrder;
 
-    this.modalRef = this._modalService.show(this.updateStatus, {
-      class: 'modal-lg'
-    });
+
+  public OnClickUpdateStatus(cell: any): void {
+    if (cell.data.status == 'Wait Sample') {
+      this.productionOrder = cell.data.productionOrder;
+      this.customerName = cell.data.soldToName;
+      this.dateSampleReady = new Date;
+      this.materialDesc = cell.data.materialDesc;
+      this.coilNo = "";
+      this.heatNo = "";
+      this.grade = "";
+      this.machine = "4586";
+      this.modalRef = this._modalService.show(this.updateStatusWaitSample, {
+        class: 'modal-xl'
+      });
+    }
+    else {
+      this.modalRef = this._modalService.show(this.updateStatusWaitFilm, {
+        class: 'modal-xl'
+      });
+    }
   }
 
   public OnClickDownStatus(): void {
@@ -158,14 +183,14 @@ export class ProductionStatusComponent implements OnInit {
   }
 
   public radioChangeCancel($event: any): void {
-  console.log("$event:", $event)
+    console.log("$event:", $event)
 
   }
   public radioChangeSampleRaedy($event: any): void {
-  console.log("$event:", $event)
+    console.log("$event:", $event)
 
   }
-  public onClickConfirm():void {
+  public onClickConfirm(): void {
     this.modalRef.hide();
   }
 
