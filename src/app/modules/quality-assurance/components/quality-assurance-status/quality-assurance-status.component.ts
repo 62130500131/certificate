@@ -16,6 +16,14 @@ export class QualityAssuranceStatusComponent implements OnInit {
   public fileToUpload!: File;
   public materialTypeUpload: string = '';
   public canClick!: false;
+  public status!: string;
+  public customerName!: string;
+  public dateSampleReady!: Date;
+  public materialDesc!: string;
+  public coilNo!: string;
+  public heatNo!: string;
+  public grade!: string;
+  public machine!: string;
 
   @ViewChild('uploadTestResult') public uploadTestResult!: TemplateRef<any>;
 
@@ -169,6 +177,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
 
 
   ];
+ 
 
   constructor(public _modalService: BsModalService,
     public _router: Router) { }
@@ -195,9 +204,17 @@ export class QualityAssuranceStatusComponent implements OnInit {
   public OnClickUpdateStatus(cell: any): void {
     this.materialTypeUpload = '';
     this.productionOrder = cell.data.productionOrder;
+    this.status = cell.data.status;
+    this.customerName = cell.data.soldToName;
+    this.dateSampleReady = new Date;
+    this.materialDesc = cell.data.materialDesc;
+    this.coilNo = "";
+    this.heatNo = "";
+    this.grade = "";
+    this.machine = "4586";
 
     this.modalRef = this._modalService.show(this.uploadTestResult, {
-      class: 'modal-lg'
+      class: 'modal-xl'
     });
   }
 
