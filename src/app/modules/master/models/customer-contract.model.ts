@@ -18,3 +18,20 @@ export class CustomerContractViewModel {
     }
 }
 
+export class CustomerContractUploadViewModel {
+    issue: string[];
+    customerCode: string;
+    customerName: string;
+    province: string;
+    district: string;
+    line: string;
+
+    constructor() {
+        this.issue = [];
+        this.customerCode = '';
+        this.customerName = '';
+        this.province = '';
+        this.district = '';
+        this.line = '';
+    }
+}

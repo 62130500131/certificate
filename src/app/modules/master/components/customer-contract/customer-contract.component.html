@@ -34,10 +34,21 @@
       <button class="btn btn-secondary ms-2"><i class="fa-solid fa-broom me-1"></i>Clear</button>
     </div>
   </div>
+  <hr>
 
-  <div class="row mt-4">
+
+  <div class="row">
+    <div class="col-12 text-end">
+      <button class="btn btn-success" (click)="onClickImport()"><i
+          class="fa-solid fa-file-import me-1"></i>Import</button>
+      <button class="btn btn-success ms-2" (click)="onClickExport()"><i
+          class="fa-solid fa-file-excel me-1"></i>Export</button>
+    </div>
+  </div>
+
+  <div class="row mt-2">
     <div class="col-12">
-      <dx-data-grid id="gridContainer" [dataSource]="dataSource" [remoteOperations]="false"
+      <dx-data-grid id="grid" [dataSource]="dataSource" [remoteOperations]="false"
         [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'"
         [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
 
@@ -47,7 +58,8 @@
         <dxi-column dataField="district" caption="District" width="150" alignment="left"></dxi-column>
         <dxi-column dataField="line" caption="Line" width="150" alignment="left"></dxi-column>
         <dxi-column dataField="modifiedBy" caption="Modified By" width="150" alignment="left"></dxi-column>
-        <dxi-column dataField="modifiedTime" caption="Modified Time" width="150" alignment="center" cellTemplate="dateTemplate">
+        <dxi-column dataField="modifiedTime" caption="Modified Time" width="150" alignment="center"
+          cellTemplate="dateTemplate">
         </dxi-column>
 
         <div *dxTemplate="let cell of 'dateTemplate'">
@@ -58,3 +70,67 @@
     </div>
   </div>
 </div>
+
+<ng-template #importTemplate>
+  <div class="modal-header">
+    <h5 class="modal-title">Import Customer Contract</h5>
+  </div>
+
+  <div class="modal-body">
+    <!-- <div class="row">
+          <error-panel name="error-panel" #errorPanelModal></error-panel>
+      </div> -->
+
+    <div class="row mb-3">
+      <div class="col-2 col-form-label text-end">
+        <label>File</label>
+      </div>
+      <div class="col-6">
+        <input [disabled]="clickImport" #fileInput class="form-control rounded-pill" #myInput type="file"
+          name="filename" accept=".xlsx" (change)="handleFileInput($event)">
+      </div>
+      <div class="col-3">
+        <button *ngIf="!clickImport" name="btn-importFile" (click)="uploadFile()"
+          class="btn btn-sm btn-outline-secondary rounded-pill" [disabled]="!fileToUpload">
+          <i class="fas fa-file-upload"></i> Import
+        </button>
+        <button *ngIf="clickImport" name="btn-clear-import" (click)="onClearFile(fileInput)"
+          class="btn btn-sm btn-outline-secondary rounded-pill">
+          <i class="far fa-times-circle"></i> Clear
+        </button>
+        <button class="btn btn-sm btn-outline-success rounded-pill mx-2" (click)="onClickDownloadTemplate()">
+          <i class="fa-solid fa-download"></i> Download
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 mb-2">
+        <dx-data-grid #importGrid name="dg-import" [dataSource]="dataForUpload" [height]="500">
+          <dxo-sorting [mode]="'none'">
+          </dxo-sorting>
+          <dxi-column width="250" cellTemplate="issueTemplate" alignment="left" caption="Issue" dataField="issue"
+            dataType="string">
+            <div *dxTemplate="let cell of 'issueTemplate'">
+              <span class="error-message" [innerText]="cell.value.join('\n')"></span>
+            </div>
+          </dxi-column>
+          <dxi-column dataField="customerCode" caption="Customer Code" width="120" alignment="center"></dxi-column>
+          <dxi-column dataField="customerName" caption="Customer Name" minWidth="300" alignment="left"></dxi-column>
+          <dxi-column dataField="province" caption="Province" width="150" alignment="left"></dxi-column>
+          <dxi-column dataField="district" caption="District" width="150" alignment="left"></dxi-column>
+          <dxi-column dataField="line" caption="Line" width="150" alignment="left"></dxi-column>
+        </dx-data-grid>
+      </div>
+    </div>
+
+    <div class="row pt-2">
+      <div class="col-12 text-center">
+        <button [disabled]="!canClick" class="btn btn-success" (click)="onClickConfirmImport()"><i class="fa-solid fa-circle-check me-1"></i>
+          Confirm</button>
+        <button class="ms-2 btn btn-secondary" (click)="onClickExitImportModal()"><i
+            class="fa-solid fa-ban me-1"></i>Exit</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
