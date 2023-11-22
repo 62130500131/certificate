@@ -29,3 +29,12 @@ export class MappingMaterialImportViewModel {
             this.millDesc = '';
     }
 }
+
+export class MappingMaterialSearchParam {
+    materialCode: string;
+    materialDesc: string;
+    constructor(){
+        this.materialCode = '';
+        this.materialDesc = '';
+    }
+}

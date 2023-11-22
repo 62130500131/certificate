@@ -20,40 +20,40 @@ const routes: Routes = [
     loadChildren: () => import('./modules/customer/customer.module').then(m => m.CustomerModule)
   },
   {
-     path: 'mapping-material', component: MappingMaterialComponent,
-     loadChildren: () => import('./modules/master/master.module').then(m => m.MasterModule)
+    path: 'mapping-material', component: MappingMaterialComponent,
+    loadChildren: () => import('./modules/master/master.module').then(m => m.MasterModule)
   },
-  { 
+  {
     path: 'certificate-list', component: CertificateListComponent,
     loadChildren: () => import('./modules/certificate/certificate.module').then(m => m.CertificateModule)
   },
-  { 
-    path: 'do-page', component: DoPageComponent, 
+  {
+    path: 'mapping-certificate', component: DoPageComponent,
     loadChildren: () => import('./modules/map-certificate/map-certificate.module').then(m => m.MapCertificateModule)
   },
-  { 
+  {
     path: 'do-entry', component: DoShipmentEntryComponent,
     loadChildren: () => import('./modules/map-certificate/map-certificate.module').then(m => m.MapCertificateModule)
   },
-  { 
+  {
     path: 'certificate-entry', component: CertificateEntryComponent,
-    loadChildren: () => import('./modules/certificate/certificate.module').then(m => m.CertificateModule) 
+    loadChildren: () => import('./modules/certificate/certificate.module').then(m => m.CertificateModule)
   },
-  { 
+  {
     path: 'nac-certificate-entry', component: NacCertificateEntryComponent,
-    loadChildren: () => import('./modules/quality-assurance/quality-assurance.module').then(m => m.QualityAssuranceModule) 
+    loadChildren: () => import('./modules/quality-assurance/quality-assurance.module').then(m => m.QualityAssuranceModule)
   },
-  { 
+  {
     path: 'quality-assurance-status', component: QualityAssuranceStatusComponent,
-    loadChildren: () => import('./modules/quality-assurance/quality-assurance.module').then(m => m.QualityAssuranceModule) 
+    loadChildren: () => import('./modules/quality-assurance/quality-assurance.module').then(m => m.QualityAssuranceModule)
   },
-  { 
+  {
     path: 'customer-contract', component: CustomerContractComponent,
-    loadChildren: () => import('./modules/master/master.module').then(m => m.MasterModule) 
+    loadChildren: () => import('./modules/master/master.module').then(m => m.MasterModule)
   },
-  { 
+  {
     path: 'production-status', component: ProductionStatusComponent,
-    loadChildren: () => import('./modules/production/production.module').then(m => m.ProductionModule) 
+    loadChildren: () => import('./modules/production/production.module').then(m => m.ProductionModule)
   },
   {
     path: '',

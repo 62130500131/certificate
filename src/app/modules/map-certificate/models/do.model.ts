@@ -51,3 +51,13 @@ export class SelectQuantity {
     }
 }
 
+export class MappingCertificateSearchParam {
+    customer : string;
+    shipment : string;
+
+    constructor(){
+        this.customer = '';
+        this.shipment = '';
+    }
+}
+
