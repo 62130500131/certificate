@@ -7,21 +7,23 @@
     <div class="row" *ngFor="let item of list">
         <div class="col-12">
             <div class="row mt-4">
-                <div class="col-10 offset-1">
+                <div class="col-12">
                     <h6>DO {{item.doNo}}</h6>
                 </div>
             </div>
 
             <div class="row mt-2">
-                <div class="col-10 offset-1">
+                <div class="col-12">
                     <dx-data-grid id="gridContainer" [dataSource]="item.dataSource" [remoteOperations]="false"
                         [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true"
                         [width]="'100%'" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
                         [rowAlternationEnabled]="true">
                         <dxi-column dataField="itemIndex" caption="No." [width]="80" alignment="right"></dxi-column>
-                        <dxi-column dataField="material" caption="Material" minWidth="150"
+                        <dxi-column dataField="materialCode" caption="Material" width="150"
                             alignment="left"></dxi-column>
-                        <dxi-column dataField="heatNo" caption="Heat No." [width]="150" alignment="center"></dxi-column>
+                        <dxi-column dataField="materialDesc" caption="Material Description" minWidth="250"
+                            alignment="left"></dxi-column>
+                        <dxi-column dataField="heatNo" caption="Heat No." [width]="120" alignment="center"></dxi-column>
                         <dxi-column dataField="quantity" caption="Quantity" [width]="80" alignment="right"></dxi-column>
                         <dxi-column [width]="150" alignment="center" cellTemplate="selectTemplate">
                             <div *dxTemplate="let cell of 'selectTemplate'">
@@ -29,12 +31,12 @@
                                     class="btn btn-outline-success" (click)="onClickSelect()"><i class="fa-solid fa-check"></i>
                                     Select</button>
                                 <button style="width: 90px;" *ngIf="cell.data.status != 'Select'"
-                                    class="btn btn-outline-warning"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                                    class="btn btn-outline-warning" (click)="onClickEdit()"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
                             </div>
                         </dxi-column>
                         <dxi-column [width]="150" alignment="center" cellTemplate="addDetailTemplate">
                             <div *dxTemplate="let cell of 'addDetailTemplate'">
-                                <button class="btn btn-outline-secondary" (click)="onClickAddDetail()"><i class="fa-solid fa-pen-to-square"></i> Add
+                                <button class="btn btn-outline-secondary" (click)="onClickAddDetail(cell.data)"><i class="fa-solid fa-pen-to-square"></i> Add
                                     Detail</button>
                             </div>
                         </dxi-column>
@@ -61,7 +63,6 @@
 <ng-template #selectTemplate>
     <div class="modal-header">
         <h5 class="modal-title">Select Quantity</h5>
-        <span class="click" name="close-modal-import" (click)="modalRef.hide()">&times;</span>
     </div>
 
     <div class="modal-body">
@@ -99,7 +100,7 @@
                         cellTemplate="checkBoxTemplate">
                         <div *dxTemplate="let cell of 'checkBoxTemplate'">
                             <div class="text-center">
-                                <input type="checkbox" [(ngModel)]="cell.value">
+                                <input class="form-check-input" type="checkbox" [(ngModel)]="cell.value" (change)="onCheckBoxChange($event,cell.data)">
                             </div>
                         </div>
                     </dxi-column>
@@ -129,17 +130,39 @@
 <ng-template #addDetailTemplate>
     <div class="modal-header">
         <h5 class="modal-title">Add Detail</h5>
-        <span class="click" name="close-modal-import" (click)="modalRef.hide()">&times;</span>
     </div>
 
     <div class="modal-body">
+        <div class="row mt-4" *ngIf="isType3">
+            <div class="col-2 text-end">
+                <label for="productionNo">เลขที่ใบสั่งผลิต</label>
+            </div>
+            <div class="col-3">
+                <input type="text" id="detail" class="form-control">
+            </div>
+            <div class="col-2 offset-1 text-end">
+                <label for="certificateDate" class="pt-1">วันที่ออกใบรับรอง</label>
+            </div>
+            <div class="col-3">
+                <input type="text" id="certificateDate" class="form-control">
+            </div>
+        </div>
         <div class="row mt-4">
             <div class="col-2 text-end">
-                <label for="detail">Detail</label>
+                <label for="detail" class="pt-1">Detail</label>
             </div>
             <div class="col-9">
-                <textarea type="text" id="detail" class="form-control" rows="4"></textarea>
+                <textarea type="text" id="detail" class="form-control" rows="4"></textarea >
             </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-2 text-end">
+                <label for="isStamp">Stamp</label>
+            </div>
+            <div class="col-1 pt-1">
+                <input name="isStamp" class="form-check-input" type="checkbox">
+            </div>
+            
         </div>
         <div class="col-12 text-center mt-4">
             <button class="btn btn-success" (click)="onClickConfirmAddDetail()"><i class="fa-regular fa-circle-check"></i>
