@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxExtendedPdfViewerService, pdfDefaultOptions } from 'ngx-extended-pdf-viewer';
-import { certificateEntryListViewModel } from 'src/app/modules/certificate/models/certificate-list.model';
 import { CertificateData } from '../../models/qa-status.model';
 
 @Component({
