@@ -10,16 +10,16 @@
             <label class="form-label" for="materialCode">Material</label>
         </div>
         <div class="col-3">
-            <input id="materialCode" class="form-control" type="text" [(ngModel)]="param.materialCode">
+            <input id="materialCode" class="form-control" type="text" [(ngModel)]="paramMonitor.materialCode">
         </div>
         <div class="col-2 text-end pt-2">
             <label class="form-label">Production Date</label>
         </div>
         <div class="col-3">
             <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource"
-                [(ngModel)]="param.productionDate" class="mb-2"></dx-select-box>
-            <date-range *ngIf="param.productionDate == 0" [start-date]="param.productionFrom"
-                [end-date]="param.productionTo" (onUpdate)="onProductionDateRangeChanged($event)">
+                [(ngModel)]="paramMonitor.productionDate" class="mb-2"></dx-select-box>
+            <date-range *ngIf="paramMonitor.productionDate == 0" [start-date]="paramMonitor.productionFrom"
+                [end-date]="paramMonitor.productionTo" (onUpdate)="onProductionMonitorDateRangeChanged($event)">
             </date-range>
         </div>
     </div>
@@ -43,7 +43,7 @@
     <div class="row p-2">
         <div class="col-3 offset-2">
             <button class="btn btn-success"><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
-            <button class="btn btn-secondary ms-2" (click)="onClickClear()"><i
+            <button class="btn btn-secondary ms-2" (click)="onClickMonitorClear()"><i
                     class="fa-solid fa-broom me-1"></i>Clear</button>
         </div>
     </div>
@@ -121,16 +121,16 @@
             <label class="form-label" for="materialCode">Material</label>
         </div>
         <div class="col-3">
-            <input id="materialCode" class="form-control" type="text" [(ngModel)]="param.materialCode">
+            <input id="materialCode" class="form-control" type="text" [(ngModel)]="paramComplete.materialCode">
         </div>
         <div class="col-2 text-end pt-2">
             <label class="form-label">Production Date</label>
         </div>
         <div class="col-3">
             <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource"
-                [(ngModel)]="param.productionDate" class="mb-2"></dx-select-box>
-            <date-range *ngIf="param.productionDate == 0" [start-date]="param.productionFrom"
-                [end-date]="param.productionTo" (onUpdate)="onProductionDateRangeChanged($event)">
+                [(ngModel)]="paramComplete.productionDate" class="mb-2"></dx-select-box>
+            <date-range *ngIf="paramComplete.productionDate == 0" [start-date]="paramComplete.productionFrom"
+                [end-date]="paramComplete.productionTo" (onUpdate)="onProductionCompleteDateRangeChanged($event)">
             </date-range>
         </div>
     </div>
@@ -150,7 +150,7 @@
     <div class="row p-2">
         <div class="col-3 offset-2">
             <button class="btn btn-success"><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
-            <button class="btn btn-secondary ms-2" (click)="onClickClear()"><i
+            <button class="btn btn-secondary ms-2" (click)="onClickCompleteClear()"><i
                     class="fa-solid fa-broom me-1"></i>Clear</button>
         </div>
     </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { MappingMaterialViewModel } from '../../models/mapping-material.model';
+import { MappingMaterialSearchParam, MappingMaterialViewModel } from '../../models/mapping-material.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { MappingMaterialService } from '../../services/map-material.service';
 import { catchError, finalize, throwError } from 'rxjs';
@@ -16,6 +16,7 @@ import * as saveAs from 'file-saver';
 })
 export class MappingMaterialComponent implements OnInit {
 
+  public param : MappingMaterialSearchParam = new MappingMaterialSearchParam();
   @ViewChild('grid') grid!: DxDataGridComponent;
   public modalRef!: BsModalRef;
 
@@ -81,7 +82,7 @@ export class MappingMaterialComponent implements OnInit {
   }
 
   public onClickClear(): void {
-
+    this.param = new MappingMaterialSearchParam();
   }
 
   // Add

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { doViewModel } from '../../models/do.model';
+import { MappingCertificateSearchParam, doViewModel } from '../../models/do.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class DoPageComponent {
 
+  public param: MappingCertificateSearchParam = new MappingCertificateSearchParam()
   public dataSource: doViewModel[] = [
     {
       shipmentCode: 2311092790,
@@ -30,10 +31,18 @@ export class DoPageComponent {
     }
   ]
 
-  constructor(private router: Router){
+  constructor(private router: Router) {
   }
 
-  public onClickShipment(data: any):void {
+  public onClickShipment(data: any): void {
     this.router.navigate(['do-entry'])
+  }
+
+  public onClickClear(): void {
+    this.param = new MappingCertificateSearchParam();
+  }
+
+  public onClickSearch(): void {
+
   }
 }

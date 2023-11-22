@@ -1,6 +1,6 @@
 <div class="container container justify-content-center pt-2">
     <div class="row mt-2">
-        <h6>DO</h6>
+        <h6>Map Certificate</h6>
 
     </div>
     <hr>
@@ -10,20 +10,20 @@
             <label class="form-label" for="customer">Customer</label>
         </div>
         <div class="col-3">
-            <input id="customer" class="form-control" type="text">
+            <input id="customer" class="form-control" [(ngModel)]="param.customer" type="text">
         </div>
         <div class="col-2 text-end pt-2">
             <label for="shipment" class="form-label">Shipment</label>
         </div>
         <div class="col-3">
-            <input id="shipment" class="form-control" type="text">
+            <input id="shipment" class="form-control" [(ngModel)]="param.shipment" type="text">
         </div>
     </div>
 
     <div class="row p-2">
         <div class="col-3 offset-2">
-            <button class="btn btn-success"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
-            <button class="btn btn-secondary ms-2"><i class="fa-solid fa-broom"></i> Clear</button>
+            <button class="btn btn-success" (click)="onClickSearch()"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+            <button class="btn btn-secondary ms-2" (click)="onClickClear()"><i class="fa-solid fa-broom"></i> Clear</button>
         </div>
     </div>
 

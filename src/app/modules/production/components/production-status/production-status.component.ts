@@ -11,7 +11,8 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 export class ProductionStatusComponent implements OnInit {
 
   public modalRef!: BsModalRef;
-  public param: ProductionStatusSearchParam = new ProductionStatusSearchParam();
+  public paramComplete: ProductionStatusSearchParam = new ProductionStatusSearchParam();
+  public paramMonitor: ProductionStatusSearchParam = new ProductionStatusSearchParam();
   public productionOrder!: string;
   public dateSampleReady!: Date;
   public customerName!: string;
@@ -146,13 +147,21 @@ export class ProductionStatusComponent implements OnInit {
   ngOnInit() {
   }
 
-  public onProductionDateRangeChanged($event: any): void {
-    this.param.productionFrom = $event.value.startDate;
-    this.param.productionTo = $event.value.endDateDate;
+  public onProductionCompleteDateRangeChanged($event: any): void {
+    this.paramComplete.productionFrom = $event.value.startDate;
+    this.paramComplete.productionTo = $event.value.endDateDate;
   }
 
-  public onClickClear(): void {
-    this.param = new ProductionStatusSearchParam();
+  public onProductionMonitorDateRangeChanged($event: any): void {
+    this.paramComplete.productionFrom = $event.value.startDate;
+    this.paramComplete.productionTo = $event.value.endDateDate;
+  }
+
+  public onClickCompleteClear(): void {
+    this.paramComplete = new ProductionStatusSearchParam();
+  }
+  public onClickMonitorClear(): void {
+    this.paramMonitor = new ProductionStatusSearchParam();
   }
 
 
