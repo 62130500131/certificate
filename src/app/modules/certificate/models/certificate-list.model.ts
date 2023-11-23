@@ -73,6 +73,8 @@ export class certificateEntryListViewModel {
     grade: string;
     heatNo: string;
     quantity: number;
+    yield: string;
+    tensile: string;
     unit: string;
     remark: string;
 
@@ -85,5 +87,7 @@ export class certificateEntryListViewModel {
         this.quantity = 0;
         this.unit = '';
         this.remark = '';
+        this.yield = '';
+        this.tensile = '';
     }
 }

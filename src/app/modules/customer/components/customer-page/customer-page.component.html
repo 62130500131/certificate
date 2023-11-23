@@ -1,5 +1,3 @@
-
-
 <div class="container container justify-content-center pt-2">
     <div class="row mt-2">
         <h6>ประวัติการสั่งซื้อ</h6>
@@ -15,13 +13,13 @@
             <input [(ngModel)]="param.materialDesc" id="materialdesc" class="form-control" type="text">
         </div>
         <div class="col-2 text-end pt-2">
-            <label  class="form-label">Date</label>
+            <label class="form-label">Date</label>
         </div>
         <div class="col-3">
-            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource"
-                [(ngModel)]="param.dateDo" class="mb-2"></dx-select-box>
-            <date-range *ngIf="param.dateDo == 0" [start-date]="param.dateFrom"
-                [end-date]="param.dateTo" (onUpdate)="onDateRangeChanged($event)">
+            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource" [(ngModel)]="param.dateDo"
+                class="mb-2"></dx-select-box>
+            <date-range *ngIf="param.dateDo == 0" [start-date]="param.dateFrom" [end-date]="param.dateTo"
+                (onUpdate)="onDateRangeChanged($event)">
             </date-range>
         </div>
     </div>
@@ -29,7 +27,8 @@
     <div class="row p-2">
         <div class="col-3 offset-2">
             <button class="btn btn-sm btn-success"><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
-            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickClear()"><i class="fa-solid fa-broom me-1"></i>Clear</button>
+            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickClear()"><i
+                    class="fa-solid fa-broom me-1"></i>Clear</button>
         </div>
     </div>
     <hr>
@@ -51,7 +50,7 @@
                     alignment="center"></dxi-column>
                 <dxi-column dataField="materialDesc" caption="Material Description" dataType="string" [minWidth]="150"
                     alignment="left"></dxi-column>
-                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="80"
+                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="80" cellTemplate="numberTemplate"
                     alignment="right"></dxi-column>
 
                 <dxi-column width="130" alignment="center" cellTemplate="downloadTemplate">
@@ -61,6 +60,10 @@
                         </button>
                     </div>
                 </dxi-column>
+
+                <div *dxTemplate="let cell of 'numberTemplate'">
+                    {{cell.value | number: '.2'}}
+                </div>
 
             </dx-data-grid>
         </div>

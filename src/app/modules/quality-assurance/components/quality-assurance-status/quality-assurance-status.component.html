@@ -70,8 +70,8 @@
                                     alignment="left"></dxi-column>
                                 <dxi-column dataField="materialDesc" caption="Material Description" dataType="string"
                                     [minWidth]="280" alignment="left"></dxi-column>
-                                <dxi-column dataField="qty" caption="Qty" dataType="number" [width]="50"
-                                    alignment="right">
+                                <dxi-column dataField="qty" caption="Qty" dataType="number" [width]="80"
+                                    cellTemplate="numberTemplate" alignment="right">
                                 </dxi-column>
                                 <dxi-column dataField="soldTo" caption="Sold to" dataType="string" [width]="80"
                                     alignment="center"></dxi-column>
@@ -100,6 +100,10 @@
                                             [ngClass]="{'': cell.data.status == 'Wait Film' || cell.data.status == 'Wait Sample' , 'fa-solid fa-file-arrow-up icon-update': cell.data.status == 'Film Ready' || cell.data.status == 'Sample Ready'}"></i>
                                     </div>
                                 </dxi-column>
+
+                                <div *dxTemplate="let cell of 'numberTemplate'">
+                                    {{cell.value | number: '.2'}}
+                                </div>
 
                             </dx-data-grid>
 
@@ -186,8 +190,8 @@
                                     alignment="left"></dxi-column>
                                 <dxi-column dataField="materialDesc" caption="Material Description" dataType="string"
                                     [minWidth]="280" alignment="left"></dxi-column>
-                                <dxi-column dataField="qty" caption="Qty" dataType="number" [width]="50"
-                                    alignment="right">
+                                <dxi-column dataField="qty" caption="Qty" dataType="number" [width]="80"
+                                    cellTemplate="numberTemplate" alignment="right">
                                 </dxi-column>
                                 <dxi-column dataField="soldTo" caption="Sold to" dataType="string" [width]="80"
                                     alignment="center"></dxi-column>
@@ -216,6 +220,10 @@
                                             [ngClass]="{'': cell.data.status == 'Cancel', 'fa-solid fa-circle-down icon-delete': cell.data.status == 'Complete'}"></i>
                                     </div>
                                 </dxi-column>
+
+                                <div *dxTemplate="let cell of 'numberTemplate'">
+                                    {{cell.value | number: '.2'}}
+                                </div>
 
                             </dx-data-grid>
 
