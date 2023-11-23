@@ -29,21 +29,21 @@
             <label class="form-label" for="materialdesc">Status</label>
         </div>
         <div class="col-6 mt-2">
-            <input class="form-check-input" type="checkbox" id="waitSample">
+            <input [(ngModel)]="selectWaitSample" class="form-check-input" type="checkbox" id="waitSample">
             <label for="waitSample" class="mx-2">Wait Sample</label>
-            <input class="form-check-input" type="checkbox" id="waitFilm">
+            <input [(ngModel)]="selectWaitFilm" class="form-check-input" type="checkbox" id="waitFilm">
             <label for="waitFilm" class="mx-2">Wait Film</label>
-            <input class="form-check-input" type="checkbox" id="sampleReady">
+            <input [(ngModel)]="selectSampleReady" class="form-check-input" type="checkbox" id="sampleReady">
             <label for="sampleReady" class="mx-2">Sample Ready</label>
-            <input class="form-check-input" type="checkbox" id="filmReady">
+            <input [(ngModel)]="selectFilmReady" class="form-check-input" type="checkbox" id="filmReady">
             <label for="filmReady" class="mx-2">Film Ready</label>
         </div>
     </div>
 
     <div class="row p-2">
         <div class="col-3 offset-2">
-            <button class="btn btn-success"><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
-            <button class="btn btn-secondary ms-2" (click)="onClickMonitorClear()"><i
+            <button class="btn btn-sm btn-success"><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
+            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickMonitorClear()"><i
                     class="fa-solid fa-broom me-1"></i>Clear</button>
         </div>
     </div>
@@ -60,17 +60,17 @@
 
                 <dxi-column dataField="productionOrder" caption="Production Order" dataType="number" [width]="130"
                     alignment="center"></dxi-column>
-                <dxi-column dataField="itemNo" caption="Item No." dataType="number" [width]="70"
+                <dxi-column dataField="itemNo" caption="No." dataType="number" [width]="40"
                     alignment="center"></dxi-column>
-                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="150"
+                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="120"
                     alignment="left"></dxi-column>
-                <dxi-column dataField="materialDesc" caption="Material Description" dataType="string" [minWidth]="200"
+                <dxi-column dataField="materialDesc" caption="Material Description" dataType="string" [minWidth]="280"
                     alignment="left"></dxi-column>
-                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="100" alignment="right">
+                <dxi-column dataField="qty" caption="Qty" dataType="number" [width]="50" alignment="right">
                 </dxi-column>
                 <dxi-column dataField="soldTo" caption="Sold to" dataType="string" [width]="80"
-                    alignment="left"></dxi-column>
-                <dxi-column dataField="soldToName" caption="Sold to Name" dataType="string" [width]="100"
+                    alignment="center"></dxi-column>
+                <dxi-column dataField="soldToName" caption="Sold to Name" dataType="string" [width]="280"
                     alignment="left"></dxi-column>
                 <dxi-column dataField="grDate" caption="GR Date" dataType="string" [width]="130" alignment="center"
                     cellTemplate="dateTemplate">
@@ -140,17 +140,17 @@
             <label class="form-label" for="materialdesc">Status</label>
         </div>
         <div class="col-4 mt-2">
-            <input class="form-check-input" type="checkbox" id="complete">
+            <input [(ngModel)]="selectCancel" class="form-check-input" type="checkbox" id="complete">
             <label for="complete" class="mx-2">Complete</label>
-            <input class="form-check-input" type="checkbox" id="cancel">
+            <input [(ngModel)]="selectComplete" class="form-check-input" type="checkbox" id="cancel">
             <label for="cancel" class="mx-2">Cancel</label>
         </div>
     </div>
 
     <div class="row p-2">
         <div class="col-3 offset-2">
-            <button class="btn btn-success"><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
-            <button class="btn btn-secondary ms-2" (click)="onClickCompleteClear()"><i
+            <button class="btn btn-sm btn-success "><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
+            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickCompleteClear()"><i
                     class="fa-solid fa-broom me-1"></i>Clear</button>
         </div>
     </div>
@@ -165,19 +165,19 @@
                 [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
 
 
-                <dxi-column dataField="productionOrder" caption="Production Order" dataType="string" [width]="130"
+                <dxi-column dataField="productionOrder" caption="Production Order" dataType="number" [width]="130"
                     alignment="center"></dxi-column>
-                <dxi-column dataField="itemNo" caption="Item No." dataType="number" [width]="70"
+                <dxi-column dataField="itemNo" caption="No." dataType="number" [width]="40"
                     alignment="center"></dxi-column>
-                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="150"
+                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="120"
                     alignment="left"></dxi-column>
-                <dxi-column dataField="materialDesc" caption="Material Description" dataType="string" [minWidth]="200"
+                <dxi-column dataField="materialDesc" caption="Material Description" dataType="string" [minWidth]="280"
                     alignment="left"></dxi-column>
-                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="100" alignment="right">
+                <dxi-column dataField="qty" caption="Qty" dataType="number" [width]="50" alignment="right">
                 </dxi-column>
                 <dxi-column dataField="soldTo" caption="Sold to" dataType="string" [width]="80"
-                    alignment="left"></dxi-column>
-                <dxi-column dataField="soldToName" caption="Sold to Name" dataType="string" [width]="100"
+                    alignment="center"></dxi-column>
+                <dxi-column dataField="soldToName" caption="Sold to Name" dataType="string" [width]="280"
                     alignment="left"></dxi-column>
                 <dxi-column dataField="grDate" caption="GR Date" dataType="string" [width]="130" alignment="center"
                     cellTemplate="dateTemplate">
@@ -232,7 +232,8 @@
             </div>
             <div class="col">
                 <input [(ngModel)]="selectedStatus" value="sampleReady" name="status" type="radio" id="sampleReadyRadio"
-                    class="form-check-input me-2 click"><label for="sampleReadyRadio" class="me-2 click">Sample Ready</label>
+                    class="form-check-input me-2 click"><label for="sampleReadyRadio" class="me-2 click">Sample
+                    Ready</label>
                 <input [(ngModel)]="selectedStatus" value="cancelRadio" name="status" type="radio" id="cancelRadio"
                     class="form-check-input mx-2 click"><label for="cancelRadio" class="click">Cancel</label>
             </div>
@@ -244,8 +245,7 @@
                     <label for="dateSampleReady" class="form-label mt-2">Date</label>
                 </div>
                 <div class="col-3">
-                    <input [value]="dateSampleReady | date: 'dd-MMM-yyyy'" id="dateSampleReady"
-                        class="form-control">
+                    <input [value]="dateSampleReady | date: 'dd-MMM-yyyy'" id="dateSampleReady" class="form-control">
                 </div>
                 <div class="col-2 text-end">
                     <label for="customerName" class="form-label mt-2">Customer Name</label>
@@ -322,9 +322,9 @@
 
         <div class="row mt-4">
             <div class="col-12 text-center">
-                <button class="btn btn-success" (click)="onClickConfirm()"><i class="fa-regular fa-circle-check"></i>
+                <button class="btn btn-sm btn-success" (click)="onClickConfirm()"><i class="fa-regular fa-circle-check"></i>
                     Confirm</button>
-                <button class="btn btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
+                <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
                     Cancel</button>
             </div>
         </div>
@@ -347,7 +347,8 @@
             </div>
             <div class="col">
                 <input [(ngModel)]="selectedStatusFilm" value="filmReady" name="status" type="radio" id="filmReadyRadio"
-                    class="form-check-input me-2 click"><label for="filmReadyRadio" class="me-2 click">Film Ready</label>
+                    class="form-check-input me-2 click"><label for="filmReadyRadio" class="me-2 click">Film
+                    Ready</label>
                 <input [(ngModel)]="selectedStatusFilm" value="cancelRadio" name="status" type="radio" id="cancelRadio"
                     class="form-check-input mx-2"><label for="cancelRadio" class="click">Cancel</label>
             </div>
@@ -376,9 +377,9 @@
 
         <div class="row mt-4">
             <div class="col-12 text-center">
-                <button class="btn btn-success" (click)="onClickConfirm()"><i class="fa-regular fa-circle-check"></i>
+                <button class="btn btn-sm btn-success" (click)="onClickConfirm()"><i class="fa-regular fa-circle-check"></i>
                     Confirm</button>
-                <button class="btn btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
+                <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
                     Cancel</button>
             </div>
         </div>

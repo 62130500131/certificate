@@ -24,6 +24,13 @@ export class ProductionStatusComponent implements OnInit {
   public selectedStatus: string = "sampleReady";
   public selectedStatusFilm: string = "filmReady";
 
+  public selectWaitSample: string = 'waitSample';
+  public selectWaitFilm: string = 'waitFilm';
+  public selectSampleReady: string = 'sampleReady';
+  public selectFilmReady: string = 'filmReady';
+  public selectCancel: string = 'complete';
+  public selectComplete: string = 'cancel';
+
   @ViewChild('updateStatusWaitSample') public updateStatusWaitSample!: TemplateRef<any>;
   @ViewChild('updateStatusWaitFilm') public updateStatusWaitFilm!: TemplateRef<any>;
 

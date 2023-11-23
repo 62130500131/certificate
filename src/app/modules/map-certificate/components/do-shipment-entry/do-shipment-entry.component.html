@@ -28,21 +28,21 @@
                         <dxi-column [width]="150" alignment="center" cellTemplate="selectTemplate">
                             <div *dxTemplate="let cell of 'selectTemplate'">
                                 <button style="width: 90px;" *ngIf="cell.data.status == 'Select'"
-                                    class="btn btn-outline-success" (click)="onClickSelect()"><i class="fa-solid fa-check"></i>
+                                    class="btn btn-sm btn-outline-success" (click)="onClickSelect()"><i class="fa-solid fa-check"></i>
                                     Select</button>
                                 <button style="width: 90px;" *ngIf="cell.data.status != 'Select'"
-                                    class="btn btn-outline-warning" (click)="onClickEdit()"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                                    class="btn btn-sm btn-outline-warning" (click)="onClickEdit()"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
                             </div>
                         </dxi-column>
                         <dxi-column [width]="150" alignment="center" cellTemplate="addDetailTemplate">
                             <div *dxTemplate="let cell of 'addDetailTemplate'">
-                                <button class="btn btn-outline-secondary" (click)="onClickAddDetail(cell.data)"><i class="fa-solid fa-pen-to-square"></i> Add
+                                <button class="btn btn-sm btn-outline-secondary" (click)="onClickAddDetail()"><i class="fa-solid fa-pen-to-square"></i> Add
                                     Detail</button>
                             </div>
                         </dxi-column>
                         <dxi-column [width]="150" alignment="center" cellTemplate="sentLinkTemplate">
                             <div *dxTemplate="let cell of 'sentLinkTemplate'">
-                                <button class="btn btn-outline-info" (click)="onClickSentLink()"><i class="fa-regular fa-paper-plane"></i> Sent
+                                <button class="btn btn-sm btn-outline-info" (click)="onClickSentLink()"><i class="fa-regular fa-paper-plane"></i> Sent
                                     Link</button>
                             </div>
                         </dxi-column>
@@ -54,7 +54,7 @@
 
     <div class="row">
         <div class="col-12 text-center mt-4">
-            <button class="btn btn-secondary ms-2" (click)="onClickExit()"><i class="fa-solid fa-xmark"></i>
+            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickExit()"><i class="fa-solid fa-xmark"></i>
                 Exit</button>
         </div>
     </div>
@@ -118,9 +118,9 @@
 
         <div class="row mt-4">
             <div class="col-12 text-center">
-                <button class="btn btn-success" (click)="onClickConfirmSelect()"><i
+                <button class="btn btn-sm btn-success" (click)="onClickConfirmSelect()"><i
                         class="fa-regular fa-circle-check"></i> Confirm</button>
-                <button class="btn btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
+                <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
                     Cancel</button>
             </div>
         </div>
@@ -165,9 +165,9 @@
             
         </div>
         <div class="col-12 text-center mt-4">
-            <button class="btn btn-success" (click)="onClickConfirmAddDetail()"><i class="fa-regular fa-circle-check"></i>
+            <button class="btn btn-sm btn-success" (click)="onClickConfirmAddDetail()"><i class="fa-regular fa-circle-check"></i>
                 Confirm</button>
-            <button class="btn btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
+            <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
                 Cancel</button>
         </div>
     </div>

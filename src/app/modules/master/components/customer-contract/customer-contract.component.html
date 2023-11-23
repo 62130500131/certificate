@@ -30,8 +30,8 @@
 
   <div class="row p-2">
     <div class="col offset-3">
-      <button class="btn btn-success"><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
-      <button class="btn btn-secondary ms-2"><i class="fa-solid fa-broom me-1"></i>Clear</button>
+      <button class="btn btn-sm btn-success"><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
+      <button class="btn btn-sm btn-secondary ms-2"><i class="fa-solid fa-broom me-1"></i>Clear</button>
     </div>
   </div>
   <hr>
@@ -39,9 +39,9 @@
 
   <div class="row">
     <div class="col-12 text-end">
-      <button class="btn btn-success" (click)="onClickImport()"><i
+      <button class="btn btn-sm btn-success" (click)="onClickImport()"><i
           class="fa-solid fa-file-import me-1"></i>Import</button>
-      <button class="btn btn-success ms-2" (click)="onClickExport()"><i
+      <button class="btn btn-sm btn-success ms-2" (click)="onClickExport()"><i
           class="fa-solid fa-file-excel me-1"></i>Export</button>
     </div>
   </div>
@@ -132,9 +132,9 @@
 
     <div class="row pt-2">
       <div class="col-12 text-center">
-        <button [disabled]="!canClick" class="btn btn-success" (click)="onClickConfirmImport()"><i class="fa-solid fa-circle-check me-1"></i>
+        <button [disabled]="!canClick" class="btn btn-sm btn-success" (click)="onClickConfirmImport()"><i class="fa-solid fa-circle-check me-1"></i>
           Confirm</button>
-        <button class="ms-2 btn btn-secondary" (click)="onClickExitImportModal()"><i
+        <button class="ms-2 btn btn-sm btn-secondary" (click)="onClickExitImportModal()"><i
             class="fa-solid fa-ban me-1"></i>Exit</button>
       </div>
     </div>
