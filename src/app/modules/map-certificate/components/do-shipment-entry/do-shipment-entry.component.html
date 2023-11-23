@@ -1,63 +1,81 @@
-<div class="container justify-content-center">
-    <div class="row mt-2">
-        <h6>Shipment</h6>
-        <hr>
-    </div>
-
-    <div class="row" *ngFor="let item of list">
-        <div class="col-12">
-            <div class="row mt-4">
-                <div class="col-12">
-                    <h6>DO {{item.doNo}}</h6>
-                </div>
-            </div>
-
-            <div class="row mt-2">
-                <div class="col-12">
-                    <dx-data-grid id="gridContainer" [dataSource]="item.dataSource" [remoteOperations]="false"
-                        [allowColumnReordering]="true" [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
-                        [showColumnLines]="true" [showRowLines]="true">
-                        <dxi-column dataField="itemIndex" caption="No." [width]="80" alignment="center"></dxi-column>
-                        <dxi-column dataField="materialCode" caption="Material" minWidth="150"
-                            alignment="left"></dxi-column>
-                        <dxi-column dataField="materialDesc" caption="Material Description" minWidth="250"
-                            alignment="left"></dxi-column>
-                        <dxi-column dataField="heatNo" caption="Heat No." [width]="120" alignment="center"></dxi-column>
-                        <dxi-column dataField="quantity" caption="Quantity" [width]="80" alignment="right"></dxi-column>
-                        <dxi-column [width]="150" alignment="center" cellTemplate="selectTemplate">
-                            <div *dxTemplate="let cell of 'selectTemplate'">
-                                <button style="width: 90px;" *ngIf="cell.data.status == 'Select'"
-                                    class="btn btn-sm btn-outline-success" (click)="onClickSelect()"><i class="fa-solid fa-check"></i>
-                                    Select</button>
-                                <button style="width: 90px;" *ngIf="cell.data.status != 'Select'"
-                                    class="btn btn-sm btn-outline-warning" (click)="onClickEdit()"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
-                            </div>
-                        </dxi-column>
-                        <dxi-column [width]="150" alignment="center" cellTemplate="addDetailTemplate">
-                            <div *dxTemplate="let cell of 'addDetailTemplate'">
-                                <button class="btn btn-sm btn-outline-secondary" (click)="onClickAddDetail(cell.data)"><i class="fa-solid fa-pen-to-square"></i> Add
-                                    Detail</button>
-                            </div>
-                        </dxi-column>
-                        <dxi-column [width]="150" alignment="center" cellTemplate="sentLinkTemplate">
-                            <div *dxTemplate="let cell of 'sentLinkTemplate'">
-                                <button class="btn btn-sm btn-outline-info" (click)="onClickSentLink()"><i class="fa-regular fa-paper-plane"></i> Sent
-                                    Link</button>
-                            </div>
-                        </dxi-column>
-                    </dx-data-grid>
-                </div>
-            </div>
-        </div>
-    </div>
-
+<div class="container-fluid">
     <div class="row">
-        <div class="col-12 text-center mt-4">
-            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickExit()"><i class="fa-solid fa-xmark"></i>
-                Exit</button>
+        <div class="col-xl-12">
+            <div class="card shadow-sm p-2 mb-2 bg-white rounded">
+                <div class="card-header">
+                    <h6>Shipment</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row" *ngFor="let item of list">
+                        <div class="col-12">
+                            <div class="row mt-4">
+                                <div class="col-12">
+                                    <h6>DO {{item.doNo}}</h6>
+                                </div>
+                            </div>
+
+                            <div class="row mt-2">
+                                <div class="col-12">
+                                    <dx-data-grid id="gridContainer" [dataSource]="item.dataSource"
+                                        [remoteOperations]="false" [allowColumnReordering]="true"
+                                        [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
+                                        [showColumnLines]="true" [showRowLines]="true">
+                                        <dxi-column dataField="itemIndex" caption="No." [width]="80"
+                                            alignment="center"></dxi-column>
+                                        <dxi-column dataField="materialCode" caption="Material" minWidth="150"
+                                            alignment="left"></dxi-column>
+                                        <dxi-column dataField="materialDesc" caption="Material Description"
+                                            minWidth="250" alignment="left"></dxi-column>
+                                        <dxi-column dataField="heatNo" caption="Heat No." [width]="120"
+                                            alignment="center"></dxi-column>
+                                        <dxi-column dataField="quantity" caption="Quantity" [width]="80"
+                                            alignment="right"></dxi-column>
+                                        <dxi-column [width]="150" alignment="center" cellTemplate="selectTemplate">
+                                            <div *dxTemplate="let cell of 'selectTemplate'">
+                                                <button style="width: 90px;" *ngIf="cell.data.status == 'Select'"
+                                                    class="btn btn-sm btn-outline-success" (click)="onClickSelect()"><i
+                                                        class="fa-solid fa-check"></i>
+                                                    Select</button>
+                                                <button style="width: 90px;" *ngIf="cell.data.status != 'Select'"
+                                                    class="btn btn-sm btn-outline-warning" (click)="onClickEdit()"><i
+                                                        class="fa-solid fa-pen-to-square"></i> Edit</button>
+                                            </div>
+                                        </dxi-column>
+                                        <dxi-column [width]="150" alignment="center" cellTemplate="addDetailTemplate">
+                                            <div *dxTemplate="let cell of 'addDetailTemplate'">
+                                                <button class="btn btn-sm btn-outline-secondary"
+                                                    (click)="onClickAddDetail(cell.data)"><i
+                                                        class="fa-solid fa-pen-to-square"></i> Add
+                                                    Detail</button>
+                                            </div>
+                                        </dxi-column>
+                                        <dxi-column [width]="150" alignment="center" cellTemplate="sentLinkTemplate">
+                                            <div *dxTemplate="let cell of 'sentLinkTemplate'">
+                                                <button class="btn btn-sm btn-outline-info"
+                                                    (click)="onClickSentLink()"><i
+                                                        class="fa-regular fa-paper-plane"></i> Sent
+                                                    Link</button>
+                                            </div>
+                                        </dxi-column>
+                                    </dx-data-grid>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 text-center mt-4">
+                            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickExit()"><i
+                                    class="fa-solid fa-xmark"></i>
+                                Exit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
 
 <ng-template #selectTemplate>
     <div class="modal-header">
@@ -99,7 +117,8 @@
                         cellTemplate="checkBoxTemplate">
                         <div *dxTemplate="let cell of 'checkBoxTemplate'">
                             <div class="text-center">
-                                <input class="form-check-input" type="checkbox" [(ngModel)]="cell.value" (change)="onCheckBoxChange($event,cell.data)">
+                                <input class="form-check-input" type="checkbox" [(ngModel)]="cell.value"
+                                    (change)="onCheckBoxChange($event,cell.data)">
                             </div>
                         </div>
                     </dxi-column>
@@ -151,7 +170,7 @@
                 <label for="detail" class="pt-1">Detail</label>
             </div>
             <div class="col-9">
-                <textarea type="text" id="detail" class="form-control" rows="4"></textarea >
+                <textarea type="text" id="detail" class="form-control" rows="4"></textarea>
             </div>
         </div>
         <div class="row mt-2">
@@ -161,10 +180,11 @@
             <div class="col-1 pt-1">
                 <input name="isStamp" class="form-check-input" type="checkbox">
             </div>
-            
+
         </div>
         <div class="col-12 text-center mt-4">
-            <button class="btn btn-sm btn-success" (click)="onClickConfirmAddDetail()"><i class="fa-regular fa-circle-check"></i>
+            <button class="btn btn-sm btn-success" (click)="onClickConfirmAddDetail()"><i
+                    class="fa-regular fa-circle-check"></i>
                 Confirm</button>
             <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
                 Cancel</button>

@@ -1,3 +1,5 @@
+
+
 <div class="container container justify-content-center pt-2">
     <div class="row mt-2">
         <h6>ประวัติการสั่งซื้อ</h6>
@@ -34,11 +36,14 @@
     <div class="row mt-4">
         <div class="col-12">
             <dx-data-grid id="gridContainer" [dataSource]="dataSource" [remoteOperations]="false"
-                [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'"
-                [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
+                [allowColumnReordering]="true" [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
+                [showColumnLines]="true" [showRowLines]="true">
 
-
-                <dxi-column dataField="doNo" caption="DO" dataType="string" [width]="120"
+                <dxi-column dataField="poNo" caption="PO No." dataType="string" [width]="120"
+                    alignment="center"></dxi-column>
+                <dxi-column dataField="soNo" caption="Sale Order No." dataType="string" [width]="120"
+                    alignment="center"></dxi-column>
+                <dxi-column dataField="doNo" caption="Delivery Order No." dataType="string" [width]="120"
                     alignment="center"></dxi-column>
                 <dxi-column dataField="date" caption="Date" dataType="date" [width]="100"
                     alignment="center"></dxi-column>

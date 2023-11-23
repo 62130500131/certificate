@@ -4,6 +4,8 @@ export class CustomerHistoryViewModel {
     itemNo: number;
     materialDesc: string;
     qty: number;
+    poNo: string;
+    soNo: string;
 
     constructor() {
         this.doNo = '';
@@ -11,6 +13,8 @@ export class CustomerHistoryViewModel {
         this.itemNo = 0;
         this.materialDesc = '';
         this.qty = 0;
+        this.poNo = '';
+        this.soNo = '';
     }
 }
 
@@ -19,10 +23,13 @@ export class CustomerHistorySearchParam {
     dateDo: number;
     dateFrom: string;
     dateTo: string;
+
+
     constructor() {
         this.materialDesc = '';
         this.dateDo = 90;
         this.dateFrom = '';
         this.dateTo = '';
+
     }
 }

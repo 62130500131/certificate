@@ -1,29 +1,41 @@
-<nav *ngIf="isShow" class="navbar navbar-expand-lg navbar-light" style="background-color: #3C3C8C;">
-  <a class="navbar-brand ms-2" href="#" style="color: white;">TMT Certificate</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<div class="row pt-4" *ngIf="isShow" style="background-color: white;padding-bottom: 1rem; width: 100%;">
+  <div class="col">
+    <a class="navbar-brand" href="#" style="color: #3C3C8C;margin-left: 5rem;font-size: 20px;">TMT Certificate</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</div>
+<nav *ngIf="isShow" class="navbar navbar-expand-sm shadow-sm p-2 mb-2"
+  style="background-color: rgb(244 244 255);justify-content: center;">
+  <div class="row ">
+    <div class="col">
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link mx-2" style="color: white;" href="certificate-list">Certificate</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link mx-2" style="color: white;" href="mapping-certificate">Map Certificate</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link mx-2" style="color: white;" href="mapping-material">Map Material</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link mx-2" style="color: white;" href="quality-assurance-status">Quality Assurance</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link mx-2" style="color: white;" href="production-status">Production Status</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link mx-2" style="color: white;" href="customer-contract">Customer Contact</a>
-      </li>
-    </ul>
+      <div class="container-fluid" style="padding-top: 0;">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link mx-2" href="certificate-list"><i class="fa-solid fa-laptop-file me-2"></i>Certificate</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-2" href="mapping-certificate"><i class="fa-solid fa-check-to-slot me-2"></i>Map Certificate</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-2" href="mapping-material"><i class="fa-solid fa-handshake-simple me-2"></i>Map Material</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-2" href="quality-assurance-status"><i class="fa-solid fa-user-gear me-2"></i>Quality Assurance</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-2" href="production-status"><i class="fa-solid fa-users me-2"></i>Production Status</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-2" href="customer-contract"><i class="fa-solid fa-id-card-clip me-2"></i>Customer Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </nav>

@@ -1,72 +1,80 @@
-<div class="container container justify-content-center pt-2">
-  <div class="row mt-2">
-    <h6>Customer Contact</h6>
-  </div>
-  <hr>
-
-  <div class="row mt-4">
-    <div class="col-2 offset-1 text-end pt-2">
-      <label class="form-label" for="customer">Customer</label>
-    </div>
-    <div class="col-3">
-      <input id="customer" class="form-control" type="text">
-    </div>
-  </div>
-
-  <div class="row mt-2">
-    <div class="col-2 offset-1 text-end pt-2">
-      <label class="form-label" for="province">Province</label>
-    </div>
-    <div class="col-3">
-      <input id="province" class="form-control" type="text">
-    </div>
-    <div class="col-2 text-end pt-2">
-      <label class="form-label" for="district">District</label>
-    </div>
-    <div class="col-3">
-      <input id="district" class="form-control" type="text">
-    </div>
-  </div>
-
-  <div class="row mt-2">
-    <div class="col-2 offset-3">
-      <button class="btn btn-sm btn-success"><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
-      <button class="btn btn-sm btn-secondary ms-2"><i class="fa-solid fa-broom me-1"></i>Clear</button>
-    </div>
-  </div>
-  <hr>
-
-
+<div class="container-fluid">
   <div class="row">
-    <div class="col-12 text-end">
-      <button class="btn btn-sm btn-success" (click)="onClickImport()"><i
-          class="fa-solid fa-file-import me-1"></i>Import</button>
-      <button class="btn btn-sm btn-success ms-2" (click)="onClickExport()"><i
-          class="fa-solid fa-file-excel me-1"></i>Export</button>
-    </div>
-  </div>
-
-  <div class="row mt-2">
-    <div class="col-12">
-      <dx-data-grid #grid id="grid" [dataSource]="dataSource" [remoteOperations]="false"
-        [allowColumnReordering]="true" [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
-        [showColumnLines]="true" [showRowLines]="true">
-
-        <dxi-column dataField="customerCode" caption="Customer Code" width="120" alignment="center"></dxi-column>
-        <dxi-column dataField="customerName" caption="Customer Name" minWidth="300" alignment="left"></dxi-column>
-        <dxi-column dataField="province" caption="Province" width="150" alignment="left"></dxi-column>
-        <dxi-column dataField="district" caption="District" width="150" alignment="left"></dxi-column>
-        <dxi-column dataField="line" caption="Line" width="150" alignment="left"></dxi-column>
-        <dxi-column dataField="modifiedBy" caption="Modified By" width="150" alignment="left"></dxi-column>
-        <dxi-column dataField="modifiedTime" caption="Modified Time" width="150" alignment="center"
-          cellTemplate="dateTemplate">
-        </dxi-column>
-
-        <div *dxTemplate="let cell of 'dateTemplate'">
-          {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
+    <div class="col-xl-12">
+      <div class="card shadow-sm p-2 mb-2 bg-white rounded">
+        <div class="card-header">
+          <h6>Customer Contact</h6>
         </div>
+        <div class="card-body">
+          <div class="row mt-4">
+            <div class="col-2 offset-1 text-end pt-2">
+              <label class="form-label" for="customer">Customer</label>
+            </div>
+            <div class="col-3">
+              <input id="customer" class="form-control" type="text">
+            </div>
+          </div>
 
-      </dx-data-grid>
+          <div class="row mt-2">
+            <div class="col-2 offset-1 text-end pt-2">
+              <label class="form-label" for="province">Province</label>
+            </div>
+            <div class="col-3">
+              <input id="province" class="form-control" type="text">
+            </div>
+            <div class="col-2 text-end pt-2">
+              <label class="form-label" for="district">District</label>
+            </div>
+            <div class="col-3">
+              <input id="district" class="form-control" type="text">
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-2 offset-3">
+              <button class="btn btn-sm btn-success"><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
+              <button class="btn btn-sm btn-secondary ms-2"><i class="fa-solid fa-broom me-1"></i>Clear</button>
+            </div>
+          </div>
+          <hr>
+
+
+          <div class="row">
+            <div class="col-12 text-end">
+              <button class="btn btn-sm btn-success" (click)="onClickImport()"><i
+                  class="fa-solid fa-file-import me-1"></i>Import</button>
+              <button class="btn btn-sm btn-success ms-2" (click)="onClickExport()"><i
+                  class="fa-solid fa-file-excel me-1"></i>Export</button>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-12">
+              <dx-data-grid #grid id="grid" [dataSource]="dataSource" [remoteOperations]="false"
+                [allowColumnReordering]="true" [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
+                [showColumnLines]="true" [showRowLines]="true">
+
+                <dxi-column dataField="customerCode" caption="Customer Code" width="120"
+                  alignment="center"></dxi-column>
+                <dxi-column dataField="customerName" caption="Customer Name" minWidth="300"
+                  alignment="left"></dxi-column>
+                <dxi-column dataField="province" caption="Province" width="150" alignment="left"></dxi-column>
+                <dxi-column dataField="district" caption="District" width="150" alignment="left"></dxi-column>
+                <dxi-column dataField="line" caption="Line" width="150" alignment="left"></dxi-column>
+                <dxi-column dataField="modifiedBy" caption="Modified By" width="150" alignment="left"></dxi-column>
+                <dxi-column dataField="modifiedTime" caption="Modified Time" width="150" alignment="center"
+                  cellTemplate="dateTemplate">
+                </dxi-column>
+
+                <div *dxTemplate="let cell of 'dateTemplate'">
+                  {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
+                </div>
+
+              </dx-data-grid>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -132,7 +140,8 @@
 
     <div class="row pt-2">
       <div class="col-12 text-center">
-        <button [disabled]="!canClick" class="btn btn-sm btn-success" (click)="onClickConfirmImport()"><i class="fa-solid fa-circle-check me-1"></i>
+        <button [disabled]="!canClick" class="btn btn-sm btn-success" (click)="onClickConfirmImport()"><i
+            class="fa-solid fa-circle-check me-1"></i>
           Confirm</button>
         <button class="ms-2 btn btn-sm btn-secondary" (click)="onClickExitImportModal()"><i
             class="fa-solid fa-ban me-1"></i>Exit</button>
