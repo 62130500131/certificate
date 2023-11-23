@@ -16,14 +16,16 @@ export class DoShipmentEntryViewModel {
 
 export class DoShipmentDetail {
     itemIndex: number;
-    material: string;
+    materialCode: string;
+    materialDesc: string;
     heatNo: string;
     quantity: number;
     status: string;
 
     constructor() {
         this.itemIndex = 0;
-        this.material = '';
+        this.materialCode = '';
+        this.materialDesc = '';
         this.heatNo = '';
         this.quantity = 0;
         this.status = 'Select';
@@ -52,10 +54,10 @@ export class SelectQuantity {
 }
 
 export class MappingCertificateSearchParam {
-    customer : string;
-    shipment : string;
+    customer: string;
+    shipment: string;
 
-    constructor(){
+    constructor() {
         this.customer = '';
         this.shipment = '';
     }

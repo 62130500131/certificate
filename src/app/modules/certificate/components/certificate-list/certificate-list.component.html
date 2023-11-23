@@ -4,7 +4,7 @@
     </div>
     <hr>
 
-    <div class="row mt-2">
+    <div class="row mt-4">
         <div class="col-2 text-end">
             <label for="certificateNo" class="from-label pt-1">Certificate No.</label>
         </div>
@@ -48,7 +48,7 @@
             <label for="certDate" class="from-label pt-1">Certificate Date</label>
         </div>
         <div class="col-3">
-            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource" [(ngModel)]="param.certDate" class="mb-4"></dx-select-box>
+            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource" [(ngModel)]="param.certDate"></dx-select-box>
             <date-range *ngIf="param.certDate == 0" [start-date]="param.certFrom"
                 [end-date]="param.certTo" (onUpdate)="onCertDateRangeChanged($event)">
             </date-range>
@@ -57,14 +57,14 @@
             <label for="uploadDate" class="from-label pt-1">Upload Date</label>
         </div>
         <div class="col-3">
-            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource" [(ngModel)]="param.uploadDate" class="mb-4"></dx-select-box>
+            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource" [(ngModel)]="param.uploadDate"></dx-select-box>
             <date-range *ngIf="param.uploadDate == 0" [start-date]="param.uploadFrom"
                 [end-date]="param.uploadTo" (onUpdate)="onUploadDateRangeChanged($event)">
             </date-range>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row mt-2">
         <div class="col-3 offset-2">
             <button class="btn btn-sm btn-success"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
             <button class="btn btn-sm btn-secondary ms-2" (click)="onClickClear()"><i class="fa-solid fa-broom"></i> Clear</button>
