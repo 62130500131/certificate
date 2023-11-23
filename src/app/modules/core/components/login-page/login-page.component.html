@@ -1,52 +1,57 @@
 <div class="container-fluid-login">
     <div class="row">
-        <div class="col-xl-12">
-            <div class="card shadow-sm p-2 mb-2 bg-white rounded">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-8 offset-2 rounded" style=" background-color: white;">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-4" style=" background-color: #3C3C8C;">
+
+                </div>
+                <div class="col-8">
+                    <div class="card shadow-sm p-2 mb-2 bg-white rounded">
+                        <div class="card-body">
                             <div class="row">
-                                <div class="col-12 text-center pt-5">
-                                    <p class="fs-1">TMT Certificate</p>
-                                </div>
-                            </div>
-                            <div class="row mt-2">
-                                <div class="col-2 offset-1 text-end pt-1">
-                                    <label class="form-label" for="username">Username</label>
-                                </div>
-                                <div class="col-7">
-                                    <input class="form-control" id="username" type="text" autocomplete="off"
-                                        placeholder="Username" [(ngModel)]="loginParam.username">
-                                </div>
-                            </div>
-                            <div class="row mt-2">
-                                <div class="col-2 offset-1 text-end pt-1">
-                                    <label for="password">Password</label>
-                                </div>
-                                <div class="col-7">
-                                    <input class="form-control" id="password" type="password" autocomplete="off"
-                                        placeholder="Password" [(ngModel)]="loginParam.password">
-                                </div>
-                            </div>
-                            <div class="row mt-4">
-                                <div class="col-4 offset-4 text-center pt-1">
-                                    <button class="btn btn-sm btn-success" style="width: 150px;"
-                                        (click)="onClickLogin()">
-                                        Login
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="row mt-2 pb-5">
-                                <div class="col-4 offset-4 text-center">
-                                    <label class="action">
-                                        ลืมรหัสผ่าน ?
-                                    </label>
+                                <div class="col-12 rounded" style=" background-color: white;">
+                                    <div class="row">
+                                        <div class="col-12 text-center pt-5">
+                                            <p class="fs-1">TMT Certificate</p>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2 text-center">
+                                        <div class="col-8 offset-2 pt-1 text-start">
+                                            <label class="form-label" for="username">Username</label>
+                                            <input class="form-control" id="username" type="text" autocomplete="off"
+                                                placeholder="Username" [(ngModel)]="loginParam.username">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-8 offset-2 pt-1 text-start">
+                                            <label class="form-label" for="password">Password</label>
+                                            <input class="form-control" id="password" type="password" autocomplete="off"
+                                                placeholder="Password" [(ngModel)]="loginParam.password">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-4 offset-2 text-center pt-1">
+                                            <button class="btn btn-sm btn-success"
+                                                style="width: 400px; background-color: #3C3C8C; padding: 0.5rem;"
+                                                (click)="onClickLogin()">
+                                                Login
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3 pb-5">
+                                        <div class="col-4 offset-4 text-center">
+                                            <label class="action">
+                                                Forgot password?
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
