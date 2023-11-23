@@ -13,6 +13,13 @@
     vertical-align: middle !important;
 }
 
+.dx-datagrid-action, .dx-datagrid-drag-action {
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
+
+
 .dx-widget {
     font-size: 0.8125rem;
     font-family: "Kanit","Kanit",Kanit,Kanit,sans-serif;
@@ -45,9 +52,15 @@
 }
 
 .dx-datagrid-headers .dx-datagrid-table {
-    background-color: #3C3C8C;
-    color: #ffffff;
-    
+    text-align: center !important;
+    vertical-align: middle !important;
+    background-color: #584dd1;
+    color: #ffffff; 
+}
+
+.dx-row.dx-data-row.dx-row-lines {
+    border-radius: 0.175rem;
+    background-color: white;
 }
 
 .click {

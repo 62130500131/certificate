@@ -15,11 +15,10 @@
             <div class="row mt-2">
                 <div class="col-12">
                     <dx-data-grid id="gridContainer" [dataSource]="item.dataSource" [remoteOperations]="false"
-                        [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true"
-                        [width]="'100%'" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true"
-                        [rowAlternationEnabled]="true">
-                        <dxi-column dataField="itemIndex" caption="No." [width]="80" alignment="right"></dxi-column>
-                        <dxi-column dataField="materialCode" caption="Material" width="150"
+                        [allowColumnReordering]="true" [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
+                        [showColumnLines]="true" [showRowLines]="true">
+                        <dxi-column dataField="itemIndex" caption="No." [width]="80" alignment="center"></dxi-column>
+                        <dxi-column dataField="materialCode" caption="Material" minWidth="150"
                             alignment="left"></dxi-column>
                         <dxi-column dataField="materialDesc" caption="Material Description" minWidth="250"
                             alignment="left"></dxi-column>
