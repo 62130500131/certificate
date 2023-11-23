@@ -87,8 +87,8 @@
 
         <div class="col-12">
             <dx-data-grid id="gridContainer" [dataSource]="list" [remoteOperations]="false"
-                [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'"
-                [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
+                [allowColumnReordering]="true" [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
+                [showColumnLines]="true" [showRowLines]="true">
 
                 <dxo-master-detail [enabled]="true" template="detail"></dxo-master-detail>
                 <div *dxTemplate="let detail of 'detail'">

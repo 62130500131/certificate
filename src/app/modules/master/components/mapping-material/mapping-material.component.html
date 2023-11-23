@@ -48,8 +48,8 @@
     <div class="row mt-2">
         <div class="col-12">
             <dx-data-grid #grid id="gridContainer" [dataSource]="dataSource" [remoteOperations]="false"
-                [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'"
-                [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
+                [allowColumnReordering]="true" [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
+                [showColumnLines]="true" [showRowLines]="true">
 
 
                 <dxi-column width="60" alignment="center" cellTemplate="toolsTemplate">
@@ -83,8 +83,8 @@
 
             <div class="row mt-2">
                 <div class="col text-end">
-                    <i class="fa-solid fa-pen-to-square icon-edit"></i> <label class="ms-2">Edit</label>
-                    <i class="ms-2 fa-solid fa-trash icon-delete"></i> <label class="ms-2">Delete</label>
+                    <i class="fa-solid fa-pen-to-square icon-edit"></i> <label class="mx-2 legend">Edit</label>
+                    <i class="ms-2 fa-solid fa-trash icon-delete"></i> <label class="ms-2 legend">Delete</label>
                 </div>
             </div>
 
