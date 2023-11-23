@@ -184,9 +184,21 @@ body {
 .container-fluid {
     width: 100%;
     padding-top: 1rem;
-    padding-right: 4.525rem;
-    padding-left: 4.525rem;
+    padding-right: 2.725rem;
+    padding-left: 2.725rem;
 }
+
+.container-fluid-login {
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+    padding-top: 1rem;
+    padding-right: 15.725rem;
+    padding-left: 15.725rem;
+}
+
 
 .card {
     position: relative;
@@ -198,7 +210,7 @@ body {
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    border: rgb(177, 177, 177);   
+    border: rgb(177, 177, 177);
 }
 
 .card-header {
@@ -207,8 +219,8 @@ body {
     padding: 1rem;
     margin-bottom: 0;
     background-color: rgb(255, 255, 255);
-    
-    
+
+
 }
 
 .card-body {
