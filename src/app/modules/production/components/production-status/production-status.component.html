@@ -1,217 +1,242 @@
-<div class="container container justify-content-center pt-2">
-    <div class="row mt-2">
-        <h6>Production Monitor</h6>
-
-    </div>
-    <hr>
-
-    <div class="row mt-4">
-        <div class="col-2 text-end pt-2">
-            <label class="form-label" for="materialCode">Material</label>
-        </div>
-        <div class="col-3">
-            <input id="materialCode" class="form-control" type="text" [(ngModel)]="paramMonitor.materialCode">
-        </div>
-        <div class="col-2 text-end pt-2">
-            <label class="form-label">Production Date</label>
-        </div>
-        <div class="col-3">
-            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource"
-                [(ngModel)]="paramMonitor.productionDate" class="mb-2"></dx-select-box>
-            <date-range *ngIf="paramMonitor.productionDate == 0" [start-date]="paramMonitor.productionFrom"
-                [end-date]="paramMonitor.productionTo" (onUpdate)="onProductionMonitorDateRangeChanged($event)">
-            </date-range>
-        </div>
-    </div>
-
-    <div class="row mt-2">
-        <div class="col-2 text-end pt-2">
-            <label class="form-label" for="materialdesc">Status</label>
-        </div>
-        <div class="col-6 mt-2">
-            <input [(ngModel)]="selectWaitSample" class="form-check-input" type="checkbox" id="waitSample">
-            <label for="waitSample" class="mx-2">Wait Sample</label>
-            <input [(ngModel)]="selectWaitFilm" class="form-check-input" type="checkbox" id="waitFilm">
-            <label for="waitFilm" class="mx-2">Wait Film</label>
-            <input [(ngModel)]="selectSampleReady" class="form-check-input" type="checkbox" id="sampleReady">
-            <label for="sampleReady" class="mx-2">Sample Ready</label>
-            <input [(ngModel)]="selectFilmReady" class="form-check-input" type="checkbox" id="filmReady">
-            <label for="filmReady" class="mx-2">Film Ready</label>
-        </div>
-    </div>
-
-    <div class="row p-2">
-        <div class="col-3 offset-2" style="padding-left: inherit;">
-            <button class="btn btn-sm btn-success"><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
-            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickMonitorClear()"><i
-                    class="fa-solid fa-broom me-1"></i>Clear</button>
-        </div>
-    </div>
-
-    <hr>
-
-    <div class="row mt-4">
-        <div class="col-12">
-
-            <dx-data-grid id="gridContainer" [dataSource]="dataSourceMonitorStatus" [remoteOperations]="false"
-                [allowColumnReordering]="true" [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
-                [showColumnLines]="true" [showRowLines]="true">
-
-
-                <dxi-column dataField="productionOrder" caption="Production Order" dataType="number" [width]="130"
-                    alignment="center"></dxi-column>
-                <dxi-column dataField="itemNo" caption="No." dataType="number" [width]="40"
-                    alignment="center"></dxi-column>
-                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="120"
-                    alignment="left"></dxi-column>
-                <dxi-column dataField="materialDesc" caption="Material Description" dataType="string" [minWidth]="280"
-                    alignment="left"></dxi-column>
-                <dxi-column dataField="qty" caption="Qty" dataType="number" [width]="50" alignment="right">
-                </dxi-column>
-                <dxi-column dataField="soldTo" caption="Sold to" dataType="string" [width]="80"
-                    alignment="center"></dxi-column>
-                <dxi-column dataField="soldToName" caption="Sold to Name" dataType="string" [width]="280"
-                    alignment="left"></dxi-column>
-                <dxi-column dataField="grDate" caption="GR Date" dataType="string" [width]="130" alignment="center"
-                    cellTemplate="dateTemplate">
-                    <div *dxTemplate="let cell of 'dateTemplate'">
-                        {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card shadow-sm p-2 mb-2 bg-white rounded">
+                <div class="card-header">
+                    <h6>Production Monitor</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row mt-4">
+                        <div class="col-2 text-end pt-2">
+                            <label class="form-label" for="materialCode">Material</label>
+                        </div>
+                        <div class="col-3">
+                            <input id="materialCode" class="form-control" type="text"
+                                [(ngModel)]="paramMonitor.materialCode">
+                        </div>
+                        <div class="col-2 text-end pt-2">
+                            <label class="form-label">Production Date</label>
+                        </div>
+                        <div class="col-3">
+                            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource"
+                                [(ngModel)]="paramMonitor.productionDate" class="mb-2"></dx-select-box>
+                            <date-range *ngIf="paramMonitor.productionDate == 0"
+                                [start-date]="paramMonitor.productionFrom" [end-date]="paramMonitor.productionTo"
+                                (onUpdate)="onProductionMonitorDateRangeChanged($event)">
+                            </date-range>
+                        </div>
                     </div>
-                </dxi-column>
 
-                <dxi-column dataField="status" caption="Status" dataType="string" [width]="120" alignment="center"
-                    cellTemplate="statusTemplate">
-                    <div *dxTemplate="let cell of 'statusTemplate'">
-                        <label
-                            [ngClass]="{'wait': cell.data.status == 'Wait Film' || cell.data.status == 'Wait Sample' , 'ready': cell.data.status == 'Sample Ready' || cell.data.status == 'Film Ready' }">{{
-                            cell.data.status }}</label>
+                    <div class="row mt-2">
+                        <div class="col-2 text-end pt-2">
+                            <label class="form-label" for="materialdesc">Status</label>
+                        </div>
+                        <div class="col-6 mt-2">
+                            <input [(ngModel)]="selectWaitSample" class="form-check-input" type="checkbox"
+                                id="waitSample">
+                            <label for="waitSample" class="mx-2">Wait Sample</label>
+                            <input [(ngModel)]="selectWaitFilm" class="form-check-input" type="checkbox" id="waitFilm">
+                            <label for="waitFilm" class="mx-2">Wait Film</label>
+                            <input [(ngModel)]="selectSampleReady" class="form-check-input" type="checkbox"
+                                id="sampleReady">
+                            <label for="sampleReady" class="mx-2">Sample Ready</label>
+                            <input [(ngModel)]="selectFilmReady" class="form-check-input" type="checkbox"
+                                id="filmReady">
+                            <label for="filmReady" class="mx-2">Film Ready</label>
+                        </div>
                     </div>
-                </dxi-column>
 
-
-                <dxi-column width="60" alignment="center" cellTemplate="toolsTemplate">
-                    <div *dxTemplate="let cell of 'toolsTemplate'">
-                        <i style="cursor: pointer;" class="fa-solid fa-circle-up icon-update-status"
-                            (click)="OnClickUpdateStatus(cell)"
-                            [ngClass]="{'fa-solid fa-circle-up icon-update-status': cell.data.status == 'Wait Film' || cell.data.status == 'Wait Sample' , '': cell.data.status == 'Film Ready' || cell.data.status == 'Sample Ready'}"></i>
+                    <div class="row p-2">
+                        <div class="col-3 offset-2" style="padding-left: inherit;">
+                            <button class="btn btn-sm btn-success"><i
+                                    class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
+                            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickMonitorClear()"><i
+                                    class="fa-solid fa-broom me-1"></i>Clear</button>
+                        </div>
                     </div>
-                </dxi-column>
 
-            </dx-data-grid>
+                    <hr>
 
-            <div class="row mt-2">
-                <div class="col text-end">
-                    <i class="fa-solid fa-circle-up icon-update-status"></i> <label class="ms-2 legend">Update Status</label>
+                    <div class="row mt-4">
+                        <div class="col-12">
+
+                            <dx-data-grid id="gridContainer" [dataSource]="dataSourceMonitorStatus"
+                                [remoteOperations]="false" [allowColumnReordering]="true"
+                                [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
+                                [showColumnLines]="true" [showRowLines]="true">
+
+
+                                <dxi-column dataField="productionOrder" caption="Production Order" dataType="number"
+                                    [width]="130" alignment="center"></dxi-column>
+                                <dxi-column dataField="itemNo" caption="No." dataType="number" [width]="40"
+                                    alignment="center"></dxi-column>
+                                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="120"
+                                    alignment="left"></dxi-column>
+                                <dxi-column dataField="materialDesc" caption="Material Description" dataType="string"
+                                    [minWidth]="280" alignment="left"></dxi-column>
+                                <dxi-column dataField="qty" caption="Qty" dataType="number" [width]="50"
+                                    alignment="right">
+                                </dxi-column>
+                                <dxi-column dataField="soldTo" caption="Sold to" dataType="string" [width]="80"
+                                    alignment="center"></dxi-column>
+                                <dxi-column dataField="soldToName" caption="Sold to Name" dataType="string"
+                                    [width]="280" alignment="left"></dxi-column>
+                                <dxi-column dataField="grDate" caption="GR Date" dataType="string" [width]="130"
+                                    alignment="center" cellTemplate="dateTemplate">
+                                    <div *dxTemplate="let cell of 'dateTemplate'">
+                                        {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
+                                    </div>
+                                </dxi-column>
+
+                                <dxi-column dataField="status" caption="Status" dataType="string" [width]="120"
+                                    alignment="center" cellTemplate="statusTemplate">
+                                    <div *dxTemplate="let cell of 'statusTemplate'">
+                                        <label
+                                            [ngClass]="{'wait': cell.data.status == 'Wait Film' || cell.data.status == 'Wait Sample' , 'ready': cell.data.status == 'Sample Ready' || cell.data.status == 'Film Ready' }">{{
+                                            cell.data.status }}</label>
+                                    </div>
+                                </dxi-column>
+
+
+                                <dxi-column width="60" alignment="center" cellTemplate="toolsTemplate">
+                                    <div *dxTemplate="let cell of 'toolsTemplate'">
+                                        <i style="cursor: pointer;" class="fa-solid fa-circle-up icon-update-status"
+                                            (click)="OnClickUpdateStatus(cell)"
+                                            [ngClass]="{'fa-solid fa-circle-up icon-update-status': cell.data.status == 'Wait Film' || cell.data.status == 'Wait Sample' , '': cell.data.status == 'Film Ready' || cell.data.status == 'Sample Ready'}"></i>
+                                    </div>
+                                </dxi-column>
+
+                            </dx-data-grid>
+
+                            <div class="row mt-2">
+                                <div class="col text-end">
+                                    <i class="fa-solid fa-circle-up icon-update-status"></i> <label
+                                        class="ms-2 legend">Update Status</label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
 
-<div class="container container justify-content-center pt-2">
-    <div class="row mt-2">
-        <h6>Production Complete</h6>
-
-    </div>
-    <hr>
-
-    <div class="row mt-4">
-        <div class="col-2 text-end pt-2">
-            <label class="form-label" for="materialCode">Material</label>
-        </div>
-        <div class="col-3">
-            <input id="materialCode" class="form-control" type="text" [(ngModel)]="paramComplete.materialCode">
-        </div>
-        <div class="col-2 text-end pt-2">
-            <label class="form-label">Production Date</label>
-        </div>
-        <div class="col-3">
-            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource"
-                [(ngModel)]="paramComplete.productionDate" class="mb-2"></dx-select-box>
-            <date-range *ngIf="paramComplete.productionDate == 0" [start-date]="paramComplete.productionFrom"
-                [end-date]="paramComplete.productionTo" (onUpdate)="onProductionCompleteDateRangeChanged($event)">
-            </date-range>
-        </div>
-    </div>
-
-    <div class="row mt-2">
-        <div class="col-2 text-end pt-2">
-            <label class="form-label" for="materialdesc">Status</label>
-        </div>
-        <div class="col-4 mt-2">
-            <input [(ngModel)]="selectCancel" class="form-check-input" type="checkbox" id="complete">
-            <label for="complete" class="mx-2">Complete</label>
-            <input [(ngModel)]="selectComplete" class="form-check-input" type="checkbox" id="cancel">
-            <label for="cancel" class="mx-2">Cancel</label>
-        </div>
-    </div>
-
-    <div class="row p-2">
-        <div class="col-3 offset-2" style="padding-left: inherit;">
-            <button class="btn btn-sm btn-success "><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
-            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickCompleteClear()"><i
-                    class="fa-solid fa-broom me-1"></i>Clear</button>
-        </div>
-    </div>
-
-    <hr>
-
-    <div class="row mt-4">
-        <div class="col-12">
-
-            <dx-data-grid id="gridContainer" [dataSource]="dataSourceCompleteStatus" [remoteOperations]="false"
-                [allowColumnReordering]="true" [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
-                [showColumnLines]="true" [showRowLines]="true">
-
-
-                <dxi-column dataField="productionOrder" caption="Production Order" dataType="number" [width]="130"
-                    alignment="center"></dxi-column>
-                <dxi-column dataField="itemNo" caption="No." dataType="number" [width]="40"
-                    alignment="center"></dxi-column>
-                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="120"
-                    alignment="left"></dxi-column>
-                <dxi-column dataField="materialDesc" caption="Material Description" dataType="string" [minWidth]="280"
-                    alignment="left"></dxi-column>
-                <dxi-column dataField="qty" caption="Qty" dataType="number" [width]="50" alignment="right">
-                </dxi-column>
-                <dxi-column dataField="soldTo" caption="Sold to" dataType="string" [width]="80"
-                    alignment="center"></dxi-column>
-                <dxi-column dataField="soldToName" caption="Sold to Name" dataType="string" [width]="280"
-                    alignment="left"></dxi-column>
-                <dxi-column dataField="grDate" caption="GR Date" dataType="string" [width]="130" alignment="center"
-                    cellTemplate="dateTemplate">
-                    <div *dxTemplate="let cell of 'dateTemplate'">
-                        {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card shadow-sm p-2 mb-2 bg-white rounded">
+                <div class="card-header">
+                    <h6>Production Complete</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row mt-4">
+                        <div class="col-2 text-end pt-2">
+                            <label class="form-label" for="materialCode">Material</label>
+                        </div>
+                        <div class="col-3">
+                            <input id="materialCode" class="form-control" type="text"
+                                [(ngModel)]="paramComplete.materialCode">
+                        </div>
+                        <div class="col-2 text-end pt-2">
+                            <label class="form-label">Production Date</label>
+                        </div>
+                        <div class="col-3">
+                            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource"
+                                [(ngModel)]="paramComplete.productionDate" class="mb-2"></dx-select-box>
+                            <date-range *ngIf="paramComplete.productionDate == 0"
+                                [start-date]="paramComplete.productionFrom" [end-date]="paramComplete.productionTo"
+                                (onUpdate)="onProductionCompleteDateRangeChanged($event)">
+                            </date-range>
+                        </div>
                     </div>
-                </dxi-column>
 
-                <dxi-column dataField="status" caption="Status" dataType="string" [width]="120" alignment="center"
-                    cellTemplate="statusTemplate">
-                    <div *dxTemplate="let cell of 'statusTemplate'">
-                        <label
-                            [ngClass]="{'cancel': cell.data.status == 'Cancel' , 'complete': cell.data.status == 'Complete' }">{{
-                            cell.data.status }}</label>
+                    <div class="row mt-2">
+                        <div class="col-2 text-end pt-2">
+                            <label class="form-label" for="materialdesc">Status</label>
+                        </div>
+                        <div class="col-4 mt-2">
+                            <input [(ngModel)]="selectCancel" class="form-check-input" type="checkbox" id="complete">
+                            <label for="complete" class="mx-2">Complete</label>
+                            <input [(ngModel)]="selectComplete" class="form-check-input" type="checkbox" id="cancel">
+                            <label for="cancel" class="mx-2">Cancel</label>
+                        </div>
                     </div>
-                </dxi-column>
 
-                <dxi-column width="60" alignment="center" cellTemplate="toolsTemplate">
-                    <div *dxTemplate="let cell of 'toolsTemplate'">
-                        <i style="cursor: pointer;" class="fa-solid fa-circle-down icon-delete"
-                            (click)="OnClickDownStatus()"
-                            [ngClass]="{'fa-solid fa-circle-down icon-delete': cell.data.status == 'Cancel', '': cell.data.status == 'Complete'}"></i>
+                    <div class="row p-2">
+                        <div class="col-3 offset-2" style="padding-left: inherit;">
+                            <button class="btn btn-sm btn-success "><i
+                                    class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
+                            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickCompleteClear()"><i
+                                    class="fa-solid fa-broom me-1"></i>Clear</button>
+                        </div>
                     </div>
-                </dxi-column>
 
-            </dx-data-grid>
+                    <hr>
 
-            <div class="row mt-2">
-                <div class="col text-end">
-                    <i class="fa-solid fa-circle-down icon-delete"></i> <label class="ms-2 legend">Down Status</label>
+                    <div class="row mt-4">
+                        <div class="col-12">
+
+                            <dx-data-grid id="gridContainer" [dataSource]="dataSourceCompleteStatus"
+                                [remoteOperations]="false" [allowColumnReordering]="true"
+                                [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
+                                [showColumnLines]="true" [showRowLines]="true">
+
+
+                                <dxi-column dataField="productionOrder" caption="Production Order" dataType="number"
+                                    [width]="130" alignment="center"></dxi-column>
+                                <dxi-column dataField="itemNo" caption="No." dataType="number" [width]="40"
+                                    alignment="center"></dxi-column>
+                                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="120"
+                                    alignment="left"></dxi-column>
+                                <dxi-column dataField="materialDesc" caption="Material Description" dataType="string"
+                                    [minWidth]="280" alignment="left"></dxi-column>
+                                <dxi-column dataField="qty" caption="Qty" dataType="number" [width]="50"
+                                    alignment="right">
+                                </dxi-column>
+                                <dxi-column dataField="soldTo" caption="Sold to" dataType="string" [width]="80"
+                                    alignment="center"></dxi-column>
+                                <dxi-column dataField="soldToName" caption="Sold to Name" dataType="string"
+                                    [width]="280" alignment="left"></dxi-column>
+                                <dxi-column dataField="grDate" caption="GR Date" dataType="string" [width]="130"
+                                    alignment="center" cellTemplate="dateTemplate">
+                                    <div *dxTemplate="let cell of 'dateTemplate'">
+                                        {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
+                                    </div>
+                                </dxi-column>
+
+                                <dxi-column dataField="status" caption="Status" dataType="string" [width]="120"
+                                    alignment="center" cellTemplate="statusTemplate">
+                                    <div *dxTemplate="let cell of 'statusTemplate'">
+                                        <label
+                                            [ngClass]="{'cancel': cell.data.status == 'Cancel' , 'complete': cell.data.status == 'Complete' }">{{
+                                            cell.data.status }}</label>
+                                    </div>
+                                </dxi-column>
+
+                                <dxi-column width="60" alignment="center" cellTemplate="toolsTemplate">
+                                    <div *dxTemplate="let cell of 'toolsTemplate'">
+                                        <i style="cursor: pointer;" class="fa-solid fa-circle-down icon-delete"
+                                            (click)="OnClickDownStatus()"
+                                            [ngClass]="{'fa-solid fa-circle-down icon-delete': cell.data.status == 'Cancel', '': cell.data.status == 'Complete'}"></i>
+                                    </div>
+                                </dxi-column>
+
+                            </dx-data-grid>
+
+                            <div class="row mt-2">
+                                <div class="col text-end">
+                                    <i class="fa-solid fa-circle-down icon-delete"></i> <label class="ms-2 legend">Down
+                                        Status</label>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 </div>
@@ -322,7 +347,8 @@
 
         <div class="row mt-4">
             <div class="col-12 text-center">
-                <button class="btn btn-sm btn-success" (click)="onClickConfirm()"><i class="fa-regular fa-circle-check"></i>
+                <button class="btn btn-sm btn-success" (click)="onClickConfirm()"><i
+                        class="fa-regular fa-circle-check"></i>
                     Confirm</button>
                 <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
                     Cancel</button>
@@ -377,7 +403,8 @@
 
         <div class="row mt-4">
             <div class="col-12 text-center">
-                <button class="btn btn-sm btn-success" (click)="onClickConfirm()"><i class="fa-regular fa-circle-check"></i>
+                <button class="btn btn-sm btn-success" (click)="onClickConfirm()"><i
+                        class="fa-regular fa-circle-check"></i>
                     Confirm</button>
                 <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
                     Cancel</button>

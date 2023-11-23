@@ -13,7 +13,8 @@
     vertical-align: middle !important;
 }
 
-.dx-datagrid-action, .dx-datagrid-drag-action {
+.dx-datagrid-action,
+.dx-datagrid-drag-action {
     text-align: center !important;
     vertical-align: middle !important;
 }
@@ -22,7 +23,7 @@
 
 .dx-widget {
     font-size: 0.8125rem;
-    font-family: "Kanit","Kanit",Kanit,Kanit,sans-serif;
+    font-family: "Kanit", "Kanit", Kanit, Kanit, sans-serif;
     line-height: 1.35715;
 }
 
@@ -39,11 +40,12 @@
     background-clip: padding-box;
     border: var(--bs-border-width) solid var(--bs-border-color);
     border-radius: var(--bs-border-radius);
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
-.dx-widget input, .dx-widget textarea {
-    font-family: "Kanit","Kanit",Kanit,Kanit,sans-serif;
+.dx-widget input,
+.dx-widget textarea {
+    font-family: "Kanit", "Kanit", Kanit, Kanit, sans-serif;
     line-height: 1.35715;
 }
 
@@ -54,8 +56,8 @@
 .dx-datagrid-headers .dx-datagrid-table {
     text-align: center !important;
     vertical-align: middle !important;
-    background-color: #584dd1;
-    color: #ffffff; 
+    background-color: rgb(244 244 255);
+    color: #3b3b3b;
 }
 
 .dx-row.dx-data-row.dx-row-lines {
@@ -139,7 +141,7 @@ body {
 .wait {
     font-size: 12px;
     text-shadow: 0 0 0.1em rgb(226 190 255);
-    
+
     color: rgb(219 89 214);
     background-color: rgb(230 172 255 / 40%);
     min-width: 100px;
@@ -150,7 +152,7 @@ body {
 .ready {
     font-size: 12px;
     text-shadow: 0 0 0.1em rgb(255 187 140);
-    
+
     color: rgb(255 139 35);
     background-color: rgb(255 199 161 / 40%);
     min-width: 100px;
@@ -161,7 +163,6 @@ body {
 .complete {
     font-size: 12px;
     text-shadow: 0 0 0.1em rgb(60, 255, 157);
-    
     color: rgb(39, 203, 91);
     background-color: rgba(149, 255, 188, 0.4);
     min-width: 100px;
@@ -172,10 +173,46 @@ body {
 .cancel {
     font-size: 12px;
     text-shadow: 0 0 0.1em rgb(141 146 147);
-    
+
     color: rgb(91 91 91);
     background-color: rgb(169 169 169 / 40%);
     min-width: 100px;
     padding: 2px;
     border-radius: 5px;
+}
+
+.container-fluid {
+    width: 100%;
+    padding-top: 1rem;
+    padding-right: 4.525rem;
+    padding-left: 4.525rem;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: auto;
+    color: black;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: rgb(177, 177, 177);   
+}
+
+.card-header {
+    font-size: 16px;
+    font-weight: normal;
+    padding: 1rem;
+    margin-bottom: 0;
+    background-color: rgb(255, 255, 255);
+    
+    
+}
+
+.card-body {
+    font-size: 14px;
+    flex: 1 1 auto;
+    padding: 1rem;
 }

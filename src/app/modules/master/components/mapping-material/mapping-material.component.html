@@ -1,97 +1,103 @@
-<div class="container container justify-content-center pt-2">
-    <div class="row mt-2">
-        <h6>Mapping Material</h6>
-
-    </div>
-    <hr>
-
-    <div class="row mt-4">
-        <div class="col-2 text-end pt-2">
-            <label class="form-label" for="materialcode">Material</label>
-        </div>
-        <div class="col-3">
-            <input id="materialcode" class="form-control" [(ngModel)]="param.materialCode" type="text">
-        </div>
-        <div class="col-2 text-end pt-2">
-            <label class="form-label" for="materialdesc">Material Description</label>
-        </div>
-        <div class="col-3">
-            <input id="materialdesc" class="form-control" [(ngModel)]="param.materialDesc" type="text">
-        </div>
-    </div>
-
-    <div class="row p-2">
-        <div class="col-3 offset-2" style="padding-left: inherit;">
-            <button class="btn btn-sm btn-success" (click)="onClickSearch()"><i
-                    class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
-            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickClear()"><i
-                    class="fa-solid fa-broom me-1"></i>Clear</button>
-        </div>
-    </div>
-
-    <hr>
-
+<div class="container-fluid">
     <div class="row">
-        <div class="col-10">
-            <button class="btn btn-sm btn-success" (click)="onClickAdd()"><i class="fa-solid fa-plus me-1"></i>Add</button>
-        </div>
-        <div class="col-2 text-end">
-            <button class="btn btn-sm btn-success" (click)="onClickImport()"><i
-                    class="fa-solid fa-file-import me-1"></i>Import</button>
-            <button class="btn btn-sm btn-success ms-2" (click)="onClickExport()"><i
-                    class="fa-solid fa-file-excel me-1"></i>Export</button>
-        </div>
-    </div>
-
-
-
-    <div class="row mt-2">
-        <div class="col-12">
-            <dx-data-grid #grid id="gridContainer" [dataSource]="dataSource" [remoteOperations]="false"
-                [allowColumnReordering]="true" [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
-                [showColumnLines]="true" [showRowLines]="true">
-
-
-                <dxi-column width="60" alignment="center" cellTemplate="toolsTemplate">
-                    <div *dxTemplate="let cell of 'toolsTemplate'">
-                        <i style="cursor: pointer;" class="fa-solid fa-pen-to-square icon-edit"
-                            (click)="onClickEditMappingMaterial(editMappingMaterial,cell)"></i>
-                        <i style="cursor: pointer;" class="ms-2 fa-solid fa-trash icon-delete"
-                            (click)="onClickDeleteMappingMaterial()"></i>
+        <div class="col-xl-12">
+            <div class="card shadow-sm p-2 mb-2 bg-white rounded">
+                <div class="card-header">
+                    <h6>Mapping Material</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row mt-4">
+                        <div class="col-2 text-end pt-2">
+                            <label class="form-label" for="materialcode">Material</label>
+                        </div>
+                        <div class="col-3">
+                            <input id="materialcode" class="form-control" [(ngModel)]="param.materialCode" type="text">
+                        </div>
+                        <div class="col-2 text-end pt-2">
+                            <label class="form-label" for="materialdesc">Material Description</label>
+                        </div>
+                        <div class="col-3">
+                            <input id="materialdesc" class="form-control" [(ngModel)]="param.materialDesc" type="text">
+                        </div>
                     </div>
-                </dxi-column>
 
-
-                <dxi-column dataField="index" caption="No." dataType="number" [width]="40"
-                    alignment="center"></dxi-column>
-                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="200"
-                    alignment="left"></dxi-column>
-                <dxi-column dataField="materialDesc" caption="Material Description" dataType="number" [minWidth]="200"
-                    alignment="left"></dxi-column>
-                <dxi-column dataField="modifiedBy" caption="Modified By" dataType="string" [width]="150"
-                    alignment="left"></dxi-column>
-                <dxi-column dataField="modifiedTime" caption="Modified Time" dataType="data" [width]="150"
-                    alignment="center" cellTemplate="dateTemplate">
-                    <div *dxTemplate="let cell of 'dateTemplate'">
-                        {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
+                    <div class="row p-2">
+                        <div class="col-3 offset-2" style="padding-left: inherit;">
+                            <button class="btn btn-sm btn-success" (click)="onClickSearch()"><i
+                                    class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
+                            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickClear()"><i
+                                    class="fa-solid fa-broom me-1"></i>Clear</button>
+                        </div>
                     </div>
-                </dxi-column>
+
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-10">
+                            <button class="btn btn-sm btn-success" (click)="onClickAdd()"><i
+                                    class="fa-solid fa-plus me-1"></i>Add</button>
+                        </div>
+                        <div class="col-2 text-end">
+                            <button class="btn btn-sm btn-success" (click)="onClickImport()"><i
+                                    class="fa-solid fa-file-import me-1"></i>Import</button>
+                            <button class="btn btn-sm btn-success ms-2" (click)="onClickExport()"><i
+                                    class="fa-solid fa-file-excel me-1"></i>Export</button>
+                        </div>
+                    </div>
 
 
 
-            </dx-data-grid>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <dx-data-grid #grid id="gridContainer" [dataSource]="dataSource" [remoteOperations]="false"
+                                [allowColumnReordering]="true" [rowAlternationEnabled]="false" [showBorders]="true"
+                                [width]="'100%'" [showColumnLines]="true" [showRowLines]="true">
 
-            <div class="row mt-2">
-                <div class="col text-end">
-                    <i class="fa-solid fa-pen-to-square icon-edit"></i> <label class="mx-2 legend">Edit</label>
-                    <i class="ms-2 fa-solid fa-trash icon-delete"></i> <label class="ms-2 legend">Delete</label>
+
+                                <dxi-column width="60" alignment="center" cellTemplate="toolsTemplate">
+                                    <div *dxTemplate="let cell of 'toolsTemplate'">
+                                        <i style="cursor: pointer;" class="fa-solid fa-pen-to-square icon-edit"
+                                            (click)="onClickEditMappingMaterial(editMappingMaterial,cell)"></i>
+                                        <i style="cursor: pointer;" class="ms-2 fa-solid fa-trash icon-delete"
+                                            (click)="onClickDeleteMappingMaterial()"></i>
+                                    </div>
+                                </dxi-column>
+
+
+                                <dxi-column dataField="index" caption="No." dataType="number" [width]="40"
+                                    alignment="center"></dxi-column>
+                                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="200"
+                                    alignment="left"></dxi-column>
+                                <dxi-column dataField="materialDesc" caption="Material Description" dataType="number"
+                                    [minWidth]="200" alignment="left"></dxi-column>
+                                <dxi-column dataField="modifiedBy" caption="Modified By" dataType="string" [width]="150"
+                                    alignment="left"></dxi-column>
+                                <dxi-column dataField="modifiedTime" caption="Modified Time" dataType="data"
+                                    [width]="150" alignment="center" cellTemplate="dateTemplate">
+                                    <div *dxTemplate="let cell of 'dateTemplate'">
+                                        {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
+                                    </div>
+                                </dxi-column>
+
+
+
+                            </dx-data-grid>
+
+                            <div class="row mt-2">
+                                <div class="col text-end">
+                                    <i class="fa-solid fa-pen-to-square icon-edit"></i> <label
+                                        class="mx-2 legend">Edit</label>
+                                    <i class="ms-2 fa-solid fa-trash icon-delete"></i> <label
+                                        class="ms-2 legend">Delete</label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
-
-
 </div>
 
 <ng-template #addMappingMaterial>

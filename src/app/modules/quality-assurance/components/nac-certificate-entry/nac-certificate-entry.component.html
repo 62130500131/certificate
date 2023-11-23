@@ -1,140 +1,156 @@
-<div class="row" style="width: 100%; height: 92%;">
-  <div class="col-4">
-    <ngx-extended-pdf-viewer [showBookModeButton]="false" [showHandToolButton]="false"
-      [showHorizontalScrollButton]="false" [showInfiniteScrollButton]="false" [showPresentationModeButton]="false"
-      [showPropertiesButton]="false" [showPrintButton]="false" [showDrawEditor]="false" [showFindButton]="false"
-      [showWrappedScrollButton]="false" [showTextEditor]="false" [showUnverifiedSignatures]="false"
-      [showSinglePageModeButton]="false" [showVerticalScrollButton]="false" [showSidebarButton]="false"
-      [showSpreadButton]="false" [showSecondaryToolbarButton]="false" [showOpenFileButton]="false"
-      [showDownloadButton]="false" [src]="'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf'">
-    </ngx-extended-pdf-viewer>
-  </div>
-  <div class="col-8">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="card shadow-sm p-2 mb-2 bg-white rounded">
+        <div class="card-header">
+          <h6>NAC Certificate Entry</h6>
+        </div>
+        <div class="card-body">
+          <div class="row" style="width: 100%; height: 92%;">
+            <div class="col-4">
+              <ngx-extended-pdf-viewer [showBookModeButton]="false" [showHandToolButton]="false"
+                [showHorizontalScrollButton]="false" [showInfiniteScrollButton]="false"
+                [showPresentationModeButton]="false" [showPropertiesButton]="false" [showPrintButton]="false"
+                [showDrawEditor]="false" [showFindButton]="false" [showWrappedScrollButton]="false"
+                [showTextEditor]="false" [showUnverifiedSignatures]="false" [showSinglePageModeButton]="false"
+                [showVerticalScrollButton]="false" [showSidebarButton]="false" [showSpreadButton]="false"
+                [showSecondaryToolbarButton]="false" [showOpenFileButton]="false" [showDownloadButton]="false"
+                [src]="'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf'">
+              </ngx-extended-pdf-viewer>
+            </div>
+            <div class="col-8">
 
-    <div class="row pt-2">
-      <div class="col-12">
-        <h6>Upload Test Result</h6>
-        <hr>
-      </div>
-    </div>
+              <div class="row pt-2">
+                <div class="col-12">
+                  <h6>Upload Test Result</h6>
+                  <hr>
+                </div>
+              </div>
 
-    <div class="row mt-2">
-      <div class="col-2 text-end pt-1">
-        <label>Certificate No.</label>
-      </div>
-      <div class="col-3">
-        <input type="text" id="certNo" class="form-control">
-      </div>
+              <div class="row mt-2">
+                <div class="col-2 text-end pt-1">
+                  <label>Certificate No.</label>
+                </div>
+                <div class="col-3">
+                  <input type="text" id="certNo" class="form-control">
+                </div>
 
-      <div class="col-2  text-end pt-1">
-        <label>Date of Test.</label>
-      </div>
-      <div class="col-3">
-        <input type="date" id="date" class="form-control">
-      </div>
-    </div>
+                <div class="col-2  text-end pt-1">
+                  <label>Date of Test.</label>
+                </div>
+                <div class="col-3">
+                  <input type="date" id="date" class="form-control">
+                </div>
+              </div>
 
-    <div class="row mt-2">
-      <div class="col-2 text-end pt-1">
-        <label for="stardardSpecific">Standard/Specific</label>
-      </div>
-      <div class="col-3">
-        <input type="text" id="stardardSpecific" class="form-control">
-      </div>
+              <div class="row mt-2">
+                <div class="col-2 text-end pt-1">
+                  <label for="stardardSpecific">Standard/Specific</label>
+                </div>
+                <div class="col-3">
+                  <input type="text" id="stardardSpecific" class="form-control">
+                </div>
 
-      <div class="col-2 text-end pt-1">
-        <label for="commodity">Commodity</label>
-      </div>
-      <div class="col-3">
-        <input type="text" id="commodity" class="form-control">
-      </div>
-    </div>
+                <div class="col-2 text-end pt-1">
+                  <label for="commodity">Commodity</label>
+                </div>
+                <div class="col-3">
+                  <input type="text" id="commodity" class="form-control">
+                </div>
+              </div>
 
-    <div class="row mt-2">
-      <div class="col-2 text-end pt-1">
-        <label for="certNo">Testing Machine No.</label>
-      </div>
-      <div class="col-3">
-        <input type="text" id="certNo" class="form-control">
-      </div>
+              <div class="row mt-2">
+                <div class="col-2 text-end pt-1">
+                  <label for="certNo">Testing Machine No.</label>
+                </div>
+                <div class="col-3">
+                  <input type="text" id="certNo" class="form-control">
+                </div>
 
-      <div class="col-2 text-end pt-1">
-        <label for="certDate">Order No.</label>
-      </div>
-      <div class="col-3">
-        <input type="text" id="certDate" class="form-control">
-      </div>
-    </div>
-    <hr>
-    <div class="row pt-2">
-      <div class="col-12 text-end">
-        <button class="btn btn-sm btn-success"><i class="fa-solid fa-plus"></i> Add</button>
-        <button class="btn btn-sm btn-primary ms-2"><i class="fa-solid fa-file"></i> Read PDF</button>
-      </div>
-    </div>
+                <div class="col-2 text-end pt-1">
+                  <label for="certDate">Order No.</label>
+                </div>
+                <div class="col-3">
+                  <input type="text" id="certDate" class="form-control">
+                </div>
+              </div>
+              <hr>
+              <div class="row pt-2">
+                <div class="col-12 text-end">
+                  <button class="btn btn-sm btn-success"><i class="fa-solid fa-plus"></i> Add</button>
+                  <button class="btn btn-sm btn-primary ms-2"><i class="fa-solid fa-file"></i> Read PDF</button>
+                </div>
+              </div>
 
-    <div class="overflow-auto mt-2">
-      <dx-data-grid id="gridContainer" [dataSource]="dataSourceCeritificate" [remoteOperations]="false"
-        [allowColumnReordering]="false" [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'"
-        [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
+              <div class="overflow-auto mt-2">
+                <dx-data-grid id="gridContainer" [dataSource]="dataSourceCeritificate" [remoteOperations]="false"
+                  [allowColumnReordering]="false" [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'"
+                  [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
 
 
-        <dxi-column dataField="dimention" caption="Dimention" dataType="string" [minWidth]="300"
-          alignment="left"></dxi-column>
-        <dxi-column [width]="60" caption="C" dataField="c" alignment="center">
-        </dxi-column>
-        <dxi-column [width]="60" caption="Si" dataField="si" alignment="center">
-        </dxi-column>
-        <dxi-column [width]="60" caption="Mn" dataField="mn" alignment="center">
-        </dxi-column>
-        <dxi-column [width]="60" caption="P" dataField="p" alignment="center">
-        </dxi-column>
-        <dxi-column [width]="60" caption="S" dataField="s" alignment="center">
-        </dxi-column>
-        <dxi-column [width]="130" caption="Y.S." dataField="ys" alignment="center">
-        </dxi-column>
-        <dxi-column [width]="130" caption="T.S." dataField="ts" alignment="center">
-        </dxi-column>
-        <dxi-column [width]="130" caption="Elongation" dataField="elongation" alignment="center">
-        </dxi-column>
-        <dxi-column [width]="130" caption="Hardness" dataField="hardness" alignment="center">
-        </dxi-column>
-        <dxi-column [width]="130" caption="Bend Test" dataField="bendTest" alignment="center">
-        </dxi-column>
-        <dxi-column [width]="130" caption="Compression" dataField="compression" alignment="center">
-        </dxi-column>
-        <dxi-column [width]="130" caption="Impact Energy" dataField="impactEnergy" alignment="center"
-          cellTemplate="impactEnergyTemplate">
-          <div *dxTemplate="let cell of 'impactEnergyTemplate'">
-            <label *ngIf="cell.data.impactEnergy == 0">{{ '-' || cell.data.impactEnergy }}</label>
+                  <dxi-column dataField="dimention" caption="Dimention" dataType="string" [minWidth]="300"
+                    alignment="left"></dxi-column>
+                  <dxi-column [width]="60" caption="C" dataField="c" alignment="center">
+                  </dxi-column>
+                  <dxi-column [width]="60" caption="Si" dataField="si" alignment="center">
+                  </dxi-column>
+                  <dxi-column [width]="60" caption="Mn" dataField="mn" alignment="center">
+                  </dxi-column>
+                  <dxi-column [width]="60" caption="P" dataField="p" alignment="center">
+                  </dxi-column>
+                  <dxi-column [width]="60" caption="S" dataField="s" alignment="center">
+                  </dxi-column>
+                  <dxi-column [width]="130" caption="Y.S." dataField="ys" alignment="center">
+                  </dxi-column>
+                  <dxi-column [width]="130" caption="T.S." dataField="ts" alignment="center">
+                  </dxi-column>
+                  <dxi-column [width]="130" caption="Elongation" dataField="elongation" alignment="center">
+                  </dxi-column>
+                  <dxi-column [width]="130" caption="Hardness" dataField="hardness" alignment="center">
+                  </dxi-column>
+                  <dxi-column [width]="130" caption="Bend Test" dataField="bendTest" alignment="center">
+                  </dxi-column>
+                  <dxi-column [width]="130" caption="Compression" dataField="compression" alignment="center">
+                  </dxi-column>
+                  <dxi-column [width]="130" caption="Impact Energy" dataField="impactEnergy" alignment="center"
+                    cellTemplate="impactEnergyTemplate">
+                    <div *dxTemplate="let cell of 'impactEnergyTemplate'">
+                      <label *ngIf="cell.data.impactEnergy == 0">{{ '-' || cell.data.impactEnergy }}</label>
+                    </div>
+                  </dxi-column>
+
+                  <dxi-column width="40" cellTemplate="deleteTemplate" alignment="center">
+                    <div *dxTemplate="let cell of 'deleteTemplate'">
+                      <i class="fa-solid fa-trash icon-delete click"></i>
+                    </div>
+                  </dxi-column>
+
+                </dx-data-grid>
+
+              </div>
+
+
+              <div class="row mt-2">
+                <div class="col-12 text-end">
+                  <span class="legend"><i class="fa-solid fa-trash icon-delete mx-2"></i>Delete</span>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12 text-center">
+                  <button class="btn btn-sm btn-success" (click)="onClickConfrim()"><i
+                      class="fa-solid fa-floppy-disk"></i>
+                    Confrim</button>
+                  <button class="btn btn-sm btn-secondary ms-2" (click)="onClickCancel()"><i
+                      class="fa-solid fa-xmark"></i>
+                    Cancel</button>
+                </div>
+              </div>
+
+            </div>
           </div>
-        </dxi-column>
-
-        <dxi-column width="40" cellTemplate="deleteTemplate" alignment="center">
-          <div *dxTemplate="let cell of 'deleteTemplate'">
-            <i class="fa-solid fa-trash icon-delete click"></i>
-          </div>
-        </dxi-column>
-
-      </dx-data-grid>
-
-    </div>
-
-
-    <div class="row mt-2">
-      <div class="col-12 text-end">
-        <span class="legend"><i class="fa-solid fa-trash icon-delete mx-2"></i>Delete</span>
+        </div>
       </div>
     </div>
-
-    <div class="row">
-      <div class="col-12 text-center">
-        <button class="btn btn-sm btn-success" (click)="onClickConfrim()"><i class="fa-solid fa-floppy-disk"></i>
-          Confrim</button>
-        <button class="btn btn-sm btn-secondary ms-2" (click)="onClickCancel()"><i class="fa-solid fa-xmark"></i>
-          Cancel</button>
-      </div>
-    </div>
-
   </div>
 </div>

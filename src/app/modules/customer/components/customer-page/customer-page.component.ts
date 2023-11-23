@@ -38,42 +38,54 @@ export class CustomerPageComponent {
       date: new Date,
       itemNo: 1,
       materialDesc: "ท่อดำ 3/4x 2.0mm x 6400mm",
-      qty: 20
+      qty: 20,
+      poNo: "H243409",
+      soNo: "130054806",
     },
     {
       doNo: "21567891",
       date: new Date,
       itemNo: 2,
       materialDesc: "เหล็กฉาก SS400 ความยาวใดๆ",
-      qty: 10
+      qty: 10,
+      poNo: "H243409",
+      soNo: "130054806",
     },
     {
       doNo: "21567892",
       date: new Date,
       itemNo: 1,
       materialDesc: "เหล็กลายพับตามแบบ",
-      qty: 50
+      qty: 50,
+      poNo: "H243409",
+      soNo: "130054806",
     },
     {
       doNo: "21567893",
       date: new Date,
       itemNo: 1,
       materialDesc: "ตัวซีมีขอบ ขนาดใดๆ",
-      qty: 5
+      qty: 5,
+      poNo: "H243409",
+      soNo: "130054806",
     },
     {
       doNo: "21567893",
       date: new Date,
       itemNo: 2,
       materialDesc: "เหล็กลายพับตามแบบ",
-      qty: 10
+      qty: 10,
+      poNo: "H243409",
+      soNo: "130054806",
     },
     {
       doNo: "21567893",
       date: new Date,
       itemNo: 3,
       materialDesc: "เหล็กฉาก SS400 ความยาวใดๆ",
-      qty: 25
+      qty: 25,
+      poNo: "H243409",
+      soNo: "130054806",
     }
 
   ];

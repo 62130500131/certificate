@@ -1,128 +1,129 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="card shadow-sm p-2 mb-2 bg-white rounded">
+        <div class="card-header">
+          <h6>Certificate Entry No.42523050482</h6>
+        </div>
+        <div class="card-body">
+          <div class="row mt-2" style="width: 100%; height: 89.5%;">
+            <div class="col-4">
+              <ngx-extended-pdf-viewer [showBookModeButton]="false" [showHandToolButton]="false"
+                [showHorizontalScrollButton]="false" [showInfiniteScrollButton]="false"
+                [showPresentationModeButton]="false" [showPropertiesButton]="false" [showPrintButton]="false"
+                [showDrawEditor]="false" [showFindButton]="false" [showWrappedScrollButton]="false"
+                [showTextEditor]="false" [showUnverifiedSignatures]="false" [showSinglePageModeButton]="false"
+                [showVerticalScrollButton]="false" [showSidebarButton]="false" [showSpreadButton]="false"
+                [showSecondaryToolbarButton]="false" [showOpenFileButton]="false" [showDownloadButton]="false"
+                [src]="src">
+              </ngx-extended-pdf-viewer>
+            </div>
+            <div class="col-8">
+              <div class="row">
+                <div class="col-12">
+                  <h6>Certificate Info</h6>
+                  <hr>
+                </div>
+              </div>
 
+              <div class="row mt-2">
+                <div class="col-2 text-end">
+                  <label>Mill</label>
+                </div>
+                <div class="col-3">
+                  <label>SYS</label>
+                </div>
 
-<div class="row mt-4" style="width: 100%; height: 89.5%;">
-  <div class="col-4">
-    <ngx-extended-pdf-viewer [showBookModeButton]="false" 
-    [showHandToolButton]="false" 
-    [showHorizontalScrollButton]="false"
-    [showInfiniteScrollButton]="false"
-    [showPresentationModeButton]="false"
-    [showPropertiesButton]="false" 
-    [showPrintButton]="false" 
-    [showDrawEditor]="false"
-    [showFindButton]="false"
-    [showWrappedScrollButton]="false"
-    [showTextEditor]="false"
-    [showUnverifiedSignatures]="false"
-    [showSinglePageModeButton]="false"
-    [showVerticalScrollButton]="false"
-    [showSidebarButton]="false"
-    [showSpreadButton]="false"
-    [showSecondaryToolbarButton]="false"
-    [showOpenFileButton]="false"
-    [showDownloadButton]="false"
-      [src]="src">
-    </ngx-extended-pdf-viewer>
-  </div>
-  <div class="col-8">
+                <div class="col-2  text-end">
+                  <label>Upload Date</label>
+                </div>
+                <div class="col-3">
+                  {{ today }}
+                </div>
+              </div>
 
-    <div class="row">
-      <div class="col-12">
-        <h6>Certificate Info</h6>
-        <hr>
-      </div>
-    </div>
+              <div class="row mt-2">
+                <div class="col-2 text-end pt-1">
+                  <label for="certNo">Certificate No.</label>
+                </div>
+                <div class="col-3">
+                  <input type="text" id="certNo" class="form-control">
+                </div>
 
-    <div class="row mt-2">
-      <div class="col-2 text-end">
-        <label>Mill</label>
-      </div>
-      <div class="col-3">
-        <label>SYS</label>
-      </div>
+                <div class="col-2 text-end pt-1">
+                  <label for="certDate">Certificate Date</label>
+                </div>
+                <div class="col-3">
+                  <input type="text" id="certDate" class="form-control">
+                </div>
+              </div>
 
-      <div class="col-2  text-end">
-        <label>Upload Date</label>
-      </div>
-      <div class="col-3">
-        {{ today }}
-      </div>
-    </div>
+              <div class="row mt-2">
+                <div class="col-2 text-end pt-1">
+                  <label for="remark">Remark</label>
+                </div>
+                <div class="col-8">
+                  <textarea type="text" id="remark" class="form-control">
+                        </textarea>
+                </div>
+              </div>
 
-    <div class="row mt-2">
-      <div class="col-2 text-end pt-1">
-        <label for="certNo">Certificate No.</label>
-      </div>
-      <div class="col-3">
-        <input type="text" id="certNo" class="form-control">
-      </div>
+              <div class="row">
+                <div class="col-12">
+                  <h6>Material Detail</h6>
+                  <hr>
+                </div>
+              </div>
 
-      <div class="col-2 text-end pt-1">
-        <label for="certDate">Certificate Date</label>
-      </div>
-      <div class="col-3">
-        <input type="text" id="certDate" class="form-control">
-      </div>
-    </div>
+              <div class="row">
+                <div class="col-12 text-end">
+                  <button class="btn btn-sm btn-success"><i class="fa-solid fa-plus"></i> Add</button>
+                  <button class="btn btn-sm btn-primary ms-2"><i class="fa-solid fa-file"></i> Read PDF</button>
+                </div>
+              </div>
 
-    <div class="row mt-2">
-      <div class="col-2 text-end pt-1">
-        <label for="remark">Remark</label>
-      </div>
-      <div class="col-8">
-        <textarea type="text" id="remark" class="form-control">
-        </textarea>
-      </div>
-    </div>
+              <div class="overflow-auto mt-2">
+                <dx-data-grid id="gridContainer" [dataSource]="list" [remoteOperations]="false"
+                  [allowColumnReordering]="true" [rowAlternationEnabled]="false" [rowAlternationEnabled]="false"
+                  [showBorders]="true" [width]="'100%'" [showColumnLines]="true" [showRowLines]="true">
 
-    <div class="row">
-      <div class="col-12">
-        <h6>Material Detail</h6>
-        <hr>
-      </div>
-    </div>
+                  <dxi-column width="250" caption="Material Description" alignment="left"
+                    dataField="millDesc"></dxi-column>
+                  <dxi-column width="120" caption="Material" alignment="left" dataField="tmtMaterial"></dxi-column>
+                  <dxi-column width="250" caption="Description" alignment="left" dataField="tmtDesc"></dxi-column>
+                  <dxi-column width="80" caption="Grade" alignment="center" dataField="grade"></dxi-column>
+                  <dxi-column width="100" caption="Heat No." alignment="center" dataField="heatNo"></dxi-column>
+                  <dxi-column width="100" caption="Quantity" alignment="right" dataField="quantity"></dxi-column>
+                  <dxi-column width="100" caption="Unit" alignment="center" dataField="unit"></dxi-column>
+                  <dxi-column width="100" caption="Remark" alignment="center" dataField="remark"></dxi-column>
+                  <dxi-column width="40" cellTemplate="deleteTemplate" alignment="center">
+                    <div *dxTemplate="let cell of 'deleteTemplate'">
+                      <i class="fa-solid fa-trash icon-delete click"></i>
+                    </div>
+                  </dxi-column>
 
-    <div class="row">
-      <div class="col-12 text-end">
-        <button class="btn btn-sm btn-success"><i class="fa-solid fa-plus"></i> Add</button>
-        <button class="btn btn-sm btn-primary ms-2"><i class="fa-solid fa-file"></i> Read PDF</button>
-      </div>
-    </div>
+                </dx-data-grid>
+              </div>
 
-    <div class="overflow-auto mt-2">
-      <dx-data-grid id="gridContainer" [dataSource]="list" [remoteOperations]="false" [allowColumnReordering]="true"
-        [rowAlternationEnabled]="false" [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
-        [showColumnLines]="true" [showRowLines]="true">
+              <div class="row mt-2">
+                <div class="col-12 text-end">
+                  <span class="legend"><i class="fa-solid fa-trash icon-delete mx-2"></i>Delete</span>
+                </div>
+              </div>
 
-        <dxi-column width="250" caption="Material Description" alignment="left" dataField="millDesc"></dxi-column>
-        <dxi-column width="120" caption="Material" alignment="left" dataField="tmtMaterial"></dxi-column>
-        <dxi-column width="250" caption="Description" alignment="left" dataField="tmtDesc"></dxi-column>
-        <dxi-column width="80" caption="Grade" alignment="center" dataField="grade"></dxi-column>
-        <dxi-column width="100" caption="Heat No." alignment="center" dataField="heatNo"></dxi-column>
-        <dxi-column width="100" caption="Quantity" alignment="right" dataField="quantity"></dxi-column>
-        <dxi-column width="100" caption="Unit" alignment="center" dataField="unit"></dxi-column>
-        <dxi-column width="100" caption="Remark" alignment="center" dataField="remark"></dxi-column>
-        <dxi-column width="40" cellTemplate="deleteTemplate" alignment="center">
-          <div *dxTemplate="let cell of 'deleteTemplate'">
-            <i class="fa-solid fa-trash icon-delete click"></i>
+              <div class="row">
+                <div class="col-12 text-center">
+                  <button class="btn btn-sm btn-success" (click)="onClickSave()"><i class="fa-solid fa-floppy-disk"></i>
+                    Save</button>
+                  <button class="btn btn-sm btn-secondary ms-2" (click)="onClickExit()"><i
+                      class="fa-solid fa-xmark"></i> Exit</button>
+                </div>
+              </div>
+
+            </div>
           </div>
-        </dxi-column>
-
-      </dx-data-grid>
-    </div>
-
-    <div class="row mt-2">
-      <div class="col-12 text-end">
-        <span class="legend"><i class="fa-solid fa-trash icon-delete mx-2"></i>Delete</span>
+        </div>
       </div>
     </div>
-
-    <div class="row">
-      <div class="col-12 text-center">
-        <button class="btn btn-sm btn-success" (click)="onClickSave()"><i class="fa-solid fa-floppy-disk"></i> Save</button>
-        <button class="btn btn-sm btn-secondary ms-2" (click)="onClickExit()"><i class="fa-solid fa-xmark"></i> Exit</button>
-      </div>
-    </div>
-
   </div>
 </div>

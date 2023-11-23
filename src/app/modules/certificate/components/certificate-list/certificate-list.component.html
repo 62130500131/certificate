@@ -1,138 +1,155 @@
-<div class="container justify-content-center pt-2">
-    <div class="row mt-2">
-        <h6>Certificate Info</h6>
-    </div>
-    <hr>
-
-    <div class="row mt-4">
-        <div class="col-2 text-end">
-            <label for="certificateNo" class="from-label pt-1">Certificate No.</label>
-        </div>
-        <div class="col-3">
-            <input id="certificateNo" type="text" class="form-control" [(ngModel)]="param.certNo">
-        </div>
-    </div>
-
-    <div class="row mt-2 text-center">
-        <div class="col-2 text-end">
-            <label for="material" class="from-label pt-1">Material</label>
-        </div>
-        <div class="col-3">
-            <dx-select-box displayExpr="text" valueExpr="value" [items]="materialDataSource" [(ngModel)]="param.material"></dx-select-box>
-        </div>
-        <div class="col-2 text-end">
-            <label for="grade" class="from-label pt-1">Grade</label>
-        </div>
-        <div class="col-3">
-            <dx-select-box displayExpr="text" valueExpr="value" [items]="gradeDataSource" [(ngModel)]="param.grade"></dx-select-box>
-        </div>
-    </div>
-
-    <div class="row mt-2 text-center">
-        <div class="col-2 text-end">
-            <label for="mill" class="from-label pt-1">Mill</label>
-        </div>
-        <div class="col-3">
-            <dx-select-box displayExpr="text" valueExpr="value" [items]="millDataSource" [(ngModel)]="param.mill"></dx-select-box>
-        </div>
-        <div class="col-2 text-end">
-            <label for="heatNo" class="from-label pt-1">Heat No.</label>
-        </div>
-        <div class="col-3">
-            <input id="heatNo" type="text" class="form-control" [(ngModel)]="param.heatNo">
-        </div>
-    </div>
-
-    <div class="row mt-2 text-center">
-        <div class="col-2 text-end">
-            <label for="certDate" class="from-label pt-1">Certificate Date</label>
-        </div>
-        <div class="col-3">
-            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource" [(ngModel)]="param.certDate"></dx-select-box>
-            <date-range *ngIf="param.certDate == 0" [start-date]="param.certFrom"
-                [end-date]="param.certTo" (onUpdate)="onCertDateRangeChanged($event)">
-            </date-range>
-        </div>
-        <div class="col-2 text-end">
-            <label for="uploadDate" class="from-label pt-1">Upload Date</label>
-        </div>
-        <div class="col-3">
-            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource" [(ngModel)]="param.uploadDate"></dx-select-box>
-            <date-range *ngIf="param.uploadDate == 0" [start-date]="param.uploadFrom"
-                [end-date]="param.uploadTo" (onUpdate)="onUploadDateRangeChanged($event)">
-            </date-range>
-        </div>
-    </div>
-
-    <div class="row mt-2">
-        <div class="col-3 offset-2">
-            <button class="btn btn-sm btn-success"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
-            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickClear()"><i class="fa-solid fa-broom"></i> Clear</button>
-        </div>
-    </div>
-
-    <div class="row mt-2">
-        <div class="col-6 text-start">
-            <h6>Certificate Detail</h6>
-        </div>
-        <hr>
-    </div>
-
-    <div class="row mt-2">
-        <div class="col-12 text-end">
-            <button class="btn btn-sm btn-primary" (click)="onClickUpload()"><i class="fa-solid fa-upload"></i> Upload</button>
-        </div>
-    </div>
-    <div class="row mt-2">
-
-        <div class="col-12">
-            <dx-data-grid id="gridContainer" [dataSource]="list" [remoteOperations]="false"
-                [allowColumnReordering]="true" [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
-                [showColumnLines]="true" [showRowLines]="true">
-
-                <dxo-master-detail [enabled]="true" template="detail"></dxo-master-detail>
-                <div *dxTemplate="let detail of 'detail'">
-                    <certificate-list-detail [dataSource]="detail.data.dataSource"></certificate-list-detail>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card shadow-sm p-2 mb-2 bg-white rounded">
+                <div class="card-header">
+                    <h6>Certificate Info</h6>
                 </div>
-                <dxi-column width="150" caption="Certificate No." alignment="center" dataField="certNo" cellTemplate="actionTemplate"></dxi-column>
-                <dxi-column minWidth="40" caption="Mill" alignment="left" dataField="mill"></dxi-column>
-                <dxi-column width="120" caption="Total Material" alignment="right"
-                    dataField="totalMaterial"></dxi-column>
-                <dxi-column width="150" caption="Certificate Date" alignment="center" dataField="certDate"
-                    cellTemplate="dateTemplate"></dxi-column>
-                <dxi-column width="150" caption="Upload Date" alignment="center" dataField="uploadDate"
-                    cellTemplate="dateTemplate"></dxi-column>
-                <dxi-column width="150" caption="Modified By" alignment="center" dataField="modifiedBy"></dxi-column>
-                <dxi-column width="150" caption="Modified Time" alignment="center" dataField="modifiedTime"
-                    cellTemplate="dateTemplate"></dxi-column>
-
-                <dxi-column width="40" cellTemplate="deleteTemplate" alignment="center">
-                    <div *dxTemplate="let cell of 'deleteTemplate'">
-                        <i class="fa-solid fa-trash icon-delete click"></i>
+                <div class="card-body">
+                    <div class="row mt-4">
+                        <div class="col-2 text-end">
+                            <label for="certificateNo" class="from-label pt-1">Certificate No.</label>
+                        </div>
+                        <div class="col-3">
+                            <input id="certificateNo" type="text" class="form-control" [(ngModel)]="param.certNo">
+                        </div>
                     </div>
-                </dxi-column>
-                <div *dxTemplate="let cell of 'dateTemplate'">
-                    {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
-                </div>
-                <div *dxTemplate="let cell of 'actionTemplate'">
-                    <span class="action" (click)="onClickCertNo()">
-                        {{ cell.value }}
-                    </span>
-                </div>
 
-            </dx-data-grid>
+                    <div class="row mt-2 text-center">
+                        <div class="col-2 text-end">
+                            <label for="material" class="from-label pt-1">Material</label>
+                        </div>
+                        <div class="col-3">
+                            <dx-select-box displayExpr="text" valueExpr="value" [items]="materialDataSource"
+                                [(ngModel)]="param.material"></dx-select-box>
+                        </div>
+                        <div class="col-2 text-end">
+                            <label for="grade" class="from-label pt-1">Grade</label>
+                        </div>
+                        <div class="col-3">
+                            <dx-select-box displayExpr="text" valueExpr="value" [items]="gradeDataSource"
+                                [(ngModel)]="param.grade"></dx-select-box>
+                        </div>
+                    </div>
 
-        </div>
-        <div class="row mt-2 text-end">
-            <div class="col text-end">
-                <span class="legend"><i class="fa-solid fa-trash icon-delete mx-2"></i>Delete</span>
+                    <div class="row mt-2 text-center">
+                        <div class="col-2 text-end">
+                            <label for="mill" class="from-label pt-1">Mill</label>
+                        </div>
+                        <div class="col-3">
+                            <dx-select-box displayExpr="text" valueExpr="value" [items]="millDataSource"
+                                [(ngModel)]="param.mill"></dx-select-box>
+                        </div>
+                        <div class="col-2 text-end">
+                            <label for="heatNo" class="from-label pt-1">Heat No.</label>
+                        </div>
+                        <div class="col-3">
+                            <input id="heatNo" type="text" class="form-control" [(ngModel)]="param.heatNo">
+                        </div>
+                    </div>
+
+                    <div class="row mt-2 text-center">
+                        <div class="col-2 text-end">
+                            <label for="certDate" class="from-label pt-1">Certificate Date</label>
+                        </div>
+                        <div class="col-3">
+                            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource"
+                                [(ngModel)]="param.certDate"></dx-select-box>
+                            <date-range *ngIf="param.certDate == 0" [start-date]="param.certFrom"
+                                [end-date]="param.certTo" (onUpdate)="onCertDateRangeChanged($event)">
+                            </date-range>
+                        </div>
+                        <div class="col-2 text-end">
+                            <label for="uploadDate" class="from-label pt-1">Upload Date</label>
+                        </div>
+                        <div class="col-3">
+                            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource"
+                                [(ngModel)]="param.uploadDate"></dx-select-box>
+                            <date-range *ngIf="param.uploadDate == 0" [start-date]="param.uploadFrom"
+                                [end-date]="param.uploadTo" (onUpdate)="onUploadDateRangeChanged($event)">
+                            </date-range>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-3 offset-2">
+                            <button class="btn btn-sm btn-success"><i class="fa-solid fa-magnifying-glass"></i>
+                                Search</button>
+                            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickClear()"><i
+                                    class="fa-solid fa-broom"></i>
+                                Clear</button>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-6 text-start">
+                            <h6>Certificate Detail</h6>
+                        </div>
+                        <hr>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-12 text-end">
+                            <button class="btn btn-sm btn-primary" (click)="onClickUpload()"><i
+                                    class="fa-solid fa-upload"></i>
+                                Upload</button>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+
+                        <div class="col-12">
+                            <dx-data-grid id="gridContainer" [dataSource]="list" [remoteOperations]="false"
+                                [allowColumnReordering]="true" [rowAlternationEnabled]="false" [showBorders]="true"
+                                [width]="'100%'" [showColumnLines]="true" [showRowLines]="true">
+
+                                <dxo-master-detail [enabled]="true" template="detail"></dxo-master-detail>
+                                <div *dxTemplate="let detail of 'detail'">
+                                    <certificate-list-detail
+                                        [dataSource]="detail.data.dataSource"></certificate-list-detail>
+                                </div>
+                                <dxi-column width="150" caption="Certificate No." alignment="center" dataField="certNo"
+                                    cellTemplate="actionTemplate"></dxi-column>
+                                <dxi-column minWidth="40" caption="Mill" alignment="left" dataField="mill"></dxi-column>
+                                <dxi-column width="120" caption="Total Material" alignment="right"
+                                    dataField="totalMaterial"></dxi-column>
+                                <dxi-column width="150" caption="Certificate Date" alignment="center"
+                                    dataField="certDate" cellTemplate="dateTemplate"></dxi-column>
+                                <dxi-column width="150" caption="Upload Date" alignment="center" dataField="uploadDate"
+                                    cellTemplate="dateTemplate"></dxi-column>
+                                <dxi-column width="150" caption="Modified By" alignment="center"
+                                    dataField="modifiedBy"></dxi-column>
+                                <dxi-column width="150" caption="Modified Time" alignment="center"
+                                    dataField="modifiedTime" cellTemplate="dateTemplate"></dxi-column>
+
+                                <dxi-column width="40" cellTemplate="deleteTemplate" alignment="center">
+                                    <div *dxTemplate="let cell of 'deleteTemplate'">
+                                        <i class="fa-solid fa-trash icon-delete click"></i>
+                                    </div>
+                                </dxi-column>
+                                <div *dxTemplate="let cell of 'dateTemplate'">
+                                    {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
+                                </div>
+                                <div *dxTemplate="let cell of 'actionTemplate'">
+                                    <span class="action" (click)="onClickCertNo()">
+                                        {{ cell.value }}
+                                    </span>
+                                </div>
+
+                            </dx-data-grid>
+
+                        </div>
+
+                        <div class="row mt-2 ms-2">
+                            <div class="col text-end">
+                                <i class="fa-solid fa-trash icon-delete me-2"></i> <label class="legend">Delete</label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
-
-
-
 </div>
 
 <ng-template #importTemplate>
@@ -147,7 +164,8 @@
                 <label for="mill-upload" class="pt-1">Mill</label>
             </div>
             <div class="col-7">
-                <dx-select-box displayExpr="text" valueExpr="value" [items]="millDataSource" [(ngModel)]="millForUpload"></dx-select-box>
+                <dx-select-box displayExpr="text" valueExpr="value" [items]="millDataSource"
+                    [(ngModel)]="millForUpload"></dx-select-box>
             </div>
         </div>
         <div class="row mt-2">
@@ -158,8 +176,10 @@
         </div>
         <div class="row mt-4">
             <div class="col-12 text-center">
-                <button class="btn btn-sm btn-primary" [disabled]="!millForUpload || !fileToUpload" (click)="onClickConfirmUpload()"><i class="fa-solid fa-upload"></i> Upload</button>
-                <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i> Cancel</button>
+                <button class="btn btn-sm btn-primary" [disabled]="!millForUpload || !fileToUpload"
+                    (click)="onClickConfirmUpload()"><i class="fa-solid fa-upload"></i> Upload</button>
+                <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
+                    Cancel</button>
             </div>
         </div>
     </div>
