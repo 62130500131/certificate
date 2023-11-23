@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class CertificateEntryComponent implements OnInit {
 
   public src = 'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf'
+  // public src = 'https://webcert.siamyamato.com/webcert/ViewPDF.aspx?certNo=y6frUhKCC2N2ky7j5AGPeA%3d%3d'
   public today = '20-Nov-2023';
   public list: certificateEntryListViewModel[] = [{
     millDesc: 'H 148x100x6x12.00M',
