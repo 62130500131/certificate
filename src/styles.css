@@ -13,6 +13,33 @@
     vertical-align: middle !important;
 }
 
+.dx-widget {
+    font-size: 0.8125rem;
+    font-family: "Kanit","Kanit",Kanit,Kanit,sans-serif;
+    line-height: 1.35715;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    appearance: none;
+    background-color: var(--bs-body-bg);
+    background-clip: padding-box;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.dx-widget input, .dx-widget textarea {
+    font-family: "Kanit","Kanit",Kanit,Kanit,sans-serif;
+    line-height: 1.35715;
+}
+
 .error-message {
     color: red;
 }
@@ -20,6 +47,7 @@
 .dx-datagrid-headers .dx-datagrid-table {
     background-color: #3C3C8C;
     color: #ffffff;
+    
 }
 
 .click {
@@ -32,19 +60,23 @@
 }
 
 .icon-edit {
-    color: orange;
+    color: rgb(255, 197, 90);
 }
 
 .icon-delete {
-    color: red;
+    color: rgb(255, 113, 113);
 }
 
 .icon-update {
-    color: green;
+    color: rgb(114, 218, 114);
 }
 
 .icon-update-status {
-    color: rgb(0, 177, 247);
+    color: rgb(78, 205, 255);
+}
+
+.legend {
+    font-size: 0.75rem;
 }
 
 .dx-datagrid-content .dx-datagrid-table .dx-row>td,
@@ -58,4 +90,79 @@ html {
 
 body {
     height: 100%;
+}
+
+.btn {
+    font-size: 12px;
+}
+
+.btn-success {
+    background-color: #2dcb73;
+    color: white;
+    border-radius: 5px;
+    min-width: 85px;
+    min-height: 30px;
+    border-color: white;
+}
+
+.btn-secondary {
+    background-color: #c2ccc9;
+    color: white;
+    border-radius: 5px;
+    min-width: 85px;
+    min-height: 30px;
+    border-color: white;
+}
+
+.btn-primary {
+    background-color: #5dc4ff;
+    color: white;
+    border-radius: 5px;
+    min-width: 85px;
+    min-height: 30px;
+    border-color: white;
+}
+
+.wait {
+    font-size: 12px;
+    text-shadow: 0 0 0.1em rgb(226 190 255);
+    
+    color: rgb(219 89 214);
+    background-color: rgb(230 172 255 / 40%);
+    min-width: 100px;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+.ready {
+    font-size: 12px;
+    text-shadow: 0 0 0.1em rgb(255 187 140);
+    
+    color: rgb(255 139 35);
+    background-color: rgb(255 199 161 / 40%);
+    min-width: 100px;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+.complete {
+    font-size: 12px;
+    text-shadow: 0 0 0.1em rgb(60, 255, 157);
+    
+    color: rgb(39, 203, 91);
+    background-color: rgba(149, 255, 188, 0.4);
+    min-width: 100px;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+.cancel {
+    font-size: 12px;
+    text-shadow: 0 0 0.1em rgb(141 146 147);
+    
+    color: rgb(91 91 91);
+    background-color: rgb(169 169 169 / 40%);
+    min-width: 100px;
+    padding: 2px;
+    border-radius: 5px;
 }
