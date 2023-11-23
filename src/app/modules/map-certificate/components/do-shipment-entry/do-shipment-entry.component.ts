@@ -91,6 +91,9 @@ export class DoShipmentEntryComponent {
       material: '2CTFB',
       materialDesc: 'เหล็กดำ ตัดซอยตามขนาด',
       heatNo: 'DB1077',
+      grade: 'SS400',
+      yield: '290',
+      tensile: '50',
       mill: 'SYS',
       remain: 20,
       quantity: 20
@@ -101,6 +104,9 @@ export class DoShipmentEntryComponent {
       material: '2CTFB',
       materialDesc: 'เหล็กดำ ตัดซอยตามขนาด',
       heatNo: 'DB1077',
+      grade: 'SS400',
+      yield: '290',
+      tensile: '50',
       mill: 'SYS',
       remain: 20,
       quantity: 20
@@ -111,6 +117,9 @@ export class DoShipmentEntryComponent {
       material: '2CTFB',
       materialDesc: 'เหล็กดำ ตัดซอยตามขนาด',
       heatNo: 'DB1099',
+      grade: 'SS400',
+      yield: '290',
+      tensile: '50',
       mill: 'SYS',
       remain: 20,
       quantity: 20
@@ -127,14 +136,14 @@ export class DoShipmentEntryComponent {
 
   public onClickEdit(): void {
     this.modalRef = this.modalService.show(this.selectTemplate, {
-      class: 'modal-xl'
+      class: 'modal-full'
     })
   }
   
   public onClickSelect(): void {
     this.selectDataSource.forEach(x => x.isSelected = false)
     this.modalRef = this.modalService.show(this.selectTemplate, {
-      class: 'modal-xl'
+      class: 'modal-full'
     })
   }
 

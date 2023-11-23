@@ -37,6 +37,9 @@ export class SelectQuantity {
     material: string;
     materialDesc: string;
     heatNo: string;
+    grade: string;
+    yield: string;
+    tensile: string;
     mill: string;
     remain: number;
     quantity: number;
@@ -47,6 +50,9 @@ export class SelectQuantity {
         this.material = '';
         this.materialDesc = '';
         this.heatNo = '';
+        this.grade = '';
+        this.yield = '';
+        this.tensile = '';
         this.mill = '';
         this.remain = 0;
         this.quantity = 0;

@@ -228,3 +228,9 @@ body {
     flex: 1 1 auto;
     padding: 1rem;
 }
+
+.modal-dialog.modal-full {
+    max-width: 100vw !important;
+    padding-left: 4.525rem;
+    padding-right: 4.525rem;
+}
