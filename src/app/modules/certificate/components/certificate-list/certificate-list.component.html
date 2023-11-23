@@ -4,7 +4,7 @@
     </div>
     <hr>
 
-    <div class="row mt-4">
+    <div class="row mt-2">
         <div class="col-2 text-end">
             <label for="certificateNo" class="from-label pt-1">Certificate No.</label>
         </div>
@@ -13,7 +13,7 @@
         </div>
     </div>
 
-    <div class="row mt-4 text-center">
+    <div class="row mt-2 text-center">
         <div class="col-2 text-end">
             <label for="material" class="from-label pt-1">Material</label>
         </div>
@@ -28,7 +28,7 @@
         </div>
     </div>
 
-    <div class="row mt-4 text-center">
+    <div class="row mt-2 text-center">
         <div class="col-2 text-end">
             <label for="mill" class="from-label pt-1">Mill</label>
         </div>
@@ -43,7 +43,7 @@
         </div>
     </div>
 
-    <div class="row mt-4">
+    <div class="row mt-2">
         <div class="col-2 text-end">
             <label for="certDate" class="from-label pt-1">Certificate Date</label>
         </div>
@@ -64,10 +64,10 @@
         </div>
     </div>
 
-    <div class="row mt-4">
+    <div class="row mt-2">
         <div class="col-3 offset-2">
-            <button class="btn btn-success"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
-            <button class="btn btn-secondary ms-2" (click)="onClickClear()"><i class="fa-solid fa-broom"></i> Clear</button>
+            <button class="btn btn-sm btn-success"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickClear()"><i class="fa-solid fa-broom"></i> Clear</button>
         </div>
     </div>
 
@@ -80,10 +80,10 @@
 
     <div class="row mt-2">
         <div class="col-12 text-end">
-            <button class="btn btn-primary" (click)="onClickUpload()"><i class="fa-solid fa-upload"></i> Upload</button>
+            <button class="btn btn-sm btn-primary" (click)="onClickUpload()"><i class="fa-solid fa-upload"></i> Upload</button>
         </div>
     </div>
-    <div class="row mt-4">
+    <div class="row mt-2">
 
         <div class="col-12">
             <dx-data-grid id="gridContainer" [dataSource]="list" [remoteOperations]="false"
@@ -142,7 +142,7 @@
     </div>
 
     <div class="modal-body">
-        <div class="row mt-4">
+        <div class="row mt-2">
             <div class="col-2 offset-1 text-end">
                 <label for="mill-upload" class="pt-1">Mill</label>
             </div>
@@ -150,7 +150,7 @@
                 <dx-select-box displayExpr="text" valueExpr="value" [items]="millDataSource" [(ngModel)]="millForUpload"></dx-select-box>
             </div>
         </div>
-        <div class="row mt-4">
+        <div class="row mt-2">
             <div class="col-7 offset-3">
                 <input #fileInput class="form-control rounded-pill" #myInput type="file" name="filename"
                     (change)="handleFileInput($event)">
@@ -158,8 +158,8 @@
         </div>
         <div class="row mt-4">
             <div class="col-12 text-center">
-                <button class="btn btn-primary" [disabled]="!millForUpload || !fileToUpload" (click)="onClickConfirmUpload()"><i class="fa-solid fa-upload"></i> Upload</button>
-                <button class="btn btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i> Cancel</button>
+                <button class="btn btn-sm btn-primary" [disabled]="!millForUpload || !fileToUpload" (click)="onClickConfirmUpload()"><i class="fa-solid fa-upload"></i> Upload</button>
+                <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i> Cancel</button>
             </div>
         </div>
     </div>

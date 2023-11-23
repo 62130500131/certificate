@@ -42,8 +42,8 @@
 
     <div class="row p-2">
         <div class="col-3 offset-2">
-            <button class="btn btn-success"><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
-            <button class="btn btn-secondary ms-2" (click)="onClickClear()"><i
+            <button class="btn btn-sm btn-success"><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
+            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickClear()"><i
                     class="fa-solid fa-broom me-1"></i>Clear</button>
         </div>
     </div>
@@ -147,8 +147,8 @@
 
     <div class="row p-2">
         <div class="col-3 offset-2">
-            <button class="btn btn-success"><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
-            <button class="btn btn-secondary ms-2" (click)="onClickClearComplete()"><i
+            <button class="btn btn-sm btn-success"><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
+            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickClearComplete()"><i
                     class="fa-solid fa-broom me-1"></i>Clear</button>
         </div>
     </div>
@@ -336,9 +336,9 @@
         </div>
         <div class="row mt-4">
             <div class="col-12 text-center">
-                <button class="btn btn-primary" [disabled]="!materialTypeUpload || !fileToUpload"
+                <button class="btn btn-sm btn-primary" [disabled]="!materialTypeUpload || !fileToUpload"
                     (click)="onClickConfirmUpload()"><i class="fa-solid fa-upload"></i> Upload</button>
-                <button class="btn btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
+                <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
                     Cancel</button>
             </div>
         </div>
