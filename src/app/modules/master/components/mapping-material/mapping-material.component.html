@@ -208,17 +208,23 @@
                     </dxo-sorting>
                     <dxi-column width="250" cellTemplate="issueTemplate" alignment="center" caption="Issue"
                         dataField="issue" dataType="string">
-                        <div *dxTemplate="let cell of 'issueTemplate'">
+                        <div *dxTemplate="let cell of 'issueTemplate'" style="text-align: left;">
                             <span class="error-message" [innerText]="cell.value.join('\n')"></span>
                         </div>
                     </dxi-column>
-                    <dxi-column width="200" caption="Material" dataField="materialCode" alignment="center">
+                    <dxi-column width="200" caption="Material" dataField="materialCode" alignment="center"
+                        cellTemplate="leftTemplate">
+                        <div *dxTemplate="let cell of 'leftTemplate'" style="text-align: left;">
+                            <span>{{cell.value}}</span>
+                        </div>
                     </dxi-column>
-                    <dxi-column minWidth="250" caption="Description" dataField="materialDesc" alignment="center">
+                    <dxi-column minWidth="250" caption="Description" dataField="materialDesc" alignment="center"
+                        cellTemplate="leftTemplate">
                     </dxi-column>
                     <dxi-column width="80" caption="Mill" dataField="mill" alignment="center">
                     </dxi-column>
-                    <dxi-column minWidth="250" caption="Mill Description" dataField="millDesc" alignment="center">
+                    <dxi-column minWidth="250" caption="Mill Description" dataField="millDesc" alignment="center"
+                        cellTemplate="leftTemplate">
                     </dxi-column>
                 </dx-data-grid>
             </div>

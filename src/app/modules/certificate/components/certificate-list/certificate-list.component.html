@@ -123,11 +123,11 @@
 
                                 <dxi-column width="40" cellTemplate="deleteTemplate" alignment="center">
                                     <div *dxTemplate="let cell of 'deleteTemplate'">
-                                        <i class="fa-solid fa-trash icon-delete click"></i>
+                                        <i (click)="onClickDelete()" class="fa-solid fa-trash icon-delete click"></i>
                                     </div>
                                 </dxi-column>
                                 <div *dxTemplate="let cell of 'dateTemplate'">
-                                    {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
+                                    {{ cell.value | date: 'dd-MMM-yyyy' }}
                                 </div>
                                 <div *dxTemplate="let cell of 'actionTemplate'">
                                     <span class="action" (click)="onClickCertNo()">

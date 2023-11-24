@@ -1,4 +1,4 @@
-export class searchParamCertificateList {
+export class SearchParamCertificateList {
     certNo: string;
     material: string;
     grade: string;
@@ -26,7 +26,7 @@ export class searchParamCertificateList {
     }
 }
 
-export class certificateListViewModel {
+export class CertificateListViewModel {
     certNo: string;
     mill: string;
     totalMaterial: number;
@@ -34,7 +34,7 @@ export class certificateListViewModel {
     uploadDate: any;
     modifiedBy: string;
     modifiedTime: any;
-    dataSource: certificateListDetailViewModel[];
+    dataSource: CertificateListDetailViewModel[];
 
     public constructor() {
         this.certNo = ''
@@ -48,13 +48,14 @@ export class certificateListViewModel {
     }
 }
 
-export class certificateListDetailViewModel {
+export class CertificateListDetailViewModel {
     material: string;
     materialDesc: string;
     grade: string;
     heatNo: string;
     quantity: number;
     unit: string;
+    millDesc: string;
 
     public constructor() {
         this.material = '';
@@ -63,10 +64,11 @@ export class certificateListDetailViewModel {
         this.heatNo = '';
         this.quantity = 0;
         this.unit = '';
+        this.millDesc = '';
     }
 }
 
-export class certificateEntryListViewModel {
+export class CertificateEntryListViewModel {
     millDesc: string;
     tmtMaterial: string;
     tmtDesc: string;

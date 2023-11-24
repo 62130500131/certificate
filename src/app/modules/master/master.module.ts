@@ -4,11 +4,11 @@ import { SharedModule } from '../shared/shared.module';
 @NgModule({
     declarations: [
         comps.MappingMaterialComponent,
-        comps.CustomerContractComponent
-
+        comps.CustomerContractComponent,
+        comps.SyncDataComponent
     ],
     imports: [
         SharedModule
     ]
-  })
-  export class MasterModule { }
+})
+export class MasterModule { }

@@ -1,5 +1,5 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
-import { certificateListViewModel, searchParamCertificateList } from '../../models/certificate-list.model';
+import { CertificateListViewModel, SearchParamCertificateList } from '../../models/certificate-list.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class CertificateListComponent {
   @ViewChild('importTemplate') importTemplate!: TemplateRef<any>;
-  public param: searchParamCertificateList = new searchParamCertificateList();
+  public param: SearchParamCertificateList = new SearchParamCertificateList();
   public modalRef!: BsModalRef;
   public fileToUpload: any;
   public millForUpload: string = '';
@@ -98,7 +98,7 @@ export class CertificateListComponent {
 
 
   ];
-  public list: certificateListViewModel[] = [
+  public list: CertificateListViewModel[] = [
     {
       certNo: "42523050482",
       mill: "SYS",
@@ -109,6 +109,7 @@ export class CertificateListComponent {
       modifiedTime: new Date(),
       dataSource: [
         {
+          millDesc: 'H 148x100x6x12.00M',
           material: '2CTFB',
           materialDesc: 'เหล็กแผ่นดำ ตัดซอยตามขนาด',
           grade: 'SS400',
@@ -117,6 +118,7 @@ export class CertificateListComponent {
           unit: 'PC'
         },
         {
+          millDesc: 'H 200x60x11.80M',
           material: '2CTFB020-0060-1180',
           materialDesc: 'เหล็กแผ่นดำ 2.00 x 60 x 1180 mm SS400',
           grade: 'SS400',
@@ -125,6 +127,7 @@ export class CertificateListComponent {
           unit: 'PC'
         },
         {
+          millDesc: 'H 200x60x11.80M',
           material: '2CTFB020-0818-2128',
           materialDesc: 'เหล็กแผ่นดำ 2.00 x 818 x 2128 mm SS400',
           grade: 'SS400',
@@ -133,6 +136,7 @@ export class CertificateListComponent {
           unit: 'PC'
         },
         {
+          millDesc: 'H 200x60x11.80M',
           material: '2CTFB020-0820-1762',
           materialDesc: 'เหล็กแผ่นดำ 2.00 x 820 x 1762 mm SS400',
           grade: 'SS400',
@@ -152,6 +156,7 @@ export class CertificateListComponent {
       modifiedTime: new Date(),
       dataSource: [
         {
+          millDesc: 'H 148x100x6x12.00M',
           material: '2CTFB',
           materialDesc: 'เหล็กแผ่นดำ ตัดซอยตามขนาด',
           grade: 'SS400',
@@ -160,6 +165,7 @@ export class CertificateListComponent {
           unit: 'PC'
         },
         {
+          millDesc: 'H 200x60x11.80M',
           material: '2CTFB020-0060-1180',
           materialDesc: 'เหล็กแผ่นดำ 2.00 x 60 x 1180 mm SS400',
           grade: 'SS400',
@@ -179,6 +185,7 @@ export class CertificateListComponent {
       modifiedTime: new Date(),
       dataSource: [
         {
+          millDesc: 'H 148x100x6x12.00M',
           material: '2CTFB',
           materialDesc: 'เหล็กแผ่นดำ ตัดซอยตามขนาด',
           grade: 'SS400',
@@ -187,6 +194,7 @@ export class CertificateListComponent {
           unit: 'PC'
         },
         {
+          millDesc: 'H 200x60x11.80M',
           material: '2CTFB020-0060-1180',
           materialDesc: 'เหล็กแผ่นดำ 2.00 x 60 x 1180 mm SS400',
           grade: 'SS400',
@@ -206,6 +214,7 @@ export class CertificateListComponent {
       modifiedTime: new Date(),
       dataSource: [
         {
+          millDesc: 'H 200x60x11.80M',
           material: '2CTFB020-0060-1180',
           materialDesc: 'เหล็กแผ่นดำ 2.00 x 60 x 1180 mm SS400',
           grade: 'SS400',
@@ -254,7 +263,7 @@ export class CertificateListComponent {
   }
 
   public onClickClear(): void {
-    this.param= new searchParamCertificateList();
+    this.param= new SearchParamCertificateList();
   }
 
   public onClickCertNo():void {
@@ -266,6 +275,10 @@ export class CertificateListComponent {
     this.modalRef = this.modalService.show(this.importTemplate, {
       class: 'modal-lg'
     })
+  }
+
+  public onClickDelete(): void {
+    confirm("Are you sure you want to delete this item?");
   }
 
   public onClickConfirmUpload():void{

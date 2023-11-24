@@ -119,7 +119,7 @@
           </dxo-sorting>
           <dxi-column width="250" cellTemplate="issueTemplate" alignment="center" caption="Issue" dataField="issue"
             dataType="string">
-            <div *dxTemplate="let cell of 'issueTemplate'">
+            <div *dxTemplate="let cell of 'issueTemplate'" style="text-align: left;">
               <span class="error-message" [innerText]="cell.value.join('\n')"></span>
             </div>
           </dxi-column>
@@ -130,13 +130,23 @@
             </div>
           </dxi-column>
           <dxi-column dataField="customerCode" caption="Customer Code" width="120" alignment="center"></dxi-column>
-          <dxi-column dataField="customerName" caption="Customer Name" minWidth="300" alignment="center"></dxi-column>
-          <dxi-column dataField="province" caption="Province" width="150" alignment="center"></dxi-column>
-          <dxi-column dataField="district" caption="District" width="150" alignment="center"></dxi-column>
-          <dxi-column dataField="line" caption="Line" width="150" alignment="center"></dxi-column>
+          <dxi-column dataField="customerName" caption="Customer Name" minWidth="300" alignment="center"
+            cellTemplate="leftTemplate">
+            <div *dxTemplate="let cell of 'leftTemplate'" style="text-align: left;">
+              <span>{{cell.value}}</span>
+            </div>
+          </dxi-column>
+          <dxi-column dataField="province" caption="Province" width="150" alignment="center"
+            cellTemplate="leftTemplate"></dxi-column>
+          <dxi-column dataField="district" caption="District" width="150" alignment="center"
+            cellTemplate="leftTemplate"></dxi-column>
+          <dxi-column dataField="line" caption="Line" width="150" alignment="center"
+            cellTemplate="leftTemplate"></dxi-column>
         </dx-data-grid>
       </div>
     </div>
+
+
 
     <div class="row pt-2">
       <div class="col-12 text-center">

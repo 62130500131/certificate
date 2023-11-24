@@ -27,6 +27,8 @@ export class ProductionStatusComponent implements OnInit {
   @ViewChild('updateStatusWaitSample') public updateStatusWaitSample!: TemplateRef<any>;
   @ViewChild('updateStatusWaitFilm') public updateStatusWaitFilm!: TemplateRef<any>;
 
+
+
   public dataSourceMonitorStatus: ProductionStatusMonitorViewModel[] = [{
     productionOrder: "1080035252",
     itemNo: 1,
@@ -200,6 +202,12 @@ export class ProductionStatusComponent implements OnInit {
 
   }
   public onClickConfirm(): void {
+    if (this.selectedStatus == "sampleReady") {
+      this.dataSourceMonitorStatus[0].status = 'Sample Ready';
+    }
+    else {
+    }
+
     this.modalRef.hide();
   }
 
