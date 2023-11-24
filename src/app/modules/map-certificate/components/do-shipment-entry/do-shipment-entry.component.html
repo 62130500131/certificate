@@ -20,28 +20,38 @@
                                         [remoteOperations]="false" [allowColumnReordering]="true"
                                         [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
                                         [showColumnLines]="true" [showRowLines]="true">
-                                        <dxi-column dataField="itemIndex" caption="No." [width]="80"
-                                            alignment="center"></dxi-column>
-                                        <dxi-column dataField="materialCode" caption="Material" minWidth="150"
+                                        <dxi-column dataField="itemIndex" caption="No." [width]="40" alignment="center"
+                                            cellTemplate="indexTemplate">
+                                            <div *dxTemplate="let cell of 'indexTemplate'">
+                                                {{cell.value}}.
+                                            </div>
+                                        </dxi-column>
+                                        <dxi-column dataField="materialCode" caption="Material" width="150"
                                             alignment="left"></dxi-column>
                                         <dxi-column dataField="materialDesc" caption="Material Description"
                                             minWidth="250" alignment="left"></dxi-column>
-                                        <dxi-column dataField="heatNo" caption="Heat No." [width]="120"
+                                        <dxi-column dataField="sprayType" caption="รูปแบบการพ่น" [width]="120"
+                                            alignment="left"></dxi-column>
+                                        <dxi-column dataField="heatNo" caption="Heat No." [width]="80"
                                             alignment="center"></dxi-column>
-                                        <dxi-column dataField="quantity" caption="Quantity" [width]="80" cellTemplate="numberTemplate"
-                                            alignment="right"></dxi-column>
-                                        <dxi-column [width]="150" alignment="center" cellTemplate="selectTemplate">
+                                        <dxi-column dataField="grade" caption="Grade" [width]="80"
+                                            alignment="center"></dxi-column>
+                                        <dxi-column dataField="quantity" caption="Quantity" [width]="80" alignment="right"></dxi-column>
+                                        <dxi-column dataField="weight" caption="Weight" [width]="80" cellTemplate="numberTemplate" alignment="right"></dxi-column>
+                                        <dxi-column dataField="unit" caption="Unit" [width]="60" alignment="center"></dxi-column>
+                                        <dxi-column [width]="120" alignment="center" cellTemplate="selectTemplate">
                                             <div *dxTemplate="let cell of 'selectTemplate'">
                                                 <button style="width: 90px;" *ngIf="cell.data.status == 'Select'"
-                                                    class="btn btn-sm btn-outline-success" (click)="onClickSelect()"><i
-                                                        class="fa-solid fa-check"></i>
+                                                    class="btn btn-sm btn-outline-success"
+                                                    (click)="onClickSelect(cell.data)"><i class="fa-solid fa-check"></i>
                                                     Select</button>
                                                 <button style="width: 90px;" *ngIf="cell.data.status != 'Select'"
-                                                    class="btn btn-sm btn-outline-warning" (click)="onClickEdit()"><i
+                                                    class="btn btn-sm btn-outline-warning"
+                                                    (click)="onClickEdit(cell.data)"><i
                                                         class="fa-solid fa-pen-to-square"></i> Edit</button>
                                             </div>
                                         </dxi-column>
-                                        <dxi-column [width]="150" alignment="center" cellTemplate="addDetailTemplate">
+                                        <dxi-column [width]="120" alignment="center" cellTemplate="addDetailTemplate">
                                             <div *dxTemplate="let cell of 'addDetailTemplate'">
                                                 <button class="btn btn-sm btn-outline-secondary"
                                                     (click)="onClickAddDetail(cell.data)"><i
@@ -49,7 +59,7 @@
                                                     Detail</button>
                                             </div>
                                         </dxi-column>
-                                        <dxi-column [width]="150" alignment="center" cellTemplate="sentLinkTemplate">
+                                        <dxi-column [width]="120" alignment="center" cellTemplate="sentLinkTemplate">
                                             <div *dxTemplate="let cell of 'sentLinkTemplate'">
                                                 <button class="btn btn-sm btn-outline-info"
                                                     (click)="onClickSentLink()"><i
@@ -59,7 +69,7 @@
                                         </dxi-column>
                                         <div *dxTemplate="let cell of 'numberTemplate'">
                                             {{cell.value | number: '.2'}}
-                                          </div>
+                                        </div>
                                     </dx-data-grid>
                                 </div>
                             </div>
@@ -80,6 +90,129 @@
 </div>
 
 
+<ng-template #selectTMTTemplate>
+    <div class="modal-header">
+        <h5 class="modal-title">Select Quantity</h5>
+    </div>
+
+    <div class="modal-body">
+        <div class="row mt-4">
+            <div class="col-2 text-end">
+                Material :
+            </div>
+            <div class="col-4">
+                {{selected.materialCode}}
+            </div>
+
+            <div class="col-2 text-end">
+                Heat No. :
+            </div>
+            <div class="col-4">
+                {{selected.heatNo}}
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-2 text-end">
+                รูปแบบการพ่น :
+            </div>
+            <div class="col-4">
+                {{selected.sprayType}}
+            </div>
+
+            <div class="col-2 text-end">
+                grade :
+            </div>
+            <div class="col-4">
+                {{selected.grade}}
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-2 text-end">
+                ความหนา :
+            </div>
+            <div class="col-4">
+                {{selectDataSource[0].thickness}}
+            </div>
+
+            <div class="col-2 text-end">
+                หน้ากว้าง :
+            </div>
+            <div class="col-4">
+                {{selectDataSource[0].width}}
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-2 text-end">
+                Quantity :
+            </div>
+            <div class="col-4">
+                {{selected.quantity | number: '.2'}}
+            </div>
+            <div class="col-2 text-end">
+                Selected Quantity :
+            </div>
+            <div class="col-4">
+                {{totalSelectTMT() | number: '.2'}}
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-12">.
+                <dx-data-grid id="gridContainer" [dataSource]="selectTMTDataSource" [remoteOperations]="false"
+                    [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'"
+                    [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
+                    <dxi-column dataField="isSelected" caption="" [width]="40" alignment="right"
+                        cellTemplate="checkBoxTemplate">
+                        <div *dxTemplate="let cell of 'checkBoxTemplate'">
+                            <div class="text-center">
+                                <input [disabled]="!canSelectTMT() && !cell.value" class="form-check-input"
+                                    type="checkbox" [(ngModel)]="cell.value"
+                                    (change)="onCheckBoxChange($event,cell.data)">
+                            </div>
+                        </div>
+                    </dxi-column>
+                    <dxi-column dataField="itemIndex" caption="No." [width]="40" alignment="center"></dxi-column>
+                    <dxi-column dataField="material" caption="Material" [width]="150" alignment="left"></dxi-column>
+                    <dxi-column dataField="materialDesc" caption="MaterialDesc" minWidth="250"
+                        alignment="left"></dxi-column>
+
+                    <dxi-column dataField="heatNo" caption="Heat No." [width]="150" alignment="center"></dxi-column>
+                    <dxi-column dataField="grade" caption="Grade" [width]="100" alignment="center"></dxi-column>
+                    <dxi-column dataField="width" caption="หน้ากว้าง" [width]="120" alignment="right"
+                        cellTemplate="numberTemplate"></dxi-column>
+                    <dxi-column dataField="thickness" caption="ความหนา" [width]="120" alignment="right"
+                        cellTemplate="numberTemplate"></dxi-column>
+                    <dxi-column dataField="yield" caption="Yield" [width]="100" alignment="right"
+                        cellTemplate="numberTemplate"></dxi-column>
+                    <dxi-column dataField="tensile" caption="Tensile" [width]="100" alignment="right"
+                        cellTemplate="numberTemplate"></dxi-column>
+
+                    <dxi-column dataField="mill" caption="Mill" [width]="80" alignment="left"></dxi-column>
+                    <dxi-column dataField="remain" caption="Remain" [width]="120" alignment="right"
+                        cellTemplate="numberTemplate"></dxi-column>
+                    <dxi-column dataField="quantity" caption="Quantity" [width]="120" alignment="right"
+                        cellTemplate="numberTemplate"></dxi-column>
+                    <div *dxTemplate="let cell of 'numberTemplate'">
+                        {{cell.value | number: '.2'}}
+                    </div>
+                </dx-data-grid>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12 text-center">
+                <button [disabled]="totalSelectTMT() > 0 && selected.quantity > totalSelectTMT()"
+                    class="btn btn-sm btn-success" (click)="onClickConfirmSelect(true)"><i
+                        class="fa-regular fa-circle-check"></i> Confirm</button>
+                <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
+                    Cancel</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
 <ng-template #selectTemplate>
     <div class="modal-header">
         <h5 class="modal-title">Select Quantity</h5>
@@ -88,65 +221,92 @@
     <div class="modal-body">
         <div class="row mt-4">
             <div class="col-2 text-end">
-                Material
+                Material :
             </div>
             <div class="col-4">
-                2CTFB
+                {{selected.materialCode}}
             </div>
 
             <div class="col-2 text-end">
-                Heat No.
+                Heat No. :
             </div>
             <div class="col-4">
-                A123456
+                {{selected.heatNo}}
             </div>
         </div>
 
         <div class="row mt-2">
-            <div class="col-2 offset-6 text-end">
-                Quantity
+            <div class="col-2 text-end">
+                รูปแบบการพ่น :
             </div>
             <div class="col-4">
-                40.00
+                {{selected.sprayType}}
+            </div>
+
+            <div class="col-2 text-end">
+                grade :
+            </div>
+            <div class="col-4">
+                {{selected.grade}}
             </div>
         </div>
 
+        <div class="row mt-2">
+            <div class="col-2 text-end">
+                Quantity :
+            </div>
+            <div class="col-4">
+                {{selected.quantity | number: '.2'}}
+            </div>
+            <div class="col-2 text-end">
+                Selected Quantity :
+            </div>
+            <div class="col-4">
+                {{totalSelect() | number: '.2'}}
+            </div>
+        </div>
         <div class="row mt-4">
-            <div class="col-12">
+            <div class="col-12 overflow-auto">
                 <dx-data-grid id="gridContainer" [dataSource]="selectDataSource" [remoteOperations]="false"
                     [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'"
                     [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
-                    <dxi-column dataField="isSelected" caption="" [width]="80" alignment="right"
+                    <dxi-column dataField="isSelected" caption="" [width]="40" alignment="right"
                         cellTemplate="checkBoxTemplate">
                         <div *dxTemplate="let cell of 'checkBoxTemplate'">
                             <div class="text-center">
-                                <input class="form-check-input" type="checkbox" [(ngModel)]="cell.value"
-                                    (change)="onCheckBoxChange($event,cell.data)">
+                                <input [disabled]="!canSelect() && !cell.value" class="form-check-input" type="checkbox"
+                                    [(ngModel)]="cell.value" (change)="onCheckBoxChange($event,cell.data)">
                             </div>
                         </div>
                     </dxi-column>
-                    <dxi-column dataField="itemIndex" caption="No." [width]="80" alignment="center"></dxi-column>
+                    <dxi-column dataField="itemIndex" caption="No." [width]="40" alignment="center"></dxi-column>
                     <dxi-column dataField="material" caption="Material" [width]="150" alignment="left"></dxi-column>
                     <dxi-column dataField="materialDesc" caption="MaterialDesc" min-Width="250"
                         alignment="left"></dxi-column>
+
                     <dxi-column dataField="heatNo" caption="Heat No." [width]="150" alignment="center"></dxi-column>
-                    <dxi-column dataField="grade" caption="Grade" [width]="150" alignment="center"></dxi-column>
-                    <dxi-column dataField="yield" caption="Yield" [width]="150" alignment="right" cellTemplate="numberTemplate"></dxi-column>
-                    <dxi-column dataField="tensile" caption="Tensile" [width]="150" alignment="right" cellTemplate="numberTemplate"></dxi-column>
+                    <dxi-column dataField="grade" caption="Grade" [width]="100" alignment="center"></dxi-column>
+                    <dxi-column dataField="yield" caption="Yield" [width]="100" alignment="right"
+                        cellTemplate="numberTemplate"></dxi-column>
+                    <dxi-column dataField="tensile" caption="Tensile" [width]="100" alignment="right"
+                        cellTemplate="numberTemplate"></dxi-column>
 
                     <dxi-column dataField="mill" caption="Mill" [width]="80" alignment="left"></dxi-column>
-                    <dxi-column dataField="remain" caption="Remain" [width]="120" alignment="right" cellTemplate="numberTemplate"></dxi-column>
-                    <dxi-column dataField="quantity" caption="Quantity" [width]="120" alignment="right" cellTemplate="numberTemplate"></dxi-column>
+                    <dxi-column dataField="remain" caption="Remain" [width]="120" alignment="right"
+                        cellTemplate="numberTemplate"></dxi-column>
+                    <dxi-column dataField="quantity" caption="Quantity" [width]="120" alignment="right"
+                        cellTemplate="numberTemplate"></dxi-column>
                     <div *dxTemplate="let cell of 'numberTemplate'">
                         {{cell.value | number: '.2'}}
-                      </div>
+                    </div>
                 </dx-data-grid>
             </div>
         </div>
 
         <div class="row mt-4">
             <div class="col-12 text-center">
-                <button class="btn btn-sm btn-success" (click)="onClickConfirmSelect()"><i
+                <button [disabled]="totalSelect() > 0 && selected.quantity > totalSelect()"
+                    class="btn btn-sm btn-success" (click)="onClickConfirmSelect(false)"><i
                         class="fa-regular fa-circle-check"></i> Confirm</button>
                 <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
                     Cancel</button>

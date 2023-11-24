@@ -135,6 +135,15 @@ hr {
     border-color: white;
 }
 
+.btn.disabled, .btn:disabled, fieldset:disabled .btn {
+    color: var(--bs-btn-disabled-color);
+    pointer-events: none;
+    background-color: var(--bs-btn-disabled-bg);
+    border-color: var(--bs-btn-disabled-border-color);
+    opacity: 0.25;
+}
+
+
 .btn-secondary {
     background-color: #9ea7a4;
     color: white;
@@ -250,4 +259,8 @@ hr {
     max-width: 100vw !important;
     padding-left: 4.525rem;
     padding-right: 4.525rem;
+}
+
+ngx-extended-pdf-viewer #primaryEditorStamp {
+    display: none!important;
 }
