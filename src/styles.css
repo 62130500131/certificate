@@ -96,19 +96,19 @@ hr {
 }
 
 .icon-edit {
-    color: rgb(255, 197, 90);
+    color: rgb(253, 188, 67);
 }
 
 .icon-delete {
-    color: rgb(255, 113, 113);
+    color: rgb(255, 87, 87);
 }
 
 .icon-update {
-    color: rgb(114, 218, 114);
+    color: rgb(82, 218, 82);
 }
 
 .icon-update-status {
-    color: rgb(78, 205, 255);
+    color: rgb(48, 196, 255);
 }
 
 .legend {
@@ -127,7 +127,7 @@ hr {
 }
 
 .btn-success {
-    background-color: #2dcb73;
+    background-color: #1fce6e;
     color: white;
     border-radius: 5px;
     min-width: 85px;
@@ -136,7 +136,7 @@ hr {
 }
 
 .btn-secondary {
-    background-color: #c2ccc9;
+    background-color: #9ea7a4;
     color: white;
     border-radius: 5px;
     min-width: 85px;
@@ -145,7 +145,7 @@ hr {
 }
 
 .btn-primary {
-    background-color: #5dc4ff;
+    background-color: #43baff;
     color: white;
     border-radius: 5px;
     min-width: 85px;
