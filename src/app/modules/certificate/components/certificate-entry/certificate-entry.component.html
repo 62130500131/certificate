@@ -93,17 +93,19 @@
                   <dxi-column width="250" caption="Description" alignment="left" dataField="tmtDesc"></dxi-column>
                   <dxi-column width="80" caption="Grade" alignment="center" dataField="grade"></dxi-column>
                   <dxi-column width="90" caption="Heat No." alignment="center" dataField="heatNo"></dxi-column>
-                  <dxi-column width="60" caption="Qty" alignment="right" dataField="quantity"></dxi-column>
-                  <dxi-column width="80" caption="Unit" alignment="center" dataField="unit"></dxi-column>
-                  <dxi-column width="100" caption="Yield" alignment="center" dataField="yield"></dxi-column>
-                  <dxi-column width="100" caption="Tensile" alignment="center" dataField="tensile"></dxi-column>
+                  <dxi-column width="60" caption="Qty" alignment="right" dataField="quantity" cellTemplate="numberTemplate"></dxi-column>
+                  <dxi-column width="60" caption="Unit" alignment="center" dataField="unit"></dxi-column>
+                  <dxi-column width="100" caption="Yield" alignment="right" dataField="yield" cellTemplate="numberTemplate"></dxi-column>
+                  <dxi-column width="100" caption="Tensile" alignment="right" dataField="tensile" cellTemplate="numberTemplate"></dxi-column>
                   <dxi-column width="100" caption="Remark" alignment="center" dataField="remark"></dxi-column>
                   <dxi-column width="40" cellTemplate="deleteTemplate" alignment="center">
                     <div *dxTemplate="let cell of 'deleteTemplate'">
                       <i class="fa-solid fa-trash icon-delete click"></i>
                     </div>
                   </dxi-column>
-
+                  <div *dxTemplate="let cell of 'numberTemplate'">
+                    {{cell.value | number: '.2'}}
+                  </div>
                 </dx-data-grid>
               </div>
 

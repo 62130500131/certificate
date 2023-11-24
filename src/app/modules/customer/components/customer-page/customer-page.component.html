@@ -52,7 +52,7 @@
                                     alignment="center"></dxi-column>
                                 <dxi-column dataField="materialDesc" caption="Material Description" dataType="string"
                                     [minWidth]="150" alignment="left"></dxi-column>
-                                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="80"
+                                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="80" cellTemplate="numberTemplate"
                                     alignment="right"></dxi-column>
 
                                 <dxi-column width="130" alignment="center" cellTemplate="downloadTemplate">
@@ -63,6 +63,10 @@
                                         </button>
                                     </div>
                                 </dxi-column>
+
+                                <div *dxTemplate="let cell of 'numberTemplate'">
+                                    {{cell.value | number: '.2'}}
+                                </div>
 
                             </dx-data-grid>
                         </div>

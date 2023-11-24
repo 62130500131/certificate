@@ -19,7 +19,9 @@ export class CertificateEntryComponent implements OnInit {
     grade: 'SS400',
     heatNo: 'DB1077',
     quantity: 20,
-    unit: '',
+    unit: 'Kg.',
+    yield: '250',
+    tensile: '56',
     remark: '',
   },
   {
@@ -29,7 +31,9 @@ export class CertificateEntryComponent implements OnInit {
     grade: 'SS400',
     heatNo: 'DB1077',
     quantity: 20,
-    unit: '',
+    yield: '250',
+    unit: 'Kg.',
+    tensile: '56',
     remark: '',
   },
   {
@@ -39,7 +43,9 @@ export class CertificateEntryComponent implements OnInit {
     grade: 'SS400',
     heatNo: 'DB1077',
     quantity: 20,
-    unit: '',
+    unit: 'Kg.',
+    yield: '250',
+    tensile: '56',
     remark: '',
   }, {
     millDesc: 'H 148x100x6x12.00M',
@@ -48,7 +54,9 @@ export class CertificateEntryComponent implements OnInit {
     grade: 'SS400',
     heatNo: 'DB1077',
     quantity: 20,
-    unit: '',
+    yield: '250',
+    unit: 'Kg.',
+    tensile: '56',
     remark: '',
   }];
   constructor(private router: Router) { }
