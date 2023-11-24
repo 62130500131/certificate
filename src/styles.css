@@ -1,4 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+hr {
+    display: block;
+    unicode-bidi: isolate;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    overflow: hidden;
+    border-style: inset;
+    border-width: 1px;
+}
 .action {
     cursor: pointer;
     color: #1fadff;
@@ -7,6 +27,7 @@
 .action:hover {
     color: #0055ff;
 }
+
 
 .dx-datagrid-action.dx-cell-focus-disabled {
     text-align: center !important;
@@ -99,13 +120,7 @@
     vertical-align: middle !important;
 }
 
-html {
-    height: 100%;
-}
 
-body {
-    height: 100%;
-}
 
 .btn {
     font-size: 12px;
@@ -141,7 +156,6 @@ body {
 .wait {
     font-size: 12px;
     text-shadow: 0 0 0.1em rgb(226 190 255);
-
     color: rgb(219 89 214);
     background-color: rgb(230 172 255 / 40%);
     min-width: 100px;
@@ -152,7 +166,6 @@ body {
 .ready {
     font-size: 12px;
     text-shadow: 0 0 0.1em rgb(255 187 140);
-
     color: rgb(255 139 35);
     background-color: rgb(255 199 161 / 40%);
     min-width: 100px;
@@ -173,7 +186,6 @@ body {
 .cancel {
     font-size: 12px;
     text-shadow: 0 0 0.1em rgb(141 146 147);
-
     color: rgb(91 91 91);
     background-color: rgb(169 169 169 / 40%);
     min-width: 100px;
