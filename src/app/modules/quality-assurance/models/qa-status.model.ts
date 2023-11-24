@@ -8,8 +8,7 @@ export class QaStatusSearchParam {
     selectWaitFilm: string;
     selectSampleReady: string;
     selectFilmReady: string;
-    selectCancel: string;
-    selectComplete: string;
+
 
 
     constructor() {
@@ -21,8 +20,7 @@ export class QaStatusSearchParam {
         this.selectWaitFilm = 'waitFilm';
         this.selectSampleReady = 'sampleReady';
         this.selectFilmReady = 'filmReady';
-        this.selectCancel = 'complete';
-        this.selectComplete = 'cancel';
+
     }
 }
 export class QaStatusCompleteSearchParam {
@@ -31,12 +29,16 @@ export class QaStatusCompleteSearchParam {
     productionDate: number;
     productionFrom: string;
     productionTo: string;
+    selectCancel: string;
+    selectComplete: string;
 
     constructor() {
         this.materialCode = '';
         this.productionDate = 90;
         this.productionFrom = '';
         this.productionTo = '';
+        this.selectCancel = 'complete';
+        this.selectComplete = 'cancel';
     }
 }
 

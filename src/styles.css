@@ -201,8 +201,8 @@ hr {
 }
 
 .form-check-input:checked {
-    background-color: rgb(106, 166, 255);
-    border-color: rgb(106, 166, 255);
+    background-color: rgb(78, 205, 255);
+    border-color: rgb(78, 205, 255);
 }
 
 .container-fluid-login {

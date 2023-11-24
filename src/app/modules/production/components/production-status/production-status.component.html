@@ -32,15 +32,15 @@
                             <label class="form-label" for="materialdesc">Status</label>
                         </div>
                         <div class="col-6 mt-2">
-                            <input [(ngModel)]="selectWaitSample" class="form-check-input" type="checkbox"
+                            <input [(ngModel)]="paramMonitor.selectWaitSample" class="form-check-input" type="checkbox"
                                 id="waitSample">
                             <label for="waitSample" class="mx-2">Wait Sample</label>
-                            <input [(ngModel)]="selectWaitFilm" class="form-check-input" type="checkbox" id="waitFilm">
+                            <input [(ngModel)]="paramMonitor.selectWaitFilm" class="form-check-input" type="checkbox" id="waitFilm">
                             <label for="waitFilm" class="mx-2">Wait Film</label>
-                            <input [(ngModel)]="selectSampleReady" class="form-check-input" type="checkbox"
+                            <input [(ngModel)]="paramMonitor.selectSampleReady" class="form-check-input" type="checkbox"
                                 id="sampleReady">
                             <label for="sampleReady" class="mx-2">Sample Ready</label>
-                            <input [(ngModel)]="selectFilmReady" class="form-check-input" type="checkbox"
+                            <input [(ngModel)]="paramMonitor.selectFilmReady" class="form-check-input" type="checkbox"
                                 id="filmReady">
                             <label for="filmReady" class="mx-2">Film Ready</label>
                         </div>
@@ -161,9 +161,9 @@
                             <label class="form-label" for="materialdesc">Status</label>
                         </div>
                         <div class="col-4 mt-2">
-                            <input [(ngModel)]="selectCancel" class="form-check-input" type="checkbox" id="complete">
+                            <input [(ngModel)]="paramComplete.selectCancel" class="form-check-input" type="checkbox" id="complete">
                             <label for="complete" class="mx-2">Complete</label>
-                            <input [(ngModel)]="selectComplete" class="form-check-input" type="checkbox" id="cancel">
+                            <input [(ngModel)]="paramComplete.selectComplete" class="form-check-input" type="checkbox" id="cancel">
                             <label for="cancel" class="mx-2">Cancel</label>
                         </div>
                     </div>

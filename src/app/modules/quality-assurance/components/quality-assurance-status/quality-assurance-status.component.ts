@@ -25,9 +25,6 @@ export class QualityAssuranceStatusComponent implements OnInit {
   public grade!: string;
   public machine!: string;
 
-  public selectCancel: string = 'complete';
-  public selectComplete: string = 'cancel';
-
   @ViewChild('uploadTestResult') public uploadTestResult!: TemplateRef<any>;
 
   public param: QaStatusSearchParam = new QaStatusSearchParam();
