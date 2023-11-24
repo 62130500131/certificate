@@ -8,6 +8,7 @@ import { DxDataGridComponent } from 'devextreme-angular';
 import { exportDataGrid } from 'devextreme/excel_exporter';
 import { Workbook } from 'exceljs';
 import * as saveAs from 'file-saver';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'mapping-material',
@@ -16,7 +17,7 @@ import * as saveAs from 'file-saver';
 })
 export class MappingMaterialComponent implements OnInit {
 
-  public param : MappingMaterialSearchParam = new MappingMaterialSearchParam();
+  public param: MappingMaterialSearchParam = new MappingMaterialSearchParam();
   @ViewChild('grid') grid!: DxDataGridComponent;
   public modalRef!: BsModalRef;
 
@@ -40,7 +41,7 @@ export class MappingMaterialComponent implements OnInit {
     'SSI',
     'GJS',
   ];
-  
+
   public dataSource: MappingMaterialViewModel[] = [
     {
       index: 1,
@@ -67,8 +68,8 @@ export class MappingMaterialComponent implements OnInit {
   ];
 
   constructor(private modalService: BsModalService,
-              private service: MappingMaterialService) {
-    
+    private service: MappingMaterialService) {
+
   }
 
   ngOnInit(): void {
@@ -87,8 +88,8 @@ export class MappingMaterialComponent implements OnInit {
 
   // Add
   public onClickAdd(): void {
-    this.addMaterial=[];
-    if (this.addMaterial.length == 0){
+    this.addMaterial = [];
+    if (this.addMaterial.length == 0) {
       this.onClickAddItem();
     }
     this.modalRef = this.modalService.show(this.addMappingMaterial, {
@@ -105,10 +106,24 @@ export class MappingMaterialComponent implements OnInit {
   }
 
   public onClickDeleteItem(index: number): void {
-    let confirmDelete = confirm('Do you want to delete?');
-    if (confirmDelete) {
-      this.addMaterial.splice(index, 1);
-    }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your item has been deleted.",
+          icon: "success"
+        });
+        this.addMaterial.splice(index, 1);
+      }
+    });
   }
 
   public onClickConfirmAddMappingMaterial(): void {
@@ -137,21 +152,21 @@ export class MappingMaterialComponent implements OnInit {
   public uploadFile(): void {
     this.canClick = false;
     this.service.importMapMaterial(this.fileToUpload.name)
-    .pipe(
-      catchError((httpErrorResponse: HttpErrorResponse) => {
-        const error = httpErrorResponse.error as HttpErrorResponse;
-        // errorPanelModal?.setError(error.messages);
-        return throwError(httpErrorResponse);
-      }),
-      finalize(() => {
-        this.clickImport = true;
-      })
-    )
+      .pipe(
+        catchError((httpErrorResponse: HttpErrorResponse) => {
+          const error = httpErrorResponse.error as HttpErrorResponse;
+          // errorPanelModal?.setError(error.messages);
+          return throwError(httpErrorResponse);
+        }),
+        finalize(() => {
+          this.clickImport = true;
+        })
+      )
       .subscribe(res => {
         this.dataForUpload = res;
         this.canClick = this.dataForUpload.map(item => item.issue).every(item => item.length == 0);
       })
-    
+
   }
 
   public onClearFile(fileInput: any): void {
@@ -238,7 +253,23 @@ export class MappingMaterialComponent implements OnInit {
 
   //Delete
   public onClickDeleteMappingMaterial(): void {
-    let confirmDelete = confirm('Do you want to delete?');
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your item has been deleted.",
+          icon: "success"
+        });
+      }
+    });
   }
 
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CertificateEntryListViewModel } from '../../models/certificate-list.model';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-certificate-entry',
@@ -74,7 +75,23 @@ export class CertificateEntryComponent implements OnInit {
   }
 
   public onClickDelete(): void {
-    confirm("Are you sure you want to delete this item?");
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your item has been deleted.",
+          icon: "success"
+        });
+      }
+    });
   }
 
 }

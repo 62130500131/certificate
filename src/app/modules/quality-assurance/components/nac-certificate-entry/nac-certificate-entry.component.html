@@ -121,7 +121,7 @@
 
                   <dxi-column width="40" cellTemplate="deleteTemplate" alignment="center">
                     <div *dxTemplate="let cell of 'deleteTemplate'">
-                      <i class="fa-solid fa-trash icon-delete click"></i>
+                      <i (click)="onClickDelete()" class="fa-solid fa-trash icon-delete click"></i>
                     </div>
                   </dxi-column>
 
@@ -138,9 +138,9 @@
 
               <div class="row">
                 <div class="col-12 text-center">
-                  <button class="btn btn-sm btn-success" (click)="onClickConfrim()"><i
+                  <button class="btn btn-sm btn-success" (click)="onClickConfirm()"><i
                       class="fa-solid fa-floppy-disk"></i>
-                    Confrim</button>
+                    Confirm</button>
                   <button class="btn btn-sm btn-secondary ms-2" (click)="onClickCancel()"><i
                       class="fa-solid fa-xmark"></i>
                     Cancel</button>
