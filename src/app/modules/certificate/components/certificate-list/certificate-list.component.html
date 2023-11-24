@@ -113,7 +113,7 @@
                                 <dxi-column width="120" caption="Total Material" alignment="right"
                                     cellTemplate="numberTemplate" dataField="totalMaterial"></dxi-column>
                                 <dxi-column width="150" caption="Certificate Date" alignment="center"
-                                    dataField="certDate" cellTemplate="dateTemplate"></dxi-column>
+                                    dataField="certDate" cellTemplate="dateNoTimeTemplate"></dxi-column>
                                 <dxi-column width="150" caption="Upload Date" alignment="center" dataField="uploadDate"
                                     cellTemplate="dateTemplate"></dxi-column>
                                 <dxi-column width="150" caption="Modified By" alignment="center"
@@ -128,6 +128,9 @@
                                 </dxi-column>
                                 <div *dxTemplate="let cell of 'dateTemplate'">
                                     {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
+                                </div>
+                                <div *dxTemplate="let cell of 'dateNoTimeTemplate'">
+                                    {{ cell.value | date: 'dd-MMM-yyyy' }}
                                 </div>
                                 <div *dxTemplate="let cell of 'actionTemplate'">
                                     <span class="action" (click)="onClickCertNo()">
