@@ -251,7 +251,7 @@ export class CertificateListComponent {
   ]
 
   constructor(private modalService: BsModalService,
-              private router: Router) {
+    private router: Router) {
 
   }
 
@@ -264,11 +264,11 @@ export class CertificateListComponent {
   }
 
   public onClickClear(): void {
-    this.param= new SearchParamCertificateList();
+    this.param = new SearchParamCertificateList();
   }
 
-  public onClickCertNo():void {
-    this.router.navigate(['certificate-entry']);
+  public onClickCertNo(certNo: string): void {
+    this.router.navigate([`certificate-edit/${certNo}`])
   }
 
   public onClickUpload(): void {
@@ -298,17 +298,18 @@ export class CertificateListComponent {
     });
   }
 
-  public onClickConfirmUpload():void{
+  public onClickConfirmUpload(): void {
     this.router.navigate(['certificate-entry']);
     this.modalRef.hide();
   }
 
-  public onUploadDateRangeChanged(event: any):void{
+  public onUploadDateRangeChanged(event: any): void {
 
   }
 
-  public onCertDateRangeChanged(event: any):void{
-
+  public onCertDateRangeChanged($event: any): void {
+    this.param.certFrom = $event.data.value.startDate;
+    this.param.certTo = $event.data.value.endDateDate;
   }
 
 }

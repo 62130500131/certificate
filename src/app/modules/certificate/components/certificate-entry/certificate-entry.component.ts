@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CertificateEntryListViewModel } from '../../models/certificate-list.model';
-import { Router } from '@angular/router';
+import {  Router } from '@angular/router';
 
 @Component({
   selector: 'app-certificate-entry',
@@ -9,9 +9,11 @@ import { Router } from '@angular/router';
 })
 export class CertificateEntryComponent implements OnInit {
 
-  public src = 'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf'
+  public src = '/assets/pdfs/20.pdf'
   // public src = 'https://webcert.siamyamato.com/webcert/ViewPDF.aspx?certNo=y6frUhKCC2N2ky7j5AGPeA%3d%3d'
   public today = (new Date()).toString();
+  public isEdit: boolean = false;
+  public certNo: any = "";
   public certDate: string = (new Date()).toString();
   public list: CertificateEntryListViewModel[] = [{
     millDesc: 'H 148x100x6x12.00M',
@@ -60,7 +62,11 @@ export class CertificateEntryComponent implements OnInit {
     tensile: '56',
     remark: '',
   }];
-  constructor(private router: Router) { }
+  constructor(private router: Router) { 
+    this.isEdit = router.url.includes('certificate-edit');
+    const split = router.url.split("/");
+    this.certNo = split[split.length - 1]
+  }
 
   ngOnInit() {
   }

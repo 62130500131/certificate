@@ -36,9 +36,12 @@
                                             alignment="center"></dxi-column>
                                         <dxi-column dataField="grade" caption="Grade" [width]="80"
                                             alignment="center"></dxi-column>
-                                        <dxi-column dataField="quantity" caption="Quantity" [width]="80" alignment="right"></dxi-column>
-                                        <dxi-column dataField="weight" caption="Weight" [width]="80" cellTemplate="numberTemplate" alignment="right"></dxi-column>
-                                        <dxi-column dataField="unit" caption="Unit" [width]="60" alignment="center"></dxi-column>
+                                        <dxi-column dataField="quantity" caption="Quantity" [width]="80"
+                                            alignment="right"></dxi-column>
+                                        <dxi-column dataField="weight" caption="Weight" [width]="80"
+                                            cellTemplate="numberTemplate" alignment="right"></dxi-column>
+                                        <dxi-column dataField="unit" caption="Unit" [width]="60"
+                                            alignment="center"></dxi-column>
                                         <dxi-column [width]="120" alignment="center" cellTemplate="selectTemplate">
                                             <div *dxTemplate="let cell of 'selectTemplate'">
                                                 <button style="width: 90px;" *ngIf="cell.data.status == 'Select'"
@@ -59,14 +62,7 @@
                                                     Detail</button>
                                             </div>
                                         </dxi-column>
-                                        <dxi-column [width]="120" alignment="center" cellTemplate="sentLinkTemplate">
-                                            <div *dxTemplate="let cell of 'sentLinkTemplate'">
-                                                <button class="btn btn-sm btn-outline-info"
-                                                    (click)="onClickSentLink()"><i
-                                                        class="fa-regular fa-paper-plane"></i> Sent
-                                                    Link</button>
-                                            </div>
-                                        </dxi-column>
+
                                         <div *dxTemplate="let cell of 'numberTemplate'">
                                             {{cell.value | number: '.2'}}
                                         </div>
@@ -75,9 +71,11 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col-12 text-center mt-4">
+                            <button class="btn btn-sm btn-primary" (click)="onClickSentLink()"><i
+                                    class="fa-regular fa-paper-plane"></i> Sent
+                                Link</button>
                             <button class="btn btn-sm btn-secondary ms-2" (click)="onClickExit()"><i
                                     class="fa-solid fa-xmark"></i>
                                 Exit</button>
@@ -133,14 +131,14 @@
                 ความหนา :
             </div>
             <div class="col-4">
-                {{selectDataSource[0].thickness}}
+                {{selectDataSource[0].thickness | number: '.2'}}
             </div>
 
             <div class="col-2 text-end">
                 หน้ากว้าง :
             </div>
             <div class="col-4">
-                {{selectDataSource[0].width}}
+                {{selectDataSource[0].width | number: '.2'}}
             </div>
         </div>
 
@@ -176,18 +174,18 @@
                     </dxi-column>
                     <dxi-column dataField="itemIndex" caption="No." [width]="40" alignment="center"></dxi-column>
                     <dxi-column dataField="material" caption="Material" [width]="150" alignment="left"></dxi-column>
-                    <dxi-column dataField="materialDesc" caption="MaterialDesc" minWidth="250"
+                    <dxi-column dataField="materialDesc" caption="MaterialDesc" minWidth="300"
                         alignment="left"></dxi-column>
 
-                    <dxi-column dataField="heatNo" caption="Heat No." [width]="150" alignment="center"></dxi-column>
+                    <dxi-column dataField="heatNo" caption="Heat No." [width]="120" alignment="center"></dxi-column>
                     <dxi-column dataField="grade" caption="Grade" [width]="100" alignment="center"></dxi-column>
-                    <dxi-column dataField="width" caption="หน้ากว้าง" [width]="120" alignment="right"
+                    <dxi-column dataField="thickness" caption="ความหนา" [width]="80" alignment="right"
                         cellTemplate="numberTemplate"></dxi-column>
-                    <dxi-column dataField="thickness" caption="ความหนา" [width]="120" alignment="right"
+                    <dxi-column dataField="width" caption="หน้ากว้าง" [width]="80" alignment="right"
                         cellTemplate="numberTemplate"></dxi-column>
-                    <dxi-column dataField="yield" caption="Yield" [width]="100" alignment="right"
+                    <dxi-column dataField="yield" caption="Yield" [width]="80" alignment="right"
                         cellTemplate="numberTemplate"></dxi-column>
-                    <dxi-column dataField="tensile" caption="Tensile" [width]="100" alignment="right"
+                    <dxi-column dataField="tensile" caption="Tensile" [width]="80" alignment="right"
                         cellTemplate="numberTemplate"></dxi-column>
 
                     <dxi-column dataField="mill" caption="Mill" [width]="80" alignment="left"></dxi-column>
@@ -195,6 +193,9 @@
                         cellTemplate="numberTemplate"></dxi-column>
                     <dxi-column dataField="quantity" caption="Quantity" [width]="120" alignment="right"
                         cellTemplate="numberTemplate"></dxi-column>
+                    <dxi-column dataField="weight" caption="Weight" [width]="80" cellTemplate="numberTemplate"
+                        alignment="right"></dxi-column>
+                    <dxi-column dataField="unit" caption="Unit" [width]="60" alignment="center"></dxi-column>
                     <div *dxTemplate="let cell of 'numberTemplate'">
                         {{cell.value | number: '.2'}}
                     </div>
@@ -281,14 +282,14 @@
                     </dxi-column>
                     <dxi-column dataField="itemIndex" caption="No." [width]="40" alignment="center"></dxi-column>
                     <dxi-column dataField="material" caption="Material" [width]="150" alignment="left"></dxi-column>
-                    <dxi-column dataField="materialDesc" caption="MaterialDesc" min-Width="250"
+                    <dxi-column dataField="materialDesc" caption="MaterialDesc" minWidth="300"
                         alignment="left"></dxi-column>
 
-                    <dxi-column dataField="heatNo" caption="Heat No." [width]="150" alignment="center"></dxi-column>
+                    <dxi-column dataField="heatNo" caption="Heat No." [width]="120" alignment="center"></dxi-column>
                     <dxi-column dataField="grade" caption="Grade" [width]="100" alignment="center"></dxi-column>
-                    <dxi-column dataField="yield" caption="Yield" [width]="100" alignment="right"
+                    <dxi-column dataField="yield" caption="Yield" [width]="80" alignment="right"
                         cellTemplate="numberTemplate"></dxi-column>
-                    <dxi-column dataField="tensile" caption="Tensile" [width]="100" alignment="right"
+                    <dxi-column dataField="tensile" caption="Tensile" [width]="80" alignment="right"
                         cellTemplate="numberTemplate"></dxi-column>
 
                     <dxi-column dataField="mill" caption="Mill" [width]="80" alignment="left"></dxi-column>
@@ -296,6 +297,9 @@
                         cellTemplate="numberTemplate"></dxi-column>
                     <dxi-column dataField="quantity" caption="Quantity" [width]="120" alignment="right"
                         cellTemplate="numberTemplate"></dxi-column>
+                    <dxi-column dataField="weight" caption="Weight" [width]="80" cellTemplate="numberTemplate"
+                        alignment="right"></dxi-column>
+                    <dxi-column dataField="unit" caption="Unit" [width]="60" alignment="center"></dxi-column>
                     <div *dxTemplate="let cell of 'numberTemplate'">
                         {{cell.value | number: '.2'}}
                     </div>

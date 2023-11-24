@@ -15,21 +15,45 @@ export class DoPageComponent {
       shipmentCode: 2311092790,
       customerCode: 10000217,
       customerName: "บริษัท ธุรกิจเหล็กดี จำกัด",
-      heatNo: "DB1077"
+      deliveryDate: new Date()
     },
     {
       shipmentCode: 2311092791,
       customerCode: 10000217,
       customerName: "บริษัท ธุรกิจเหล็กดี จำกัด",
-      heatNo: "DB1077"
+      deliveryDate: new Date()
     },
     {
       shipmentCode: 2311092792,
       customerCode: 10000217,
       customerName: "บริษัท ธุรกิจเหล็กดี จำกัด",
-      heatNo: "DB1077"
+      deliveryDate: new Date()
     }
   ]
+
+  public dateDataSource: any[] = [
+    {
+      text: 'ภายใน 90 วัน',
+      value: 90
+    },
+    {
+      text: 'ภายใน 60 วัน',
+      value: 60
+    },
+    {
+      text: 'ภายใน 30 วัน',
+      value: 30
+    },
+    {
+      text: 'ภายใน 7 วัน',
+      value: 7
+    },
+    {
+      text: 'ระบุเอง',
+      value: 0
+    }
+  ]
+
 
   constructor(private router: Router) {
   }
@@ -44,5 +68,10 @@ export class DoPageComponent {
 
   public onClickSearch(): void {
 
+  }
+
+  public onDeliveryDateRangeChanged($event: any): void {
+    this.param.deliveryFrom = $event.data.value.startDate;
+    this.param.deliveryTo = $event.data.value.endDateDate;
   }
 }
