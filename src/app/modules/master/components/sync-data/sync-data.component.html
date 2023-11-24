@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="card shadow-sm p-2 mb-2 bg-white rounded">
+        <div class="card-header">
+          <h6>Sync Data</h6>
+        </div>
+        <div class="card-body">
+
+          <div class="row mt-2">
+            <div class="col-12">
+              <dx-data-grid #grid id="grid" [dataSource]="dataSource" [remoteOperations]="false"
+                [allowColumnReordering]="true" [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
+                [showColumnLines]="true" [showRowLines]="true">
+
+                <dxi-column dataField="syncName" caption="Sync" minWidth="300" alignment="left"></dxi-column>
+                <dxi-column dataField="lastSyncBy" caption="Last Sync By" width="150" alignment="left"></dxi-column>
+                <dxi-column dataField="lastSyncTime" caption="Last Sync Time" width="150" alignment="center"
+                  cellTemplate="dateTemplate"></dxi-column>
+                <dxi-column  width="150" alignment="center" cellTemplate="syncTemplate">
+                  <div *dxTemplate="let cell of 'syncTemplate'">
+                    <button class="btn btn-success"><i class="fa-solid fa-rotate me-2"></i>Sync</button>
+                  </div>
+                </dxi-column>
+                <dxi-column  width="150" alignment="center" cellTemplate="viewLogTemplate">
+                  <div *dxTemplate="let cell of 'viewLogTemplate'">
+                    <button class="btn btn-primary"><i class="fa-solid fa-eye me-2"></i>View Log</button>
+                  </div>
+                </dxi-column>
+
+                <div *dxTemplate="let cell of 'dateTemplate'">
+                  {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
+                </div>
+
+              </dx-data-grid>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
