@@ -9,6 +9,7 @@ import { DxDateBoxModule } from 'devextreme-angular/ui/date-box';
 import { DatePickerComponent } from './common/date-picker/date-picker/date-picker.component';
 import { DateRangeComponent } from './common/date-range/date-range/date-range.component';
 import { DxCheckBoxModule } from 'devextreme-angular/ui/check-box';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 @NgModule({
     declarations: [
         ExamplePdfViewerComponent,
@@ -23,7 +24,8 @@ import { DxCheckBoxModule } from 'devextreme-angular/ui/check-box';
         ReactiveFormsModule,
         NgxExtendedPdfViewerModule,
         DxDateBoxModule,
-        DxCheckBoxModule
+        DxCheckBoxModule,
+        SweetAlert2Module
     ],
     providers: [
         DatePipe
@@ -39,7 +41,8 @@ import { DxCheckBoxModule } from 'devextreme-angular/ui/check-box';
         DatePickerComponent,
         DateRangeComponent,
         DatePipe,
-        DxCheckBoxModule
+        DxCheckBoxModule,
+        SweetAlert2Module
         // NgxExtendedPdfViewerModule,
     ]
 })

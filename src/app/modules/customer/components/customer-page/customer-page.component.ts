@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CustomerHistorySearchParam, CustomerHistoryViewModel } from '../../models/customer-history.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'customer-page',
@@ -91,7 +92,13 @@ export class CustomerPageComponent {
   ];
 
   public onClickDownload(): void {
-    alert("Download Success!");
+    Swal.fire({
+      position: "top",
+      icon: "success",
+      title: "Download Success!",
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
 
   public onClickSearch(): void {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SyncDataViewModel } from '../../models/sync-data.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'sync-data',
@@ -39,6 +40,23 @@ export class SyncDataComponent implements OnInit {
   ngOnInit() {
   }
 
+  public onClickSync(): void {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top",
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Sync Data Success!"
+    });
+  }
 
 
 }

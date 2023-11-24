@@ -2,6 +2,7 @@ import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { DoShipmentDetail, DoShipmentEntryViewModel, SelectQuantity } from '../../models/do.model';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'do-shipment-entry',
@@ -170,6 +171,12 @@ export class DoShipmentEntryComponent {
   }
 
   public onClickSentLink(): void {
-    alert('Sent link success!')
+    Swal.fire({
+      position: "top",
+      icon: "success",
+      title: "Sent Link Success!",
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
 }
