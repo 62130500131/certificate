@@ -19,7 +19,7 @@
                   cellTemplate="dateTemplate"></dxi-column>
                 <dxi-column  width="150" alignment="center" cellTemplate="syncTemplate">
                   <div *dxTemplate="let cell of 'syncTemplate'">
-                    <button class="btn btn-success"><i class="fa-solid fa-rotate me-2"></i>Sync</button>
+                    <button class="btn btn-success" (click)="onClickSync()"><i class="fa-solid fa-rotate me-2"></i>Sync</button>
                   </div>
                 </dxi-column>
                 <dxi-column  width="150" alignment="center" cellTemplate="viewLogTemplate">

@@ -2,6 +2,7 @@ import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { CertificateListViewModel, SearchParamCertificateList } from '../../models/certificate-list.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-certificate-list',
@@ -278,7 +279,23 @@ export class CertificateListComponent {
   }
 
   public onClickDelete(): void {
-    confirm("Are you sure you want to delete this item?");
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your item has been deleted.",
+          icon: "success"
+        });
+      }
+    });
   }
 
   public onClickConfirmUpload():void{
