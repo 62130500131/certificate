@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { certificateEntryListViewModel } from '../../models/certificate-list.model';
+import { CertificateEntryListViewModel } from '../../models/certificate-list.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,7 +12,7 @@ export class CertificateEntryComponent implements OnInit {
   public src = 'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf'
   // public src = 'https://webcert.siamyamato.com/webcert/ViewPDF.aspx?certNo=y6frUhKCC2N2ky7j5AGPeA%3d%3d'
   public today = (new Date()).toString();
-  public list: certificateEntryListViewModel[] = [{
+  public list: CertificateEntryListViewModel[] = [{
     millDesc: 'H 148x100x6x12.00M',
     tmtMaterial: '',
     tmtDesc: '',
