@@ -155,7 +155,7 @@
         </div>
 
         <div class="row mt-4">
-            <div class="col-12">
+            <div class="col-12">.
                 <dx-data-grid id="gridContainer" [dataSource]="selectTMTDataSource" [remoteOperations]="false"
                     [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'"
                     [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
@@ -163,7 +163,7 @@
                         cellTemplate="checkBoxTemplate">
                         <div *dxTemplate="let cell of 'checkBoxTemplate'">
                             <div class="text-center">
-                                <input [disabled]="!canSelect() && !cell.value" class="form-check-input" type="checkbox" [(ngModel)]="cell.value"
+                                <input [disabled]="!canSelectTMT() && !cell.value" class="form-check-input" type="checkbox" [(ngModel)]="cell.value"
                                     (change)="onCheckBoxChange($event,cell.data)">
                             </div>
                         </div>
@@ -259,7 +259,6 @@
                 {{totalSelect() | number: '.2'}}
             </div>
         </div>
-
         <div class="row mt-4">
             <div class="col-12">
                 <dx-data-grid id="gridContainer" [dataSource]="selectDataSource" [remoteOperations]="false"
@@ -269,7 +268,7 @@
                         cellTemplate="checkBoxTemplate">
                         <div *dxTemplate="let cell of 'checkBoxTemplate'">
                             <div class="text-center">
-                                <input class="form-check-input" type="checkbox" [(ngModel)]="cell.value"
+                                <input [disabled]="!canSelect() && !cell.value" class="form-check-input" type="checkbox" [(ngModel)]="cell.value"
                                     (change)="onCheckBoxChange($event,cell.data)">
                             </div>
                         </div>

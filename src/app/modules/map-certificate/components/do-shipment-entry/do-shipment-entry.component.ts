@@ -51,7 +51,7 @@ export class DoShipmentEntryComponent {
           heatNo: 'DB1078',
           grade: 'SS400',
           quantity: 20,
-          status: 'Edit'
+          status: 'Select'
         },
         {
           itemIndex: 3,
