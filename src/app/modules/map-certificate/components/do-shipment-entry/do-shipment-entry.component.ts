@@ -131,7 +131,7 @@ export class DoShipmentEntryComponent {
   }
 
   public onClickExit(): void {
-    this.router.navigate(['do-page'])
+    this.router.navigate(['mapping-certificate'])
   }
 
   public onClickEdit(): void {
