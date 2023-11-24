@@ -188,6 +188,11 @@ body {
     padding-left: 2.725rem;
 }
 
+.form-check-input:checked {
+    background-color: rgb(106, 166, 255);
+    border-color: rgb(106, 166, 255);
+}
+
 .container-fluid-login {
     width: 100%;
     height: auto;
