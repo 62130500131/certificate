@@ -25,10 +25,6 @@ export class QualityAssuranceStatusComponent implements OnInit {
   public grade!: string;
   public machine!: string;
 
-  public selectWaitSample: string = 'waitSample';
-  public selectWaitFilm: string = 'waitFilm';
-  public selectSampleReady: string = 'sampleReady';
-  public selectFilmReady: string = 'filmReady';
   public selectCancel: string = 'complete';
   public selectComplete: string = 'cancel';
 
