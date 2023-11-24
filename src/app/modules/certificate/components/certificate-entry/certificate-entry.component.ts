@@ -73,4 +73,8 @@ export class CertificateEntryComponent implements OnInit {
     this.router.navigate(['certificate-list']);
   }
 
+  public onClickDelete(): void {
+    confirm("Are you sure you want to delete this item?");
+  }
+
 }

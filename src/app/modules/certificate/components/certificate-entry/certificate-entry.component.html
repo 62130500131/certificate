@@ -103,7 +103,7 @@
                   <dxi-column minWidth="100" caption="Remark" alignment="center" dataField="remark"></dxi-column>
                   <dxi-column width="40" cellTemplate="deleteTemplate" alignment="center">
                     <div *dxTemplate="let cell of 'deleteTemplate'">
-                      <i class="fa-solid fa-trash icon-delete click"></i>
+                      <i class="fa-solid fa-trash icon-delete click" (click)="onClickDelete()"></i>
                     </div>
                   </dxi-column>
                   <div *dxTemplate="let cell of 'numberTemplate'">

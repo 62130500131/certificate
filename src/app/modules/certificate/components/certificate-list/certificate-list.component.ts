@@ -277,6 +277,10 @@ export class CertificateListComponent {
     })
   }
 
+  public onClickDelete(): void {
+    confirm("Are you sure you want to delete this item?");
+  }
+
   public onClickConfirmUpload():void{
     this.router.navigate(['certificate-entry']);
     this.modalRef.hide();

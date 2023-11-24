@@ -99,7 +99,6 @@ export class CustomerPageComponent {
   }
 
   public onClickClear(): void {
-    console.log("dsadasd")
     this.param = new CustomerHistorySearchParam();
   }
 
