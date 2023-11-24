@@ -4,12 +4,25 @@ export class QaStatusSearchParam {
     productionDate: number;
     productionFrom: string;
     productionTo: string;
+    selectWaitSample: string;
+    selectWaitFilm: string;
+    selectSampleReady: string;
+    selectFilmReady: string;
+    selectCancel: string;
+    selectComplete: string;
+
 
     constructor() {
         this.materialCode = '';
         this.productionDate = 90;
         this.productionFrom = '';
         this.productionTo = '';
+        this.selectWaitSample = 'waitSample';
+        this.selectWaitFilm = 'waitFilm';
+        this.selectSampleReady = 'sampleReady';
+        this.selectFilmReady = 'filmReady';
+        this.selectCancel = 'complete';
+        this.selectComplete = 'cancel';
     }
 }
 export class QaStatusCompleteSearchParam {

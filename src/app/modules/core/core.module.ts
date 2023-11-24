@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import * as comps from './components';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 @NgModule({
     declarations: [
         comps.LoginPageComponent,
@@ -10,7 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        RouterModule
     ],
     exports: [
         comps.LoginPageComponent,
