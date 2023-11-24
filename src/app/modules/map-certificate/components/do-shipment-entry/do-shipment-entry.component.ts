@@ -41,7 +41,9 @@ export class DoShipmentEntryComponent {
           heatNo: 'DB1077',
           grade: 'SS400',
           quantity: 40,
-          status: 'Select'
+          status: 'Select',
+          weight : 2000,
+          unit: 'PC'
         },
         {
           itemIndex: 2,
@@ -51,7 +53,9 @@ export class DoShipmentEntryComponent {
           heatNo: 'DB1078',
           grade: 'SS400',
           quantity: 20,
-          status: 'Select'
+          status: 'Select',
+          weight : 1020,
+          unit: 'PC'
         },
         {
           itemIndex: 3,
@@ -61,7 +65,9 @@ export class DoShipmentEntryComponent {
           heatNo: 'DB1079',
           grade: 'SS400',
           quantity: 40,
-          status: 'Select'
+          status: 'Select',
+          weight : 3500,
+          unit: 'PC'
         },
         {
           itemIndex: 4,
@@ -71,7 +77,9 @@ export class DoShipmentEntryComponent {
           heatNo: 'DB1077',
           grade: 'SS400',
           quantity: 30,
-          status: 'Select'
+          status: 'Select',
+          weight : 2900,
+          unit: 'PC'
         }
       ]
     },
@@ -86,7 +94,9 @@ export class DoShipmentEntryComponent {
           heatNo: 'DB1077',
           grade: 'SS400',
           quantity: 22,
-          status: 'Select'
+          status: 'Select',
+          weight : 2000,
+          unit: 'PC'
         }
       ]
     },
@@ -101,7 +111,9 @@ export class DoShipmentEntryComponent {
           heatNo: 'DB1079',
           grade: 'SS400',
           quantity: 20,
-          status: 'Select'
+          status: 'Select',
+          weight : 2010,
+          unit: 'PC'
         }
       ]
     },
@@ -282,7 +294,6 @@ export class DoShipmentEntryComponent {
         }
       });
     } else {
-      alert('Please Select equal quantity')
       return
     }
 

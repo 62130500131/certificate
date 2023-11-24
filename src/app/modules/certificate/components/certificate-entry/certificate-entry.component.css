@@ -1,0 +1,5 @@
+html[dir=ltr] ngx-extended-pdf-viewer .toolbarButton:last-child, html[dir=rtl] ngx-extended-pdf-viewer .toolbarButton:first-child {
+    margin-right: 0;
+    margin-left: 0;
+    display: none !important;
+}

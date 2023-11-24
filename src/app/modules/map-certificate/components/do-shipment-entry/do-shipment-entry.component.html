@@ -20,8 +20,12 @@
                                         [remoteOperations]="false" [allowColumnReordering]="true"
                                         [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
                                         [showColumnLines]="true" [showRowLines]="true">
-                                        <dxi-column dataField="itemIndex" caption="No." [width]="40"
-                                            alignment="center"></dxi-column>
+                                        <dxi-column dataField="itemIndex" caption="No." [width]="40" alignment="center"
+                                            cellTemplate="indexTemplate">
+                                            <div *dxTemplate="let cell of 'indexTemplate'">
+                                                {{cell.value}}.
+                                            </div>
+                                        </dxi-column>
                                         <dxi-column dataField="materialCode" caption="Material" width="150"
                                             alignment="left"></dxi-column>
                                         <dxi-column dataField="materialDesc" caption="Material Description"
@@ -32,8 +36,9 @@
                                             alignment="center"></dxi-column>
                                         <dxi-column dataField="grade" caption="Grade" [width]="80"
                                             alignment="center"></dxi-column>
-                                        <dxi-column dataField="quantity" caption="Quantity" [width]="80"
-                                            cellTemplate="numberTemplate" alignment="right"></dxi-column>
+                                        <dxi-column dataField="quantity" caption="Quantity" [width]="80" alignment="right"></dxi-column>
+                                        <dxi-column dataField="weight" caption="Weight" [width]="80" cellTemplate="numberTemplate" alignment="right"></dxi-column>
+                                        <dxi-column dataField="unit" caption="Unit" [width]="60" alignment="center"></dxi-column>
                                         <dxi-column [width]="120" alignment="center" cellTemplate="selectTemplate">
                                             <div *dxTemplate="let cell of 'selectTemplate'">
                                                 <button style="width: 90px;" *ngIf="cell.data.status == 'Select'"
@@ -163,14 +168,15 @@
                         cellTemplate="checkBoxTemplate">
                         <div *dxTemplate="let cell of 'checkBoxTemplate'">
                             <div class="text-center">
-                                <input [disabled]="!canSelectTMT() && !cell.value" class="form-check-input" type="checkbox" [(ngModel)]="cell.value"
+                                <input [disabled]="!canSelectTMT() && !cell.value" class="form-check-input"
+                                    type="checkbox" [(ngModel)]="cell.value"
                                     (change)="onCheckBoxChange($event,cell.data)">
                             </div>
                         </div>
                     </dxi-column>
                     <dxi-column dataField="itemIndex" caption="No." [width]="40" alignment="center"></dxi-column>
                     <dxi-column dataField="material" caption="Material" [width]="150" alignment="left"></dxi-column>
-                    <dxi-column dataField="materialDesc" caption="MaterialDesc" min-Width="250"
+                    <dxi-column dataField="materialDesc" caption="MaterialDesc" minWidth="250"
                         alignment="left"></dxi-column>
 
                     <dxi-column dataField="heatNo" caption="Heat No." [width]="150" alignment="center"></dxi-column>
@@ -195,10 +201,10 @@
                 </dx-data-grid>
             </div>
         </div>
-
         <div class="row mt-4">
             <div class="col-12 text-center">
-                <button class="btn btn-sm btn-success" (click)="onClickConfirmSelect(true)"><i
+                <button [disabled]="totalSelectTMT() > 0 && selected.quantity > totalSelectTMT()"
+                    class="btn btn-sm btn-success" (click)="onClickConfirmSelect(true)"><i
                         class="fa-regular fa-circle-check"></i> Confirm</button>
                 <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
                     Cancel</button>
@@ -260,7 +266,7 @@
             </div>
         </div>
         <div class="row mt-4">
-            <div class="col-12">
+            <div class="col-12 overflow-auto">
                 <dx-data-grid id="gridContainer" [dataSource]="selectDataSource" [remoteOperations]="false"
                     [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'"
                     [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
@@ -268,8 +274,8 @@
                         cellTemplate="checkBoxTemplate">
                         <div *dxTemplate="let cell of 'checkBoxTemplate'">
                             <div class="text-center">
-                                <input [disabled]="!canSelect() && !cell.value" class="form-check-input" type="checkbox" [(ngModel)]="cell.value"
-                                    (change)="onCheckBoxChange($event,cell.data)">
+                                <input [disabled]="!canSelect() && !cell.value" class="form-check-input" type="checkbox"
+                                    [(ngModel)]="cell.value" (change)="onCheckBoxChange($event,cell.data)">
                             </div>
                         </div>
                     </dxi-column>
@@ -299,7 +305,8 @@
 
         <div class="row mt-4">
             <div class="col-12 text-center">
-                <button class="btn btn-sm btn-success" (click)="onClickConfirmSelect(false)"><i
+                <button [disabled]="totalSelect() > 0 && selected.quantity > totalSelect()"
+                    class="btn btn-sm btn-success" (click)="onClickConfirmSelect(false)"><i
                         class="fa-regular fa-circle-check"></i> Confirm</button>
                 <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
                     Cancel</button>

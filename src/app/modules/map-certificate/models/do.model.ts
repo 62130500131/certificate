@@ -25,6 +25,8 @@ export class DoShipmentDetail {
     quantity: number;
     status: string;
     grade: string;
+    weight: number;
+    unit: string;
 
     constructor() {
         this.itemIndex = 0;
@@ -35,6 +37,8 @@ export class DoShipmentDetail {
         this.quantity = 0;
         this.status = 'Select';
         this.grade = '';
+        this.weight = 0;
+        this.unit = ''
     }
 }
 export class SelectQuantity {
