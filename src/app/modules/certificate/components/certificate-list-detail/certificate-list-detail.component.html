@@ -6,11 +6,15 @@
   <dxi-column minWidth="300" caption="Material Description" alignment="left" dataField="materialDesc"></dxi-column>
   <dxi-column width="120" caption="Grade" alignment="left" dataField="grade"></dxi-column>
   <dxi-column width="120" caption="Heat No." alignment="center" dataField="heatNo"></dxi-column>
-  <dxi-column width="80" caption="Quantity" alignment="right" dataField="quantity"></dxi-column>
+  <dxi-column width="80" caption="Quantity" alignment="right" dataField="quantity" cellTemplate="numberTemplate"></dxi-column>
   <dxi-column width="80" caption="Unit" alignment="center" dataField="unit"></dxi-column>
 
   <div *dxTemplate="let cell of 'dateTemplate'">
     {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
+  </div>
+
+  <div *dxTemplate="let cell of 'numberTemplate'">
+    {{cell.value | number: '.2'}}
   </div>
 
 </dx-data-grid>

@@ -110,8 +110,8 @@
                                 <dxi-column width="150" caption="Certificate No." alignment="center" dataField="certNo"
                                     cellTemplate="actionTemplate"></dxi-column>
                                 <dxi-column minWidth="40" caption="Mill" alignment="left" dataField="mill"></dxi-column>
-                                <dxi-column width="120" caption="Total Material" alignment="right" cellTemplate="numberTemplate"
-                                    dataField="totalMaterial"></dxi-column>
+                                <dxi-column width="120" caption="Total Material" alignment="right"
+                                    cellTemplate="numberTemplate" dataField="totalMaterial"></dxi-column>
                                 <dxi-column width="150" caption="Certificate Date" alignment="center"
                                     dataField="certDate" cellTemplate="dateTemplate"></dxi-column>
                                 <dxi-column width="150" caption="Upload Date" alignment="center" dataField="uploadDate"
@@ -137,7 +137,7 @@
 
                                 <div *dxTemplate="let cell of 'numberTemplate'">
                                     {{cell.value | number: '.2'}}
-                                  </div>
+                                </div>
 
                             </dx-data-grid>
 
