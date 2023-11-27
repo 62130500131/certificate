@@ -1,8 +1,8 @@
-<div class="d-flex flex-wrap flex-sm-nowrap">
+<div class="d-flex flex-wrap flex-sm-nowrap mt-2">
   <date-picker class="mb-2" [name]="'picker-start-'+name" [value]="startDate" (onUpdate)="onStartDateChanged($event)"
     [disabled]="disabledStart"></date-picker>
-  <div class="period">
-    <span class="label-bold">-</span>
+  <div class="period mx-2">
+    <span class="col label-bold">-</span>
   </div>
   <date-picker class="mb-2" [name]="'picker-end-'+name" [value]="endDate" [min]="minEndDate"
     (onUpdate)="onEndDateChanged($event)" [disabled]="disabledEnd">
