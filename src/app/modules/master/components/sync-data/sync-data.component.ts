@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { SyncDataViewModel } from '../../models/sync-data.model';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { SyncDataViewModel, SyncLogsParam, SyncLogsViewModel } from '../../models/sync-data.model';
 import Swal from 'sweetalert2';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'sync-data',
@@ -8,14 +9,69 @@ import Swal from 'sweetalert2';
   styleUrls: ['./sync-data.component.css']
 })
 export class SyncDataComponent implements OnInit {
+  @ViewChild('syncLogs') syncLogs!: TemplateRef<any>;
+
+  public param: SyncLogsParam = new SyncLogsParam();
+  public modalRef!: BsModalRef;
+  public logsList: SyncLogsViewModel[] = [
+    {
+      syncTime: (new Date()).toString(),
+      actionBy: "CONNEX",
+      status: "Failed",
+    },
+    {
+      syncTime: (new Date()).toString(),
+      actionBy: "CONNEX",
+      status: "Success",
+    },
+    {
+      syncTime: (new Date()).toString(),
+      actionBy: "CONNEX",
+      status: "Success",
+    },
+    {
+      syncTime: (new Date()).toString(),
+      actionBy: "CONNEX",
+      status: "Success",
+    },
+    {
+      syncTime: (new Date()).toString(),
+      actionBy: "CONNEX",
+      status: "Failed",
+    }
+  ];
+
+  public dateDataSource: any[] = [
+    {
+      text: 'ภายใน 90 วัน',
+      value: 90
+    },
+    {
+      text: 'ภายใน 60 วัน',
+      value: 60
+    },
+    {
+      text: 'ภายใน 30 วัน',
+      value: 30
+    },
+    {
+      text: 'ภายใน 7 วัน',
+      value: 7
+    },
+    {
+      text: 'ระบุเอง',
+      value: 0
+    }
+  ]
+
   public dataSource: SyncDataViewModel[] = [
     {
-      syncName: "GD Findi",
+      syncName: "SAP",
       lastSyncBy: "CONNEX",
       lastSyncTime: (new Date()).toString()
     },
     {
-      syncName: "Excel Planning",
+      syncName: "Production Order",
       lastSyncBy: "CONNEX",
       lastSyncTime: (new Date()).toString()
     },
@@ -35,7 +91,7 @@ export class SyncDataComponent implements OnInit {
       lastSyncTime: (new Date()).toString()
     }
   ];
-  constructor() { }
+  constructor(private modalService: BsModalService) { }
 
   ngOnInit() {
   }
@@ -58,5 +114,14 @@ export class SyncDataComponent implements OnInit {
     });
   }
 
+  public onClickViewLog(): void {
+    this.modalRef = this.modalService.show(this.syncLogs, {
+      class: 'modal-lg'
+    });
+  }
+
+  public onDateRangeChanged($event: any): void {
+
+  }
 
 }

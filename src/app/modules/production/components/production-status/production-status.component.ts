@@ -233,7 +233,7 @@ export class ProductionStatusComponent implements OnInit {
 
   public OnClickDownStatus(): void {
     Swal.fire({
-      title: "Do you want to change this status?",
+      title: "Do you want to down status to wait sample?",
       icon: "question",
       heightAuto: false,
       confirmButtonText: "Yes",
