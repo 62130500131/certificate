@@ -105,7 +105,7 @@
                   <dxi-column [width]="60" caption="S" dataField="s" alignment="right">
                   </dxi-column>
                   <dxi-column [width]="120" caption="Y.S." dataField="ys" alignment="right"
-                    headerCellTemplate="ysTemplate">
+                    headerCellTemplate="ysTemplate" cellTemplate="numberTemplate">
                     <div *dxTemplate="let cell of 'ysTemplate'">
                       <label>Y.S.<br />
                         (ความเค้นคราก)
@@ -113,7 +113,7 @@
                     </div>
                   </dxi-column>
                   <dxi-column [width]="120" caption="T.S." dataField="ts" alignment="right"
-                    headerCellTemplate="tsTemplate">
+                    headerCellTemplate="tsTemplate" cellTemplate="numberTemplate">
                     <div *dxTemplate="let cell of 'tsTemplate'">
                       <label>T.S.<br />
                         (ความเค้นสูงสุด)
@@ -121,7 +121,7 @@
                     </div>
                   </dxi-column>
                   <dxi-column [width]="100" caption="Elongation" dataField="elongation" alignment="right"
-                    headerCellTemplate="elongationTemplate">
+                    headerCellTemplate="elongationTemplate" cellTemplate="numberTemplate">
                     <div *dxTemplate="let cell of 'elongationTemplate'">
                       <label>Elongation<br />
                         (ความยืด)
@@ -162,6 +162,10 @@
                       (การกระแทกชาร์ปี)
                     </label>
                   </div>
+
+                  <div *dxTemplate="let cell of 'numberTemplate'">
+                    {{cell.value | number: '.2'}}
+                </div>
 
                   <dxi-column width="40" cellTemplate="deleteTemplate" alignment="center">
                     <div *dxTemplate="let cell of 'deleteTemplate'">
