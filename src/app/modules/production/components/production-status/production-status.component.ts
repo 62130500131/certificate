@@ -121,6 +121,53 @@ export class ProductionStatusComponent implements OnInit {
     }
   ];
 
+  public gradeDataSource = [
+    {
+      text: 'SS400',
+      value: 'SS400'
+    },
+    {
+      text: 'SS490',
+      value: 'SS490'
+    },
+    {
+      text: 'SM490YA',
+      value: 'SM490YA'
+    },
+    {
+      text: 'SM490A',
+      value: 'SM490A'
+    },
+    {
+      text: 'SM400',
+      value: 'SM400'
+    },
+    {
+      text: 'S275JR',
+      value: 'S275JR'
+    },
+    {
+      text: 'S335JR',
+      value: 'S335JR'
+    },
+    {
+      text: 'HR-1',
+      value: 'HR-1'
+    },
+    {
+      text: 'SPHC',
+      value: 'SPHC'
+    },
+    {
+      text: 'A36',
+      value: 'A36'
+    },
+    {
+      text: 'A516',
+      value: 'A516'
+    },
+  ];
+
   constructor(public _modalService: BsModalService) { }
 
   ngOnInit() {
@@ -198,7 +245,7 @@ export class ProductionStatusComponent implements OnInit {
     }
     if (this.selectedStatus == "cancelRadio") {
       Swal.fire({
-        title: "Are you sure to cancel this status?",
+        title: "Do you want to cancel this order?",
         icon: "question",
         heightAuto: false,
         confirmButtonText: "Yes",
@@ -221,7 +268,7 @@ export class ProductionStatusComponent implements OnInit {
     }
     if (this.selectedStatusFilm == "cancelRadio") {
       Swal.fire({
-        title: "Are you sure to cancel this status?",
+        title: "Do you want to cancel this order?",
         icon: "question",
         heightAuto: false,
         confirmButtonText: "Yes",

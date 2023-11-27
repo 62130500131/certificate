@@ -32,8 +32,7 @@
                             <label class="form-label" for="materialCode">Sold to</label>
                         </div>
                         <div class="col-3">
-                            <input id="materialCode" class="form-control" type="text"
-                                [(ngModel)]="paramMonitor.soldTo">
+                            <input id="materialCode" class="form-control" type="text" [(ngModel)]="paramMonitor.soldTo">
                         </div>
                         <div class="col-2 text-end pt-2">
                             <label class="form-label" for="materialdesc">Status</label>
@@ -304,13 +303,14 @@
                     <label for="dateSampleReady" class="form-label mt-2">Date</label>
                 </div>
                 <div class="col-3">
-                    <input [value]="dateSampleReady | date: 'dd-MMM-yyyy'" id="dateSampleReady" class="form-control">
+                    <input type="date" [value]="dateSampleReady | date: 'dd-MMM-yyyy'" id="dateSampleReady"
+                        class="form-control">
                 </div>
                 <div class="col-2 text-end">
                     <label for="customerName" class="form-label mt-2">Customer Name</label>
                 </div>
-                <div class="col-3">
-                    <input [value]="customerName" id="customerName" class="form-control">
+                <div class="col-3 pt-2">
+                    {{ customerName }}
                 </div>
             </div>
 
@@ -318,14 +318,14 @@
                 <div class="col-2 text-end">
                     <label for="productionOrder" class="form-label mt-2">Production Order</label>
                 </div>
-                <div class="col-3">
-                    <input [value]="productionOrder" id="productionOrder" class="form-control">
+                <div class="col-3 pt-2">
+                    {{ productionOrder }}
                 </div>
                 <div class="col-2 text-end">
                     <label for="materialDesc" class="form-label mt-2">Material Description</label>
                 </div>
-                <div class="col-3">
-                    <input [value]="materialDesc" id="materialDesc" class="form-control">
+                <div class="col-3 pt-2">
+                    {{ materialDesc }}
                 </div>
             </div>
 
@@ -355,7 +355,7 @@
                     <label for="grade" class="form-label mt-2">Grade</label>
                 </div>
                 <div class="col-3">
-                    <input [value]="grade" id="grade" class="form-control">
+                    <dx-select-box displayExpr="text" valueExpr="value" [items]="gradeDataSource"></dx-select-box>
                 </div>
             </div>
 
