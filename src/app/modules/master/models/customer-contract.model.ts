@@ -6,6 +6,7 @@ export class CustomerContractViewModel {
     line: string;
     modifiedBy: string;
     modifiedTime: string;
+    contactName: string;
 
     constructor() {
         this.customerCode = '';
@@ -15,6 +16,7 @@ export class CustomerContractViewModel {
         this.line = '';
         this.modifiedBy = '';
         this.modifiedTime = '';
+        this.contactName = '';
     }
 }
 

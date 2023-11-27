@@ -31,7 +31,8 @@ export class CustomerContractComponent implements OnInit {
       district: 'เขตบางคอแหลม',
       line: '',
       modifiedBy: 'Connex',
-      modifiedTime: (new Date()).toString()
+      modifiedTime: (new Date()).toString(),
+      contactName: ''
     },
     {
       customerCode: '10000002',
@@ -40,7 +41,8 @@ export class CustomerContractComponent implements OnInit {
       district: 'อำเภอกระสัง',
       line: '',
       modifiedBy: 'Connex',
-      modifiedTime: (new Date()).toString()
+      modifiedTime: (new Date()).toString(),
+      contactName: ''
     },
     {
       customerCode: '10000003',
@@ -49,7 +51,8 @@ export class CustomerContractComponent implements OnInit {
       district: 'อำเภอโพธาราม',
       line: '',
       modifiedBy: 'Connex',
-      modifiedTime: (new Date()).toString()
+      modifiedTime: (new Date()).toString(),
+      contactName: ''
     },
     {
       customerCode: '10000004',
@@ -58,7 +61,8 @@ export class CustomerContractComponent implements OnInit {
       district: '',
       line: '',
       modifiedBy: 'Connex',
-      modifiedTime: (new Date()).toString()
+      modifiedTime: (new Date()).toString(),
+      contactName: ''
     },
     {
       customerCode: '10000005',
@@ -67,7 +71,8 @@ export class CustomerContractComponent implements OnInit {
       district: 'เขตบางคอแหลม',
       line: '',
       modifiedBy: 'Connex',
-      modifiedTime: (new Date()).toString()
+      modifiedTime: (new Date()).toString(),
+      contactName: ''
     },
     {
       customerCode: '10000006',
@@ -76,7 +81,8 @@ export class CustomerContractComponent implements OnInit {
       district: 'เขตสาทร',
       line: '',
       modifiedBy: 'Connex',
-      modifiedTime: (new Date()).toString()
+      modifiedTime: (new Date()).toString(),
+      contactName: ''
     }
   ];
   constructor(private modalService: BsModalService,
