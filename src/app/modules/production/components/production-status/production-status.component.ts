@@ -56,54 +56,67 @@ export class ProductionStatusComponent implements OnInit {
   }
   ];
 
-  public dataSourceCompleteStatus: ProductionStatusCompleteViewModel[] = [{
-    productionOrder: "1080035293",
-    itemNo: 1,
-    materialCode: "1HC10000-015L",
-    materialDesc: "เหล็กม้วนดำ SS400 1.50mmxกว้างใดๆxC Long",
-    qty: 20,
-    soldTo: "10000001",
-    soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-    grDate: (new Date()).toString(),
-    status: "Complete",
-    unit: "KG."
-  },
-  {
-    productionOrder: "1080035294",
-    itemNo: 2,
-    materialCode: "2CTFB",
-    materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
-    qty: 50,
-    soldTo: "10000001",
-    soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-    grDate: (new Date()).toString(),
-    status: "Cancel",
-    unit: "KG."
-  },
-  {
-    productionOrder: "1080035295",
-    itemNo: 3,
-    materialCode: "2CTFB",
-    materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
-    qty: 10,
-    soldTo: "10000001",
-    soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-    grDate: (new Date()).toString(),
-    status: "Cancel",
-    unit: "KG."
-  },
-  {
-    productionOrder: "1080035252",
-    itemNo: 4,
-    materialCode: "1HC10000-015L",
-    materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
-    qty: 5,
-    soldTo: "10000001",
-    soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-    grDate: (new Date()).toString(),
-    status: "Complete",
-    unit: "KG."
-  }
+  public dataSourceCompleteStatus: ProductionStatusCompleteViewModel[] = [
+    {
+      productionOrder: "1080035252",
+      itemNo: 1,
+      materialCode: "1HC10000-015L",
+      materialDesc: "เหล็กม้วนดำ SS400 1.50mmxกว้างใดๆxC Long",
+      qty: 5,
+      soldTo: "10000001",
+      soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
+      grDate: (new Date()).toString(),
+      status: "Sample Ready",
+      unit: "KG."
+    },
+    {
+      productionOrder: "1080035295",
+      itemNo: 2,
+      materialCode: "2CTFB",
+      materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
+      qty: 10,
+      soldTo: "10000001",
+      soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
+      grDate: (new Date()).toString(),
+      status: "Cancel",
+      unit: "KG."
+    },
+    {
+      productionOrder: "1080035293",
+      itemNo: 3,
+      materialCode: "1HC10000-015L",
+      materialDesc: "เหล็กม้วนดำ SS400 1.50mmxกว้างใดๆxC Long",
+      qty: 20,
+      soldTo: "10000001",
+      soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
+      grDate: (new Date()).toString(),
+      status: "Film Ready",
+      unit: "KG."
+    },
+    {
+      productionOrder: "1080035295",
+      itemNo: 4,
+      materialCode: "2CTFB",
+      materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
+      qty: 10,
+      soldTo: "10000001",
+      soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
+      grDate: (new Date()).toString(),
+      status: "Cancel",
+      unit: "KG."
+    },
+    {
+      productionOrder: "1080035252",
+      itemNo: 5,
+      materialCode: "1HC10000-015L",
+      materialDesc: "เหล็กม้วนดำ SS400 1.50mmxกว้างใดๆxC Long",
+      qty: 5,
+      soldTo: "10000001",
+      soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
+      grDate: (new Date()).toString(),
+      status: "Complete",
+      unit: "KG."
+    }
   ];
 
   public dateDataSource: any[] = [
@@ -220,7 +233,7 @@ export class ProductionStatusComponent implements OnInit {
 
   public OnClickDownStatus(): void {
     Swal.fire({
-      title: "Are you sure to down this status?",
+      title: "Do you want to change this status?",
       icon: "question",
       heightAuto: false,
       confirmButtonText: "Yes",
