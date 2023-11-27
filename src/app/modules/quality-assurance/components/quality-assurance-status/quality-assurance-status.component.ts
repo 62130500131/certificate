@@ -145,6 +145,53 @@ export class QualityAssuranceStatusComponent implements OnInit {
     }
   ];
 
+  public gradeDataSource = [
+    {
+      text: 'SS400',
+      value: 'SS400'
+    },
+    {
+      text: 'SS490',
+      value: 'SS490'
+    },
+    {
+      text: 'SM490YA',
+      value: 'SM490YA'
+    },
+    {
+      text: 'SM490A',
+      value: 'SM490A'
+    },
+    {
+      text: 'SM400',
+      value: 'SM400'
+    },
+    {
+      text: 'S275JR',
+      value: 'S275JR'
+    },
+    {
+      text: 'S335JR',
+      value: 'S335JR'
+    },
+    {
+      text: 'HR-1',
+      value: 'HR-1'
+    },
+    {
+      text: 'SPHC',
+      value: 'SPHC'
+    },
+    {
+      text: 'A36',
+      value: 'A36'
+    },
+    {
+      text: 'A516',
+      value: 'A516'
+    },
+  ];
+
   public materialTypeDataSource = [
     {
       text: 'ตัวซี',
