@@ -35,8 +35,8 @@ export class DoShipmentEntryComponent implements OnInit {
   constructor(private router: Router,
     private modalService: BsModalService,
     private service: MapCertificateService) {
-      const split = this.router.url.split('/');
-      this.shipmentNo = split[split.length -1 ];
+    const split = this.router.url.split('/');
+    this.shipmentNo = split[split.length - 1];
   }
 
   public ngOnInit(): void {
@@ -46,10 +46,10 @@ export class DoShipmentEntryComponent implements OnInit {
     })
 
     this.service.getShipmentInfo(this.shipmentNo)
-    .subscribe(res => {
-      console.log(res)
-      this.shipmentInfo = res
-    })
+      .subscribe(res => {
+        console.log(res)
+        this.shipmentInfo = res
+      })
 
   }
 
@@ -72,18 +72,24 @@ export class DoShipmentEntryComponent implements OnInit {
   }
 
   public calSelected(): void {
-    const sum = this.selectDataSource
+    let sum = this.selectDataSource
       .filter(p => p.isSelected === true)
       .map(p => p.quantity ?? 0)
       .reduce((acc, one) => acc + one, 0)
+    if (sum > this.selected.quantity) {
+      sum = this.selected.quantity
+    }
     this.totalSelect.set(sum);
   }
 
   public calTMTSelected(): void {
-    const sum = this.selectTMTDataSource
+    let sum = this.selectTMTDataSource
       .filter(p => p.isSelected === true)
       .map(p => p.quantity ?? 0)
       .reduce((acc, one) => acc + one, 0)
+    if (sum > this.selected.quantity) {
+      sum = this.selected.quantity
+    }
     this.totalSelectTMT.set(sum);
   }
 

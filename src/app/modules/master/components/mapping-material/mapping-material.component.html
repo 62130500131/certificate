@@ -65,7 +65,11 @@
 
 
                                 <dxi-column dataField="index" caption="No." dataType="number" [width]="40"
-                                    alignment="center"></dxi-column>
+                                    alignment="center" cellTemplate="indexTemplate">
+                                    <div *dxTemplate="let cell of 'indexTemplate'">
+                                        {{cell.value}}.
+                                    </div>
+                                </dxi-column>
                                 <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="200"
                                     alignment="left"></dxi-column>
                                 <dxi-column dataField="materialDesc" caption="Material Description" dataType="number"

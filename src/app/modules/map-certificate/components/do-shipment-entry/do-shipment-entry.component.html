@@ -141,7 +141,7 @@
                 Material :
             </div>
             <div class="col-4">
-                {{selected.materialCode}}
+                {{selected.materialCode}} : {{selected.materialDesc}}
             </div>
 
             <div class="col-2 text-end">
@@ -189,13 +189,13 @@
                 Quantity :
             </div>
             <div class="col-4">
-                {{selected.quantity | number: '.2'}}
+                {{selected.quantity | number: '.2'}} PC.
             </div>
             <div class="col-2 text-end">
                 Selected Quantity :
             </div>
             <div class="col-4">
-                {{totalSelectTMT() | number: '.2'}}
+                {{totalSelectTMT() | number: '.2'}} PC.
             </div>
         </div>
 
@@ -214,6 +214,8 @@
                             </div>
                         </div>
                     </dxi-column>
+                    <dxi-column dataField="certNo" caption="Certificate No." [width]="100"
+                        alignment="center"></dxi-column>
                     <dxi-column dataField="itemIndex" caption="No." [width]="40" alignment="center"
                         cellTemplate="indexTemplate">
                         <div *dxTemplate="let cell of 'indexTemplate'">
@@ -221,7 +223,7 @@
                         </div>
                     </dxi-column>
                     <dxi-column dataField="material" caption="Material" [width]="150" alignment="left"></dxi-column>
-                    <dxi-column dataField="materialDesc" caption="MaterialDesc" minWidth="300"
+                    <dxi-column dataField="materialDesc" caption="Material Description" minWidth="300"
                         alignment="left"></dxi-column>
 
                     <dxi-column dataField="heatNo" caption="Heat No." [width]="120" alignment="center"></dxi-column>
@@ -235,14 +237,12 @@
                     <dxi-column dataField="tensile" caption="Tensile" [width]="80" alignment="right"
                         cellTemplate="numberTemplate"></dxi-column>
 
-                    <dxi-column dataField="mill" caption="Mill" [width]="80" alignment="left"></dxi-column>
-                    <dxi-column dataField="remain" caption="Remain" [width]="120" alignment="right"
-                        cellTemplate="numberTemplate"></dxi-column>
-                    <dxi-column dataField="quantity" caption="Quantity" [width]="120" alignment="right"
-                        cellTemplate="numberTemplate"></dxi-column>
+                    <dxi-column dataField="mill" caption="Mill" [width]="80" alignment="center"></dxi-column>
+                    <dxi-column dataField="quantity" caption="Quantity" [width]="120" alignment="right"></dxi-column> 
+                    <dxi-column dataField="unit" caption="Unit" [width]="60" alignment="center">
+                    </dxi-column>
                     <dxi-column dataField="weight" caption="Weight" [width]="80" cellTemplate="numberTemplate"
                         alignment="right"></dxi-column>
-                    <dxi-column dataField="unit" caption="Unit" [width]="60" alignment="center"></dxi-column>
                     <div *dxTemplate="let cell of 'numberTemplate'">
                         {{cell.value | number: '.2'}}
                     </div>
@@ -272,7 +272,7 @@
                 Material :
             </div>
             <div class="col-4">
-                {{selected.materialCode}}
+                {{selected.materialCode}} : {{selected.materialDesc}}
             </div>
 
             <div class="col-2 text-end">
@@ -304,13 +304,13 @@
                 Quantity :
             </div>
             <div class="col-4">
-                {{selected.quantity | number: '.2'}}
+                {{selected.quantity | number: '.2'}} PC.
             </div>
             <div class="col-2 text-end">
                 Selected Quantity :
             </div>
             <div class="col-4">
-                {{totalSelect() | number: '.2'}}
+                {{totalSelect() | number: '.2'}} PC.
             </div>
         </div>
         <div class="row mt-4">
@@ -327,6 +327,8 @@
                             </div>
                         </div>
                     </dxi-column>
+                    <dxi-column dataField="certNo" caption="Certificate No." [width]="100"
+                        alignment="center"></dxi-column>
                     <dxi-column dataField="itemIndex" caption="No." [width]="40" alignment="center"
                         cellTemplate="indexTemplate">
                         <div *dxTemplate="let cell of 'indexTemplate'">
@@ -334,7 +336,7 @@
                         </div>
                     </dxi-column>
                     <dxi-column dataField="material" caption="Material" [width]="150" alignment="left"></dxi-column>
-                    <dxi-column dataField="materialDesc" caption="MaterialDesc" minWidth="300"
+                    <dxi-column dataField="materialDesc" caption="Material Description" minWidth="300"
                         alignment="left"></dxi-column>
 
                     <dxi-column dataField="heatNo" caption="Heat No." [width]="120" alignment="center"></dxi-column>
@@ -344,14 +346,12 @@
                     <dxi-column dataField="tensile" caption="Tensile" [width]="80" alignment="right"
                         cellTemplate="numberTemplate"></dxi-column>
 
-                    <dxi-column dataField="mill" caption="Mill" [width]="80" alignment="left"></dxi-column>
-                    <dxi-column dataField="remain" caption="Remain" [width]="120" alignment="right"
-                        cellTemplate="numberTemplate"></dxi-column>
+                    <dxi-column dataField="mill" caption="Mill" [width]="80" alignment="center"></dxi-column>
                     <dxi-column dataField="quantity" caption="Quantity" [width]="120" alignment="right"
                         cellTemplate="numberTemplate"></dxi-column>
+                    <dxi-column dataField="unit" caption="Unit" [width]="60" alignment="center"></dxi-column>
                     <dxi-column dataField="weight" caption="Weight" [width]="80" cellTemplate="numberTemplate"
                         alignment="right"></dxi-column>
-                    <dxi-column dataField="unit" caption="Unit" [width]="60" alignment="center"></dxi-column>
                     <div *dxTemplate="let cell of 'numberTemplate'">
                         {{cell.value | number: '.2'}}
                     </div>

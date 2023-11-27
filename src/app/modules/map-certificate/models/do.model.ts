@@ -49,6 +49,7 @@ export class DoShipmentDetail {
     }
 }
 export class SelectQuantity {
+    certNo: string
     isSelected: boolean;
     itemIndex: number;
     material: string;
@@ -66,6 +67,7 @@ export class SelectQuantity {
     unit: string;
 
     constructor() {
+        this.certNo = '';
         this.isSelected = false
         this.itemIndex = 0;
         this.material = '';
