@@ -8,15 +8,46 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <label>Customer {{ shipmentInfo.customerCode }} : {{ shipmentInfo.customerName }}</label>
-                        </div>
-                        <div class="col">
-                            <label>Ship to {{ shipmentInfo.shiptoCode }} : {{ shipmentInfo.shiptoName }}</label>
-                        </div>
-                        <div class="col">
-                            <label>สถานที่จัดส่ง {{ shipmentInfo.district }} , {{ shipmentInfo.province }}</label>
+                            <h6>Shipment Info</h6>
                         </div>
                     </div>
+                    <div class="row mt-2">
+                        <div class="col-2 text-end">
+                            <label>Customer : </label>
+                        </div>
+                        <div class="col text-start">
+                            {{ shipmentInfo.customerCode }} : {{ shipmentInfo.customerName }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-2 text-end">
+                            <label>Ship to :</label>
+                        </div>
+                        <div class="col-4">
+                            {{ shipmentInfo.shiptoCode }} : {{ shipmentInfo.shiptoName }}
+                        </div>
+                        <div class="col-2 text-end">
+                            <label>สถานที่จัดส่ง :</label>
+                        </div>
+                        <div class="col-4">
+                            {{ shipmentInfo.district }} , {{ shipmentInfo.province }}
+                        </div>
+                    </div>
+                    <div class="row mt-2 mb-4">
+                        <div class="col-2 text-end">
+                            <label>ทะเบียนรถ :</label>
+                        </div>
+                        <div class="col-4">
+                            {{ shipmentInfo.carRegistration }}
+                        </div>
+                        <div class="col-2 text-end">
+                            <label>เวลารถออก :</label>
+                        </div>
+                        <div class="col-4">
+                            {{ shipmentInfo.outTime | date: 'dd-MMM-yyyy HH:mm'}}
+                        </div>
+                    </div>
+                    <hr>
                     <div class="row" *ngFor="let item of list">
                         <div class="col-12">
                             <div class="row mt-4">
@@ -183,7 +214,8 @@
                             </div>
                         </div>
                     </dxi-column>
-                    <dxi-column dataField="itemIndex" caption="No." [width]="40" alignment="center"cellTemplate="indexTemplate">
+                    <dxi-column dataField="itemIndex" caption="No." [width]="40" alignment="center"
+                        cellTemplate="indexTemplate">
                         <div *dxTemplate="let cell of 'indexTemplate'">
                             {{cell.value}}.
                         </div>
@@ -295,7 +327,8 @@
                             </div>
                         </div>
                     </dxi-column>
-                    <dxi-column dataField="itemIndex" caption="No." [width]="40" alignment="center"cellTemplate="indexTemplate">
+                    <dxi-column dataField="itemIndex" caption="No." [width]="40" alignment="center"
+                        cellTemplate="indexTemplate">
                         <div *dxTemplate="let cell of 'indexTemplate'">
                             {{cell.value}}.
                         </div>

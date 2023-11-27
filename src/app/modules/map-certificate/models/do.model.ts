@@ -108,6 +108,8 @@ export class ShipmentInfoViewModel {
     shiptoName: string;
     district: string;
     province: string;
+    carRegistration: string;
+    outTime: Date;
 
     constructor() {
         this.shipmentNo = '';
@@ -117,6 +119,8 @@ export class ShipmentInfoViewModel {
         this.shiptoName = '';
         this.district = '';
         this.province = '';
+        this.carRegistration = '';
+        this.outTime = new Date();
     }
 
 }
