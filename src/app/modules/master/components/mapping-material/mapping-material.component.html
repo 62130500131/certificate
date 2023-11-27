@@ -53,8 +53,7 @@
                                 [allowColumnReordering]="true" [rowAlternationEnabled]="false" [showBorders]="true"
                                 [width]="'100%'" [showColumnLines]="true" [showRowLines]="true">
 
-
-                                <dxi-column width="60" alignment="center" cellTemplate="toolsTemplate">
+                                <dxi-column [allowExporting]="false" width="60" alignment="center" cellTemplate="toolsTemplate">
                                     <div *dxTemplate="let cell of 'toolsTemplate'">
                                         <i style="cursor: pointer;" class="fa-solid fa-pen-to-square icon-edit"
                                             (click)="onClickEditMappingMaterial(editMappingMaterial,cell)"></i>

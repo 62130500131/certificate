@@ -84,7 +84,7 @@ export class CertificateEntryListViewModel {
         this.tmtMaterial = '';
         this.grade = '';
         this.heatNo = '';
-        this.quantity = 0;
+        this.quantity = 0.00;
         this.unit = '';
         this.remark = '';
         this.yield = '';
