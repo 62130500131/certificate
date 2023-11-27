@@ -40,6 +40,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Wait Sample",
+    unit: "KG"
   },
   {
     productionOrder: "1080035293",
@@ -51,6 +52,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Sample Ready",
+    unit: "KG"
   },
   {
     productionOrder: "1080035294",
@@ -62,6 +64,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Wait Film",
+    unit: "KG"
   },
   {
     productionOrder: "1080035295",
@@ -73,6 +76,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Film Ready",
+    unit: "KG"
   }
   ];
 
@@ -86,6 +90,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Complete",
+    unit: "KG"
   },
   {
     productionOrder: "1080035294",
@@ -97,6 +102,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Cancel",
+    unit: "KG"
   },
   {
     productionOrder: "1080035295",
@@ -108,6 +114,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Cancel",
+    unit: "KG"
   },
   {
     productionOrder: "1080035252",
@@ -119,6 +126,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Complete",
+    unit: "KG"
   }
   ];
 
@@ -280,7 +288,8 @@ export class QualityAssuranceStatusComponent implements OnInit {
     this.modalRef.hide();
   }
 
-  public OnClickDownStatus(): void {
-
+  public OnClickDownStatus(cellData : QaStatusCompleteViewModel): void {
+    console.log("cellData:", cellData)
+    
   }
 }

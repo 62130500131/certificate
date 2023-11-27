@@ -74,9 +74,10 @@
                                     alignment="left"></dxi-column>
                                 <dxi-column dataField="materialDesc" caption="Material Description" dataType="string"
                                     [minWidth]="280" alignment="left"></dxi-column>
-                                <dxi-column dataField="qty" caption="Qty" dataType="number" [width]="80"
+                                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="80"
                                     cellTemplate="numberTemplate" alignment="right">
                                 </dxi-column>
+                                <dxi-column dataField="unit" caption="Unit" [width]="60" alignment="center"></dxi-column>
                                 <dxi-column dataField="soldTo" caption="Sold to" dataType="string" [width]="80"
                                     alignment="center"></dxi-column>
                                 <dxi-column dataField="soldToName" caption="Sold to Name" dataType="string"
@@ -199,8 +200,10 @@
                                     alignment="left"></dxi-column>
                                 <dxi-column dataField="materialDesc" caption="Material Description" dataType="string"
                                     [minWidth]="280" alignment="left"></dxi-column>
-                                <dxi-column dataField="qty" caption="Qty" dataType="number" [width]="80"
+                                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="80"
                                     cellTemplate="numberTemplate" alignment="right">
+                                </dxi-column>
+                                <dxi-column dataField="unit" caption="Unit" [width]="60" alignment="center">
                                 </dxi-column>
                                 <dxi-column dataField="soldTo" caption="Sold to" dataType="string" [width]="80"
                                     alignment="center"></dxi-column>
@@ -225,7 +228,7 @@
                                 <dxi-column width="60" alignment="center" cellTemplate="toolsTemplate">
                                     <div *dxTemplate="let cell of 'toolsTemplate'">
                                         <i style="cursor: pointer;" class="fa-solid fa-circle-down icon-delete"
-                                            (click)="OnClickDownStatus()"
+                                            (click)="OnClickDownStatus(cell.data)"
                                             [ngClass]="{'': cell.data.status == 'Cancel', 'fa-solid fa-circle-down icon-delete': cell.data.status == 'Complete'}"></i>
                                     </div>
                                 </dxi-column>

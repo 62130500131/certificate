@@ -53,6 +53,7 @@ export class QaStatusMonitorViewModel {
     soldToName: string;
     grDate: string;
     status: string;
+    unit: string;
 
     constructor() {
         this.productionOrder = '';
@@ -64,6 +65,7 @@ export class QaStatusMonitorViewModel {
         this.soldToName = '';
         this.grDate = '';
         this.status = '';
+        this.unit = 'KG'
     }
 }
 
@@ -78,7 +80,7 @@ export class QaStatusCompleteViewModel {
     soldToName: string;
     grDate: string;
     status: string;
-
+    unit: string;
     constructor() {
         this.productionOrder = '';
         this.itemNo = 0;
@@ -89,6 +91,7 @@ export class QaStatusCompleteViewModel {
         this.soldToName = '';
         this.grDate = '';
         this.status = '';
+        this.unit = '';
     }
 }
 
