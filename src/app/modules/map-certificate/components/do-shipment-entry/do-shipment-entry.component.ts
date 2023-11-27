@@ -14,7 +14,9 @@ export class DoShipmentEntryComponent implements OnInit {
   @ViewChild('selectTemplate') selectTemplate!: TemplateRef<any>;
   @ViewChild('selectTMTTemplate') selectTMTTemplate!: TemplateRef<any>;
   @ViewChild('addDetailTemplate') addDetailTemplate!: TemplateRef<any>;
+  public isStamp: boolean = true;
   public isType3: boolean = false;
+  public selectStemp: string = 'isStamp';
   public modalRef!: BsModalRef;
   public selected: DoShipmentDetail = new DoShipmentDetail();
   public shipmentInfo: ShipmentInfoViewModel = new ShipmentInfoViewModel();
