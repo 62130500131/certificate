@@ -10,10 +10,11 @@ export class ProductionStatusSearchParam {
     selectFilmReady: string;
     selectCancel: string;
     selectComplete: string;
+    soldTo: string;
 
     constructor() {
         this.materialCode = '';
-        this.productionDate = 90;
+        this.productionDate = 30;
         this.productionFrom = '';
         this.productionTo = '';
         this.selectWaitSample = 'waitSample';
@@ -22,6 +23,7 @@ export class ProductionStatusSearchParam {
         this.selectFilmReady = 'filmReady';
         this.selectCancel = 'complete';
         this.selectComplete = 'cancel';
+        this.soldTo = '';
     }
 
 }
@@ -37,6 +39,7 @@ export class ProductionStatusMonitorViewModel {
     soldToName: string;
     grDate: string;
     status: string;
+    unit: string;
 
     constructor() {
         this.productionOrder = '';
@@ -48,6 +51,7 @@ export class ProductionStatusMonitorViewModel {
         this.soldToName = '';
         this.grDate = '';
         this.status = '';
+        this.unit = '';
     }
 }
 
@@ -62,6 +66,7 @@ export class ProductionStatusCompleteViewModel {
     soldToName: string;
     grDate: string;
     status: string;
+    unit: string;
 
     constructor() {
         this.productionOrder = '';
@@ -73,5 +78,6 @@ export class ProductionStatusCompleteViewModel {
         this.soldToName = '';
         this.grDate = '';
         this.status = '';
+        this.unit = '';
     }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ProductionStatusCompleteViewModel, ProductionStatusMonitorViewModel, ProductionStatusSearchParam } from '../../models/production.model';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'production-status',
@@ -39,6 +40,7 @@ export class ProductionStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Wait Sample",
+    unit: "KG."
   },
   {
     productionOrder: "1080035293",
@@ -50,6 +52,7 @@ export class ProductionStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Sample Ready",
+    unit: "KG."
   },
   {
     productionOrder: "1080035294",
@@ -61,6 +64,7 @@ export class ProductionStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Wait Film",
+    unit: "KG."
   },
   {
     productionOrder: "1080035295",
@@ -72,6 +76,7 @@ export class ProductionStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Film Ready",
+    unit: "KG."
   }
   ];
 
@@ -85,6 +90,7 @@ export class ProductionStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Complete",
+    unit: "KG."
   },
   {
     productionOrder: "1080035294",
@@ -96,6 +102,7 @@ export class ProductionStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Cancel",
+    unit: "KG."
   },
   {
     productionOrder: "1080035295",
@@ -107,6 +114,7 @@ export class ProductionStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Cancel",
+    unit: "KG."
   },
   {
     productionOrder: "1080035252",
@@ -118,18 +126,11 @@ export class ProductionStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Complete",
+    unit: "KG."
   }
   ];
 
   public dateDataSource: any[] = [
-    {
-      text: 'ภายใน 90 วัน',
-      value: 90
-    },
-    {
-      text: 'ภายใน 60 วัน',
-      value: 60
-    },
     {
       text: 'ภายใน 30 วัน',
       value: 30
@@ -195,7 +196,15 @@ export class ProductionStatusComponent implements OnInit {
   }
 
   public OnClickDownStatus(): void {
-
+    Swal.fire({
+      title: "Are you sure to down this status?",
+      icon: "question",
+      heightAuto: false,
+      confirmButtonText: "Yes",
+      cancelButtonText: "No",
+      showCancelButton: true,
+      showCloseButton: true
+    });
   }
 
   public radioChangeCancel($event: any): void {
