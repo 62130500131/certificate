@@ -177,7 +177,8 @@ export class CustomerContractService {
             district: 'อำเภอเมืองชลบุรี',
             line: 'Cl_Steel',
             modifiedBy: 'Connex',
-            modifiedTime: (new Date()).toString()
+            modifiedTime: (new Date()).toString(),
+            contactName: ''
         },
         {
             customerCode: '10000021',
@@ -186,7 +187,8 @@ export class CustomerContractService {
             district: 'เขตยานนาวา',
             line: 'Udom_Loha',
             modifiedBy: 'Connex',
-            modifiedTime: (new Date()).toString()
+            modifiedTime: (new Date()).toString(),
+            contactName: ''
         },
         {
             customerCode: '10000022',
@@ -195,7 +197,8 @@ export class CustomerContractService {
             district: 'เขตปทุมวัน',
             line: 'KitCharoen',
             modifiedBy: 'Connex',
-            modifiedTime: (new Date()).toString()
+            modifiedTime: (new Date()).toString(),
+            contactName: ''
         },
         {
             customerCode: '10000023',
@@ -204,7 +207,8 @@ export class CustomerContractService {
             district: 'เขตบางคอแหลม',
             line: 'Metal_light_1975',
             modifiedBy: 'Connex',
-            modifiedTime: (new Date()).toString()
+            modifiedTime: (new Date()).toString(),
+            contactName: ''
         },
         {
             customerCode: '10000030',
@@ -213,7 +217,8 @@ export class CustomerContractService {
             district: 'เขตพระโขนง',
             line: 'TheBeamMetal',
             modifiedBy: 'Connex',
-            modifiedTime: (new Date()).toString()
+            modifiedTime: (new Date()).toString(),
+            contactName: ''
         },
         {
             customerCode: '10000033',
@@ -222,7 +227,8 @@ export class CustomerContractService {
             district: 'เขตบางนา',
             line: 'Chuea_Phai_Bun',
             modifiedBy: 'Connex',
-            modifiedTime: (new Date()).toString()
+            modifiedTime: (new Date()).toString(),
+            contactName: ''
         }
 
     ]

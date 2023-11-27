@@ -17,11 +17,19 @@ export class CustomerContractComponent implements OnInit {
 
   @ViewChild('importTemplate') importTemplate!: TemplateRef<any>;
   @ViewChild('grid') grid!: DxDataGridComponent;
+  @ViewChild('addContact') addContact!: TemplateRef<any>;
+  @ViewChild('editContact') editContact!: TemplateRef<any>;
   public param: CustomerContractParam = new CustomerContractParam();
   public fileToUpload: any;
   public modalRef!: BsModalRef;
   public clickImport: boolean = false;
   public canClick: boolean = false;
+  public customerCode: string = '';
+  public customerName: string = '';
+  public district: string = '';
+  public province: string = '';
+  public contactName: string = '';
+  public line: string = '';
   public dataForUpload: CustomerContractUploadViewModel[] = [];
   public dataSource: CustomerContractViewModel[] = [
     {
@@ -31,7 +39,8 @@ export class CustomerContractComponent implements OnInit {
       district: 'เขตบางคอแหลม',
       line: '',
       modifiedBy: 'Connex',
-      modifiedTime: (new Date()).toString()
+      modifiedTime: (new Date()).toString(),
+      contactName: ''
     },
     {
       customerCode: '10000002',
@@ -40,7 +49,8 @@ export class CustomerContractComponent implements OnInit {
       district: 'อำเภอกระสัง',
       line: '',
       modifiedBy: 'Connex',
-      modifiedTime: (new Date()).toString()
+      modifiedTime: (new Date()).toString(),
+      contactName: ''
     },
     {
       customerCode: '10000003',
@@ -49,7 +59,8 @@ export class CustomerContractComponent implements OnInit {
       district: 'อำเภอโพธาราม',
       line: '',
       modifiedBy: 'Connex',
-      modifiedTime: (new Date()).toString()
+      modifiedTime: (new Date()).toString(),
+      contactName: ''
     },
     {
       customerCode: '10000004',
@@ -58,7 +69,8 @@ export class CustomerContractComponent implements OnInit {
       district: '',
       line: '',
       modifiedBy: 'Connex',
-      modifiedTime: (new Date()).toString()
+      modifiedTime: (new Date()).toString(),
+      contactName: ''
     },
     {
       customerCode: '10000005',
@@ -67,7 +79,8 @@ export class CustomerContractComponent implements OnInit {
       district: 'เขตบางคอแหลม',
       line: '',
       modifiedBy: 'Connex',
-      modifiedTime: (new Date()).toString()
+      modifiedTime: (new Date()).toString(),
+      contactName: ''
     },
     {
       customerCode: '10000006',
@@ -76,9 +89,38 @@ export class CustomerContractComponent implements OnInit {
       district: 'เขตสาทร',
       line: '',
       modifiedBy: 'Connex',
-      modifiedTime: (new Date()).toString()
+      modifiedTime: (new Date()).toString(),
+      contactName: ''
     }
   ];
+
+  public customerData: any[] = [
+    {
+      text: '10000001 : บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน',
+      value: '10000001 : บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน'
+    },
+    {
+      text: '10000002 : บริษัท เอ.เอ็น.สตีล จำกัด',
+      value: '10000002 : บริษัท เอ.เอ็น.สตีล จำกัด'
+    },
+    {
+      text: '10000003 : บริษัท ป้อเจริญค้าวัสดุ จำกัด',
+      value: '10000003 : บริษัท ป้อเจริญค้าวัสดุ จำกัด'
+    },
+    {
+      text: '10000004 : บริษัท ไททัน สตีล จำกัด',
+      value: '10000004 : บริษัท ไททัน สตีล จำกัด'
+    },
+    {
+      text: '10000005 : บริษัท ซี.เค.เอส. โลหะกิจ จำกัด',
+      value: '10000005 : บริษัท ซี.เค.เอส. โลหะกิจ จำกัด'
+    },
+    {
+      text: '10000006 : บริษัท สินกิจไพบูลย์โลหะการ จำกัด',
+      value: '10000006 : บริษัท สินกิจไพบูลย์โลหะการ จำกัด'
+    }
+  ];
+
   constructor(private modalService: BsModalService,
     private service: CustomerContractService) { }
 
@@ -86,7 +128,7 @@ export class CustomerContractComponent implements OnInit {
   }
 
   public onClickSearch(): void {
-    
+
   }
 
   public onClickClear(): void {
@@ -203,6 +245,30 @@ export class CustomerContractComponent implements OnInit {
         this.modalRef.hide();
       })
 
+  }
+
+  public onClickAdd(): void {
+    this.modalRef = this.modalService.show(this.addContact, {
+      class: 'modal-xl'
+    });
+  }
+
+  public onClickConfirm(): void {
+
+  }
+
+
+
+  public onClickEditContact(cell: any): void {
+    this.customerCode = cell.data.customerCode
+    this.customerName = cell.data.customerName
+    this.district = cell.data.district
+    this.province = cell.data.province
+    this.contactName = cell.data.contactName
+    this.line = cell.data.line
+    this.modalRef = this.modalService.show(this.editContact, {
+      class: 'modal-xl'
+    });
   }
 
 }

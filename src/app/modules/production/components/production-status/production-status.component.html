@@ -29,20 +29,21 @@
 
                     <div class="row">
                         <div class="col-2 text-end pt-2">
+                            <label class="form-label" for="materialCode">Sold to</label>
+                        </div>
+                        <div class="col-3">
+                            <input id="materialCode" class="form-control" type="text" [(ngModel)]="paramMonitor.soldTo">
+                        </div>
+                        <div class="col-2 text-end pt-2">
                             <label class="form-label" for="materialdesc">Status</label>
                         </div>
-                        <div class="col-10 mt-2">
+                        <div class="col-3 mt-2">
                             <input [(ngModel)]="paramMonitor.selectWaitSample" class="form-check-input" type="checkbox"
                                 id="waitSample">
                             <label for="waitSample" class="mx-2">Wait Sample</label>
-                            <input [(ngModel)]="paramMonitor.selectWaitFilm" class="form-check-input" type="checkbox" id="waitFilm">
+                            <input [(ngModel)]="paramMonitor.selectWaitFilm" class="form-check-input" type="checkbox"
+                                id="waitFilm">
                             <label for="waitFilm" class="mx-2">Wait Film</label>
-                            <input [(ngModel)]="paramMonitor.selectSampleReady" class="form-check-input" type="checkbox"
-                                id="sampleReady">
-                            <label for="sampleReady" class="mx-2">Sample Ready</label>
-                            <input [(ngModel)]="paramMonitor.selectFilmReady" class="form-check-input" type="checkbox"
-                                id="filmReady">
-                            <label for="filmReady" class="mx-2">Film Ready</label>
                         </div>
                     </div>
 
@@ -78,14 +79,17 @@
                                     alignment="left"></dxi-column>
                                 <dxi-column dataField="materialDesc" caption="Material Description" dataType="string"
                                     [minWidth]="280" alignment="left"></dxi-column>
-                                <dxi-column dataField="qty" caption="Qty" dataType="number" [width]="80"
+                                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="70"
                                     cellTemplate="numberTemplate" alignment="right">
+                                </dxi-column>
+                                <dxi-column dataField="unit" caption="Unit" dataType="string" [width]="40"
+                                    alignment="center">
                                 </dxi-column>
                                 <dxi-column dataField="soldTo" caption="Sold to" dataType="string" [width]="80"
                                     alignment="center"></dxi-column>
                                 <dxi-column dataField="soldToName" caption="Sold to Name" dataType="string"
                                     [width]="280" alignment="left"></dxi-column>
-                                <dxi-column dataField="grDate" caption="GR Date" dataType="string" [width]="130"
+                                <dxi-column dataField="grDate" caption="GR Date" dataType="string" [width]="100"
                                     alignment="center" cellTemplate="dateTemplate">
                                     <div *dxTemplate="let cell of 'dateTemplate'">
                                         {{ cell.value | date: 'dd-MMM-yyyy' }}
@@ -96,7 +100,7 @@
                                     alignment="center" cellTemplate="statusTemplate">
                                     <div *dxTemplate="let cell of 'statusTemplate'">
                                         <label
-                                            [ngClass]="{'wait': cell.data.status == 'Wait Film' || cell.data.status == 'Wait Sample' , 'ready': cell.data.status == 'Sample Ready' || cell.data.status == 'Film Ready' }">{{
+                                            [ngClass]="{'wait': cell.data.status == 'Wait Film' || cell.data.status == 'Wait Sample' }">{{
                                             cell.data.status }}</label>
                                     </div>
                                 </dxi-column>
@@ -162,13 +166,28 @@
 
                     <div class="row">
                         <div class="col-2 text-end pt-2">
+                            <label class="form-label" for="materialCode">Sold to</label>
+                        </div>
+                        <div class="col-3">
+                            <input id="materialCode" class="form-control" type="text"
+                                [(ngModel)]="paramComplete.soldTo">
+                        </div>
+                        <div class="col-2 text-end pt-2">
                             <label class="form-label" for="materialdesc">Status</label>
                         </div>
-                        <div class="col-10 mt-2">
-                            <input [(ngModel)]="paramComplete.selectCancel" class="form-check-input" type="checkbox" id="complete">
-                            <label for="complete" class="mx-2">Complete</label>
-                            <input [(ngModel)]="paramComplete.selectComplete" class="form-check-input" type="checkbox" id="cancel">
+                        <div class="col-4 mt-2">
+                            <input [(ngModel)]="paramComplete.selectSampleReady" class="form-check-input" type="checkbox"
+                                id="cancel">
+                            <label for="cancel" class="mx-2">Sample Ready</label>
+                            <input [(ngModel)]="paramComplete.selectFilmReady" class="form-check-input" type="checkbox"
+                                id="cancel">
+                            <label for="cancel" class="mx-2">Film Ready</label>
+                            <input [(ngModel)]="paramComplete.selectCancel" class="form-check-input" type="checkbox"
+                                id="cancel">
                             <label for="cancel" class="mx-2">Cancel</label>
+                            <input [(ngModel)]="paramComplete.selectComplete" class="form-check-input" type="checkbox"
+                                id="complete">
+                            <label for="complete" class="mx-2">Complete</label>
                         </div>
                     </div>
 
@@ -195,22 +214,26 @@
                                 <dxi-column dataField="productionOrder" caption="Production Order" dataType="number"
                                     [width]="130" alignment="center"></dxi-column>
                                 <dxi-column dataField="itemNo" caption="No." dataType="number" [width]="40"
-                                    alignment="center"cellTemplate="indexTemplate">
-                                    <div *dxTemplate="let cell of 'indexTemplate'">
-                                        {{cell.value}}.
-                                    </div></dxi-column>
+                                    alignment="center" cellTemplate="rowIndexTemplate">
+                                    <div *dxTemplate="let cell of 'rowIndexTemplate'">
+                                        {{ cell.rowIndex +1 }}.
+                                    </div>
+                                </dxi-column>
                                 <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="120"
                                     alignment="left"></dxi-column>
                                 <dxi-column dataField="materialDesc" caption="Material Description" dataType="string"
                                     [minWidth]="280" alignment="left"></dxi-column>
-                                <dxi-column dataField="qty" caption="Qty" dataType="number" [width]="80"
+                                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="70"
                                     cellTemplate="numberTemplate" alignment="right">
+                                </dxi-column>
+                                <dxi-column dataField="unit" caption="Unit" dataType="string" [width]="40"
+                                    alignment="center">
                                 </dxi-column>
                                 <dxi-column dataField="soldTo" caption="Sold to" dataType="string" [width]="80"
                                     alignment="center"></dxi-column>
                                 <dxi-column dataField="soldToName" caption="Sold to Name" dataType="string"
                                     [width]="280" alignment="left"></dxi-column>
-                                <dxi-column dataField="grDate" caption="GR Date" dataType="string" [width]="130"
+                                <dxi-column dataField="grDate" caption="GR Date" dataType="string" [width]="100"
                                     alignment="center" cellTemplate="dateTemplate">
                                     <div *dxTemplate="let cell of 'dateTemplate'">
                                         {{ cell.value | date: 'dd-MMM-yyyy' }}
@@ -221,7 +244,7 @@
                                     alignment="center" cellTemplate="statusTemplate">
                                     <div *dxTemplate="let cell of 'statusTemplate'">
                                         <label
-                                            [ngClass]="{'cancel': cell.data.status == 'Cancel' , 'complete': cell.data.status == 'Complete' }">{{
+                                            [ngClass]="{'cancel': cell.data.status == 'Cancel' , 'complete': cell.data.status == 'Complete', 'ready': cell.data.status == 'Sample Ready' || cell.data.status == 'Film Ready' }">{{
                                             cell.data.status }}</label>
                                     </div>
                                 </dxi-column>
@@ -261,11 +284,11 @@
         <h5 class="modal-title">Production Order No. {{productionOrder}}</h5>
         <span style="cursor: pointer;" class="close-modal" name="close-modal-import"
             (click)="modalRef.hide()">&times;</span>
-            
+
     </div>
 
     <div class="modal-body">
-        
+
         <div class="row mt-2">
             <div class="col-2 text-end">
                 <label class="form-label">Status</label>
@@ -286,13 +309,14 @@
                     <label for="dateSampleReady" class="form-label mt-2">Date</label>
                 </div>
                 <div class="col-3">
-                    <input [value]="dateSampleReady | date: 'dd-MMM-yyyy'" id="dateSampleReady" class="form-control">
+                    <input type="date" [value]="dateSampleReady | date: 'dd-MMM-yyyy'" id="dateSampleReady"
+                        class="form-control">
                 </div>
                 <div class="col-2 text-end">
                     <label for="customerName" class="form-label mt-2">Customer Name</label>
                 </div>
-                <div class="col-3">
-                    <input [value]="customerName" id="customerName" class="form-control">
+                <div class="col-3 pt-2">
+                    {{ customerName }}
                 </div>
             </div>
 
@@ -300,14 +324,14 @@
                 <div class="col-2 text-end">
                     <label for="productionOrder" class="form-label mt-2">Production Order</label>
                 </div>
-                <div class="col-3">
-                    <input [value]="productionOrder" id="productionOrder" class="form-control">
+                <div class="col-3 pt-2">
+                    {{ productionOrder }}
                 </div>
                 <div class="col-2 text-end">
                     <label for="materialDesc" class="form-label mt-2">Material Description</label>
                 </div>
-                <div class="col-3">
-                    <input [value]="materialDesc" id="materialDesc" class="form-control">
+                <div class="col-3 pt-2">
+                    {{ materialDesc }}
                 </div>
             </div>
 
@@ -337,12 +361,12 @@
                     <label for="grade" class="form-label mt-2">Grade</label>
                 </div>
                 <div class="col-3">
-                    <input [value]="grade" id="grade" class="form-control">
+                    <dx-select-box displayExpr="text" valueExpr="value" [items]="gradeDataSource"></dx-select-box>
                 </div>
             </div>
 
             <div class="row pt-2">
-                <div class="col-2 text-end">
+                <div class="col-2 text-end pt-1">
                     <label for="detail">Remark</label>
                 </div>
                 <div class="col-8">
@@ -353,7 +377,7 @@
 
 
         <div class="row mt-2" *ngIf="selectedStatus == 'cancelRadio'">
-            <div class="col-2 text-end">
+            <div class="col-2 text-end pt-1">
                 <label for="detail">Remark</label>
             </div>
             <div class="col-8">
@@ -381,7 +405,7 @@
     </div>
 
     <div class="modal-body">
-        
+
         <div class="row mt-2">
             <div class="col-2 text-end">
                 <label class="form-label">Status</label>

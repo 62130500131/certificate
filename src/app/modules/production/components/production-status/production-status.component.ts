@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ProductionStatusCompleteViewModel, ProductionStatusMonitorViewModel, ProductionStatusSearchParam } from '../../models/production.model';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'production-status',
@@ -39,21 +40,11 @@ export class ProductionStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Wait Sample",
-  },
-  {
-    productionOrder: "1080035293",
-    itemNo: 2,
-    materialCode: "2CTFB",
-    materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
-    qty: 50,
-    soldTo: "10000001",
-    soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-    grDate: (new Date()).toString(),
-    status: "Sample Ready",
+    unit: "KG."
   },
   {
     productionOrder: "1080035294",
-    itemNo: 3,
+    itemNo: 2,
     materialCode: "2CTFB",
     materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
     qty: 10,
@@ -61,75 +52,74 @@ export class ProductionStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Wait Film",
-  },
-  {
-    productionOrder: "1080035295",
-    itemNo: 4,
-    materialCode: "1HC10000-015L",
-    materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
-    qty: 5,
-    soldTo: "10000001",
-    soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-    grDate: (new Date()).toString(),
-    status: "Film Ready",
+    unit: "KG."
   }
   ];
 
-  public dataSourceCompleteStatus: ProductionStatusCompleteViewModel[] = [{
-    productionOrder: "1080035293",
-    itemNo: 1,
-    materialCode: "1HC10000-015L",
-    materialDesc: "เหล็กม้วนดำ SS400 1.50mmxกว้างใดๆxC Long",
-    qty: 20,
-    soldTo: "10000001",
-    soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-    grDate: (new Date()).toString(),
-    status: "Complete",
-  },
-  {
-    productionOrder: "1080035294",
-    itemNo: 2,
-    materialCode: "2CTFB",
-    materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
-    qty: 50,
-    soldTo: "10000001",
-    soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-    grDate: (new Date()).toString(),
-    status: "Cancel",
-  },
-  {
-    productionOrder: "1080035295",
-    itemNo: 3,
-    materialCode: "2CTFB",
-    materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
-    qty: 10,
-    soldTo: "10000001",
-    soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-    grDate: (new Date()).toString(),
-    status: "Cancel",
-  },
-  {
-    productionOrder: "1080035252",
-    itemNo: 4,
-    materialCode: "1HC10000-015L",
-    materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
-    qty: 5,
-    soldTo: "10000001",
-    soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-    grDate: (new Date()).toString(),
-    status: "Complete",
-  }
+  public dataSourceCompleteStatus: ProductionStatusCompleteViewModel[] = [
+    {
+      productionOrder: "1080035252",
+      itemNo: 1,
+      materialCode: "1HC10000-015L",
+      materialDesc: "เหล็กม้วนดำ SS400 1.50mmxกว้างใดๆxC Long",
+      qty: 5,
+      soldTo: "10000001",
+      soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
+      grDate: (new Date()).toString(),
+      status: "Sample Ready",
+      unit: "KG."
+    },
+    {
+      productionOrder: "1080035295",
+      itemNo: 2,
+      materialCode: "2CTFB",
+      materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
+      qty: 10,
+      soldTo: "10000001",
+      soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
+      grDate: (new Date()).toString(),
+      status: "Cancel",
+      unit: "KG."
+    },
+    {
+      productionOrder: "1080035293",
+      itemNo: 3,
+      materialCode: "1HC10000-015L",
+      materialDesc: "เหล็กม้วนดำ SS400 1.50mmxกว้างใดๆxC Long",
+      qty: 20,
+      soldTo: "10000001",
+      soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
+      grDate: (new Date()).toString(),
+      status: "Film Ready",
+      unit: "KG."
+    },
+    {
+      productionOrder: "1080035295",
+      itemNo: 4,
+      materialCode: "2CTFB",
+      materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
+      qty: 10,
+      soldTo: "10000001",
+      soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
+      grDate: (new Date()).toString(),
+      status: "Cancel",
+      unit: "KG."
+    },
+    {
+      productionOrder: "1080035252",
+      itemNo: 5,
+      materialCode: "1HC10000-015L",
+      materialDesc: "เหล็กม้วนดำ SS400 1.50mmxกว้างใดๆxC Long",
+      qty: 5,
+      soldTo: "10000001",
+      soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
+      grDate: (new Date()).toString(),
+      status: "Complete",
+      unit: "KG."
+    }
   ];
 
   public dateDataSource: any[] = [
-    {
-      text: 'ภายใน 90 วัน',
-      value: 90
-    },
-    {
-      text: 'ภายใน 60 วัน',
-      value: 60
-    },
     {
       text: 'ภายใน 30 วัน',
       value: 30
@@ -142,6 +132,53 @@ export class ProductionStatusComponent implements OnInit {
       text: 'ระบุเอง',
       value: 0
     }
+  ];
+
+  public gradeDataSource = [
+    {
+      text: 'SS400',
+      value: 'SS400'
+    },
+    {
+      text: 'SS490',
+      value: 'SS490'
+    },
+    {
+      text: 'SM490YA',
+      value: 'SM490YA'
+    },
+    {
+      text: 'SM490A',
+      value: 'SM490A'
+    },
+    {
+      text: 'SM400',
+      value: 'SM400'
+    },
+    {
+      text: 'S275JR',
+      value: 'S275JR'
+    },
+    {
+      text: 'S335JR',
+      value: 'S335JR'
+    },
+    {
+      text: 'HR-1',
+      value: 'HR-1'
+    },
+    {
+      text: 'SPHC',
+      value: 'SPHC'
+    },
+    {
+      text: 'A36',
+      value: 'A36'
+    },
+    {
+      text: 'A516',
+      value: 'A516'
+    },
   ];
 
   constructor(public _modalService: BsModalService) { }
@@ -195,7 +232,15 @@ export class ProductionStatusComponent implements OnInit {
   }
 
   public OnClickDownStatus(): void {
-
+    Swal.fire({
+      title: "Do you want to change this status?",
+      icon: "question",
+      heightAuto: false,
+      confirmButtonText: "Yes",
+      cancelButtonText: "No",
+      showCancelButton: true,
+      showCloseButton: true
+    });
   }
 
   public radioChangeCancel($event: any): void {
@@ -208,16 +253,48 @@ export class ProductionStatusComponent implements OnInit {
   }
   public onClickConfirm(): void {
     if (this.selectedStatus == "sampleReady") {
-      this.dataSourceMonitorStatus[this.rowIndex].status = 'Sample Ready';
+      this.dataSourceMonitorStatus.splice(this.rowIndex, 1);
+      this.modalRef.hide();
     }
-    this.modalRef.hide();
+    if (this.selectedStatus == "cancelRadio") {
+      Swal.fire({
+        title: "Do you want to cancel this order?",
+        icon: "question",
+        heightAuto: false,
+        confirmButtonText: "Yes",
+        cancelButtonText: "No",
+        showCancelButton: true,
+        showCloseButton: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.dataSourceMonitorStatus.splice(this.rowIndex, 1);
+          this.modalRef.hide();
+        }
+      });
+    }
   }
-  
+
   public onClickConfirmWaitFilm(): void {
     if (this.selectedStatusFilm == "filmReady") {
-      this.dataSourceMonitorStatus[this.rowIndex].status = 'Film Ready';
+      this.dataSourceMonitorStatus.splice(this.rowIndex, 1);
+      this.modalRef.hide();
     }
-    this.modalRef.hide();
+    if (this.selectedStatusFilm == "cancelRadio") {
+      Swal.fire({
+        title: "Do you want to cancel this order?",
+        icon: "question",
+        heightAuto: false,
+        confirmButtonText: "Yes",
+        cancelButtonText: "No",
+        showCancelButton: true,
+        showCloseButton: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.dataSourceMonitorStatus.splice(this.rowIndex, 1);
+          this.modalRef.hide();
+        }
+      });
+    }
   }
 
 
