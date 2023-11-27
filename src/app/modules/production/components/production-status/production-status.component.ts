@@ -43,20 +43,8 @@ export class ProductionStatusComponent implements OnInit {
     unit: "KG."
   },
   {
-    productionOrder: "1080035293",
-    itemNo: 2,
-    materialCode: "2CTFB",
-    materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
-    qty: 50,
-    soldTo: "10000001",
-    soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-    grDate: (new Date()).toString(),
-    status: "Sample Ready",
-    unit: "KG."
-  },
-  {
     productionOrder: "1080035294",
-    itemNo: 3,
+    itemNo: 2,
     materialCode: "2CTFB",
     materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
     qty: 10,
@@ -64,18 +52,6 @@ export class ProductionStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Wait Film",
-    unit: "KG."
-  },
-  {
-    productionOrder: "1080035295",
-    itemNo: 4,
-    materialCode: "1HC10000-015L",
-    materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
-    qty: 5,
-    soldTo: "10000001",
-    soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-    grDate: (new Date()).toString(),
-    status: "Film Ready",
     unit: "KG."
   }
   ];
@@ -217,16 +193,48 @@ export class ProductionStatusComponent implements OnInit {
   }
   public onClickConfirm(): void {
     if (this.selectedStatus == "sampleReady") {
-      this.dataSourceMonitorStatus[this.rowIndex].status = 'Sample Ready';
+      this.dataSourceMonitorStatus.splice(this.rowIndex, 1);
+      this.modalRef.hide();
     }
-    this.modalRef.hide();
+    if (this.selectedStatus == "cancelRadio") {
+      Swal.fire({
+        title: "Are you sure to cancel this status?",
+        icon: "question",
+        heightAuto: false,
+        confirmButtonText: "Yes",
+        cancelButtonText: "No",
+        showCancelButton: true,
+        showCloseButton: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.dataSourceMonitorStatus.splice(this.rowIndex, 1);
+          this.modalRef.hide();
+        }
+      });
+    }
   }
-  
+
   public onClickConfirmWaitFilm(): void {
     if (this.selectedStatusFilm == "filmReady") {
-      this.dataSourceMonitorStatus[this.rowIndex].status = 'Film Ready';
+      this.dataSourceMonitorStatus.splice(this.rowIndex, 1);
+      this.modalRef.hide();
     }
-    this.modalRef.hide();
+    if (this.selectedStatusFilm == "cancelRadio") {
+      Swal.fire({
+        title: "Are you sure to cancel this status?",
+        icon: "question",
+        heightAuto: false,
+        confirmButtonText: "Yes",
+        cancelButtonText: "No",
+        showCancelButton: true,
+        showCloseButton: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.dataSourceMonitorStatus.splice(this.rowIndex, 1);
+          this.modalRef.hide();
+        }
+      });
+    }
   }
 
 

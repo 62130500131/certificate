@@ -6,8 +6,6 @@ export class ProductionStatusSearchParam {
     productionTo: string;
     selectWaitSample: string;
     selectWaitFilm: string;
-    selectSampleReady: string;
-    selectFilmReady: string;
     selectCancel: string;
     selectComplete: string;
     soldTo: string;
@@ -19,8 +17,6 @@ export class ProductionStatusSearchParam {
         this.productionTo = '';
         this.selectWaitSample = 'waitSample';
         this.selectWaitFilm = 'waitFilm';
-        this.selectSampleReady = 'sampleReady';
-        this.selectFilmReady = 'filmReady';
         this.selectCancel = 'complete';
         this.selectComplete = 'cancel';
         this.soldTo = '';
