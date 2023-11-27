@@ -15,7 +15,7 @@ export class NacCertificateEntryComponent implements OnInit {
   public src = '/assets/pdfs/CNAC.pdf'
   public dataSourceCeritificate: CertificateData[] = [
     {
-      dimention: "เหล็กฉากขาเท่ากัน 40x40x3.20 x6000mm",
+      materialDecs: "เหล็กฉากขาเท่ากัน 40x40x3.20 x6000mm",
       c: 0.107,
       si: 0.0097,
       mn: 0.484,
@@ -50,6 +50,7 @@ export class NacCertificateEntryComponent implements OnInit {
       title: "Are you sure?",
       text: "You won't be able to revert this!",
       icon: "warning",
+      heightAuto: false,
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
@@ -59,7 +60,8 @@ export class NacCertificateEntryComponent implements OnInit {
         Swal.fire({
           title: "Deleted!",
           text: "Your item has been deleted.",
-          icon: "success"
+          icon: "success",
+          heightAuto: false
         });
       }
     });
