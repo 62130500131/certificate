@@ -85,102 +85,54 @@
                   <button class="btn btn-sm btn-primary ms-2"><i class="fa-solid fa-file"></i> Read PDF</button>
                 </div>
               </div>
+              <div class="overflow-auto mt-4" style="width: 100%;">
+                <table>
+                  <tr class="text-center" style="width: 100%;">
+                    <th> Material Description</th>
+                    <th> C </th>
+                    <th> Si </th>
+                    <th> Mn </th>
+                    <th> P </th>
+                    <th> S </th>
+                    <th> Y.S.<br />
+                      (ความเค้นคราก) </th>
+                    <th> T.S.<br />
+                      (ความเค้นสูงสุด) </th>
+                    <th> Elongation<br />
+                      (ความยืด) </th>
+                    <th> Hardness<br />
+                      (ความแข็ง) </th>
+                    <th> Bend Test<br />
+                      (การดัดโค้ง)</th>
+                    <th> Compression<br />
+                      (การกดแบน)</th>
+                    <th> Impact Energy<br />
+                      (การกระแทกชาร์ปี)</th>
+                    <th> </th>
+                  </tr>
 
-              <div class="overflow-auto mt-2">
-                <dx-data-grid id="gridContainer" [dataSource]="dataSourceCeritificate" [remoteOperations]="false"
-                  [allowColumnReordering]="false" [rowAlternationEnabled]="true" [showBorders]="true" [width]="'100%'"
-                  [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
-
-
-                  <dxi-column dataField="materialDecs" caption="Material Description" dataType="string" [minWidth]="250"
-                    alignment="left"></dxi-column>
-                  <dxi-column [width]="60" caption="C" dataField="c" alignment="right">
-                  </dxi-column>
-                  <dxi-column [width]="60" caption="Si" dataField="si" alignment="right">
-                  </dxi-column>
-                  <dxi-column [width]="60" caption="Mn" dataField="mn" alignment="right">
-                  </dxi-column>
-                  <dxi-column [width]="60" caption="P" dataField="p" alignment="right">
-                  </dxi-column>
-                  <dxi-column [width]="60" caption="S" dataField="s" alignment="right">
-                  </dxi-column>
-                  <dxi-column [width]="100" caption="Y.S." dataField="ys" alignment="right"
-                    headerCellTemplate="ysTemplate" cellTemplate="numberTemplate">
-                    <div *dxTemplate="let cell of 'ysTemplate'">
-                      <label>Y.S.<br />
-                        (ความเค้นคราก)
-                      </label>
-                    </div>
-                  </dxi-column>
-                  <dxi-column [width]="120" caption="T.S." dataField="ts" alignment="right"
-                    headerCellTemplate="tsTemplate" cellTemplate="numberTemplate">
-                    <div *dxTemplate="let cell of 'tsTemplate'">
-                      <label>T.S.<br />
-                        (ความเค้นสูงสุด)
-                      </label>
-                    </div>
-                  </dxi-column>
-                  <dxi-column [width]="100" caption="Elongation" dataField="elongation" alignment="right"
-                    headerCellTemplate="elongationTemplate" cellTemplate="numberTemplate">
-                    <div *dxTemplate="let cell of 'elongationTemplate'">
-                      <label>Elongation<br />
-                        (ความยืด)
-                      </label>
-                    </div>
-                  </dxi-column>
-                  <dxi-column [width]="100" caption="Hardness (ความแข็ง)" dataField="hardness" alignment="center"
-                    headerCellTemplate="hardnessTemplate">
-                    <div *dxTemplate="let cell of 'hardnessTemplate'">
-                      <label>Hardness<br />
-                        (ความแข็ง)
-                      </label>
-                    </div>
-                  </dxi-column>
-                  <dxi-column [width]="100" caption="Bend Test (การดัดโค้ง)" dataField="bendTest" alignment="center"
-                    headerCellTemplate="bendTestTemplate">
-                    <div *dxTemplate="let cell of 'bendTestTemplate'">
-                      <label>Bend Test<br />
-                        (การดัดโค้ง)
-                      </label>
-                    </div>
-                  </dxi-column>
-                  <dxi-column [width]="100" caption="Compression (การกดแบน)" dataField="compression" alignment="center"
-                    headerCellTemplate="compressionTemplate">
-                    <div *dxTemplate="let cell of 'compressionTemplate'">
-                      <label>Compression<br />
-                        (การกดแบน)
-                      </label>
-                    </div>
-                  </dxi-column>
-                  <dxi-column [width]="120" caption="Impact Energy (การกระแทกชาร์ปี)" dataField="impactEnergy"
-                    alignment="right" cellTemplate="impactEnergyTemplate" headerCellTemplate="impactEnergyHeadTemplate">
-                    <div *dxTemplate="let cell of 'impactEnergyTemplate'">
-                      <label *ngIf="cell.data.impactEnergy == 0">{{ '-' || cell.data.impactEnergy }}</label>
-                    </div>
-                  </dxi-column>
-
-                  <div *dxTemplate="let cell of 'impactEnergyHeadTemplate'">
-                    <label>Impact Energy<br />
-                      (การกระแทกชาร์ปี)
-                    </label>
-                  </div>
-
-                  <div *dxTemplate="let cell of 'numberTemplate'">
-                    {{cell.value | number: '.2'}}
-                  </div>
-
-                  <dxi-column width="40" cellTemplate="deleteTemplate" alignment="center">
-                    <div *dxTemplate="let cell of 'deleteTemplate'">
-                      <i (click)="onClickDelete()" class="fa-solid fa-trash icon-delete click"></i>
-                    </div>
-                  </dxi-column>
-
-
-
-                </dx-data-grid>
-
+                  <tr *ngFor="let item of dataSourceCeritificate" class="overflow-auto" style="width: 100%;">
+                    <td style="min-width: 300px;"> <input class="form-control" [(ngModel)]="item.materialDecs" /> </td>
+                    <td style="min-width: 70px;"> <input class="form-control right-form" [(ngModel)]="item.c" /> </td>
+                    <td style="min-width: 70px;"> <input class="form-control right-form" [(ngModel)]="item.si" /> </td>
+                    <td style="min-width: 70px;"> <input class="form-control right-form" [(ngModel)]="item.mn" /> </td>
+                    <td style="min-width: 70px;"> <input class="form-control right-form" [(ngModel)]="item.p" /> </td>
+                    <td style="min-width: 70px;"> <input class="form-control right-form" [(ngModel)]="item.s" /> </td>
+                    <td style="min-width: 100px;"> <input type="number" class="form-control right-form"
+                        [(ngModel)]="item.ys" /> </td>
+                    <td style="min-width: 120px;"> <input class="form-control right-form" [(ngModel)]="item.ts" /> </td>
+                    <td style="min-width: 90px;"> <input class="form-control right-form"
+                        [(ngModel)]="item.elongation" /> </td>
+                    <td style="min-width: 90px;"> <input class="form-control" [(ngModel)]="item.hardness" /> </td>
+                    <td style="min-width: 90px;"> <input class="form-control" [(ngModel)]="item.bendTest" /> </td>
+                    <td style="min-width: 90px;"> <input class="form-control" [(ngModel)]="item.compression" /> </td>
+                    <td style="min-width: 120px;"> <input *ngIf="item.impactEnergy == 0" class="form-control right-form"
+                        [(ngModel)]="'-' || item.impactEnergy" /> </td>
+                    <td style="min-width: 40px;"> <button class="btn" (click)="onClickDelete()"><i
+                          class="fa-solid fa-trash icon-delete click"></i></button> </td>
+                  </tr>
+                </table>
               </div>
-
 
               <div class="row mt-2">
                 <div class="col-12 text-end">

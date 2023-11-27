@@ -264,3 +264,7 @@ hr {
 ngx-extended-pdf-viewer #primaryEditorStamp {
     display: none!important;
 }
+
+.right-form {
+    text-align: right;
+}
