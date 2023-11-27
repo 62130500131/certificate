@@ -292,7 +292,6 @@ export class QualityAssuranceStatusComponent implements OnInit {
   }
 
   public OnClickDownStatus(cellData : QaStatusCompleteViewModel): void {
-    console.log("cellData:", cellData)
     Swal.fire({
       title: "Do you want to down status to sample ready?",
       icon: "question",
