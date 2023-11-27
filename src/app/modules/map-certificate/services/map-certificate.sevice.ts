@@ -17,6 +17,28 @@ export class MapCertificateService {
             province: 'กรุงเทพมหานคร',
             carRegistration: 'ก250356',
             outTime: new Date()
+        },
+        {
+            shipmentNo: '2311092791',
+            customerCode: '10000217',
+            customerName: 'บริษัท ธุรกิจเหล็กดี จำกัด',
+            shiptoCode: '10000217',
+            shiptoName: 'บริษัท ธุรกิจเหล็กดี จำกัด',
+            district: 'เขตยานนาวา',
+            province: 'กรุงเทพมหานคร',
+            carRegistration: 'ก250356',
+            outTime: new Date()
+        },
+        {
+            shipmentNo: '2311092792',
+            customerCode: '10000217',
+            customerName: 'บริษัท ธุรกิจเหล็กดี จำกัด',
+            shiptoCode: '10000217',
+            shiptoName: 'บริษัท ธุรกิจเหล็กดี จำกัด',
+            district: 'เขตยานนาวา',
+            province: 'กรุงเทพมหานคร',
+            carRegistration: 'ก250356',
+            outTime: new Date()
         }
     ];
     private data: DoShipmentEntryViewModel[] = [
