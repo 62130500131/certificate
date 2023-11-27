@@ -100,3 +100,24 @@ export class MappingCertificateSearchParam {
     }
 }
 
+export class ShipmentInfoViewModel {
+    shipmentNo: string;
+    customerCode: string;
+    customerName: string;
+    shiptoCode: string;
+    shiptoName: string;
+    district: string;
+    province: string;
+
+    constructor() {
+        this.shipmentNo = '';
+        this.customerCode = '';
+        this.customerName = '';
+        this.shiptoCode = '';
+        this.shiptoName = '';
+        this.district = '';
+        this.province = '';
+    }
+
+}
+

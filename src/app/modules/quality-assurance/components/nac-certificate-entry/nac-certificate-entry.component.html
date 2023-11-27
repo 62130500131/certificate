@@ -1,13 +1,13 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xl-12">
-      <div class="card shadow-sm p-2 mb-2 bg-white rounded">
-        <div class="card-header">
+    <div class="col-12">
+      <div class="card shadow-sm p-2 mb-2 bg-white rounded" >
+        <div class="card-header" >
           <h6>NAC Certificate Entry</h6>
         </div>
-        <div class="card-body">
-          <div class="row" style="width: 100%; height: 92%;">
-            <div class="col-4">
+        <div class="card-body" >
+          <div class="row">
+            <div class="col-12" style="height: 100%;">
               <ngx-extended-pdf-viewer [showBookModeButton]="false" [showHandToolButton]="false"
                 [showHorizontalScrollButton]="false" [showInfiniteScrollButton]="false"
                 [showPresentationModeButton]="false" [showPropertiesButton]="false" [showPrintButton]="false"
@@ -17,12 +17,11 @@
                 [showSecondaryToolbarButton]="false" [showOpenFileButton]="false" [showDownloadButton]="false"
                 [src]="'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf'">
               </ngx-extended-pdf-viewer>
-            </div>
-            <div class="col-8">
 
-              <div class="row pt-2">
+
+              <div class="row mt-4">
                 <div class="col-12">
-                  <h6>Upload Test Result</h6>
+                  <h6>Test Result Info</h6>
                   <hr>
                 </div>
               </div>
@@ -74,7 +73,12 @@
                   <input type="text" id="certDate" class="form-control">
                 </div>
               </div>
-              <hr>
+              <div class="row mt-4">
+                <div class="col-12">
+                  <h6>Certificate Detail</h6>
+                  <hr>
+                </div>
+              </div>
               <div class="row pt-2">
                 <div class="col-12 text-end">
                   <button class="btn btn-sm btn-success"><i class="fa-solid fa-plus"></i> Add</button>
@@ -90,29 +94,29 @@
 
                   <dxi-column dataField="dimention" caption="Dimention" dataType="string" [minWidth]="300"
                     alignment="left"></dxi-column>
-                  <dxi-column [width]="60" caption="C" dataField="c" alignment="center">
+                  <dxi-column [width]="60" caption="C" dataField="c" alignment="right">
                   </dxi-column>
-                  <dxi-column [width]="60" caption="Si" dataField="si" alignment="center">
+                  <dxi-column [width]="60" caption="Si" dataField="si" alignment="right">
                   </dxi-column>
-                  <dxi-column [width]="60" caption="Mn" dataField="mn" alignment="center">
+                  <dxi-column [width]="60" caption="Mn" dataField="mn" alignment="right">
                   </dxi-column>
-                  <dxi-column [width]="60" caption="P" dataField="p" alignment="center">
+                  <dxi-column [width]="60" caption="P" dataField="p" alignment="right">
                   </dxi-column>
-                  <dxi-column [width]="60" caption="S" dataField="s" alignment="center">
+                  <dxi-column [width]="60" caption="S" dataField="s" alignment="right">
                   </dxi-column>
-                  <dxi-column [width]="130" caption="Y.S." dataField="ys" alignment="center">
+                  <dxi-column [width]="60" caption="Y.S." dataField="ys" alignment="right">
                   </dxi-column>
-                  <dxi-column [width]="130" caption="T.S." dataField="ts" alignment="center">
+                  <dxi-column [width]="60" caption="T.S." dataField="ts" alignment="right">
                   </dxi-column>
-                  <dxi-column [width]="130" caption="Elongation" dataField="elongation" alignment="center">
+                  <dxi-column [width]="100" caption="Elongation" dataField="elongation" alignment="right">
                   </dxi-column>
-                  <dxi-column [width]="130" caption="Hardness" dataField="hardness" alignment="center">
+                  <dxi-column [width]="100" caption="Hardness" dataField="hardness" alignment="center">
                   </dxi-column>
-                  <dxi-column [width]="130" caption="Bend Test" dataField="bendTest" alignment="center">
+                  <dxi-column [width]="100" caption="Bend Test" dataField="bendTest" alignment="center">
                   </dxi-column>
-                  <dxi-column [width]="130" caption="Compression" dataField="compression" alignment="center">
+                  <dxi-column [width]="100" caption="Compression" dataField="compression" alignment="center">
                   </dxi-column>
-                  <dxi-column [width]="130" caption="Impact Energy" dataField="impactEnergy" alignment="center"
+                  <dxi-column [width]="100" caption="Impact Energy" dataField="impactEnergy" alignment="right"
                     cellTemplate="impactEnergyTemplate">
                     <div *dxTemplate="let cell of 'impactEnergyTemplate'">
                       <label *ngIf="cell.data.impactEnergy == 0">{{ '-' || cell.data.impactEnergy }}</label>
@@ -121,7 +125,7 @@
 
                   <dxi-column width="40" cellTemplate="deleteTemplate" alignment="center">
                     <div *dxTemplate="let cell of 'deleteTemplate'">
-                      <i class="fa-solid fa-trash icon-delete click"></i>
+                      <i (click)="onClickDelete()" class="fa-solid fa-trash icon-delete click"></i>
                     </div>
                   </dxi-column>
 
@@ -138,9 +142,9 @@
 
               <div class="row">
                 <div class="col-12 text-center">
-                  <button class="btn btn-sm btn-success" (click)="onClickConfrim()"><i
+                  <button class="btn btn-sm btn-success" (click)="onClickConfirm()"><i
                       class="fa-solid fa-floppy-disk"></i>
-                    Confrim</button>
+                    Confirm</button>
                   <button class="btn btn-sm btn-secondary ms-2" (click)="onClickCancel()"><i
                       class="fa-solid fa-xmark"></i>
                     Cancel</button>

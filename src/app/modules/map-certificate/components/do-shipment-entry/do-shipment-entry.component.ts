@@ -1,5 +1,5 @@
 import { Component, OnInit, Signal, TemplateRef, ViewChild, WritableSignal, computed, effect, signal } from '@angular/core';
-import { DoShipmentDetail, DoShipmentEntryViewModel, SelectQuantity } from '../../models/do.model';
+import { DoShipmentDetail, DoShipmentEntryViewModel, SelectQuantity, ShipmentInfoViewModel } from '../../models/do.model';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import Swal from 'sweetalert2';
@@ -17,6 +17,7 @@ export class DoShipmentEntryComponent implements OnInit {
   public isType3: boolean = false;
   public modalRef!: BsModalRef;
   public selected: DoShipmentDetail = new DoShipmentDetail();
+  public shipmentInfo: ShipmentInfoViewModel = new ShipmentInfoViewModel();
   public canSelectTMT: Signal<boolean> = computed(() => {
     return this.totalSelectTMT() < this.selected.quantity
   })
@@ -30,17 +31,23 @@ export class DoShipmentEntryComponent implements OnInit {
   public selectTMTDataSource: SelectQuantity[] = [];
 
   public selectDataSource: SelectQuantity[] = [];
-
+  public shipmentNo!: string;
   constructor(private router: Router,
     private modalService: BsModalService,
     private service: MapCertificateService) {
-
+      const split = this.router.url.split('/');
+      this.shipmentNo = split[split.length -1 ];
   }
 
   public ngOnInit(): void {
 
     this.service.initial().subscribe(res => {
       this.list = res
+    })
+
+    this.service.getShipmentInfo(this.shipmentNo)
+    .subscribe(res => {
+      this.shipmentInfo = res
     })
 
   }

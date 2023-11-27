@@ -59,7 +59,8 @@ export class DoPageComponent {
   }
 
   public onClickShipment(data: any): void {
-    this.router.navigate(['do-entry'])
+
+    this.router.navigate([`do-entry/${data.shipmentCode}`])
   }
 
   public onClickClear(): void {

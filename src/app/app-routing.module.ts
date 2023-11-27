@@ -32,7 +32,7 @@ const routes: Routes = [
     loadChildren: () => import('./modules/map-certificate/map-certificate.module').then(m => m.MapCertificateModule)
   },
   {
-    path: 'do-entry', component: DoShipmentEntryComponent,
+    path: 'do-entry/:id', component: DoShipmentEntryComponent,
     loadChildren: () => import('./modules/map-certificate/map-certificate.module').then(m => m.MapCertificateModule)
   },
   {
