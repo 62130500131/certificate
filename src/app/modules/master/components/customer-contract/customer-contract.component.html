@@ -41,8 +41,12 @@
           <hr>
 
 
-          <div class="row">
-            <div class="col-12 text-end">
+          <div class="row pt-2">
+            <div class="col-6">
+              <button class="btn btn-sm btn-success" (click)="onClickAdd()"><i
+                  class="fa-solid fa-plus me-1"></i>Add</button>
+            </div>
+            <div class="col-6 text-end">
               <button class="btn btn-sm btn-success" (click)="onClickImport()"><i
                   class="fa-solid fa-file-import me-1"></i>Import</button>
               <button class="btn btn-sm btn-primary ms-2" (click)="onClickExport()"><i
@@ -56,6 +60,12 @@
                 [allowColumnReordering]="true" [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
                 [showColumnLines]="true" [showRowLines]="true">
 
+                <dxi-column width="40" alignment="center" cellTemplate="toolsTemplate">
+                  <div *dxTemplate="let cell of 'toolsTemplate'">
+                    <i style="cursor: pointer;" class="fa-solid fa-pen-to-square icon-edit"
+                      (click)="onClickEditContact(cell)"></i>
+                  </div>
+                </dxi-column>
                 <dxi-column dataField="customerCode" caption="Customer Code" width="120"
                   alignment="center"></dxi-column>
                 <dxi-column dataField="customerName" caption="Customer Name" minWidth="300"
@@ -120,6 +130,7 @@
         <dx-data-grid #importGrid name="dg-import" [dataSource]="dataForUpload" [height]="500">
           <dxo-sorting [mode]="'none'">
           </dxo-sorting>
+
           <dxi-column width="250" cellTemplate="issueTemplate" alignment="center" caption="Issue" dataField="issue"
             dataType="string">
             <div *dxTemplate="let cell of 'issueTemplate'" style="text-align: left;">
@@ -158,6 +169,135 @@
           Confirm</button>
         <button class="ms-2 btn btn-sm btn-secondary" (click)="onClickExitImportModal()"><i
             class="fa-solid fa-ban me-1"></i>Exit</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #addContact>
+  <div class="modal-header">
+    <h5 class="modal-title">Add Customer Contact</h5>
+    <span style="cursor: pointer;" class="close-modal" name="close-modal-import"
+      (click)="modalRef.hide()">&times;</span>
+  </div>
+
+  <div class="modal-body">
+
+    <div class="row mt-2">
+      <div class="col-2 text-end pt-1">
+        <label class="form-label">Customer</label>
+
+      </div>
+      <div class="col-3">
+        <dx-select-box displayExpr="text" valueExpr="value" [items]="customerData"></dx-select-box>
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-2 text-end pt-1">
+        <label class="form-label">District</label>
+
+      </div>
+      <div class="col-3">
+        <input class="form-control">
+      </div>
+      <div class="col-2 text-end pt-1">
+        <label class="form-label">Province</label>
+
+      </div>
+      <div class="col-3">
+        <input class="form-control">
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-2 text-end pt-1">
+        <label class="form-label">Contact Name</label>
+
+      </div>
+      <div class="col-3">
+        <input class="form-control">
+      </div>
+      <div class="col-2 text-end pt-1">
+        <label class="form-label">Line</label>
+
+      </div>
+      <div class="col-3">
+        <input class="form-control">
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-12 text-center">
+        <button class="btn btn-sm btn-success" (click)="onClickConfirm()"><i class="fa-regular fa-circle-check"></i>
+          Confirm</button>
+        <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
+          Cancel</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #editContact>
+  <div class="modal-header">
+    <h5 class="modal-title">Edit Customer Contact</h5>
+    <span style="cursor: pointer;" class="close-modal" name="close-modal-import"
+      (click)="modalRef.hide()">&times;</span>
+  </div>
+
+  <div class="modal-body">
+
+    <div class="row mt-2">
+      <div class="col-2 text-end pt-1">
+        <label class="form-label">Customer</label>
+
+      </div>
+      <div class="col-3">
+        
+        <dx-select-box displayExpr="text" valueExpr="value" [items]="customerData"></dx-select-box>
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-2 text-end pt-1">
+        <label class="form-label">District</label>
+
+      </div>
+      <div class="col-3">
+        <input class="form-control" [value]="district">
+      </div>
+      <div class="col-2 text-end pt-1">
+        <label class="form-label">Province</label>
+
+      </div>
+      <div class="col-3">
+        <input class="form-control" [value]="province">
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-2 text-end pt-1">
+        <label class="form-label">Contact Name</label>
+
+      </div>
+      <div class="col-3">
+        <input class="form-control" [value]="contactName">
+      </div>
+      <div class="col-2 text-end pt-1">
+        <label class="form-label">Line</label>
+
+      </div>
+      <div class="col-3">
+        <input class="form-control" [value]="line">
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-12 text-center">
+        <button class="btn btn-sm btn-success" (click)="onClickConfirm()"><i class="fa-regular fa-circle-check"></i>
+          Confirm</button>
+        <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
+          Cancel</button>
       </div>
     </div>
   </div>
