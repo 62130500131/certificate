@@ -17,14 +17,18 @@
                 <dxi-column dataField="lastSyncBy" caption="Last Sync By" width="150" alignment="left"></dxi-column>
                 <dxi-column dataField="lastSyncTime" caption="Last Sync Time" width="150" alignment="center"
                   cellTemplate="dateTemplate"></dxi-column>
-                <dxi-column  width="150" alignment="center" cellTemplate="syncTemplate">
+                <dxi-column width="150" alignment="center" cellTemplate="syncTemplate">
                   <div *dxTemplate="let cell of 'syncTemplate'">
-                    <button class="btn btn-success" (click)="onClickSync()"><i class="fa-solid fa-rotate me-2"></i>Sync</button>
+                    <button class="btn btn-success" (click)="onClickSync()">
+                      <i class="fa-solid fa-rotate me-2"></i>Sync
+                    </button>
                   </div>
                 </dxi-column>
-                <dxi-column  width="150" alignment="center" cellTemplate="viewLogTemplate">
+                <dxi-column width="150" alignment="center" cellTemplate="viewLogTemplate">
                   <div *dxTemplate="let cell of 'viewLogTemplate'">
-                    <button class="btn btn-primary"><i class="fa-solid fa-eye me-2"></i>View Log</button>
+                    <button class="btn btn-primary" (click)="onClickViewLog()">
+                      <i class="fa-solid fa-eye me-2"></i>View Log
+                    </button>
                   </div>
                 </dxi-column>
 
@@ -40,3 +44,64 @@
     </div>
   </div>
 </div>
+
+<ng-template #syncLogs>
+  <div class="modal-header">
+    <h5 class="modal-title">Audit Log</h5>
+    <span style="cursor: pointer;" class="close-modal" name="close-modal-import"
+      (click)="modalRef.hide()">&times;</span>
+  </div>
+
+  <div class="modal-body">
+
+    <div class="row mt-2">
+      <div class="col-2 text-end pt-2">
+        <label class="form-label">Sync Time</label>
+      </div>
+      <div class="col-5">
+        <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource"
+          [(ngModel)]="param.date"></dx-select-box>
+        <date-range *ngIf="param.date == 0" [start-date]="param.dateFrom" [end-date]="param.dateTo"
+          (onUpdate)="onDateRangeChanged($event)">
+        </date-range>
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-2 text-end pt-1">
+        <label class="form-label">Status</label>
+
+      </div>
+      <div class="col-3 pt-1">
+        <input [(ngModel)]="param.statusFailed" class="form-check-input" type="checkbox" id="waitSample">
+        <label for="waitSample" class="mx-2">Failed</label>
+        <input [(ngModel)]="param.statusSuccess" class="form-check-input" type="checkbox" id="waitFilm">
+        <label for="waitFilm" class="mx-2">Success</label>
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-12">
+        <dx-data-grid #grid id="grid" [dataSource]="logsList" [remoteOperations]="false" [allowColumnReordering]="true"
+          [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'" [showColumnLines]="true"
+          [showRowLines]="true">
+
+
+          <dxi-column dataField="syncTime" caption="Sync Time" minWidth="300" alignment="center"
+            cellTemplate="dateTemplate"></dxi-column>
+          <dxi-column dataField="actionBy" caption="Action By" minWidth="200" alignment="center"></dxi-column>
+          <dxi-column dataField="status" caption="Status" width="150" alignment="center"></dxi-column>
+
+          <div *dxTemplate="let cell of 'dateTemplate'">
+            {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
+          </div>
+
+        </dx-data-grid>
+      </div>
+    </div>
+
+
+
+
+  </div>
+</ng-template>
