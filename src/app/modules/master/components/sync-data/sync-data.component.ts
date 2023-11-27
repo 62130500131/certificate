@@ -66,12 +66,12 @@ export class SyncDataComponent implements OnInit {
 
   public dataSource: SyncDataViewModel[] = [
     {
-      syncName: "GD Findi",
+      syncName: "SAP",
       lastSyncBy: "CONNEX",
       lastSyncTime: (new Date()).toString()
     },
     {
-      syncName: "Excel Planning",
+      syncName: "Production Order",
       lastSyncBy: "CONNEX",
       lastSyncTime: (new Date()).toString()
     },
