@@ -28,7 +28,7 @@ export class MapCertificateService {
                     materialCode: '2CTFB',
                     materialDesc: 'เหล็กแผ่นดำ ตัดซอยตามขนาด',
                     sprayType: 'พ่น TMT',
-                    heatNo: 'DB1077',
+                    heatNo: 'KB5651',
                     grade: 'SS400',
                     quantity: 40,
                     status: 'Select',
@@ -40,7 +40,7 @@ export class MapCertificateService {
                     materialCode: '1AK106-025-00062',
                     materialDesc: 'เหล็กฉากSS400 25 x 25 x 3.00mm x 6.0M',
                     sprayType: 'พ่น Heat',
-                    heatNo: 'DB1078',
+                    heatNo: 'KB5651',
                     grade: 'SS400',
                     quantity: 20,
                     status: 'Select',
@@ -52,7 +52,7 @@ export class MapCertificateService {
                     materialCode: '1BP0200-045-1430',
                     materialDesc: 'ท่อดำ 8" x 4.50mm x 6.0M',
                     sprayType: 'พ่นรูปแบบที่ 3',
-                    heatNo: 'DB1079',
+                    heatNo: 'KB5652',
                     grade: 'SS400',
                     quantity: 40,
                     status: 'Select',
@@ -64,7 +64,7 @@ export class MapCertificateService {
                     materialCode: '3UC00753223-0141',
                     materialDesc: 'เหล็กตามแบบ 75x32x32x2.30mmx6.0M',
                     sprayType: 'พ่นรูปแบบที่ 1',
-                    heatNo: 'DB1077',
+                    heatNo: 'KB5651',
                     grade: 'SS400',
                     quantity: 30,
                     status: 'Select',
@@ -109,67 +109,9 @@ export class MapCertificateService {
         },
 
     ]
-    private modal2 = [
-        {
-            isSelected: false,
-            itemIndex: 1,
-            material: '2CTFB',
-            materialDesc: 'เหล็กดำ ตัดซอยตามขนาด',
-            heatNo: 'DB1003',
-            grade: 'SS400',
-            yield: '290',
-            tensile: '50',
-            mill: 'SYS',
-            remain: 20,
-            quantity: 20,
-            thickness: 0.1,
-            width: 1.0,
-            weight: 2000,
-            unit: 'PC'
-        },
-        {
-            isSelected: false,
-            itemIndex: 2,
-            material: '2CTFB',
-            materialDesc: 'เหล็กดำ ตัดซอยตามขนาด',
-            heatNo: 'DB1002',
-            grade: 'SS400',
-            yield: '290',
-            tensile: '50',
-            mill: 'SYS',
-            remain: 20,
-            quantity: 20,
-            thickness: 0.1,
-            width: 1.0,
-            weight: 2000,
-            unit: 'PC'
-        },
-        {
-            isSelected: false,
-            itemIndex: 3,
-            material: '2CTFB',
-            materialDesc: 'เหล็กดำ ตัดซอยตามขนาด',
-            heatNo: 'DB1078',
-            grade: 'SS400',
-            yield: '290',
-            tensile: '50',
-            mill: 'SYS',
-            remain: 20,
-            quantity: 20,
-            thickness: 0.1,
-            width: 1.0,
-            weight: 2000,
-            unit: 'PC'
-        }]
-    private modal: SelectQuantity[] = [
+    private model: SelectQuantity[] = [
         new SelectQuantity(),
-        new SelectQuantity(),
-        new SelectQuantity(),
-        new SelectQuantity(),
-        new SelectQuantity(),
-        new SelectQuantity(),
-        new SelectQuantity(),
-        new SelectQuantity(),
+        new SelectQuantity()
     ]
 
     // constructor(private http: HttpClient, @Inject('BASE_API') private baseAPI: string) {
@@ -186,14 +128,17 @@ export class MapCertificateService {
     public getCertificationList(param: DoShipmentDetail, reSelect: boolean): Observable<SelectQuantity[]> {
 
         let index = 1;
-        this.modal.forEach(x => {
+        let cert = 42523050482;
+        let heat = 5651;
+        let isKB = param.heatNo.includes('KB')
+        this.model.forEach(x => {
             x.itemIndex = index++;
             if (reSelect) x.isSelected = false;
             x.material = param.materialCode;
             x.materialDesc = param.materialDesc;
-            x.quantity = param.quantity / 2;
-            x.heatNo = param.heatNo;
-            x.weight = param.weight / 2;
+            x.quantity = param.quantity;
+            x.heatNo = isKB ? 'KB'+(heat++) : param.heatNo;
+            x.weight = param.weight;
             x.unit = param.unit;
             x.thickness = 1;
             x.width = 3;
@@ -202,8 +147,10 @@ export class MapCertificateService {
             x.tensile = 250;
             x.mill = index % 2 == 0 ? "SSI" : "SYS"
             x.remain = x.quantity
+            x.certNo = (cert++).toString()
+
         })
-        return of(this.modal).pipe(
+        return of(this.model).pipe(
             delay(0)
         )
     }

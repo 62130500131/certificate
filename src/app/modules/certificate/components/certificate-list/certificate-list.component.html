@@ -65,7 +65,7 @@
                         <div class="col-3">
                             <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource"
                                 [(ngModel)]="param.uploadDate"></dx-select-box>
-                            <date-range *ngIf="param.uploadDate == 0" [start-date]="param.uploadFrom"
+                            <date-range class="mt-2" *ngIf="param.uploadDate == 0" [start-date]="param.uploadFrom"
                                 [end-date]="param.uploadTo" (onUpdate)="onUploadDateRangeChanged($event)">
                             </date-range>
                         </div>
