@@ -3,6 +3,7 @@ import { CertificateListViewModel, SearchParamCertificateList } from '../../mode
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { CertificateService } from '../../services/certificate.service';
 
 @Component({
   selector: 'app-certificate-list',
@@ -15,12 +16,7 @@ export class CertificateListComponent {
   public modalRef!: BsModalRef;
   public fileToUpload: any;
   public millForUpload: string = '';
-  public materialDataSource = [
-    {
-      text: '2CTFB : เหล็กแผ่นดำ ตัดซอยตามขนาด',
-      value: '2CTFB'
-    }
-  ];
+  public materialDataSource: any[] = [];
   public gradeDataSource = [
     {
       text: 'SS400',
@@ -251,8 +247,11 @@ export class CertificateListComponent {
   ]
 
   constructor(private modalService: BsModalService,
-    private router: Router) {
-
+    private router: Router,
+    private service: CertificateService) {
+      this.service.getMaterialDataSource().subscribe(res => {
+        this.materialDataSource = res
+      })
   }
 
   public handleFileInput($event: any): void {

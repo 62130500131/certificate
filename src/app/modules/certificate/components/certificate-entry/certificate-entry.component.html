@@ -4,10 +4,10 @@
       <div class="card shadow-sm p-2 mb-2 bg-white rounded">
         <div class="card-header">
           <div *ngIf="isEdit; else entry">
-            <h6>Certificate Entry</h6>
+            <h6>Certificate Edit</h6>
           </div>
           <ng-template #entry>
-            <h6>Certificate Edit No. {{ certNo }}</h6>
+            <h6>Certificate Entry</h6>
           </ng-template>
 
         </div>
@@ -53,7 +53,7 @@
                   <label for="certNo">Certificate No.</label>
                 </div>
                 <div class="col-3">
-                  <input type="text" id="certNo" class="form-control">
+                  <input type="text" id="certNo" class="form-control" [(ngModel)]="certNo">
                 </div>
 
                 <div class="col-2 text-end pt-1">
@@ -88,53 +88,36 @@
                 </div>
               </div>
 
-              <div class="overflow-auto mt-2">
-                <dx-data-grid id="gridContainer" [dataSource]="list" [remoteOperations]="false"
-                  [allowColumnReordering]="true" [rowAlternationEnabled]="false" [rowAlternationEnabled]="false"
-                  [showBorders]="true" [width]="'100%'" [showColumnLines]="true" [showRowLines]="true">
+              <div class="overflow-auto mt-2" style="width: 100%;">
+                <table>
+                  <tr class="text-center" style="width: 100%;">
+                    <th> Mill Material</th>
+                    <th> Material </th>
+                    <th> Grade </th>
+                    <th> Heat No. </th>
+                    <th> Qty </th>
+                    <th> Unit </th>
+                    <th> Yield </th>
+                    <th> Tensile </th>
+                    <th> Remark </th>
+                    <th> </th>
+                  </tr>
 
-                  <dxi-column width="250" caption="Material Description" alignment="left"
-                    dataField="millDesc"></dxi-column>
-                  <dxi-column width="150" caption="Material" alignment="left" dataField="tmtMaterial"
-                    cellTemplate="materialTemplate">
-                    <div *dxTemplate="let cell of 'materialTemplate'">
-                      <ng-container *ngIf="isEdit">
-                        <input type="text" class="form-control" [(ngModel)]="cell.value">
-                      </ng-container>
-                      <ng-container *ngIf="!isEdit">
-                        {{cell.value}}
-                      </ng-container>
-                    </div>
-                  </dxi-column>
-                  <dxi-column minWidth="250" caption="Description" alignment="left" dataField="tmtDesc" cellTemplate="descTemplate">
-                    <div *dxTemplate="let cell of 'descTemplate'">
-                      <ng-container *ngIf="isEdit">
-                        <input type="text" class="form-control" [(ngModel)]="cell.value">
-                      </ng-container>
-                      <ng-container *ngIf="!isEdit">
-                        {{cell.value}}
-                      </ng-container>
-                    </div>
-                  </dxi-column>
-                  <dxi-column width="80" caption="Grade" alignment="center" dataField="grade"></dxi-column>
-                  <dxi-column width="80" caption="Heat No." alignment="center" dataField="heatNo"></dxi-column>
-                  <dxi-column width="60" caption="Qty" alignment="right" dataField="quantity"
-                    cellTemplate="numberTemplate"></dxi-column>
-                  <dxi-column width="40" caption="Unit" alignment="center" dataField="unit"></dxi-column>
-                  <dxi-column width="80" caption="Yield" alignment="right" dataField="yield"
-                    cellTemplate="numberTemplate"></dxi-column>
-                  <dxi-column width="80" caption="Tensile" alignment="right" dataField="tensile"
-                    cellTemplate="numberTemplate"></dxi-column>
-                  <dxi-column minWidth="100" caption="Remark" alignment="center" dataField="remark"></dxi-column>
-                  <dxi-column width="40" cellTemplate="deleteTemplate" alignment="center">
-                    <div *dxTemplate="let cell of 'deleteTemplate'">
-                      <i class="fa-solid fa-trash icon-delete click" (click)="onClickDelete()"></i>
-                    </div>
-                  </dxi-column>
-                  <div *dxTemplate="let cell of 'numberTemplate'">
-                    {{cell.value | number: '.2'}}
-                  </div>
-                </dx-data-grid>
+                  <tr *ngFor="let item of list" class="overflow-auto" style="width: 100%;">
+                    <td style="min-width: 230px;"> <input class="form-control" [(ngModel)]="item.millDesc" /> </td>
+                    <td style="min-width: 400px;"> <dx-select-box displayExpr="text" valueExpr="value"
+                        [items]="materialDataSource" [(ngModel)]="item.tmtMaterial"></dx-select-box> </td>
+                    <td style="min-width: 70px;"> <input class="form-control" [(ngModel)]="item.grade" /> </td>
+                    <td style="min-width: 70px;"> <input class="form-control" [(ngModel)]="item.heatNo" /> </td>
+                    <td style="min-width: 100px;"> <input class="form-control" [(ngModel)]="item.quantity" /> </td>
+                    <td style="min-width: 45px;"> <input class="form-control" [(ngModel)]="item.unit" /> </td>
+                    <td style="min-width: 60px;"> <input class="form-control" [(ngModel)]="item.yield" /> </td>
+                    <td style="min-width: 60px;"> <input class="form-control" [(ngModel)]="item.tensile" /> </td>
+                    <td style="min-width: 150px;"> <input class="form-control" [(ngModel)]="item.remark" /> </td>
+                    <td style="min-width: 40px;"> <button class="btn" (click)="onClickDelete(item)"><i
+                          class="fa-solid fa-trash icon-delete click"></i></button> </td>
+                  </tr>
+                </table>
               </div>
 
               <div class="row mt-2">
