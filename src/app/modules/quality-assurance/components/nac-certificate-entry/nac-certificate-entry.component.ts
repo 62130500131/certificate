@@ -50,6 +50,7 @@ export class NacCertificateEntryComponent implements OnInit {
       title: "Are you sure?",
       text: "You won't be able to revert this!",
       icon: "warning",
+      heightAuto: false,
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
@@ -59,7 +60,8 @@ export class NacCertificateEntryComponent implements OnInit {
         Swal.fire({
           title: "Deleted!",
           text: "Your item has been deleted.",
-          icon: "success"
+          icon: "success",
+          heightAuto: false
         });
       }
     });
