@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { CustomerContractUploadViewModel, CustomerContractViewModel } from '../../models/customer-contract.model';
+import { CustomerContractParam, CustomerContractUploadViewModel, CustomerContractViewModel } from '../../models/customer-contract.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { CustomerContractService } from '../../services/customer-contract.service';
 import { DxDataGridComponent } from 'devextreme-angular/ui/data-grid';
@@ -17,6 +17,7 @@ export class CustomerContractComponent implements OnInit {
 
   @ViewChild('importTemplate') importTemplate!: TemplateRef<any>;
   @ViewChild('grid') grid!: DxDataGridComponent;
+  public param: CustomerContractParam = new CustomerContractParam();
   public fileToUpload: any;
   public modalRef!: BsModalRef;
   public clickImport: boolean = false;
@@ -84,6 +85,13 @@ export class CustomerContractComponent implements OnInit {
   ngOnInit() {
   }
 
+  public onClickSearch(): void {
+    
+  }
+
+  public onClickClear(): void {
+    this.param = new CustomerContractParam();
+  }
 
   public onClickExport() {
     const workbook = new Workbook();

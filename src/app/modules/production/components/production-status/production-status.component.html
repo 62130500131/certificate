@@ -88,7 +88,7 @@
                                 <dxi-column dataField="grDate" caption="GR Date" dataType="string" [width]="130"
                                     alignment="center" cellTemplate="dateTemplate">
                                     <div *dxTemplate="let cell of 'dateTemplate'">
-                                        {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
+                                        {{ cell.value | date: 'dd-MMM-yyyy' }}
                                     </div>
                                 </dxi-column>
 
@@ -136,7 +136,7 @@
         <div class="col-xl-12">
             <div class="card shadow-sm p-2 mb-2 bg-white rounded">
                 <div class="card-header">
-                    <h6>Production Complete</h6>
+                    <h6>Production Completed</h6>
                 </div>
                 <div class="card-body">
                     <div class="row mt-4">
@@ -213,7 +213,7 @@
                                 <dxi-column dataField="grDate" caption="GR Date" dataType="string" [width]="130"
                                     alignment="center" cellTemplate="dateTemplate">
                                     <div *dxTemplate="let cell of 'dateTemplate'">
-                                        {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
+                                        {{ cell.value | date: 'dd-MMM-yyyy' }}
                                     </div>
                                 </dxi-column>
 
@@ -261,10 +261,11 @@
         <h5 class="modal-title">Production Order No. {{productionOrder}}</h5>
         <span style="cursor: pointer;" class="close-modal" name="close-modal-import"
             (click)="modalRef.hide()">&times;</span>
+            
     </div>
 
     <div class="modal-body">
-
+        
         <div class="row mt-2">
             <div class="col-2 text-end">
                 <label class="form-label">Status</label>
@@ -380,7 +381,7 @@
     </div>
 
     <div class="modal-body">
-
+        
         <div class="row mt-2">
             <div class="col-2 text-end">
                 <label class="form-label">Status</label>
@@ -418,7 +419,7 @@
 
         <div class="row mt-4">
             <div class="col-12 text-center">
-                <button class="btn btn-sm btn-success" (click)="onClickConfirm()"><i
+                <button class="btn btn-sm btn-success" (click)="onClickConfirmWaitFilm()"><i
                         class="fa-regular fa-circle-check"></i>
                     Confirm</button>
                 <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
