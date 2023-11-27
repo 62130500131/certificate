@@ -72,7 +72,7 @@ export class DoPageComponent {
   }
 
   public onDeliveryDateRangeChanged($event: any): void {
-    this.param.deliveryFrom = $event.data.value.startDate;
-    this.param.deliveryTo = $event.data.value.endDateDate;
+    this.param.deliveryFrom = $event.value.startDate;
+    this.param.deliveryTo = $event.value.endDateDate;
   }
 }

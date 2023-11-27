@@ -9,6 +9,7 @@ import { exportDataGrid } from 'devextreme/excel_exporter';
 import { Workbook } from 'exceljs';
 import * as saveAs from 'file-saver';
 import Swal from 'sweetalert2';
+import { CertificateService } from 'src/app/modules/certificate/services/certificate.service';
 
 @Component({
   selector: 'mapping-material',
@@ -30,7 +31,7 @@ export class MappingMaterialComponent implements OnInit {
   public materialDesc?: string;
 
   public addMaterial: any[] = [];
-
+  public materialDataSource: any[] = []
   @ViewChild('addMappingMaterial') public addMappingMaterial!: TemplateRef<any>;
   @ViewChild('importMappingMaterial') public importMappingMaterial!: TemplateRef<any>;
   @ViewChild('editMappingMaterial') public editMappingMaterial!: TemplateRef<any>;
@@ -68,12 +69,15 @@ export class MappingMaterialComponent implements OnInit {
   ];
 
   constructor(private modalService: BsModalService,
-    private service: MappingMaterialService) {
+    private service: MappingMaterialService,
+    private certificateService: CertificateService) {
 
   }
 
   ngOnInit(): void {
-
+    this.certificateService.getMaterialDataSource().subscribe(res => {
+      this.materialDataSource = res
+    })
   }
 
 

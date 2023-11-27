@@ -150,13 +150,15 @@ export class ProductionStatusComponent implements OnInit {
   }
 
   public onProductionCompleteDateRangeChanged($event: any): void {
-    this.paramComplete.productionFrom = $event.value.startDate;
-    this.paramComplete.productionTo = $event.value.endDateDate;
+    const { startDate, endDate } = $event.value;
+    this.paramComplete.productionFrom = startDate;
+    this.paramComplete.productionTo = endDate;
   }
 
   public onProductionMonitorDateRangeChanged($event: any): void {
-    this.paramComplete.productionFrom = $event.value.startDate;
-    this.paramComplete.productionTo = $event.value.endDateDate;
+    const { startDate, endDate } = $event.value;
+    this.paramMonitor.productionFrom = startDate;
+    this.paramMonitor.productionTo = endDate;
   }
 
   public onClickCompleteClear(): void {

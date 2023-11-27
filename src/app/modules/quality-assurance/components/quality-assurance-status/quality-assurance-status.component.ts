@@ -177,7 +177,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
 
 
   ];
- 
+
 
   constructor(public _modalService: BsModalService,
     public _router: Router) { }
@@ -186,12 +186,14 @@ export class QualityAssuranceStatusComponent implements OnInit {
   }
 
   public onProductionDateRangeChanged($event: any): void {
-    this.param.productionFrom = $event.value.startDate;
-    this.param.productionTo = $event.value.endDateDate;
+    const { startDate, endDate } = $event.value;
+    this.param.productionFrom = startDate;
+    this.param.productionTo = endDate;
   }
   public onProductionCompleteDateRangeChanged($event: any): void {
-    this.paramComplete.productionFrom = $event.value.startDate;
-    this.paramComplete.productionTo = $event.value.endDateDate;
+    const { startDate, endDate } = $event.value;
+    this.paramComplete.productionFrom = startDate;
+    this.paramComplete.productionTo = endDate;
   }
 
   public onClickClear(): void {
