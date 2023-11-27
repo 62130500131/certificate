@@ -94,7 +94,7 @@ export class QaStatusCompleteViewModel {
 
 export class CertificateData {
 
-    dimention: string;
+    materialDecs: string;
     c: number;
     si: number;
     mn: number;
@@ -109,7 +109,7 @@ export class CertificateData {
     impactEnergy: number;
 
     constructor() {
-        this.dimention = '';
+        this.materialDecs = '';
         this.c = 0;
         this.si = 0;
         this.mn = 0;

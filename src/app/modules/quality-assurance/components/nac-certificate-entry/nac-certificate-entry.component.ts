@@ -15,7 +15,7 @@ export class NacCertificateEntryComponent implements OnInit {
   public src = '/assets/pdfs/CNAC.pdf'
   public dataSourceCeritificate: CertificateData[] = [
     {
-      dimention: "เหล็กฉากขาเท่ากัน 40x40x3.20 x6000mm",
+      materialDecs: "เหล็กฉากขาเท่ากัน 40x40x3.20 x6000mm",
       c: 0.107,
       si: 0.0097,
       mn: 0.484,

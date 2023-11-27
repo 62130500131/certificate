@@ -1,11 +1,11 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
-      <div class="card shadow-sm p-2 mb-2 bg-white rounded" >
-        <div class="card-header" >
-          <h6>NAC Certificate Entry</h6>
+      <div class="card shadow-sm p-2 mb-2 bg-white rounded">
+        <div class="card-header">
+          <h6>Upload Test Result</h6>
         </div>
-        <div class="card-body" >
+        <div class="card-body">
           <div class="row">
             <div class="col-12" style="height: 100%;">
               <ngx-extended-pdf-viewer [showBookModeButton]="false" [showHandToolButton]="false"
@@ -21,7 +21,7 @@
 
               <div class="row mt-4">
                 <div class="col-12">
-                  <h6>Test Result Info</h6>
+                  <h6>Detail</h6>
                   <hr>
                 </div>
               </div>
@@ -92,7 +92,7 @@
                   [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
 
 
-                  <dxi-column dataField="dimention" caption="Dimention" dataType="string" [minWidth]="300"
+                  <dxi-column dataField="materialDecs" caption="Material Description" dataType="string" [minWidth]="300"
                     alignment="left"></dxi-column>
                   <dxi-column [width]="60" caption="C" dataField="c" alignment="right">
                   </dxi-column>
@@ -104,30 +104,72 @@
                   </dxi-column>
                   <dxi-column [width]="60" caption="S" dataField="s" alignment="right">
                   </dxi-column>
-                  <dxi-column [width]="60" caption="Y.S." dataField="ys" alignment="right">
+                  <dxi-column [width]="120" caption="Y.S." dataField="ys" alignment="right"
+                    headerCellTemplate="ysTemplate">
+                    <div *dxTemplate="let cell of 'ysTemplate'">
+                      <label>Y.S.<br />
+                        (ความเค้นคราก)
+                      </label>
+                    </div>
                   </dxi-column>
-                  <dxi-column [width]="60" caption="T.S." dataField="ts" alignment="right">
+                  <dxi-column [width]="120" caption="T.S." dataField="ts" alignment="right"
+                    headerCellTemplate="tsTemplate">
+                    <div *dxTemplate="let cell of 'tsTemplate'">
+                      <label>T.S.<br />
+                        (ความเค้นสูงสุด)
+                      </label>
+                    </div>
                   </dxi-column>
-                  <dxi-column [width]="100" caption="Elongation" dataField="elongation" alignment="right">
+                  <dxi-column [width]="120" caption="Elongation" dataField="elongation" alignment="right"
+                    headerCellTemplate="elongationTemplate">
+                    <div *dxTemplate="let cell of 'elongationTemplate'">
+                      <label>Elongation<br />
+                        (ความยืด)
+                      </label>
+                    </div>
                   </dxi-column>
-                  <dxi-column [width]="100" caption="Hardness" dataField="hardness" alignment="center">
+                  <dxi-column [width]="120" caption="Hardness (ความแข็ง)" dataField="hardness" alignment="center"
+                    headerCellTemplate="hardnessTemplate">
+                    <div *dxTemplate="let cell of 'hardnessTemplate'">
+                      <label>Hardness<br />
+                        (ความแข็ง)
+                      </label>
+                    </div>
                   </dxi-column>
-                  <dxi-column [width]="100" caption="Bend Test" dataField="bendTest" alignment="center">
+                  <dxi-column [width]="120" caption="Bend Test (การดัดโค้ง)" dataField="bendTest" alignment="center" headerCellTemplate="bendTestTemplate">
+                    <div *dxTemplate="let cell of 'bendTestTemplate'">
+                      <label>Bend Test<br />
+                        (การดัดโค้ง)
+                      </label>
+                    </div>
                   </dxi-column>
-                  <dxi-column [width]="100" caption="Compression" dataField="compression" alignment="center">
+                  <dxi-column [width]="120" caption="Compression (การกดแบน)" dataField="compression" alignment="center" headerCellTemplate="compressionTemplate"> 
+                    <div *dxTemplate="let cell of 'compressionTemplate'">
+                      <label>Compression<br />
+                        (การกดแบน)
+                      </label>
+                    </div>
                   </dxi-column>
-                  <dxi-column [width]="100" caption="Impact Energy" dataField="impactEnergy" alignment="right"
-                    cellTemplate="impactEnergyTemplate">
+                  <dxi-column [width]="120" caption="Impact Energy (การกระแทกชาร์ปี)" dataField="impactEnergy"
+                    alignment="right" cellTemplate="impactEnergyTemplate" headerCellTemplate="impactEnergyHeadTemplate">
                     <div *dxTemplate="let cell of 'impactEnergyTemplate'">
                       <label *ngIf="cell.data.impactEnergy == 0">{{ '-' || cell.data.impactEnergy }}</label>
                     </div>
                   </dxi-column>
+
+                  <div *dxTemplate="let cell of 'impactEnergyHeadTemplate'">
+                    <label>Impact Energy<br />
+                      (การกระแทกชาร์ปี)
+                    </label>
+                  </div>
 
                   <dxi-column width="40" cellTemplate="deleteTemplate" alignment="center">
                     <div *dxTemplate="let cell of 'deleteTemplate'">
                       <i (click)="onClickDelete()" class="fa-solid fa-trash icon-delete click"></i>
                     </div>
                   </dxi-column>
+
+
 
                 </dx-data-grid>
 
