@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { CertificateData, QaStatusCompleteSearchParam, QaStatusCompleteViewModel, QaStatusMonitorViewModel, QaStatusSearchParam } from '../../models/qa-status.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'qa-status',
@@ -19,6 +20,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
   public status!: string;
   public customerName!: string;
   public dateSampleReady!: Date;
+  public material!: string;
   public materialDesc!: string;
   public coilNo!: string;
   public heatNo!: string;
@@ -265,6 +267,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
     this.customerName = cell.data.soldToName;
     this.dateSampleReady = new Date;
     this.materialDesc = cell.data.materialDesc;
+    this.material = cell.data.materialCode;
     this.coilNo = "";
     this.heatNo = "";
     this.grade = "";
@@ -290,6 +293,14 @@ export class QualityAssuranceStatusComponent implements OnInit {
 
   public OnClickDownStatus(cellData : QaStatusCompleteViewModel): void {
     console.log("cellData:", cellData)
-    
+    Swal.fire({
+      title: "Do you want to down status to sample ready?",
+      icon: "question",
+      heightAuto: false,
+      confirmButtonText: "Yes",
+      cancelButtonText: "No",
+      showCancelButton: true,
+      showCloseButton: true
+    });
   }
 }
