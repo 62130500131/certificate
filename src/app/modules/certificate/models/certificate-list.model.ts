@@ -71,7 +71,6 @@ export class CertificateListDetailViewModel {
 export class CertificateEntryListViewModel {
     millDesc: string;
     tmtMaterial: string;
-    tmtDesc: string;
     grade: string;
     heatNo: string;
     quantity: number;
@@ -83,7 +82,6 @@ export class CertificateEntryListViewModel {
     public constructor() {
         this.millDesc = '';
         this.tmtMaterial = '';
-        this.tmtDesc = '';
         this.grade = '';
         this.heatNo = '';
         this.quantity = 0;

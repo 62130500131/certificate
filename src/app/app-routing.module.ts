@@ -40,6 +40,10 @@ const routes: Routes = [
     loadChildren: () => import('./modules/certificate/certificate.module').then(m => m.CertificateModule)
   },
   {
+    path: 'certificate-edit/:id', component: CertificateEntryComponent,
+    loadChildren: () => import('./modules/certificate/certificate.module').then(m => m.CertificateModule)
+  },
+  {
     path: 'nac-certificate-entry', component: NacCertificateEntryComponent,
     loadChildren: () => import('./modules/quality-assurance/quality-assurance.module').then(m => m.QualityAssuranceModule)
   },

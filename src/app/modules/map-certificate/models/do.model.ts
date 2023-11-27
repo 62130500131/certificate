@@ -1,10 +1,17 @@
 import { Signal, signal } from "@angular/core";
 
 export class doViewModel {
-    shipmentCode?: number;
-    customerCode?: number;
-    customerName?: string;
-    heatNo?: string;
+    shipmentCode: number | null;
+    deliveryDate: Date | null;
+    customerCode: number | null;
+    customerName: string;
+
+    constructor() {
+        this.shipmentCode = null;
+        this.deliveryDate = null;
+        this.customerCode = null;
+        this.customerName = "";
+    }
 }
 export class DoShipmentEntryViewModel {
     doNo: string;
@@ -48,13 +55,15 @@ export class SelectQuantity {
     materialDesc: string;
     heatNo: string;
     grade: string;
-    yield: string;
-    tensile: string;
+    yield: number;
+    tensile: number;
     mill: string;
     remain: number;
     quantity: number;
     thickness: number;
     width: number;
+    weight: number;
+    unit: string;
 
     constructor() {
         this.isSelected = false
@@ -63,23 +72,31 @@ export class SelectQuantity {
         this.materialDesc = '';
         this.heatNo = '';
         this.grade = '';
-        this.yield = '';
-        this.tensile = '';
+        this.yield = 0;
+        this.tensile = 0;
         this.mill = '';
         this.remain = 0;
         this.quantity = 0;
         this.thickness = 0;
         this.width = 0;
+        this.weight = 0;
+        this.unit = ''
     }
 }
 
 export class MappingCertificateSearchParam {
     customer: string;
     shipment: string;
+    deliveryDate: number;
+    deliveryFrom: Date | null;
+    deliveryTo: Date | null;
 
     constructor() {
         this.customer = '';
         this.shipment = '';
+        this.deliveryDate = 90
+        this.deliveryFrom = null
+        this.deliveryTo = null
     }
 }
 
