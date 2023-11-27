@@ -92,7 +92,7 @@
                   [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [rowAlternationEnabled]="true">
 
 
-                  <dxi-column dataField="materialDecs" caption="Material Description" dataType="string" [minWidth]="300"
+                  <dxi-column dataField="materialDecs" caption="Material Description" dataType="string" [minWidth]="250"
                     alignment="left"></dxi-column>
                   <dxi-column [width]="60" caption="C" dataField="c" alignment="right">
                   </dxi-column>
@@ -120,7 +120,7 @@
                       </label>
                     </div>
                   </dxi-column>
-                  <dxi-column [width]="120" caption="Elongation" dataField="elongation" alignment="right"
+                  <dxi-column [width]="100" caption="Elongation" dataField="elongation" alignment="right"
                     headerCellTemplate="elongationTemplate">
                     <div *dxTemplate="let cell of 'elongationTemplate'">
                       <label>Elongation<br />
@@ -128,7 +128,7 @@
                       </label>
                     </div>
                   </dxi-column>
-                  <dxi-column [width]="120" caption="Hardness (ความแข็ง)" dataField="hardness" alignment="center"
+                  <dxi-column [width]="100" caption="Hardness (ความแข็ง)" dataField="hardness" alignment="center"
                     headerCellTemplate="hardnessTemplate">
                     <div *dxTemplate="let cell of 'hardnessTemplate'">
                       <label>Hardness<br />
@@ -136,14 +136,14 @@
                       </label>
                     </div>
                   </dxi-column>
-                  <dxi-column [width]="120" caption="Bend Test (การดัดโค้ง)" dataField="bendTest" alignment="center" headerCellTemplate="bendTestTemplate">
+                  <dxi-column [width]="100" caption="Bend Test (การดัดโค้ง)" dataField="bendTest" alignment="center" headerCellTemplate="bendTestTemplate">
                     <div *dxTemplate="let cell of 'bendTestTemplate'">
                       <label>Bend Test<br />
                         (การดัดโค้ง)
                       </label>
                     </div>
                   </dxi-column>
-                  <dxi-column [width]="120" caption="Compression (การกดแบน)" dataField="compression" alignment="center" headerCellTemplate="compressionTemplate"> 
+                  <dxi-column [width]="100" caption="Compression (การกดแบน)" dataField="compression" alignment="center" headerCellTemplate="compressionTemplate"> 
                     <div *dxTemplate="let cell of 'compressionTemplate'">
                       <label>Compression<br />
                         (การกดแบน)
