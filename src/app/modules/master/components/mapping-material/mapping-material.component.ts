@@ -79,7 +79,7 @@ export class MappingMaterialComponent implements OnInit {
 
 
   public onClickSearch(): void {
-
+    
   }
 
   public onClickClear(): void {

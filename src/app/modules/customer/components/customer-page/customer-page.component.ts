@@ -110,8 +110,8 @@ export class CustomerPageComponent {
   }
 
   public onDateRangeChanged($event: any): void {
-    this.param.dateFrom = $event.data.value.startDate;
-    this.param.dateTo = $event.data.value.endDateDate;
+    this.param.dateFrom = $event.value.startDate;
+    this.param.dateTo = $event.value.endDateDate;
   }
 
 }
