@@ -80,7 +80,7 @@
                                 <dxi-column dataField="grDate" caption="GR Date" dataType="string" [width]="130"
                                     alignment="center" cellTemplate="dateTemplate">
                                     <div *dxTemplate="let cell of 'dateTemplate'">
-                                        {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
+                                        {{ cell.value | date: 'dd-MMM-yyyy' }}
                                     </div>
                                 </dxi-column>
 
@@ -200,7 +200,7 @@
                                 <dxi-column dataField="grDate" caption="GR Date" dataType="string" [width]="130"
                                     alignment="center" cellTemplate="dateTemplate">
                                     <div *dxTemplate="let cell of 'dateTemplate'">
-                                        {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
+                                        {{ cell.value | date: 'dd-MMM-yyyy' }}
                                     </div>
                                 </dxi-column>
 

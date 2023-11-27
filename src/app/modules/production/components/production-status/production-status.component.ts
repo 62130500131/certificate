@@ -169,9 +169,10 @@ export class ProductionStatusComponent implements OnInit {
   }
 
 
-
+  public rowIndex: number = 0;
   public OnClickUpdateStatus(cell: any): void {
     if (cell.data.status == 'Wait Sample') {
+      this.rowIndex = cell.rowIndex;
       this.productionOrder = cell.data.productionOrder;
       this.customerName = cell.data.soldToName;
       this.dateSampleReady = new Date;
@@ -185,10 +186,12 @@ export class ProductionStatusComponent implements OnInit {
       });
     }
     else {
+      this.rowIndex = cell.rowIndex;
       this.modalRef = this._modalService.show(this.updateStatusWaitFilm, {
         class: 'modal-xl'
       });
     }
+    console.log(cell)
   }
 
   public OnClickDownStatus(): void {
@@ -205,12 +208,19 @@ export class ProductionStatusComponent implements OnInit {
   }
   public onClickConfirm(): void {
     if (this.selectedStatus == "sampleReady") {
-      this.dataSourceMonitorStatus[0].status = 'Sample Ready';
+      this.dataSourceMonitorStatus[this.rowIndex].status = 'Sample Ready';
     }
-    else {
-    }
-
     this.modalRef.hide();
   }
+  
+  public onClickConfirmWaitFilm(): void {
+    if (this.selectedStatusFilm == "filmReady") {
+      this.dataSourceMonitorStatus[this.rowIndex].status = 'Film Ready';
+    }
+    this.modalRef.hide();
+  }
+
+
+
 
 }
