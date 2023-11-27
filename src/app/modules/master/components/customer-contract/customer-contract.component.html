@@ -11,7 +11,7 @@
               <label class="form-label" for="customer">Customer</label>
             </div>
             <div class="col-3">
-              <input id="customer" class="form-control" type="text">
+              <input [(ngModel)]="param.customerCode" id="customer" class="form-control" type="text">
             </div>
           </div>
 
@@ -20,20 +20,20 @@
               <label class="form-label" for="province">Province</label>
             </div>
             <div class="col-3">
-              <input id="province" class="form-control" type="text">
+              <input [(ngModel)]="param.province" id="province" class="form-control" type="text">
             </div>
             <div class="col-2 text-end pt-2">
               <label class="form-label" for="district">District</label>
             </div>
             <div class="col-3">
-              <input id="district" class="form-control" type="text">
+              <input [(ngModel)]="param.district" id="district" class="form-control" type="text">
             </div>
           </div>
 
           <div class="row p-2">
             <div class="col-3 offset-2" style="padding-left: inherit;">
-              <button class="btn btn-sm btn-success"><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
-              <button class="btn btn-sm btn-secondary ms-2"><i class="fa-solid fa-broom me-1"></i>Clear</button>
+              <button class="btn btn-sm btn-success" (click)="onClickSearch()" ><i class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
+              <button class="btn btn-sm btn-secondary ms-2" (click)="onClickClear()"><i class="fa-solid fa-broom me-1"></i>Clear</button>
             </div>
           </div>
           <hr>

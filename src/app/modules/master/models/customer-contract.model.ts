@@ -35,3 +35,14 @@ export class CustomerContractUploadViewModel {
         this.line = '';
     }
 }
+
+export class CustomerContractParam {
+    customerCode: string;
+    province: string;
+    district: string;
+    constructor() {
+        this.customerCode = '';
+        this.province = '';
+        this.district = '';
+    }
+}
