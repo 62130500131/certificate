@@ -177,7 +177,11 @@
                             </div>
                         </div>
                     </dxi-column>
-                    <dxi-column dataField="itemIndex" caption="No." [width]="40" alignment="center"></dxi-column>
+                    <dxi-column dataField="itemIndex" caption="No." [width]="40" alignment="center"cellTemplate="indexTemplate">
+                        <div *dxTemplate="let cell of 'indexTemplate'">
+                            {{cell.value}}.
+                        </div>
+                    </dxi-column>
                     <dxi-column dataField="material" caption="Material" [width]="150" alignment="left"></dxi-column>
                     <dxi-column dataField="materialDesc" caption="MaterialDesc" minWidth="300"
                         alignment="left"></dxi-column>
@@ -285,7 +289,11 @@
                             </div>
                         </div>
                     </dxi-column>
-                    <dxi-column dataField="itemIndex" caption="No." [width]="40" alignment="center"></dxi-column>
+                    <dxi-column dataField="itemIndex" caption="No." [width]="40" alignment="center"cellTemplate="indexTemplate">
+                        <div *dxTemplate="let cell of 'indexTemplate'">
+                            {{cell.value}}.
+                        </div>
+                    </dxi-column>
                     <dxi-column dataField="material" caption="Material" [width]="150" alignment="left"></dxi-column>
                     <dxi-column dataField="materialDesc" caption="MaterialDesc" minWidth="300"
                         alignment="left"></dxi-column>
