@@ -14,7 +14,9 @@ export class MapCertificateService {
             shiptoCode: '10000217',
             shiptoName: 'บริษัท ธุรกิจเหล็กดี จำกัด',
             district: 'เขตยานนาวา',
-            province: 'กรุงเทพมหานคร'
+            province: 'กรุงเทพมหานคร',
+            carRegistration: 'ก250356',
+            outTime: new Date()
         }
     ];
     private data: DoShipmentEntryViewModel[] = [
@@ -208,7 +210,7 @@ export class MapCertificateService {
 
     public getShipmentInfo(param: string): Observable<ShipmentInfoViewModel> {
         const result = this.shipmentInfo.find(x => {
-            x.shipmentNo == param
+            return x.shipmentNo == param
         }) ?? new ShipmentInfoViewModel()
 
         return of(result)
