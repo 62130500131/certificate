@@ -3,9 +3,14 @@
         <div class="col-xl-12">
             <div class="card shadow-sm p-2 mb-2 bg-white rounded">
                 <div class="card-header">
-                    <h6>Shipment</h6>
+                    <h6>Shipment : {{ shipmentNo }}</h6>
                 </div>
                 <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <label>Customer {{ shipmentInfo.customerCode }} : {{ shipmentInfo.customerName }}</label>
+                        </div>
+                    </div>
                     <div class="row" *ngFor="let item of list">
                         <div class="col-12">
                             <div class="row mt-4">

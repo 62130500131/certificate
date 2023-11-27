@@ -259,7 +259,7 @@ export class CertificateListComponent {
   }
 
   public onClickSearch(): void {
-
+    console.log(this.param);
   }
 
   public onClickClear(): void {
@@ -302,13 +302,16 @@ export class CertificateListComponent {
     this.modalRef.hide();
   }
 
-  public onUploadDateRangeChanged(event: any): void {
-
+  public onUploadDateRangeChanged($event: any): void {
+    const{startDate,endDate} = $event.value;
+    this.param.uploadFrom = startDate;
+    this.param.uploadTo = endDate;
   }
 
   public onCertDateRangeChanged($event: any): void {
-    this.param.certFrom = $event.data.value.startDate;
-    this.param.certTo = $event.data.value.endDateDate;
+    const{startDate,endDate} = $event.value;
+    this.param.certFrom = startDate;
+    this.param.certTo = endDate;
   }
 
 }

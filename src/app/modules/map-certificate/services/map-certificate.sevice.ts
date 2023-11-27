@@ -1,12 +1,22 @@
 import { Injectable } from "@angular/core";
-import { DoShipmentDetail, DoShipmentEntryViewModel, SelectQuantity } from "../models/do.model";
+import { DoShipmentDetail, DoShipmentEntryViewModel, SelectQuantity, ShipmentInfoViewModel } from "../models/do.model";
 import { Observable, delay, of } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
 })
 export class MapCertificateService {
-
+    private shipmentInfo: ShipmentInfoViewModel[] = [
+        {
+            shipmentNo: '2311092790',
+            customerCode: '10000217',
+            customerName: 'บริษัท ธุรกิจเหล็กดี จำกัด',
+            shiptoCode: '10000217',
+            shiptoName: 'บริษัท ธุรกิจเหล็กดี จำกัด',
+            district: 'เขตยานนาวา',
+            province: 'กรุงเทพมหานคร'
+        }
+    ];
     private data: DoShipmentEntryViewModel[] = [
         {
             doNo: '210000001',
@@ -194,6 +204,14 @@ export class MapCertificateService {
         return of(this.modal).pipe(
             delay(0)
         )
+    }
+
+    public getShipmentInfo(param: string): Observable<ShipmentInfoViewModel> {
+        const result = this.shipmentInfo.find(x => {
+            x.shipmentNo == param
+        }) ?? new ShipmentInfoViewModel()
+
+        return of(result)
     }
 
 }
