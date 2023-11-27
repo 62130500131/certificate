@@ -65,7 +65,10 @@
                                 <dxi-column dataField="productionOrder" caption="Production Order" dataType="number"
                                     [width]="130" alignment="center"></dxi-column>
                                 <dxi-column dataField="itemNo" caption="No." dataType="number" [width]="40"
-                                    alignment="center"></dxi-column>
+                                    alignment="center"cellTemplate="indexTemplate">
+                                    <div *dxTemplate="let cell of 'indexTemplate'">
+                                        {{cell.value}}.
+                                    </div></dxi-column>
                                 <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="120"
                                     alignment="left"></dxi-column>
                                 <dxi-column dataField="materialDesc" caption="Material Description" dataType="string"
@@ -185,7 +188,10 @@
                                 <dxi-column dataField="productionOrder" caption="Production Order" dataType="number"
                                     [width]="130" alignment="center"></dxi-column>
                                 <dxi-column dataField="itemNo" caption="No." dataType="number" [width]="40"
-                                    alignment="center"></dxi-column>
+                                    alignment="center"cellTemplate="indexTemplate">
+                                    <div *dxTemplate="let cell of 'indexTemplate'">
+                                        {{cell.value}}.
+                                    </div></dxi-column>
                                 <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="120"
                                     alignment="left"></dxi-column>
                                 <dxi-column dataField="materialDesc" caption="Material Description" dataType="string"
