@@ -47,6 +47,7 @@ export class DoShipmentEntryComponent implements OnInit {
 
     this.service.getShipmentInfo(this.shipmentNo)
     .subscribe(res => {
+      console.log(res)
       this.shipmentInfo = res
     })
 

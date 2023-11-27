@@ -10,6 +10,12 @@
                         <div class="col">
                             <label>Customer {{ shipmentInfo.customerCode }} : {{ shipmentInfo.customerName }}</label>
                         </div>
+                        <div class="col">
+                            <label>Ship to {{ shipmentInfo.shiptoCode }} : {{ shipmentInfo.shiptoName }}</label>
+                        </div>
+                        <div class="col">
+                            <label>สถานที่จัดส่ง {{ shipmentInfo.district }} , {{ shipmentInfo.province }}</label>
+                        </div>
                     </div>
                     <div class="row" *ngFor="let item of list">
                         <div class="col-12">
