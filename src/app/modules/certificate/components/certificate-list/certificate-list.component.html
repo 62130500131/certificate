@@ -7,7 +7,7 @@
                 </div>
                 <div class="card-body">
                     <div class="row mt-4">
-                        <div class="col-2 text-end">
+                        <div class="col-2 text-end pt-2">
                             <label for="certificateNo" class="from-label pt-1">Certificate No.</label>
                         </div>
                         <div class="col-3">
@@ -16,69 +16,77 @@
                     </div>
 
                     <div class="row mt-2 text-center">
-                        <div class="col-2 text-end">
+                        <div class="col-2 text-end pt-2">
                             <label for="material" class="from-label pt-1">Material</label>
                         </div>
-                        <div class="col-3">
+                        <div class="col-3 mt-2">
                             <dx-select-box displayExpr="text" valueExpr="value" [items]="materialDataSource"
-                                [(ngModel)]="param.material"></dx-select-box>
+                                [(ngModel)]="param.material">
+                            </dx-select-box>
                         </div>
-                        <div class="col-2 text-end">
+                        <div class="col-2 text-end pt-2">
                             <label for="grade" class="from-label pt-1">Grade</label>
                         </div>
-                        <div class="col-3">
+                        <div class="col-3 mt-2">
                             <dx-select-box displayExpr="text" valueExpr="value" [items]="gradeDataSource"
-                                [(ngModel)]="param.grade"></dx-select-box>
+                                [(ngModel)]="param.grade">
+                            </dx-select-box>
                         </div>
                     </div>
 
                     <div class="row mt-2 text-center">
-                        <div class="col-2 text-end">
+                        <div class="col-2 text-end pt-2">
                             <label for="mill" class="from-label pt-1">Mill</label>
                         </div>
-                        <div class="col-3">
+                        <div class="col-3 mt-2">
                             <dx-select-box displayExpr="text" valueExpr="value" [items]="millDataSource"
-                                [(ngModel)]="param.mill"></dx-select-box>
+                                [(ngModel)]="param.mill">
+                            </dx-select-box>
                         </div>
-                        <div class="col-2 text-end">
+                        <div class="col-2 text-end pt-2">
                             <label for="heatNo" class="from-label pt-1">Heat No.</label>
                         </div>
-                        <div class="col-3">
+                        <div class="col-3 mt-2">
                             <input id="heatNo" type="text" class="form-control" [(ngModel)]="param.heatNo">
                         </div>
                     </div>
 
                     <div class="row mt-2 text-center">
-                        <div class="col-2 text-end">
+                        <div class="col-2 text-end pt-2">
                             <label for="certDate" class="from-label pt-1">Certificate Date</label>
                         </div>
-                        <div class="col-3">
-                            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource"
-                                [(ngModel)]="param.certDate"></dx-select-box>
+                        <div class="col-3 mt-2">
+                            <dx-select-box class="mb-2" displayExpr="text" valueExpr="value" [items]="dateDataSource"
+                                [(ngModel)]="param.certDate">
+                            </dx-select-box>
                             <date-range *ngIf="param.certDate == 0" [start-date]="param.certFrom"
                                 [end-date]="param.certTo" (onUpdate)="onCertDateRangeChanged($event)">
                             </date-range>
                         </div>
-                        <div class="col-2 text-end">
+
+                        <div class="col-2 text-end pt-2">
                             <label for="uploadDate" class="from-label pt-1">Upload Date</label>
                         </div>
-                        <div class="col-3">
-                            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource"
-                                [(ngModel)]="param.uploadDate"></dx-select-box>
-                            <date-range class="mt-2" *ngIf="param.uploadDate == 0" [start-date]="param.uploadFrom"
+                        <div class="col-3 mt-2">
+                            <dx-select-box class="mb-2" displayExpr="text" valueExpr="value" [items]="dateDataSource"
+                                [(ngModel)]="param.uploadDate">
+                            </dx-select-box>
+                            <date-range *ngIf="param.uploadDate == 0" [start-date]="param.uploadFrom"
                                 [end-date]="param.uploadTo" (onUpdate)="onUploadDateRangeChanged($event)">
                             </date-range>
                         </div>
                     </div>
 
-                    <div class="row mt-2">
+                    <div class="row p-2">
                         <div class="col offset-2">
-                            <button class="btn btn-sm btn-success" (click)="onClickSearch()"><i
-                                    class="fa-solid fa-magnifying-glass"></i>
-                                Search</button>
-                            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickClear()"><i
-                                    class="fa-solid fa-broom"></i>
-                                Clear</button>
+                            <button class="btn btn-sm btn-success" (click)="onClickSearch()">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                Search
+                            </button>
+                            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickClear()">
+                                <i class="fa-solid fa-broom"></i>
+                                Clear
+                            </button>
                         </div>
                     </div>
 
@@ -91,9 +99,9 @@
 
                     <div class="row mt-2">
                         <div class="col-12 text-end">
-                            <button class="btn btn-sm btn-primary" (click)="onClickUpload()"><i
-                                    class="fa-solid fa-upload"></i>
-                                Upload</button>
+                            <button class="btn btn-sm btn-primary" (click)="onClickUpload()">
+                                <i class="fa-solid fa-upload"></i>Upload
+                            </button>
                         </div>
                     </div>
                     <div class="row mt-2">
@@ -149,7 +157,8 @@
 
                         <div class="row mt-2 ms-2">
                             <div class="col text-end">
-                                <i class="fa-solid fa-trash icon-delete me-2"></i> <label class="legend">Delete</label>
+                                <i class="fa-solid fa-trash icon-delete me-2"></i>
+                                <label class="legend">Delete</label>
                             </div>
                         </div>
 
@@ -173,7 +182,8 @@
             </div>
             <div class="col-7">
                 <dx-select-box displayExpr="text" valueExpr="value" [items]="millDataSource"
-                    [(ngModel)]="millForUpload"></dx-select-box>
+                    [(ngModel)]="millForUpload">
+                </dx-select-box>
             </div>
         </div>
         <div class="row mt-2">
@@ -185,9 +195,14 @@
         <div class="row mt-4">
             <div class="col-12 text-center">
                 <button class="btn btn-sm btn-primary" [disabled]="!millForUpload || !fileToUpload"
-                    (click)="onClickConfirmUpload()"><i class="fa-solid fa-upload"></i> Upload</button>
-                <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
-                    Cancel</button>
+                    (click)="onClickConfirmUpload()">
+                    <i class="fa-solid fa-upload"></i>
+                    Upload
+                </button>
+                <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()">
+                    <i class="fa-solid fa-ban"></i>
+                    Cancel
+                </button>
             </div>
         </div>
     </div>

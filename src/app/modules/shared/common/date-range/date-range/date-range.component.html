@@ -1,4 +1,4 @@
-<div class="d-flex flex-wrap flex-sm-nowrap mt-2">
+<div class="d-flex flex-wrap flex-sm-nowrap">
   <date-picker class="mb-2" [name]="'picker-start-'+name" [value]="startDate" (onUpdate)="onStartDateChanged($event)"
     [disabled]="disabledStart"></date-picker>
   <div class="period mx-2">
@@ -8,7 +8,7 @@
     (onUpdate)="onEndDateChanged($event)" [disabled]="disabledEnd">
   </date-picker>
 </div>
-<div class="d-flex flex-wrap flex-sm-nowrap" style="margin-top: 8.5px;" *ngIf="showCompare && isCompare">
+<div class="d-flex flex-wrap flex-sm-nowrap" *ngIf="showCompare && isCompare">
   <div class="width-approve-date-range approve ">
     <span>{{(preStartDate | date:'dd-MMM-yyyy') || '-'}}</span>
   </div>
