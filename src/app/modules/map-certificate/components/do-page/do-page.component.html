@@ -32,6 +32,18 @@
                                 [end-date]="param.deliveryTo" (onUpdate)="onDeliveryDateRangeChanged($event)">
                             </date-range>
                         </div>
+
+                        <div class="col-2 text-end pt-2">
+                            <label class="form-label">Status</label>
+                        </div>
+                        <div class="col-3 mt-2">
+                            <input [(ngModel)]="param.sent" class="form-check-input" type="checkbox"
+                                id="sent">
+                            <label for="sent" class="mx-2">Sent</label>
+                            <input [(ngModel)]="param.notSent" class="form-check-input" type="checkbox"
+                                id="notSent">
+                            <label for="notSent" class="mx-2">Not Sent</label>
+                        </div>
                     </div>
 
                     <div class="row p-2">
@@ -61,16 +73,16 @@
                                 <dxi-column dataField="shiptoCode" caption="Shipto Code" [width]="120"
                                     alignment="center"></dxi-column>
                                 <dxi-column dataField="customerName" caption="Customer Name" dataType="string"
-                                    [minWidth]="250" alignment="left"></dxi-column>
+                                    [minWidth]="220" alignment="left"></dxi-column>
                                 <dxi-column dataField="status" caption="Status" dataType="string" [width]="100"
                                     alignment="center"></dxi-column>
                                 <dxi-column dataField="modifiedBy" caption="Modified By" dataType="string" [width]="100"
                                     alignment="left"></dxi-column>
                                 <dxi-column dataField="modifiedTime" caption="Modified Time" dataType="string"
-                                    [width]="120" alignment="center" cellTemplate="dateTimeTemplate"></dxi-column>
+                                    [width]="130" alignment="center" cellTemplate="dateTimeTemplate"></dxi-column>
                                 <dxi-column dataField="sentBy" caption="Sent By" dataType="string" [width]="100"
                                     alignment="left"></dxi-column>
-                                <dxi-column dataField="sentTime" caption="Sent Time" dataType="string" [width]="120"
+                                <dxi-column dataField="sentTime" caption="Sent Time" dataType="string" [width]="130"
                                     alignment="center" cellTemplate="dateTimeTemplate"></dxi-column>
 
                                 <div *dxTemplate="let cell of 'shipmentTemplate'">
