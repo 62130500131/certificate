@@ -92,6 +92,8 @@ export class MappingCertificateSearchParam {
     deliveryDate: number;
     deliveryFrom: Date | null;
     deliveryTo: Date | null;
+    sent: boolean;
+    notSent: boolean;
 
     constructor() {
         this.customer = '';
@@ -99,6 +101,9 @@ export class MappingCertificateSearchParam {
         this.deliveryDate = 90
         this.deliveryFrom = null
         this.deliveryTo = null
+        this.sent = true;
+        this.notSent = true;
+
     }
 }
 
