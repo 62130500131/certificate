@@ -53,10 +53,14 @@
 
                     <div class="row p-2">
                         <div class="col offset-2" style="padding-left: inherit;">
-                            <button class="btn btn-sm btn-success"><i
-                                    class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
-                            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickClear()"><i
-                                    class="fa-solid fa-broom me-1"></i>Clear</button>
+                            <button class="btn btn-sm btn-success">
+                                <i class="fa-solid fa-magnifying-glass me-1"></i>
+                                Search
+                            </button>
+                            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickClear()">
+                                <i class="fa-solid fa-broom me-1"></i>
+                                Clear
+                            </button>
                         </div>
                     </div>
                     <hr>
@@ -72,23 +76,25 @@
                                 <dxi-column dataField="productionOrder" caption="Production Order" dataType="number"
                                     [width]="130" alignment="center"></dxi-column>
                                 <dxi-column dataField="itemNo" caption="No." dataType="number" [width]="40"
-                                    alignment="center"cellTemplate="indexTemplate">
+                                    alignment="center" cellTemplate="indexTemplate">
                                     <div *dxTemplate="let cell of 'indexTemplate'">
                                         {{cell.value}}.
-                                    </div></dxi-column>
+                                    </div>
+                                </dxi-column>
                                 <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="120"
                                     alignment="left"></dxi-column>
                                 <dxi-column dataField="materialDesc" caption="Material Description" dataType="string"
                                     [minWidth]="280" alignment="left"></dxi-column>
-                                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="80"
+                                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="70"
                                     cellTemplate="numberTemplate" alignment="right">
                                 </dxi-column>
-                                <dxi-column dataField="unit" caption="Unit" [width]="60" alignment="center"></dxi-column>
+                                <dxi-column dataField="unit" caption="Unit" [width]="40"
+                                    alignment="center"></dxi-column>
                                 <dxi-column dataField="soldTo" caption="Sold to" dataType="string" [width]="80"
                                     alignment="center"></dxi-column>
                                 <dxi-column dataField="soldToName" caption="Sold to Name" dataType="string"
                                     [width]="280" alignment="left"></dxi-column>
-                                <dxi-column dataField="grDate" caption="GR Date" dataType="string" [width]="130"
+                                <dxi-column dataField="grDate" caption="GR Date" dataType="string" [width]="100"
                                     alignment="center" cellTemplate="dateTemplate">
                                     <div *dxTemplate="let cell of 'dateTemplate'">
                                         {{ cell.value | date: 'dd-MMM-yyyy' }}
@@ -120,8 +126,10 @@
 
                             <div class="row mt-2">
                                 <div class="col text-end">
-                                    <i class="fa-solid fa-file-arrow-up icon-update"></i> <label
-                                        class="ms-2 legend">Upload Test Result</label>
+                                    <i class="fa-solid fa-file-arrow-up icon-update"></i>
+                                    <label class="ms-2 legend">
+                                        Upload Test Result
+                                    </label>
                                 </div>
                             </div>
 
@@ -184,10 +192,14 @@
 
                     <div class="row p-2">
                         <div class="col offset-2" style="padding-left: inherit;">
-                            <button class="btn btn-sm btn-success"><i
-                                    class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
-                            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickClearComplete()"><i
-                                    class="fa-solid fa-broom me-1"></i>Clear</button>
+                            <button class="btn btn-sm btn-success">
+                                <i class="fa-solid fa-magnifying-glass me-1"></i>
+                                Search
+                            </button>
+                            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickClearComplete()">
+                                <i class="fa-solid fa-broom me-1"></i>
+                                Clear
+                            </button>
                         </div>
                     </div>
                     <hr>
@@ -204,24 +216,25 @@
                                 <dxi-column dataField="productionOrder" caption="Production Order" dataType="number"
                                     [width]="130" alignment="center"></dxi-column>
                                 <dxi-column dataField="itemNo" caption="No." dataType="number" [width]="40"
-                                    alignment="center"cellTemplate="indexTemplate">
+                                    alignment="center" cellTemplate="indexTemplate">
                                     <div *dxTemplate="let cell of 'indexTemplate'">
                                         {{cell.value}}.
-                                    </div></dxi-column>
+                                    </div>
+                                </dxi-column>
                                 <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="120"
                                     alignment="left"></dxi-column>
                                 <dxi-column dataField="materialDesc" caption="Material Description" dataType="string"
                                     [minWidth]="280" alignment="left"></dxi-column>
-                                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="80"
+                                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="70"
                                     cellTemplate="numberTemplate" alignment="right">
                                 </dxi-column>
-                                <dxi-column dataField="unit" caption="Unit" [width]="60" alignment="center">
+                                <dxi-column dataField="unit" caption="Unit" [width]="40" alignment="center">
                                 </dxi-column>
                                 <dxi-column dataField="soldTo" caption="Sold to" dataType="string" [width]="80"
                                     alignment="center"></dxi-column>
                                 <dxi-column dataField="soldToName" caption="Sold to Name" dataType="string"
                                     [width]="280" alignment="left"></dxi-column>
-                                <dxi-column dataField="grDate" caption="GR Date" dataType="string" [width]="130"
+                                <dxi-column dataField="grDate" caption="GR Date" dataType="string" [width]="100"
                                     alignment="center" cellTemplate="dateTemplate">
                                     <div *dxTemplate="let cell of 'dateTemplate'">
                                         {{ cell.value | date: 'dd-MMM-yyyy' }}
@@ -253,8 +266,10 @@
 
                             <div class="row mt-2">
                                 <div class="col text-end">
-                                    <i class="fa-solid fa-circle-down icon-delete"></i> <label class="ms-2 legend">Down
-                                        Status</label>
+                                    <i class="fa-solid fa-circle-down icon-delete"></i>
+                                    <label class="ms-2 legend">
+                                        Down Status
+                                    </label>
                                 </div>
                             </div>
 
