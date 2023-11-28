@@ -32,16 +32,20 @@
                 </div>
               </div>
 
-              <div class="row mt-2">
+              <div class="row mt-2 mb-2">
                 <div class="col-2 text-end">
                   <label>Mill</label>
+                  <br/>
+                  <label class="detail">ผู้ผลิต</label>
                 </div>
                 <div class="col-3">
                   <label>SYS</label>
                 </div>
 
-                <div class="col-2  text-end">
+                <div class="col-2  text-end mb-2">
                   <label>Upload Date</label>
+                  <br/>
+                  <label class="detail">วันที่อัปโหลด</label>
                 </div>
                 <div class="col-3">
                   {{ today | date: 'dd-MMM-yyyy' }}
@@ -49,26 +53,32 @@
               </div>
 
               <div class="row mt-2">
-                <div class="col-2 text-end pt-1">
+                <div class="col-2 text-end mb-2">
                   <label for="certNo">Certificate No.</label>
+                  <br/>
+                  <label class="detail">หมายเลขใบรายงานผลการทดสอบ</label>
                 </div>
-                <div class="col-3">
+                <div class="col-3 mt-1">
                   <input type="text" id="certNo" class="form-control" [(ngModel)]="certNo">
                 </div>
 
-                <div class="col-2 text-end pt-1">
+                <div class="col-2 text-end mb-2">
                   <label for="certDate">Certificate Date</label>
+                  <br/>
+                  <label class="detail">วันที่รายงานผลการทดสอบ</label>
                 </div>
-                <div class="col-3">
+                <div class="col-3 mt-1">
                   <input [(ngModel)]="certDate" type="date" id="certDate" class="form-control">
                 </div>
               </div>
 
               <div class="row mt-2">
-                <div class="col-2 text-end pt-1">
+                <div class="col-2 text-end mb-2">
                   <label for="remark">Remark</label>
+                  <br/>
+                  <label class="detail">หมายเหตุ</label>
                 </div>
-                <div class="col-8">
+                <div class="col-8 mt-1">
                   <textarea type="text" id="remark" class="form-control">
                         </textarea>
                 </div>
