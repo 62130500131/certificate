@@ -268,3 +268,7 @@ ngx-extended-pdf-viewer #primaryEditorStamp {
 .right-form {
     text-align: right;
 }
+
+.detail {
+    color: #BEBEBE;
+}
