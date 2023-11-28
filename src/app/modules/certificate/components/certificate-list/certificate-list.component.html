@@ -21,14 +21,16 @@
                         </div>
                         <div class="col-3 mt-2">
                             <dx-select-box displayExpr="text" valueExpr="value" [items]="materialDataSource"
-                                [(ngModel)]="param.material"></dx-select-box>
+                                [(ngModel)]="param.material">
+                            </dx-select-box>
                         </div>
                         <div class="col-2 text-end pt-2">
                             <label for="grade" class="from-label pt-1">Grade</label>
                         </div>
                         <div class="col-3 mt-2">
                             <dx-select-box displayExpr="text" valueExpr="value" [items]="gradeDataSource"
-                                [(ngModel)]="param.grade"></dx-select-box>
+                                [(ngModel)]="param.grade">
+                            </dx-select-box>
                         </div>
                     </div>
 
@@ -38,7 +40,8 @@
                         </div>
                         <div class="col-3 mt-2">
                             <dx-select-box displayExpr="text" valueExpr="value" [items]="millDataSource"
-                                [(ngModel)]="param.mill"></dx-select-box>
+                                [(ngModel)]="param.mill">
+                            </dx-select-box>
                         </div>
                         <div class="col-2 text-end pt-2">
                             <label for="heatNo" class="from-label pt-1">Heat No.</label>
@@ -52,9 +55,10 @@
                         <div class="col-2 text-end pt-2">
                             <label for="certDate" class="from-label pt-1">Certificate Date</label>
                         </div>
-                        <div class="col-3 mt-2" >
+                        <div class="col-3 mt-2">
                             <dx-select-box class="mb-2" displayExpr="text" valueExpr="value" [items]="dateDataSource"
-                                [(ngModel)]="param.certDate"></dx-select-box>
+                                [(ngModel)]="param.certDate">
+                            </dx-select-box>
                             <date-range *ngIf="param.certDate == 0" [start-date]="param.certFrom"
                                 [end-date]="param.certTo" (onUpdate)="onCertDateRangeChanged($event)">
                             </date-range>
@@ -65,7 +69,8 @@
                         </div>
                         <div class="col-3 mt-2">
                             <dx-select-box class="mb-2" displayExpr="text" valueExpr="value" [items]="dateDataSource"
-                                [(ngModel)]="param.uploadDate"></dx-select-box>
+                                [(ngModel)]="param.uploadDate">
+                            </dx-select-box>
                             <date-range *ngIf="param.uploadDate == 0" [start-date]="param.uploadFrom"
                                 [end-date]="param.uploadTo" (onUpdate)="onUploadDateRangeChanged($event)">
                             </date-range>
@@ -94,9 +99,9 @@
 
                     <div class="row mt-2">
                         <div class="col-12 text-end">
-                            <button class="btn btn-sm btn-primary" (click)="onClickUpload()"><i
-                                    class="fa-solid fa-upload"></i>
-                                Upload</button>
+                            <button class="btn btn-sm btn-primary" (click)="onClickUpload()">
+                                <i class="fa-solid fa-upload"></i>Upload
+                            </button>
                         </div>
                     </div>
                     <div class="row mt-2">
@@ -152,7 +157,8 @@
 
                         <div class="row mt-2 ms-2">
                             <div class="col text-end">
-                                <i class="fa-solid fa-trash icon-delete me-2"></i> <label class="legend">Delete</label>
+                                <i class="fa-solid fa-trash icon-delete me-2"></i>
+                                <label class="legend">Delete</label>
                             </div>
                         </div>
 
@@ -176,7 +182,8 @@
             </div>
             <div class="col-7">
                 <dx-select-box displayExpr="text" valueExpr="value" [items]="millDataSource"
-                    [(ngModel)]="millForUpload"></dx-select-box>
+                    [(ngModel)]="millForUpload">
+                </dx-select-box>
             </div>
         </div>
         <div class="row mt-2">
@@ -188,9 +195,14 @@
         <div class="row mt-4">
             <div class="col-12 text-center">
                 <button class="btn btn-sm btn-primary" [disabled]="!millForUpload || !fileToUpload"
-                    (click)="onClickConfirmUpload()"><i class="fa-solid fa-upload"></i> Upload</button>
-                <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
-                    Cancel</button>
+                    (click)="onClickConfirmUpload()">
+                    <i class="fa-solid fa-upload"></i>
+                    Upload
+                </button>
+                <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()">
+                    <i class="fa-solid fa-ban"></i>
+                    Cancel
+                </button>
             </div>
         </div>
     </div>

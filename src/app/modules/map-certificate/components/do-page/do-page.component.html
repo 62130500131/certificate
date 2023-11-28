@@ -27,7 +27,8 @@
                         </div>
                         <div class="col-3">
                             <dx-select-box class="mb-2" displayExpr="text" valueExpr="value" [items]="dateDataSource"
-                                [(ngModel)]="param.deliveryDate"></dx-select-box>
+                                [(ngModel)]="param.deliveryDate">
+                            </dx-select-box>
                             <date-range *ngIf="param.deliveryDate == 0" [start-date]="param.deliveryFrom"
                                 [end-date]="param.deliveryTo" (onUpdate)="onDeliveryDateRangeChanged($event)">
                             </date-range>
@@ -37,21 +38,25 @@
                             <label class="form-label">Status</label>
                         </div>
                         <div class="col-3 mt-2">
-                            <input [(ngModel)]="param.sent" class="form-check-input" type="checkbox"
-                                id="sent">
-                            <label for="sent" class="mx-2">Sent</label>
-                            <input [(ngModel)]="param.notSent" class="form-check-input" type="checkbox"
-                                id="notSent">
-                            <label for="notSent" class="mx-2">Not Sent</label>
+                            <input [(ngModel)]="param.sent" class="form-check-input" type="checkbox" id="sent">
+                            <label for="sent" class="mx-2">
+                                Sent
+                            </label>
+                            <input [(ngModel)]="param.notSent" class="form-check-input" type="checkbox" id="notSent">
+                            <label for="notSent" class="mx-2">
+                                Not Sent
+                            </label>
                         </div>
                     </div>
 
                     <div class="row p-2">
                         <div class="col offset-2" style="padding-left: inherit;">
-                            <button class="btn btn-sm btn-success" (click)="onClickSearch()"><i
-                                    class="fa-solid fa-magnifying-glass"></i> Search</button>
-                            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickClear()"><i
-                                    class="fa-solid fa-broom"></i> Clear</button>
+                            <button class="btn btn-sm btn-success" (click)="onClickSearch()">
+                                <i class="fa-solid fa-magnifying-glass"></i> Search
+                            </button>
+                            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickClear()">
+                                <i class="fa-solid fa-broom"></i> Clear
+                            </button>
                         </div>
                     </div>
 

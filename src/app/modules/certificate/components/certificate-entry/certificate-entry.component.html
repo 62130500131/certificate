@@ -35,7 +35,7 @@
               <div class="row mt-2 mb-2">
                 <div class="col-2 text-end">
                   <label>Mill</label>
-                  <br/>
+                  <br />
                   <label class="detail">ผู้ผลิต</label>
                 </div>
                 <div class="col-3">
@@ -44,7 +44,7 @@
 
                 <div class="col-2  text-end mb-2">
                   <label>Upload Date</label>
-                  <br/>
+                  <br />
                   <label class="detail">วันที่อัปโหลด</label>
                 </div>
                 <div class="col-3">
@@ -55,7 +55,7 @@
               <div class="row mt-2">
                 <div class="col-2 text-end mb-2">
                   <label for="certNo">Certificate No.</label>
-                  <br/>
+                  <br />
                   <label class="detail">หมายเลขใบรายงานผลการทดสอบ</label>
                 </div>
                 <div class="col-3 mt-1">
@@ -64,7 +64,7 @@
 
                 <div class="col-2 text-end mb-2">
                   <label for="certDate">Certificate Date</label>
-                  <br/>
+                  <br />
                   <label class="detail">วันที่รายงานผลการทดสอบ</label>
                 </div>
                 <div class="col-3 mt-1">
@@ -75,7 +75,7 @@
               <div class="row mt-2">
                 <div class="col-2 text-end mb-2">
                   <label for="remark">Remark</label>
-                  <br/>
+                  <br />
                   <label class="detail">หมายเหตุ</label>
                 </div>
                 <div class="col-8 mt-1">
@@ -93,8 +93,14 @@
 
               <div class="row">
                 <div class="col-12 text-end">
-                  <button class="btn btn-sm btn-success"><i class="fa-solid fa-plus"></i> Add</button>
-                  <button class="btn btn-sm btn-primary ms-2"><i class="fa-solid fa-file"></i> Read PDF</button>
+                  <button class="btn btn-sm btn-success">
+                    <i class="fa-solid fa-plus"></i>
+                    Add
+                  </button>
+                  <button class="btn btn-sm btn-primary ms-2">
+                    <i class="fa-solid fa-file"></i>
+                    Read PDF
+                  </button>
                 </div>
               </div>
 
@@ -119,7 +125,8 @@
                         [items]="materialDataSource" [(ngModel)]="item.tmtMaterial"></dx-select-box> </td>
                     <td style="min-width: 70px;"> <input class="form-control" [(ngModel)]="item.grade" /> </td>
                     <td style="min-width: 70px;"> <input class="form-control" [(ngModel)]="item.heatNo" /> </td>
-                    <td style="min-width: 100px;"> <input class="form-control right-form" [(ngModel)]="item.quantity" /> </td>
+                    <td style="min-width: 100px;"> <input class="form-control right-form" [(ngModel)]="item.quantity" />
+                    </td>
                     <td style="min-width: 45px;"> <input class="form-control" [(ngModel)]="item.unit" /> </td>
                     <td style="min-width: 60px;"> <input class="form-control right-form" [(ngModel)]="item.yield" />
                     </td>
@@ -134,16 +141,22 @@
 
               <div class="row mt-2">
                 <div class="col-12 text-end">
-                  <span class="legend"><i class="fa-solid fa-trash icon-delete mx-2"></i>Delete</span>
+                  <span class="legend">
+                    <i class="fa-solid fa-trash icon-delete mx-2"></i> Delete
+                  </span>
                 </div>
               </div>
 
               <div class="row mt-4">
                 <div class="col-12 text-center">
-                  <button class="btn btn-sm btn-success" (click)="onClickSave()"><i class="fa-solid fa-floppy-disk"></i>
-                    Save</button>
-                  <button class="btn btn-sm btn-secondary ms-2" (click)="onClickExit()"><i
-                      class="fa-solid fa-xmark"></i> Exit</button>
+                  <button class="btn btn-sm btn-success" (click)="onClickSave()">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    Save
+                  </button>
+                  <button class="btn btn-sm btn-secondary ms-2" (click)="onClickExit()">
+                    <i class="fa-solid fa-xmark"></i>
+                    Exit
+                  </button>
                 </div>
               </div>
             </div>
