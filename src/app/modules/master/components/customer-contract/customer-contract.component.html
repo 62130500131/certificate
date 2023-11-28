@@ -42,11 +42,7 @@
 
 
           <div class="row pt-2">
-            <div class="col-6">
-              <button class="btn btn-sm btn-success" (click)="onClickAdd()"><i
-                  class="fa-solid fa-plus me-1"></i>Add</button>
-            </div>
-            <div class="col-6 text-end">
+            <div class="col-12 text-end">
               <button class="btn btn-sm btn-success" (click)="onClickImport()"><i
                   class="fa-solid fa-file-import me-1"></i>Import</button>
               <button class="btn btn-sm btn-primary ms-2" (click)="onClickExport()"><i
@@ -66,13 +62,12 @@
                       (click)="onClickEditContact(cell)"></i>
                   </div>
                 </dxi-column>
-                <dxi-column dataField="customerCode" caption="Customer Code" width="100"
+                <dxi-column dataField="customerCode" caption="Customer Code" width="110"
                   alignment="center"></dxi-column>
-                <dxi-column dataField="customerName" caption="Customer Name" minWidth="300"
+                <dxi-column dataField="customerName" caption="Customer Name" minWidth="280"
                   alignment="left"></dxi-column>
                 <dxi-column dataField="district" caption="District" width="150" alignment="left"></dxi-column>
                 <dxi-column dataField="province" caption="Province" width="150" alignment="left"></dxi-column>
-                <dxi-column dataField="contactName" caption="Contact Name" width="150" alignment="left"></dxi-column>
                 <dxi-column dataField="line" caption="Line" width="150" alignment="left"></dxi-column>
                 <dxi-column dataField="modifiedBy" caption="Modified By" width="100" alignment="left"></dxi-column>
                 <dxi-column dataField="modifiedTime" caption="Modified Time" width="120" alignment="center"
@@ -174,75 +169,9 @@
   </div>
 </ng-template>
 
-<ng-template #addContact>
-  <div class="modal-header">
-    <h5 class="modal-title">Add Customer Contact</h5>
-    <span style="cursor: pointer;" class="close-modal" name="close-modal-import"
-      (click)="modalRef.hide()">&times;</span>
-  </div>
-
-  <div class="modal-body">
-
-    <div class="row mt-2">
-      <div class="col-2 text-end pt-1">
-        <label class="form-label">Customer</label>
-
-      </div>
-      <div class="col-3">
-        <dx-select-box displayExpr="text" valueExpr="value" [items]="customerData"></dx-select-box>
-      </div>
-    </div>
-
-    <div class="row mt-2">
-      <div class="col-2 text-end pt-1">
-        <label class="form-label">District</label>
-
-      </div>
-      <div class="col-3">
-        <input class="form-control">
-      </div>
-      <div class="col-2 text-end pt-1">
-        <label class="form-label">Province</label>
-
-      </div>
-      <div class="col-3">
-        <input class="form-control">
-      </div>
-    </div>
-
-    <div class="row mt-2">
-      <div class="col-2 text-end pt-1">
-        <label class="form-label">Contact Name</label>
-
-      </div>
-      <div class="col-3">
-        <input class="form-control">
-      </div>
-      <div class="col-2 text-end pt-1">
-        <label class="form-label">Line</label>
-
-      </div>
-      <div class="col-3">
-        <input class="form-control">
-      </div>
-    </div>
-
-    <div class="row mt-4">
-      <div class="col-12 text-center">
-        <button class="btn btn-sm btn-success" (click)="onClickConfirm()"><i class="fa-regular fa-circle-check"></i>
-          Confirm</button>
-        <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
-          Cancel</button>
-      </div>
-    </div>
-  </div>
-</ng-template>
-
 <ng-template #editContact>
   <div class="modal-header">
     <h5 class="modal-title">Edit Customer Contact</h5>
-    <span style="cursor: pointer;" class="close-modal" name="close-modal-import"
-      (click)="modalRef.hide()">&times;</span>
   </div>
 
   <div class="modal-body">
@@ -250,10 +179,17 @@
     <div class="row mt-2">
       <div class="col-2 text-end pt-1">
         <label class="form-label">Customer</label>
+      </div>
+      
+      <div class="col-3">
+        <dx-select-box displayExpr="text" valueExpr="value" [items]="customerData" [value]="addParam.customerCode" (onValueChanged)="onCustomerChange($event)"></dx-select-box>
+      </div>
+      <div class="col-2 text-end pt-1">
+        <label class="form-label">Contact Name</label>
 
       </div>
       <div class="col-3">
-        <dx-select-box displayExpr="text" valueExpr="value" [items]="customerData" [value]="customerCode"></dx-select-box>
+        <input class="form-control" [(ngModel)]="addParam.contactName">
       </div>
     </div>
 
@@ -263,31 +199,32 @@
 
       </div>
       <div class="col-3">
-        <input class="form-control" [value]="district">
+        <dx-select-box displayExpr="text" valueExpr="value" [items]="districtData" [value]="addParam.district" (onValueChanged)="onDistrictChange($event)"></dx-select-box>
       </div>
       <div class="col-2 text-end pt-1">
         <label class="form-label">Province</label>
-
       </div>
+
       <div class="col-3">
-        <input class="form-control" [value]="province">
+        <dx-select-box displayExpr="text" valueExpr="value" [items]="provinceData" [value]="addParam.province" (onValueChanged)="onProvinceChange($event)"></dx-select-box>
       </div>
     </div>
 
     <div class="row mt-2">
+      
       <div class="col-2 text-end pt-1">
-        <label class="form-label">Contact Name</label>
+        <label class="form-label" >Line</label>
 
       </div>
       <div class="col-3">
-        <input class="form-control" [value]="contactName">
+        <input class="form-control" [(ngModel)]="addParam.line">
       </div>
       <div class="col-2 text-end pt-1">
-        <label class="form-label">Line</label>
+        <label class="form-label" >Telephone</label>
 
       </div>
       <div class="col-3">
-        <input class="form-control" [value]="line">
+        <input class="form-control" [(ngModel)]="addParam.contactTel">
       </div>
     </div>
 

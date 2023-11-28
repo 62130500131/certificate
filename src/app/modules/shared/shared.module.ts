@@ -10,11 +10,13 @@ import { DatePickerComponent } from './common/date-picker/date-picker/date-picke
 import { DateRangeComponent } from './common/date-range/date-range/date-range.component';
 import { DxCheckBoxModule } from 'devextreme-angular/ui/check-box';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { RequiredDirective } from './pipes/required.pipe';
 @NgModule({
     declarations: [
         ExamplePdfViewerComponent,
         DatePickerComponent,
-        DateRangeComponent
+        DateRangeComponent,
+        RequiredDirective
     ],
     imports: [
         FormsModule,
@@ -42,7 +44,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
         DateRangeComponent,
         DatePipe,
         DxCheckBoxModule,
-        SweetAlert2Module
+        SweetAlert2Module,
+        RequiredDirective
         // NgxExtendedPdfViewerModule,
     ]
 })

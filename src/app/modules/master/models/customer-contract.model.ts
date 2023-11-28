@@ -7,6 +7,7 @@ export class CustomerContractViewModel {
     modifiedBy: string;
     modifiedTime: string;
     contactName: string;
+    contactTel:string
 
     constructor() {
         this.customerCode = '';
@@ -17,6 +18,7 @@ export class CustomerContractViewModel {
         this.modifiedBy = '';
         this.modifiedTime = '';
         this.contactName = '';
+        this.contactTel = '';
     }
 }
 
@@ -46,5 +48,24 @@ export class CustomerContractParam {
         this.customerCode = '';
         this.province = '';
         this.district = '';
+    }
+}
+
+export class AddCustomerContractParam {
+    customerCode: string;
+    province: string;
+    district: string;
+    customerName: string;
+    line: string;
+    contactName: string;
+    contactTel:string;
+    constructor() {
+        this.customerCode = '';
+        this.province = '';
+        this.district = '';
+        this.customerName = '';
+        this.line = '';
+        this.contactName = '';
+        this.contactTel = '';
     }
 }
