@@ -58,7 +58,7 @@
       <div class="col-2 text-end pt-2">
         <label class="form-label">Sync Time</label>
       </div>
-      <div class="col-5">
+      <div class="col-5" style="width: 43%;">
         <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource"
           [(ngModel)]="param.date"></dx-select-box>
         <date-range *ngIf="param.date == 0" [start-date]="param.dateFrom" [end-date]="param.dateTo"
