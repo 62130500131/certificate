@@ -40,7 +40,7 @@ export class ProductionStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Wait Sample",
-    unit: "KG."
+    unit: "KG"
   },
   {
     productionOrder: "1080035294",
@@ -52,7 +52,7 @@ export class ProductionStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Wait Film",
-    unit: "KG."
+    unit: "KG"
   }
   ];
 
@@ -67,7 +67,7 @@ export class ProductionStatusComponent implements OnInit {
       soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
       grDate: (new Date()).toString(),
       status: "Sample Ready",
-      unit: "KG."
+      unit: "KG"
     },
     {
       productionOrder: "1080035295",
@@ -79,7 +79,7 @@ export class ProductionStatusComponent implements OnInit {
       soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
       grDate: (new Date()).toString(),
       status: "Cancel",
-      unit: "KG."
+      unit: "KG"
     },
     {
       productionOrder: "1080035293",
@@ -91,7 +91,7 @@ export class ProductionStatusComponent implements OnInit {
       soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
       grDate: (new Date()).toString(),
       status: "Film Ready",
-      unit: "KG."
+      unit: "KG"
     },
     {
       productionOrder: "1080035295",
@@ -103,7 +103,7 @@ export class ProductionStatusComponent implements OnInit {
       soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
       grDate: (new Date()).toString(),
       status: "Cancel",
-      unit: "KG."
+      unit: "KG"
     },
     {
       productionOrder: "1080035252",
@@ -115,7 +115,7 @@ export class ProductionStatusComponent implements OnInit {
       soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
       grDate: (new Date()).toString(),
       status: "Complete",
-      unit: "KG."
+      unit: "KG"
     }
   ];
 
