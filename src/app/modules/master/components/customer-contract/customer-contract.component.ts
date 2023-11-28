@@ -24,6 +24,7 @@ export class CustomerContractComponent implements OnInit {
   public modalRef!: BsModalRef;
   public clickImport: boolean = false;
   public canClick: boolean = false;
+  public isEdit: boolean = false;
   public customerCode: string = '';
   public customerName: string = '';
   public district: string = '';
@@ -40,7 +41,7 @@ export class CustomerContractComponent implements OnInit {
       line: '',
       modifiedBy: 'Connex',
       modifiedTime: (new Date()).toString(),
-      contactName: ''
+      contactName: '',
     },
     {
       customerCode: '10000002',
@@ -248,6 +249,7 @@ export class CustomerContractComponent implements OnInit {
   }
 
   public onClickAdd(): void {
+    this.isEdit = false;
     this.modalRef = this.modalService.show(this.addContact, {
       class: 'modal-xl'
     });
@@ -260,6 +262,7 @@ export class CustomerContractComponent implements OnInit {
 
 
   public onClickEditContact(cell: any): void {
+    this.isEdit = true;
     this.customerCode = cell.data.customerCode
     this.customerName = cell.data.customerName
     this.district = cell.data.district

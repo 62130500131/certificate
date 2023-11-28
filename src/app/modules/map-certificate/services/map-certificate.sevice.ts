@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { DoShipmentDetail, DoShipmentEntryViewModel, SelectQuantity, ShipmentInfoViewModel } from "../models/do.model";
+import { DoShipmentDetail, DoShipmentEntryViewModel, MapCertificateParam, SaveMapCertificateParam, SelectQuantity, SentLinkMapCertificateParam, ShipmentInfoViewModel } from "../models/do.model";
 import { Observable, delay, of } from "rxjs";
 
 @Injectable({
@@ -16,18 +16,28 @@ export class MapCertificateService {
             district: 'เขตยานนาวา',
             province: 'กรุงเทพมหานคร',
             carRegistration: 'ก250356',
-            outTime: new Date()
+            outTime: new Date(),
+            sentBy: null,
+            sentTime: null,
+            modifiedBy: null,
+            modifiedTime: null,
+            status: 'Not Sent'
         },
         {
             shipmentNo: '2311092791',
             customerCode: '10000217',
             customerName: 'บริษัท ธุรกิจเหล็กดี จำกัด',
-            shiptoCode: '10000217',
+            shiptoCode: '40000002',
             shiptoName: 'บริษัท ธุรกิจเหล็กดี จำกัด',
             district: 'เขตยานนาวา',
             province: 'กรุงเทพมหานคร',
             carRegistration: 'ก250356',
-            outTime: new Date()
+            outTime: new Date(),
+            sentBy: null,
+            sentTime: null,
+            modifiedBy: null,
+            modifiedTime: null,
+            status: 'Not Sent'
         },
         {
             shipmentNo: '2311092792',
@@ -38,7 +48,12 @@ export class MapCertificateService {
             district: 'เขตยานนาวา',
             province: 'กรุงเทพมหานคร',
             carRegistration: 'ก250356',
-            outTime: new Date()
+            outTime: new Date(),
+            sentBy: null,
+            sentTime: null,
+            modifiedBy: null,
+            modifiedTime: null,
+            status: 'Not Sent'
         }
     ];
     private data: DoShipmentEntryViewModel[] = [
@@ -177,12 +192,43 @@ export class MapCertificateService {
         )
     }
 
-    public getShipmentInfo(param: string): Observable<ShipmentInfoViewModel> {
+    public getShipmentInfo(param: MapCertificateParam): Observable<ShipmentInfoViewModel> {
         const result = this.shipmentInfo.find(x => {
-            return x.shipmentNo == param
+            return x.shipmentNo == param.shipmentNo && x.shiptoCode == param.shiptoCode 
         }) ?? new ShipmentInfoViewModel()
 
         return of(result)
     }
 
+    public saveMapCertificate(param: SaveMapCertificateParam):Observable<void>{
+        const shipment = this.shipmentInfo.find(x => {
+            return x.shipmentNo == param.shipmentNo && x.shiptoCode  == param.shiptoCode
+        })
+
+        if(!!shipment){
+            shipment.modifiedBy = 'Connex';
+            shipment.modifiedTime = new Date();
+        }
+        return of()
+    }
+
+    public sentLinkCertificate(param: SentLinkMapCertificateParam):Observable<void>{
+        const shipment = this.shipmentInfo.find(x => {
+            return x.shipmentNo == param.shipmentNo && x.shiptoCode  == param.shiptoCode
+        })
+
+        if(!!shipment){
+            shipment.status = 'Sent';
+            shipment.modifiedBy = 'Connex';
+            shipment.modifiedTime = new Date();
+            shipment.sentBy = 'Connex';
+            shipment.sentTime = new Date();
+        }
+
+        return of()
+    }
+
+    public initialList():Observable<ShipmentInfoViewModel[]>{
+        return of(this.shipmentInfo)
+    }
 }

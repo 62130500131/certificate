@@ -8,18 +8,19 @@ export class QaStatusSearchParam {
     selectWaitFilm: string;
     selectSampleReady: string;
     selectFilmReady: string;
-
+    soldTo : string;
 
 
     constructor() {
         this.materialCode = '';
-        this.productionDate = 90;
+        this.productionDate = 30;
         this.productionFrom = '';
         this.productionTo = '';
         this.selectWaitSample = 'waitSample';
         this.selectWaitFilm = 'waitFilm';
         this.selectSampleReady = 'sampleReady';
         this.selectFilmReady = 'filmReady';
+        this.soldTo = '';
 
     }
 }
@@ -34,7 +35,7 @@ export class QaStatusCompleteSearchParam {
 
     constructor() {
         this.materialCode = '';
-        this.productionDate = 90;
+        this.productionDate = 30;
         this.productionFrom = '';
         this.productionTo = '';
         this.selectCancel = 'complete';
@@ -53,6 +54,7 @@ export class QaStatusMonitorViewModel {
     soldToName: string;
     grDate: string;
     status: string;
+    unit: string;
 
     constructor() {
         this.productionOrder = '';
@@ -64,6 +66,7 @@ export class QaStatusMonitorViewModel {
         this.soldToName = '';
         this.grDate = '';
         this.status = '';
+        this.unit = 'KG'
     }
 }
 
@@ -78,7 +81,7 @@ export class QaStatusCompleteViewModel {
     soldToName: string;
     grDate: string;
     status: string;
-
+    unit: string;
     constructor() {
         this.productionOrder = '';
         this.itemNo = 0;
@@ -89,6 +92,7 @@ export class QaStatusCompleteViewModel {
         this.soldToName = '';
         this.grDate = '';
         this.status = '';
+        this.unit = '';
     }
 }
 

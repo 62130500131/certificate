@@ -237,7 +237,6 @@ export class CustomerContractService {
     // }
 
     public importCustomerContract(fileName:string): Observable<CustomerContractUploadViewModel[]> {
-        console.log(fileName === 'Import1.xlsx')
         if(fileName === 'Import1.xlsx'){
             return of(this.import1) ;
         }

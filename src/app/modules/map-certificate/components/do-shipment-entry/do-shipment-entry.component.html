@@ -115,10 +115,12 @@
                     </div>
                     <div class="row">
                         <div class="col-12 text-center mt-4">
-                            <button class="btn btn-sm btn-primary" (click)="onClickSentLink()"><i
+                            <button class="btn btn-sm btn-primary" [disabled]="!canSent" (click)="onClickSentLink()"><i
                                     class="fa-regular fa-paper-plane"></i> Sent
                                 Link</button>
-                            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickExit()"><i
+                            <button class="btn btn-sm btn-success ms-2 me-2" (click)="onClickSave()"><i
+                                    class="fa-regular fa-paper-plane"></i> Save</button>
+                            <button class="btn btn-sm btn-secondary" (click)="onClickExit()"><i
                                     class="fa-solid fa-xmark"></i>
                                 Exit</button>
                         </div>
@@ -161,7 +163,7 @@
             </div>
 
             <div class="col-2 text-end">
-                grade :
+                Grade :
             </div>
             <div class="col-4">
                 {{selected.grade}}
@@ -172,14 +174,14 @@
             <div class="col-2 text-end">
                 ความหนา :
             </div>
-            <div class="col-4">
+            <div class="col-4" *ngIf="!!selectDataSource[0]">
                 {{selectDataSource[0].thickness | number: '.2'}}
             </div>
 
             <div class="col-2 text-end">
                 หน้ากว้าง :
             </div>
-            <div class="col-4">
+            <div class="col-4" *ngIf="!!selectDataSource[0]">
                 {{selectDataSource[0].width | number: '.2'}}
             </div>
         </div>
@@ -238,7 +240,7 @@
                         cellTemplate="numberTemplate"></dxi-column>
 
                     <dxi-column dataField="mill" caption="Mill" [width]="80" alignment="center"></dxi-column>
-                    <dxi-column dataField="quantity" caption="Quantity" [width]="120" alignment="right"></dxi-column> 
+                    <dxi-column dataField="quantity" caption="Quantity" [width]="120" alignment="right"></dxi-column>
                     <dxi-column dataField="unit" caption="Unit" [width]="60" alignment="center">
                     </dxi-column>
                     <dxi-column dataField="weight" caption="Weight" [width]="80" cellTemplate="numberTemplate"
@@ -292,7 +294,7 @@
             </div>
 
             <div class="col-2 text-end">
-                grade :
+                Grade :
             </div>
             <div class="col-4">
                 {{selected.grade}}
@@ -404,7 +406,8 @@
                 <label for="isStamp">Stamp</label>
             </div>
             <div class="col-1 pt-1">
-                <input name="isStamp" class="form-check-input" type="checkbox" [(ngModel)]="selectStemp" value="isStamp">
+                <input name="isStamp" class="form-check-input" type="checkbox" [(ngModel)]="selectStemp"
+                    value="isStamp">
             </div>
 
         </div>

@@ -112,7 +112,11 @@ export class ShipmentInfoViewModel {
     province: string;
     carRegistration: string;
     outTime: Date;
-
+    status: string;
+    modifiedBy: string | null;
+    modifiedTime: Date | null;
+    sentBy: string | null;
+    sentTime: Date | null;
     constructor() {
         this.shipmentNo = '';
         this.customerCode = '';
@@ -123,7 +127,35 @@ export class ShipmentInfoViewModel {
         this.province = '';
         this.carRegistration = '';
         this.outTime = new Date();
+        this.status = '';
+        this.modifiedBy = null;
+        this.modifiedTime = null;
+        this.sentBy = null;
+        this.sentTime = null;
     }
 
+}
+
+export class SaveMapCertificateParam {
+    shipmentNo: string;
+    shiptoCode: string;
+
+    constructor() {
+        this.shipmentNo = '';
+        this.shiptoCode = '';
+    }
+}
+
+export class SentLinkMapCertificateParam extends SaveMapCertificateParam {
+
+    constructor() {
+        super();
+    }
+}
+export class MapCertificateParam extends SaveMapCertificateParam {
+
+    constructor() {
+        super();
+    }
 }
 

@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { CertificateData, QaStatusCompleteSearchParam, QaStatusCompleteViewModel, QaStatusMonitorViewModel, QaStatusSearchParam } from '../../models/qa-status.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'qa-status',
@@ -19,6 +20,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
   public status!: string;
   public customerName!: string;
   public dateSampleReady!: Date;
+  public material!: string;
   public materialDesc!: string;
   public coilNo!: string;
   public heatNo!: string;
@@ -40,6 +42,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Wait Sample",
+    unit: "KG"
   },
   {
     productionOrder: "1080035293",
@@ -51,6 +54,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Sample Ready",
+    unit: "KG"
   },
   {
     productionOrder: "1080035294",
@@ -62,6 +66,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Wait Film",
+    unit: "KG"
   },
   {
     productionOrder: "1080035295",
@@ -73,6 +78,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Film Ready",
+    unit: "KG"
   }
   ];
 
@@ -86,6 +92,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Complete",
+    unit: "KG"
   },
   {
     productionOrder: "1080035294",
@@ -97,6 +104,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Cancel",
+    unit: "KG"
   },
   {
     productionOrder: "1080035295",
@@ -108,6 +116,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Cancel",
+    unit: "KG"
   },
   {
     productionOrder: "1080035252",
@@ -119,6 +128,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
     soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
     grDate: (new Date()).toString(),
     status: "Complete",
+    unit: "KG"
   }
   ];
 
@@ -257,6 +267,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
     this.customerName = cell.data.soldToName;
     this.dateSampleReady = new Date;
     this.materialDesc = cell.data.materialDesc;
+    this.material = cell.data.materialCode;
     this.coilNo = "";
     this.heatNo = "";
     this.grade = "";
@@ -280,7 +291,15 @@ export class QualityAssuranceStatusComponent implements OnInit {
     this.modalRef.hide();
   }
 
-  public OnClickDownStatus(): void {
-
+  public OnClickDownStatus(cellData : QaStatusCompleteViewModel): void {
+    Swal.fire({
+      title: "Do you want to down status to sample ready?",
+      icon: "question",
+      heightAuto: false,
+      confirmButtonText: "Yes",
+      cancelButtonText: "No",
+      showCancelButton: true,
+      showCloseButton: true
+    });
   }
 }

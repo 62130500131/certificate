@@ -27,9 +27,15 @@
 
                     <div class="row">
                         <div class="col-2 text-end pt-2">
+                            <label class="form-label" for="materialCode">Sold to</label>
+                        </div>
+                        <div class="col-3">
+                            <input id="materialCode" class="form-control" type="text" [(ngModel)]="param.soldTo">
+                        </div>
+                        <div class="col-2 text-end pt-2">
                             <label class="form-label" for="materialdesc">Status</label>
                         </div>
-                        <div class="col-10 mt-2">
+                        <div class="col mt-2">
                             <input [(ngModel)]="param.selectWaitSample" class="form-check-input" type="checkbox"
                                 id="waitSample">
                             <label for="waitSample" class="mx-2">Wait Sample</label>
@@ -74,9 +80,10 @@
                                     alignment="left"></dxi-column>
                                 <dxi-column dataField="materialDesc" caption="Material Description" dataType="string"
                                     [minWidth]="280" alignment="left"></dxi-column>
-                                <dxi-column dataField="qty" caption="Qty" dataType="number" [width]="80"
+                                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="80"
                                     cellTemplate="numberTemplate" alignment="right">
                                 </dxi-column>
+                                <dxi-column dataField="unit" caption="Unit" [width]="60" alignment="center"></dxi-column>
                                 <dxi-column dataField="soldTo" caption="Sold to" dataType="string" [width]="80"
                                     alignment="center"></dxi-column>
                                 <dxi-column dataField="soldToName" caption="Sold to Name" dataType="string"
@@ -157,9 +164,15 @@
 
                     <div class="row">
                         <div class="col-2 text-end pt-2">
+                            <label class="form-label" for="materialCode">Sold to</label>
+                        </div>
+                        <div class="col-3">
+                            <input id="materialCode" class="form-control" type="text" [(ngModel)]="param.soldTo">
+                        </div>
+                        <div class="col-2 text-end pt-2">
                             <label class="form-label" for="materialdesc">Status</label>
                         </div>
-                        <div class="col-10 mt-2">
+                        <div class="col mt-2">
                             <input [(ngModel)]="paramComplete.selectCancel" class="form-check-input" type="checkbox"
                                 id="complete">
                             <label for="complete" class="mx-2">Complete</label>
@@ -199,8 +212,10 @@
                                     alignment="left"></dxi-column>
                                 <dxi-column dataField="materialDesc" caption="Material Description" dataType="string"
                                     [minWidth]="280" alignment="left"></dxi-column>
-                                <dxi-column dataField="qty" caption="Qty" dataType="number" [width]="80"
+                                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="80"
                                     cellTemplate="numberTemplate" alignment="right">
+                                </dxi-column>
+                                <dxi-column dataField="unit" caption="Unit" [width]="60" alignment="center">
                                 </dxi-column>
                                 <dxi-column dataField="soldTo" caption="Sold to" dataType="string" [width]="80"
                                     alignment="center"></dxi-column>
@@ -225,7 +240,7 @@
                                 <dxi-column width="60" alignment="center" cellTemplate="toolsTemplate">
                                     <div *dxTemplate="let cell of 'toolsTemplate'">
                                         <i style="cursor: pointer;" class="fa-solid fa-circle-down icon-delete"
-                                            (click)="OnClickDownStatus()"
+                                            (click)="OnClickDownStatus(cell.data)"
                                             [ngClass]="{'': cell.data.status == 'Cancel', 'fa-solid fa-circle-down icon-delete': cell.data.status == 'Complete'}"></i>
                                     </div>
                                 </dxi-column>
@@ -278,20 +293,28 @@
                 <div class="col-3">
                     <input type="date" [value]="dateSampleReady" id="dateSampleReady" class="form-control">
                 </div>
+            </div>
+
+            <div class="row pt-2">
                 <div class="col-2 text-end">
                     <label for="customerName" class="form-label mt-2">Customer Name</label>
                 </div>
                 <div class="col-3 pt-2">
                     {{ customerName }}
                 </div>
-            </div>
-
-            <div class="row pt-2">
                 <div class="col-2 text-end">
                     <label for="productionOrder" class="form-label mt-2">Production Order</label>
                 </div>
                 <div class="col-3 pt-2">
                     {{ productionOrder }}
+                </div>
+            </div>
+            <div class="row pt-2">
+                <div class="col-2 text-end">
+                    <label for="materialDesc" class="form-label mt-2">Material</label>
+                </div>
+                <div class="col-3 pt-2">
+                    {{ material }}
                 </div>
                 <div class="col-2 text-end">
                     <label for="materialDesc" class="form-label mt-2">Material Description</label>

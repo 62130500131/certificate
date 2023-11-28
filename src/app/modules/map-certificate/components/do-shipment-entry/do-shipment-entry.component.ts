@@ -1,5 +1,5 @@
 import { Component, OnInit, Signal, TemplateRef, ViewChild, WritableSignal, computed, effect, signal } from '@angular/core';
-import { DoShipmentDetail, DoShipmentEntryViewModel, SelectQuantity, ShipmentInfoViewModel } from '../../models/do.model';
+import { DoShipmentDetail, DoShipmentEntryViewModel, SaveMapCertificateParam, SelectQuantity, ShipmentInfoViewModel } from '../../models/do.model';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import Swal from 'sweetalert2';
@@ -14,6 +14,7 @@ export class DoShipmentEntryComponent implements OnInit {
   @ViewChild('selectTemplate') selectTemplate!: TemplateRef<any>;
   @ViewChild('selectTMTTemplate') selectTMTTemplate!: TemplateRef<any>;
   @ViewChild('addDetailTemplate') addDetailTemplate!: TemplateRef<any>;
+  public canSent: boolean = false;
   public isStamp: boolean = true;
   public isType3: boolean = false;
   public selectStemp: string = 'isStamp';
@@ -34,23 +35,29 @@ export class DoShipmentEntryComponent implements OnInit {
 
   public selectDataSource: SelectQuantity[] = [];
   public shipmentNo!: string;
+  public shiptoCode!: string;
   constructor(private router: Router,
     private modalService: BsModalService,
     private service: MapCertificateService) {
     const split = this.router.url.split('/');
-    this.shipmentNo = split[split.length - 1];
+    this.shipmentNo = split[split.length - 2];
+    this.shiptoCode = split[split.length - 1];
   }
 
   public ngOnInit(): void {
 
     this.service.initial().subscribe(res => {
       this.list = res
+      this.checkCanSentLink();
     })
 
-    this.service.getShipmentInfo(this.shipmentNo)
+    this.service.getShipmentInfo({
+      shipmentNo: this.shipmentNo,
+      shiptoCode: this.shiptoCode
+    })
       .subscribe(res => {
-        console.log(res)
         this.shipmentInfo = res
+        this.checkCanSentLink();
       })
 
   }
@@ -109,6 +116,18 @@ export class DoShipmentEntryComponent implements OnInit {
     })
   }
 
+  public checkCanSentLink() {
+    let haveSelect = false;
+    this.list.forEach(x => {
+      x.dataSource.forEach(x=> {
+        if(x.status == 'Select'){
+          haveSelect = true
+        }
+      })
+    })
+    this.canSent = !haveSelect
+  }
+
   public onClickConfirmSelect(isTMT: boolean): void {
     const canSelect = this.selected.quantity;
     const selected = isTMT ? this.totalSelectTMT() : this.totalSelect();
@@ -117,12 +136,14 @@ export class DoShipmentEntryComponent implements OnInit {
       this.list[0].dataSource.forEach(x => {
         if (x.materialCode == this.selected.materialCode) {
           x.status = 'Edit'
+          this.checkCanSentLink()
         }
       });
     } else if (selected == 0) {
       this.list[0].dataSource.forEach(x => {
         if (x.materialCode == this.selected.materialCode) {
           x.status = 'Select'
+          this.checkCanSentLink()
         }
       });
     } else {
@@ -131,13 +152,13 @@ export class DoShipmentEntryComponent implements OnInit {
 
 
     this.modalRef.hide();
-    Swal.fire({
-      position: "top",
-      icon: "success",
-      title: "Select Certificate Success!",
-      showConfirmButton: false,
-      timer: 1500
-    });
+    // Swal.fire({
+    //   position: "top",
+    //   icon: "success",
+    //   title: "Select Certificate Success!",
+    //   showConfirmButton: false,
+    //   timer: 1500
+    // });
 
   }
 
@@ -175,5 +196,18 @@ export class DoShipmentEntryComponent implements OnInit {
       showConfirmButton: false,
       timer: 1500
     });
+    const param = new SaveMapCertificateParam()
+    param.shipmentNo = this.shipmentNo;
+    param.shiptoCode = this.shiptoCode;
+    this.service.sentLinkCertificate(param).subscribe()
+    this.router.navigate(['mapping-certificate'])
+  }
+
+  public onClickSave(): void {
+    const param = new SaveMapCertificateParam()
+    param.shipmentNo = this.shipmentNo;
+    param.shiptoCode = this.shiptoCode;
+    this.service.saveMapCertificate(param).subscribe()
+    this.router.navigate(['mapping-certificate'])
   }
 }

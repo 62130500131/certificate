@@ -259,7 +259,6 @@ export class CertificateListComponent {
   }
 
   public onClickSearch(): void {
-    console.log(this.param);
   }
 
   public onClickClear(): void {

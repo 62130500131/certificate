@@ -228,7 +228,6 @@ export class ProductionStatusComponent implements OnInit {
         class: 'modal-xl'
       });
     }
-    console.log(cell)
   }
 
   public OnClickDownStatus(): void {
@@ -244,11 +243,9 @@ export class ProductionStatusComponent implements OnInit {
   }
 
   public radioChangeCancel($event: any): void {
-    console.log("$event:", $event)
 
   }
   public radioChangeSampleRaedy($event: any): void {
-    console.log("$event:", $event)
 
   }
   public onClickConfirm(): void {

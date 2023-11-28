@@ -1,35 +1,17 @@
-import { Component } from '@angular/core';
-import { MappingCertificateSearchParam, doViewModel } from '../../models/do.model';
+import { Component, OnInit } from '@angular/core';
+import { MappingCertificateSearchParam, ShipmentInfoViewModel } from '../../models/do.model';
 import { Router } from '@angular/router';
+import { MapCertificateService } from '../../services/map-certificate.sevice';
 
 @Component({
   selector: 'do-page',
   templateUrl: './do-page.component.html',
   styleUrls: ['./do-page.component.css']
 })
-export class DoPageComponent {
+export class DoPageComponent implements OnInit {
 
   public param: MappingCertificateSearchParam = new MappingCertificateSearchParam()
-  public dataSource: doViewModel[] = [
-    {
-      shipmentCode: 2311092790,
-      customerCode: 10000217,
-      customerName: "บริษัท ธุรกิจเหล็กดี จำกัด",
-      deliveryDate: new Date()
-    },
-    {
-      shipmentCode: 2311092791,
-      customerCode: 10000217,
-      customerName: "บริษัท ธุรกิจเหล็กดี จำกัด",
-      deliveryDate: new Date()
-    },
-    {
-      shipmentCode: 2311092792,
-      customerCode: 10000217,
-      customerName: "บริษัท ธุรกิจเหล็กดี จำกัด",
-      deliveryDate: new Date()
-    }
-  ]
+  public dataSource: ShipmentInfoViewModel[] = []
 
   public dateDataSource: any[] = [
     {
@@ -55,12 +37,17 @@ export class DoPageComponent {
   ]
 
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private service: MapCertificateService) {
   }
 
+  public ngOnInit(): void {
+    this.service.initialList().subscribe(res => {
+      this.dataSource = res
+    })
+  }
   public onClickShipment(data: any): void {
-
-    this.router.navigate([`do-entry/${data.shipmentCode}`])
+    this.router.navigate([`do-entry/${data.shipmentNo}/${data.shiptoCode}`])
   }
 
   public onClickClear(): void {
