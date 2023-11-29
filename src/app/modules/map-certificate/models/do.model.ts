@@ -122,6 +122,9 @@ export class ShipmentInfoViewModel {
     modifiedTime: Date | null;
     sentBy: string | null;
     sentTime: Date | null;
+    line: string | null;
+    customerContact: string | null;
+    contactTel: string | null
     constructor() {
         this.shipmentNo = '';
         this.customerCode = '';
@@ -137,6 +140,9 @@ export class ShipmentInfoViewModel {
         this.modifiedTime = null;
         this.sentBy = null;
         this.sentTime = null;
+        this.line = null;
+        this.customerContact = null;
+        this.contactTel = null;
     }
 
 }

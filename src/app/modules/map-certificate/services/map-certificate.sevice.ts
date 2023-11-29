@@ -21,7 +21,10 @@ export class MapCertificateService {
             sentTime: null,
             modifiedBy: null,
             modifiedTime: null,
-            status: 'Not Sent'
+            status: 'Not Sent',
+            customerContact: null,
+            line: null,
+            contactTel: null
         },
         {
             shipmentNo: '2311092791',
@@ -37,7 +40,10 @@ export class MapCertificateService {
             sentTime: null,
             modifiedBy: null,
             modifiedTime: null,
-            status: 'Not Sent'
+            status: 'Not Sent',
+            customerContact: null,
+            line: null,
+            contactTel: null
         },
         {
             shipmentNo: '2311092792',
@@ -53,7 +59,10 @@ export class MapCertificateService {
             sentTime: null,
             modifiedBy: null,
             modifiedTime: null,
-            status: 'Not Sent'
+            status: 'Not Sent',
+            customerContact: null,
+            line: null,
+            contactTel: null
         }
     ];
     private data: DoShipmentEntryViewModel[] = [
