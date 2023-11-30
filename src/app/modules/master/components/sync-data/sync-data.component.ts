@@ -71,17 +71,17 @@ export class SyncDataComponent implements OnInit {
       lastSyncTime: (new Date()).toString()
     },
     {
-      syncName: "Material",
+      syncName: "Blend Data Material",
       lastSyncBy: "CONNEX",
       lastSyncTime: (new Date()).toString()
     },
     {
-      syncName: "Delivery Order",
+      syncName: "SAP Delivery Order",
       lastSyncBy: "CONNEX",
       lastSyncTime: (new Date()).toString()
     },
     {
-      syncName: "Customer",
+      syncName: "Blend Data Customer",
       lastSyncBy: "CONNEX",
       lastSyncTime: (new Date()).toString()
     }
