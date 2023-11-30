@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CertificateEntryListViewModel } from '../../models/certificate-list.model';
+import { CertificateEntryListViewModel, ReadResult } from '../../models/certificate-list.model';
 import { Router } from '@angular/router';
 import { CertificateService } from '../../services/certificate.service';
 import Swal from 'sweetalert2';
@@ -11,24 +11,19 @@ import Swal from 'sweetalert2';
 })
 export class CertificateEntryComponent implements OnInit {
 
+  public certificateResultInfo = new ReadResult();
+  public isFound:boolean = false;
   public src = '/assets/pdfs/20.pdf'
   // public src = 'https://webcert.siamyamato.com/webcert/ViewPDF.aspx?certNo=y6frUhKCC2N2ky7j5AGPeA%3d%3d'
   public materialDataSource: any[] = []
   public today = (new Date()).toString();
   public isEdit: boolean = false;
+  public certType:string = "";
   public certNo: any = "";
   public certDate: string = (new Date()).toString();
   public list: CertificateEntryListViewModel[] = [];
   constructor(private router: Router,
     private service: CertificateService) {
-    this.isEdit = router.url.includes('certificate-edit');
-    if (this.isEdit) {
-      const split = router.url.split("/");
-      this.certNo = split[split.length - 1]
-    }
-  }
-
-  ngOnInit() {
     this.service.initial().subscribe(res => {
       this.list = res
     })
@@ -36,6 +31,36 @@ export class CertificateEntryComponent implements OnInit {
     this.service.getMaterialDataSource().subscribe(res => {
       this.materialDataSource = res
     })
+    this.isEdit = router.url.includes('certificate-edit');
+    if (this.isEdit) {
+      const split = router.url.split("/");
+      this.certNo = split[split.length - 1]
+      this.service.getCertificateInfo(this.certNo).subscribe(res => {
+        this.src = `https://localhost:7130/api/Pdf/File/${res.file?.fileName}`
+        this.certificateResultInfo = res;
+        if(!!res.guid){
+          this.certNo = res.certificateNo;
+          this.certDate = res.certificateDate ?? "";
+          this.certType = res.certificateType;
+          this.isFound = true;
+        }
+      })
+    } else {
+      const split = router.url.split("/");
+      let guid = split[split.length - 1];
+      this.service.getCertificateInfo(guid).subscribe(res => {
+        this.src = `https://localhost:7130/api/Pdf/File/${res.file?.fileName}`
+        this.certificateResultInfo = res;
+        this.certNo = res.certificateNo;
+        this.certDate = res.certificateDate ?? "";
+        this.certType = res.certificateType;
+        this.isFound = true;
+      })
+    }
+  }
+
+  ngOnInit() {
+
   }
 
 
@@ -44,7 +69,11 @@ export class CertificateEntryComponent implements OnInit {
   }
 
   public onClickSave(): void {
-    this.service.saveCertificate(this.list).subscribe()
+    if(this.isFound){
+      this.service.saveCertificateWithPdf(this.certificateResultInfo).subscribe()
+    }else{
+      this.service.saveCertificate(this.list).subscribe()
+    }
     this.router.navigate(['certificate-list']);
   }
 

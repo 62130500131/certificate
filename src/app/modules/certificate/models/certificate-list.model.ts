@@ -1,3 +1,5 @@
+import { FileExtensionModel } from "../../shared/models/file.model";
+
 export class SearchParamCertificateList {
     certNo: string;
     material: string;
@@ -90,4 +92,41 @@ export class CertificateEntryListViewModel {
         this.yield = '';
         this.tensile = '';
     }
+}
+
+export class ReadResult {
+    guid :string;
+    certificateNo: string;
+    certificateDate: string | null;
+    results: MillResult[];
+    certificateType: string;
+    
+    file: FileExtensionModel | null;
+    constructor(){
+        this.guid = '';
+        this.certificateNo = '';
+        this.certificateDate = null;
+        this.results = [];
+        this.certificateType = "";
+        this.file = null;
+    }
+}
+
+export interface MillResult {
+    productNo: string;
+    extraSize: string;
+    grade: string;
+    mass: string;
+    heatNo: string;
+    yield: string;
+    tensile: string;
+    unit: string;
+    elong: string;
+    remark :string;
+    c:string;
+    si:string;
+    mn:string;
+    p:string;
+    s:string;
+    tmtMaterial: string;
 }

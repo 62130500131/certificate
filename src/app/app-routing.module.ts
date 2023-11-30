@@ -36,7 +36,7 @@ const routes: Routes = [
     loadChildren: () => import('./modules/map-certificate/map-certificate.module').then(m => m.MapCertificateModule)
   },
   {
-    path: 'certificate-entry', component: CertificateEntryComponent,
+    path: 'certificate-entry/:guid', component: CertificateEntryComponent,
     loadChildren: () => import('./modules/certificate/certificate.module').then(m => m.CertificateModule)
   },
   {

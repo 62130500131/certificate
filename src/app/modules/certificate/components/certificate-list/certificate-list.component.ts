@@ -95,133 +95,7 @@ export class CertificateListComponent {
 
 
   ];
-  public list: CertificateListViewModel[] = [
-    {
-      certNo: "42523050482",
-      mill: "SYS",
-      totalMaterial: 80,
-      certDate: new Date(),
-      uploadDate: new Date(),
-      modifiedBy: "Connex",
-      modifiedTime: new Date(),
-      dataSource: [
-        {
-          millDesc: 'H 148x100x6x12.00M',
-          material: '2CTFB',
-          materialDesc: 'เหล็กแผ่นดำ ตัดซอยตามขนาด',
-          grade: 'SS400',
-          heatNo: 'DB10177',
-          quantity: 20,
-          unit: 'PC'
-        },
-        {
-          millDesc: 'H 200x60x11.80M',
-          material: '2CTFB020-0060-1180',
-          materialDesc: 'เหล็กแผ่นดำ 2.00 x 60 x 1180 mm SS400',
-          grade: 'SS400',
-          heatNo: 'DB10177',
-          quantity: 20,
-          unit: 'PC'
-        },
-        {
-          millDesc: 'H 200x60x11.80M',
-          material: '2CTFB020-0818-2128',
-          materialDesc: 'เหล็กแผ่นดำ 2.00 x 818 x 2128 mm SS400',
-          grade: 'SS400',
-          heatNo: 'DB10177',
-          quantity: 20,
-          unit: 'PC'
-        },
-        {
-          millDesc: 'H 200x60x11.80M',
-          material: '2CTFB020-0820-1762',
-          materialDesc: 'เหล็กแผ่นดำ 2.00 x 820 x 1762 mm SS400',
-          grade: 'SS400',
-          heatNo: 'DB10177',
-          quantity: 20,
-          unit: 'PC'
-        }
-      ]
-    },
-    {
-      certNo: "42523050483",
-      mill: "SSI",
-      totalMaterial: 10,
-      certDate: new Date(),
-      uploadDate: new Date(),
-      modifiedBy: "Connex",
-      modifiedTime: new Date(),
-      dataSource: [
-        {
-          millDesc: 'H 148x100x6x12.00M',
-          material: '2CTFB',
-          materialDesc: 'เหล็กแผ่นดำ ตัดซอยตามขนาด',
-          grade: 'SS400',
-          heatNo: 'DB10177',
-          quantity: 8,
-          unit: 'PC'
-        },
-        {
-          millDesc: 'H 200x60x11.80M',
-          material: '2CTFB020-0060-1180',
-          materialDesc: 'เหล็กแผ่นดำ 2.00 x 60 x 1180 mm SS400',
-          grade: 'SS400',
-          heatNo: 'DB10178',
-          quantity: 2,
-          unit: 'PC'
-        }
-      ]
-    },
-    {
-      certNo: "42523050484",
-      mill: "GJS",
-      totalMaterial: 20,
-      certDate: new Date(),
-      uploadDate: new Date(),
-      modifiedBy: "Connex",
-      modifiedTime: new Date(),
-      dataSource: [
-        {
-          millDesc: 'H 148x100x6x12.00M',
-          material: '2CTFB',
-          materialDesc: 'เหล็กแผ่นดำ ตัดซอยตามขนาด',
-          grade: 'SS400',
-          heatNo: 'DB10177',
-          quantity: 8,
-          unit: 'PC'
-        },
-        {
-          millDesc: 'H 200x60x11.80M',
-          material: '2CTFB020-0060-1180',
-          materialDesc: 'เหล็กแผ่นดำ 2.00 x 60 x 1180 mm SS400',
-          grade: 'SS400',
-          heatNo: 'DB10178',
-          quantity: 12,
-          unit: 'PC'
-        }
-      ]
-    },
-    {
-      certNo: "42523050496",
-      mill: "GJ",
-      totalMaterial: 2,
-      certDate: new Date(),
-      uploadDate: new Date(),
-      modifiedBy: "Connex",
-      modifiedTime: new Date(),
-      dataSource: [
-        {
-          millDesc: 'H 200x60x11.80M',
-          material: '2CTFB020-0060-1180',
-          materialDesc: 'เหล็กแผ่นดำ 2.00 x 60 x 1180 mm SS400',
-          grade: 'SS400',
-          heatNo: 'DB10178',
-          quantity: 2,
-          unit: 'PC'
-        }
-      ]
-    }
-  ];
+  public list: CertificateListViewModel[] = [];
 
   public dateDataSource: any[] = [
     {
@@ -252,6 +126,10 @@ export class CertificateListComponent {
       this.service.getMaterialDataSource().subscribe(res => {
         this.materialDataSource = res
       })
+
+      this.service.initialCertificateList().subscribe(res => {
+        this.list = res
+      })
   }
 
   public handleFileInput($event: any): void {
@@ -271,6 +149,7 @@ export class CertificateListComponent {
 
   public onClickUpload(): void {
     this.millForUpload = '';
+    
     this.modalRef = this.modalService.show(this.importTemplate, {
       class: 'modal-lg'
     })
@@ -296,9 +175,12 @@ export class CertificateListComponent {
     });
   }
 
+
   public onClickConfirmUpload(): void {
-    this.router.navigate(['certificate-entry']);
-    this.modalRef.hide();
+    this.service.uploadCertificate(this.fileToUpload).subscribe(res => {
+      this.modalRef.hide();
+      this.router.navigate([`certificate-entry/${res}`]);
+    });
   }
 
   public onUploadDateRangeChanged($event: any): void {

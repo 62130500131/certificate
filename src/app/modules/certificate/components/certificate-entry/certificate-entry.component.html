@@ -39,7 +39,7 @@
                   <label class="detail">ผู้ผลิต</label>
                 </div>
                 <div class="col-3">
-                  <label>SYS</label>
+                  <label>{{certType}}</label>
                 </div>
 
                 <div class="col-2  text-end mb-2">
@@ -68,7 +68,7 @@
                   <label class="detail">วันที่รายงานผลการทดสอบ</label>
                 </div>
                 <div class="col-3 mt-1">
-                  <input [(ngModel)]="certDate" type="date" id="certDate" class="form-control">
+                  <input [value]="certDate | date:'dd-MMM-yyyy'" id="certDate" class="form-control">
                 </div>
               </div>
 
@@ -104,7 +104,7 @@
                 </div>
               </div>
 
-              <div class="overflow-auto mt-2" style="width: 100%;">
+              <ng-container class="overflow-auto mt-2" style="width: 100%;" *ngIf="!isFound">
                 <table>
                   <tr class="text-center" style="width: 100%;">
                     <th> Mill Material</th>
@@ -137,7 +137,60 @@
                           class="fa-solid fa-trash icon-delete click"></i></button> </td>
                   </tr>
                 </table>
-              </div>
+              </ng-container>
+              <ng-container class="overflow-auto mt-2" style="width: 100%;" *ngIf="isFound">
+                <table>
+                  <tr class="text-center" style="width: 100%;">
+                    <th> Mill Material</th>
+                    <th> Material </th>
+                    <th> Grade </th>
+                    <th> Heat No. </th>
+                    <th> Quantity </th>
+                    <th> Unit </th>
+                    <ng-container *ngIf="certificateResultInfo.certificateType != 'SYS'">
+                      <th> C </th>
+                      <th> Mn </th>
+                      <th> Si </th>
+                      <th> S </th>
+                      <th> P </th> 
+                    </ng-container>
+                    <th> Yield </th>
+                    <th> Tensile </th>
+                    <th> Elong </th>
+                    <th> Remark </th>
+                    <th> </th>
+                  </tr>
+
+                  <tr *ngFor="let item of certificateResultInfo.results" class="overflow-auto" style="width: 100%;">
+                    <td style="min-width: 230px;"> <input class="form-control" [(ngModel)]="item.productNo" /> </td>
+                    <td style="min-width: 400px;"> <dx-select-box displayExpr="text" valueExpr="value"
+                        [items]="materialDataSource" [(ngModel)]="item.tmtMaterial"></dx-select-box> </td>
+                    <td style="min-width: 70px;"> <input class="form-control" [(ngModel)]="item.grade" /> </td>
+                    <td style="min-width: 70px;"> <input class="form-control" [(ngModel)]="item.heatNo" /> </td>
+                    <td style="min-width: 100px;"> <input class="form-control right-form" [(ngModel)]="item.mass" />
+                    </td>
+                    <td style="min-width: 45px;"> <input class="form-control" [(ngModel)]="item.unit" /> </td>
+                    <ng-container *ngIf="certificateResultInfo.certificateType != 'SYS'">
+                      <td style="min-width: 45px;"> <input class="form-control right-form" [(ngModel)]="item.c" /> </td>
+                      <td style="min-width: 45px;"> <input class="form-control right-form" [(ngModel)]="item.mn" /> </td>
+                      <td style="min-width: 45px;"> <input class="form-control right-form" [(ngModel)]="item.si" /> </td>
+                      <td style="min-width: 45px;"> <input class="form-control right-form" [(ngModel)]="item.s" /> </td>
+                      <td style="min-width: 45px;"> <input class="form-control right-form" [(ngModel)]="item.p" /> </td>
+                    </ng-container>
+                    <td style="min-width: 60px;"> <input class="form-control right-form" [(ngModel)]="item.yield" />
+                    </td>
+                    <td style="min-width: 60px;"> <input class="form-control right-form" [(ngModel)]="item.tensile" />
+                    </td>
+                    <td style="min-width: 60px;"> <input class="form-control right-form" [(ngModel)]="item.elong" />
+                    </td>
+
+                    <td style="min-width: 150px;"> <input class="form-control" [(ngModel)]="item.remark" /> </td>
+                    <td style="min-width: 40px;"> <button class="btn" (click)="onClickDelete(item)"><i
+                          class="fa-solid fa-trash icon-delete click"></i></button> </td>
+                  </tr>
+                </table>
+              </ng-container>
+
 
               <div class="row mt-2">
                 <div class="col-12 text-end">
