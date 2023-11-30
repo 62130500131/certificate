@@ -27,6 +27,10 @@ export class QualityAssuranceStatusComponent implements OnInit {
   public grade!: string;
   public machine!: string;
 
+  public selectMillorExcel: string = "isMill";
+  public selectMill: string = "isGJ";
+  public selectExcel: string = "isTypeOne";
+
   @ViewChild('uploadTestResult') public uploadTestResult!: TemplateRef<any>;
 
   public param: QaStatusSearchParam = new QaStatusSearchParam();
