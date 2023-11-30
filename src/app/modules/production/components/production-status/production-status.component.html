@@ -176,8 +176,8 @@
                             <label class="form-label" for="materialdesc">Status</label>
                         </div>
                         <div class="col-4 mt-2">
-                            <input [(ngModel)]="paramComplete.selectSampleReady" class="form-check-input" type="checkbox"
-                                id="cancel">
+                            <input [(ngModel)]="paramComplete.selectSampleReady" class="form-check-input"
+                                type="checkbox" id="cancel">
                             <label for="cancel" class="mx-2">Sample Ready</label>
                             <input [(ngModel)]="paramComplete.selectFilmReady" class="form-check-input" type="checkbox"
                                 id="cancel">
@@ -409,14 +409,18 @@
         <div class="row mt-2">
             <div class="col-2 text-end">
                 <label class="form-label">Status</label>
-
             </div>
             <div class="col">
                 <input [(ngModel)]="selectedStatusFilm" value="filmReady" name="status" type="radio" id="filmReadyRadio"
-                    class="form-check-input me-2 click"><label for="filmReadyRadio" class="me-2 click">Film
-                    Ready</label>
+                    class="form-check-input me-2 click">
+                <label for="filmReadyRadio" class="me-2 click">
+                    Film Ready
+                </label>
                 <input [(ngModel)]="selectedStatusFilm" value="cancelRadio" name="status" type="radio" id="cancelRadio"
-                    class="form-check-input mx-2"><label for="cancelRadio" class="click">Cancel</label>
+                    class="form-check-input mx-2">
+                <label for="cancelRadio" class="click">
+                    Cancel
+                </label>
             </div>
         </div>
 

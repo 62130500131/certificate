@@ -395,13 +395,46 @@
         </div>
 
 
-        <div class="row mt-4 text-center">
-            <div class="col-2 offset-2 text-end">
-                <label for="mill-upload" class="pt-1">ประเภทเหล็ก</label>
+        <div class="row mt-4 text-start offset-3">
+            <div class="col-6">
+                <input [(ngModel)]="selectMillorExcel" value="isMill" name="typeUpload" type="radio" id="isMill"
+                    class="form-check-input me-2 click">
+                <label for="isMill" class="me-5 click">
+                    Mill
+                </label>
+                <input [(ngModel)]="selectMillorExcel" value="isExcel" name="typeUpload" type="radio" id="isExcel"
+                    class="form-check-input me-2 click">
+                <label for="isExcel" class="me-2 click">
+                    Excel Test Result
+                </label>
             </div>
-            <div class="col-5">
-                <dx-select-box displayExpr="text" valueExpr="value" [items]="materialTypeDataSource"
-                    [(ngModel)]="materialTypeUpload"></dx-select-box>
+        </div>
+        <div class="row mt-2 text-start offset-3" *ngIf="selectMillorExcel == 'isMill'">
+            <div class="col-6">
+                <input [(ngModel)]="selectMill" value="isGJ" name="typeMill" type="radio" id="isGJ" class="form-check-input me-2 click">
+                <label for="isGJ" class="me-5 click size-radio">
+                    GJ
+                </label>
+                <input [(ngModel)]="selectMill" value="isGJS" name="typeMill" type="radio" id="isGJS" class="form-check-input me-2 ms-1 click">
+                <label for="isGJS" class="me-5 click size-radio">
+                    GJS
+                </label>
+                <input [(ngModel)]="selectMill" value="isSSI" name="typeMill" type="radio" id="isSSI" class="form-check-input me-2 click">
+                <label for="isSSI" class="me-2 click">
+                    SSI
+                </label>
+            </div>
+        </div>
+        <div class="row mt-2 text-start offset-3"  *ngIf="selectMillorExcel == 'isExcel'">
+            <div class="col-6">
+                <input [(ngModel)]="selectExcel" value="isTypeOne" name="typeExcel" type="radio" id="isTypeOne" class="form-check-input me-2 click">
+                <label for="isTypeOne" class="me-3 click">
+                    ประเภท 1
+                </label>
+                <input [(ngModel)]="selectExcel" value="isTypeTwo" name="typeExcel" type="radio" id="isTypeTwo" class="form-check-input me-2 click size-radio">
+                <label for="isTypeTwo" class="me-2 click">
+                    ประเภท 2
+                </label>
             </div>
         </div>
         <div class="row mt-2 text-center">
@@ -412,7 +445,7 @@
         </div>
         <div class="row mt-4">
             <div class="col-12 text-center">
-                <button class="btn btn-sm btn-primary" [disabled]="!materialTypeUpload || !fileToUpload"
+                <button class="btn btn-sm btn-primary" [disabled]="!fileToUpload || !selectMillorExcel"
                     (click)="onClickConfirmUpload()"><i class="fa-solid fa-upload"></i> Upload</button>
                 <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
                     Cancel</button>
