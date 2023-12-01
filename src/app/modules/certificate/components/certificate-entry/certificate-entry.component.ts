@@ -3,6 +3,7 @@ import { CertificateEntryListViewModel, ReadResult } from '../../models/certific
 import { Router } from '@angular/router';
 import { CertificateService } from '../../services/certificate.service';
 import Swal from 'sweetalert2';
+import { SharedService } from 'src/app/modules/shared/services/Shared.service';
 
 @Component({
   selector: 'app-certificate-entry',
@@ -23,9 +24,12 @@ export class CertificateEntryComponent implements OnInit {
   public certDate: string = (new Date()).toString();
   public list: CertificateEntryListViewModel[] = [];
   constructor(private router: Router,
-    private service: CertificateService) {
+    private service: CertificateService,
+    private sharedService: SharedService) {
+    this.sharedService.showLoading();
     this.service.initial().subscribe(res => {
       this.list = res
+      this.sharedService.hideLoading();
     })
 
     this.service.getMaterialDataSource().subscribe(res => {

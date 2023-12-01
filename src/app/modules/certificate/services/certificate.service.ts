@@ -194,13 +194,13 @@ export class CertificateService {
 
     public initial(): Observable<CertificateEntryListViewModel[]> {
         return of(this.data).pipe(
-            delay(0)
+            delay(500)
         )
     }
 
     public initialCertificateList(): Observable<CertificateListViewModel[]> {
         return of(this.dataCertificateList).pipe(
-            delay(0)
+            delay(500)
         )
     }
 

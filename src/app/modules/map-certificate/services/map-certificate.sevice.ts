@@ -167,7 +167,7 @@ export class MapCertificateService {
 
     public initial(): Observable<DoShipmentEntryViewModel[]> {
         return of(this.data).pipe(
-            delay(0)
+            delay(500)
         )
     }
 
@@ -218,7 +218,9 @@ export class MapCertificateService {
             shipment.modifiedBy = 'Connex';
             shipment.modifiedTime = new Date();
         }
-        return of()
+        return of().pipe(
+            delay(500)
+        )
     }
 
     public sentLinkCertificate(param: SentLinkMapCertificateParam):Observable<void>{
@@ -238,6 +240,8 @@ export class MapCertificateService {
     }
 
     public initialList():Observable<ShipmentInfoViewModel[]>{
-        return of(this.shipmentInfo)
+        return of(this.shipmentInfo).pipe(
+            delay(500)
+        )
     }
 }

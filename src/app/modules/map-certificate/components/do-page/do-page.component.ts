@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MappingCertificateSearchParam, ShipmentInfoViewModel } from '../../models/do.model';
 import { Router } from '@angular/router';
 import { MapCertificateService } from '../../services/map-certificate.sevice';
+import { SharedService } from 'src/app/modules/shared/services/Shared.service';
 
 @Component({
   selector: 'do-page',
@@ -38,12 +39,15 @@ export class DoPageComponent implements OnInit {
 
 
   constructor(private router: Router,
-              private service: MapCertificateService) {
+              private service: MapCertificateService,
+              private sharedService: SharedService) {
   }
 
   public ngOnInit(): void {
+    this.sharedService.showLoading();
     this.service.initialList().subscribe(res => {
       this.dataSource = res
+      this.sharedService.hideLoading();
     })
   }
   public onClickShipment(data: any): void {

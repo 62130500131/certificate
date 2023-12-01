@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from "@angular/core";
 import { AddCustomerContractParam, CustomerContractUploadViewModel, CustomerContractViewModel } from '../models/customer-contract.model';
-import { Observable, of } from 'rxjs';
+import { Observable, delay, of } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -363,7 +363,9 @@ export class CustomerContractService {
     }
 
     public initial(): Observable<CustomerContractViewModel[]> {
-        return of(this.customerContractData);
+        return of(this.customerContractData).pipe(
+            delay(500)
+        );
     }
 
     public editCustomerContact(param: AddCustomerContractParam): Observable<void> {

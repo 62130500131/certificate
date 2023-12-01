@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { CertificateService } from '../../services/certificate.service';
 import { catchError, finalize, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { SharedService } from 'src/app/modules/shared/services/Shared.service';
 
 @Component({
   selector: 'app-certificate-list',
@@ -112,13 +113,17 @@ export class CertificateListComponent {
 
   constructor(private modalService: BsModalService,
     private router: Router,
-    private service: CertificateService) {
+    private service: CertificateService,
+    private sharedService: SharedService) {
+      this.sharedService.showLoading();
       this.service.getMaterialDataSource().subscribe(res => {
         this.materialDataSource = res
+        
       })
 
       this.service.initialCertificateList().subscribe(res => {
         this.list = res
+        this.sharedService.hideLoading();
       })
   }
 
