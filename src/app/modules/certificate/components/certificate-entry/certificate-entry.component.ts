@@ -109,6 +109,23 @@ export class CertificateEntryComponent implements OnInit {
     }else{
       this.service.saveCertificate(this.list).subscribe()
     }
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top",
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    
+    
+    Toast.fire({
+      icon: "success",
+      title: "Save Certificate Success!"
+    });
     this.router.navigate(['certificate-list']);
   }
 
