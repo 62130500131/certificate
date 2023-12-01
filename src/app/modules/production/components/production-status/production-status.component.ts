@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class ProductionStatusComponent implements OnInit {
 
+  public isLoading: boolean = false;
   public modalRef!: BsModalRef;
   public paramComplete: ProductionStatusSearchParam = new ProductionStatusSearchParam();
   public paramMonitor: ProductionStatusSearchParam = new ProductionStatusSearchParam();

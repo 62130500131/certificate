@@ -48,6 +48,15 @@ hr {
     line-height: 1.35715;
 }
 
+h6 {
+    color: #3C3C8C;
+}
+
+label {
+    cursor: default;
+    color: #3C3C8C;
+}
+
 .form-control {
     display: block;
     width: 100%;
@@ -120,20 +129,29 @@ hr {
     vertical-align: middle !important;
 }
 
-
-
 .btn {
     font-size: 12px;
 }
 
 .btn-success {
-    background-color: #1fce6e;
+    background-color: #3C3C8C;
     color: white;
     border-radius: 5px;
     min-width: 85px;
     min-height: 30px;
     border-color: white;
 }
+
+.btn-success:hover {
+    background-color: #10108d;
+    color: white;
+    border-radius: 5px;
+    min-width: 85px;
+    min-height: 30px;
+    border-color: white;
+}
+
+
 
 .btn.disabled, .btn:disabled, fieldset:disabled .btn {
     color: var(--bs-btn-disabled-color);

@@ -6,7 +6,8 @@ import { RouterModule } from '@angular/router';
 @NgModule({
     declarations: [
         comps.LoginPageComponent,
-        comps.NavBarComponent
+        comps.NavBarComponent,
+        comps.LoadingComponent
     ],
     imports: [
         CommonModule,
@@ -16,7 +17,8 @@ import { RouterModule } from '@angular/router';
     ],
     exports: [
         comps.LoginPageComponent,
-        comps.NavBarComponent
+        comps.NavBarComponent,
+        comps.LoadingComponent
     ]
 })
 export class CoreModule { }

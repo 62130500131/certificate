@@ -8,3 +8,7 @@ a:hover {
     color: #292992;
     text-shadow: 0 0 0.1em #dbdbe6;
 }
+
+.nav-font {
+    font-size: 13px;
+}
