@@ -255,6 +255,9 @@
                                         <i style="cursor: pointer;" class="fa-solid fa-circle-down icon-delete"
                                             (click)="OnClickDownStatus(cell.data)"
                                             [ngClass]="{'': cell.data.status == 'Cancel', 'fa-solid fa-circle-down icon-delete': cell.data.status == 'Complete'}"></i>
+                                        <i style="cursor: pointer;" class="fa-solid fa-magnifying-glass ms-2"
+                                            (click)="OnClickViewDetail()"
+                                            [ngClass]="{'': cell.data.status == 'Cancel', 'fa-solid fa-magnifying-glass icon-view': cell.data.status == 'Complete'}"></i>
                                     </div>
                                 </dxi-column>
 
@@ -269,6 +272,10 @@
                                     <i class="fa-solid fa-circle-down icon-delete"></i>
                                     <label class="ms-2 legend">
                                         Down Status
+                                    </label>
+                                    <i class="fa-solid fa-magnifying-glass icon-view ms-2"></i>
+                                    <label class="ms-1 legend">
+                                        View Detail
                                     </label>
                                 </div>
                             </div>
@@ -411,27 +418,32 @@
         </div>
         <div class="row mt-2 text-start offset-3" *ngIf="selectMillorExcel == 'isMill'">
             <div class="col-6">
-                <input [(ngModel)]="selectMill" value="isGJ" name="typeMill" type="radio" id="isGJ" class="form-check-input me-2 click">
+                <input [(ngModel)]="selectMill" value="isGJ" name="typeMill" type="radio" id="isGJ"
+                    class="form-check-input me-2 click">
                 <label for="isGJ" class="me-5 click size-radio">
                     GJ
                 </label>
-                <input [(ngModel)]="selectMill" value="isGJS" name="typeMill" type="radio" id="isGJS" class="form-check-input me-2 ms-1 click">
+                <input [(ngModel)]="selectMill" value="isGJS" name="typeMill" type="radio" id="isGJS"
+                    class="form-check-input me-2 ms-1 click">
                 <label for="isGJS" class="me-5 click size-radio">
                     GJS
                 </label>
-                <input [(ngModel)]="selectMill" value="isSSI" name="typeMill" type="radio" id="isSSI" class="form-check-input me-2 click">
+                <input [(ngModel)]="selectMill" value="isSSI" name="typeMill" type="radio" id="isSSI"
+                    class="form-check-input me-2 click">
                 <label for="isSSI" class="me-2 click">
                     SSI
                 </label>
             </div>
         </div>
-        <div class="row mt-2 text-start offset-3"  *ngIf="selectMillorExcel == 'isExcel'">
+        <div class="row mt-2 text-start offset-3" *ngIf="selectMillorExcel == 'isExcel'">
             <div class="col-6">
-                <input [(ngModel)]="selectExcel" value="isTypeOne" name="typeExcel" type="radio" id="isTypeOne" class="form-check-input me-2 click">
+                <input [(ngModel)]="selectExcel" value="isTypeOne" name="typeExcel" type="radio" id="isTypeOne"
+                    class="form-check-input me-2 click">
                 <label for="isTypeOne" class="me-3 click">
                     ประเภท 1
                 </label>
-                <input [(ngModel)]="selectExcel" value="isTypeTwo" name="typeExcel" type="radio" id="isTypeTwo" class="form-check-input me-2 click size-radio">
+                <input [(ngModel)]="selectExcel" value="isTypeTwo" name="typeExcel" type="radio" id="isTypeTwo"
+                    class="form-check-input me-2 click size-radio">
                 <label for="isTypeTwo" class="me-2 click">
                     ประเภท 2
                 </label>

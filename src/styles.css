@@ -112,6 +112,10 @@ hr {
     color: rgb(48, 196, 255);
 }
 
+.icon-view {
+    color: darkorchid;
+}
+
 .legend {
     font-size: 0.75rem;
 }

@@ -26,65 +26,130 @@
                 </div>
               </div>
 
-              <div class="row mt-4">
-                <div class="col-2 text-end mb-2">
-                  <label>Certificate No.</label>
-                  <br/>
-                  <label class="detail">หมายเลขใบรายงานผลการทดสอบ</label>
-                </div>
-                <div class="col-3 mt-1">
-                  <input type="text" id="certNo" class="form-control">
+              <div *ngIf="canEdit">
+                <div class="row mt-4">
+                  <div class="col-2 text-end mb-2">
+                    <label>Certificate No.</label>
+                    <br />
+                    <label class="detail">หมายเลขใบรายงานผลการทดสอบ</label>
+                  </div>
+                  <div class="col-3 mt-1">
+                    <input type="text" id="certNo" class="form-control">
+                  </div>
+
+                  <div class="col-2  text-end mb-2">
+                    <label>Date of Test.</label>
+                    <br />
+                    <label class="detail">วันที่ทดสอบ</label>
+                  </div>
+                  <div class="col-3 mt-1">
+                    <input type="date" id="date" class="form-control">
+                  </div>
                 </div>
 
-                <div class="col-2  text-end mb-2">
-                  <label>Date of Test.</label>
-                  <br/>
-                  <label class="detail">วันที่ทดสอบ</label>
+                <div class="row mt-2">
+                  <div class="col-2 text-end mb-2">
+                    <label for="stardardSpecific">Standard/Specific</label>
+                    <br />
+                    <label class="detail">มาตรฐานสินค้า/ชั้นคุณภาพ</label>
+                  </div>
+                  <div class="col-3 mt-1">
+                    <input type="text" id="stardardSpecific" class="form-control">
+                  </div>
+
+                  <div class="col-2 text-end mb-2">
+                    <label for="commodity">Commodity</label>
+                    <br />
+                    <label class="detail">ประเภทสินค้า</label>
+                  </div>
+                  <div class="col-3 mt-1">
+                    <input type="text" id="commodity" class="form-control">
+                  </div>
                 </div>
-                <div class="col-3 mt-1">
-                  <input type="date" id="date" class="form-control">
+
+                <div class="row mt-2">
+                  <div class="col-2 text-end mb-2">
+                    <label for="certNo">Testing Machine No.</label>
+                    <br />
+                    <label class="detail">เครื่องมือทดสอบ</label>
+                  </div>
+                  <div class="col-3 mt-1">
+                    <input type="text" id="certNo" class="form-control">
+                  </div>
+
+                  <div class="col-2 text-end mb-2">
+                    <label for="certDate">Order No.</label>
+                    <br />
+                    <label class="detail">เลขใบสั่งผลิต</label>
+                  </div>
+                  <div class="col-3 mt-1">
+                    <input type="text" id="certDate" class="form-control">
+                  </div>
                 </div>
               </div>
 
-              <div class="row mt-2">
-                <div class="col-2 text-end mb-2">
-                  <label for="stardardSpecific">Standard/Specific</label>
-                  <br/>
-                  <label class="detail">มาตรฐานสินค้า/ชั้นคุณภาพ</label>
-                </div>
-                <div class="col-3 mt-1">
-                  <input type="text" id="stardardSpecific" class="form-control">
+              <div *ngIf="!canEdit">
+                <div class="row mt-4">
+                  <div class="col-2 text-end mb-2">
+                    <label>Certificate No.</label>
+                    <br />
+                    <label class="detail">หมายเลขใบรายงานผลการทดสอบ</label>
+                  </div>
+                  <div class="col-3 mb-2">
+                    <label>66-1692</label>
+                  </div>
+
+                  <div class="col-2  text-end mb-2">
+                    <label>Date of Test.</label>
+                    <br />
+                    <label class="detail">วันที่ทดสอบ</label>
+                  </div>
+                  <div class="col-3 mb-2">
+                    <label>25-Oct-2023</label>
+                  </div>
                 </div>
 
-                <div class="col-2 text-end mb-2">
-                  <label for="commodity">Commodity</label>
-                  <br/>
-                  <label class="detail">ประเภทสินค้า</label>
+                <div class="row mt-2">
+                  <div class="col-2 text-end mb-2">
+                    <label for="stardardSpecific">Standard/Specific</label>
+                    <br />
+                    <label class="detail">มาตรฐานสินค้า/ชั้นคุณภาพ</label>
+                  </div>
+                  <div class="col-3 mb-2">
+                    <label>มอก.1228-2561/SSCS 400</label>
+                  </div>
+
+                  <div class="col-2 text-end mb-2">
+                    <label for="commodity">Commodity</label>
+                    <br />
+                    <label class="detail">ประเภทสินค้า</label>
+                  </div>
+                  <div class="col-3 mb-2">
+                    <label>เหล็กโครงสร้างรูปพรรณขึ้นรูปเย็น สำหรับงานโครงสร้างทั่วไป</label>
+                  </div>
                 </div>
-                <div class="col-3 mt-1">
-                  <input type="text" id="commodity" class="form-control">
+
+                <div class="row mt-2">
+                  <div class="col-2 text-end mb-2">
+                    <label for="certNo">Testing Machine No.</label>
+                    <br />
+                    <label class="detail">เครื่องมือทดสอบ</label>
+                  </div>
+                  <div class="col-3 mb-2">
+                    <label>HTS101</label>
+                  </div>
+
+                  <div class="col-2 text-end mb-2">
+                    <label for="certDate">Order No.</label>
+                    <br />
+                    <label class="detail">เลขใบสั่งผลิต</label>
+                  </div>
+                  <div class="col-3 mb-2">
+                    <label>-</label>
+                  </div>
                 </div>
               </div>
 
-              <div class="row mt-2">
-                <div class="col-2 text-end mb-2">
-                  <label for="certNo">Testing Machine No.</label>
-                  <br/>
-                  <label class="detail">เครื่องมือทดสอบ</label>
-                </div>
-                <div class="col-3 mt-1">
-                  <input type="text" id="certNo" class="form-control">
-                </div>
-
-                <div class="col-2 text-end mb-2">
-                  <label for="certDate">Order No.</label>
-                  <br/>
-                  <label class="detail">เลขใบสั่งผลิต</label>
-                </div>
-                <div class="col-3 mt-1">
-                  <input type="text" id="certDate" class="form-control">
-                </div>
-              </div>
               <div class="row mt-4">
                 <div class="col-12">
                   <h6>Certificate Detail</h6>
@@ -97,8 +162,70 @@
                   <button class="btn btn-sm btn-primary ms-2"><i class="fa-solid fa-file"></i> Read PDF</button>
                 </div>
               </div>
-              <div class="overflow-auto mt-4" style="width: 100%;">
-                <table>
+
+              <div *ngIf="canEdit">
+                <div class="overflow-auto mt-4" style="width: 100%;">
+                  <table>
+                    <tr class="text-center" style="width: 100%;">
+                      <th> Material Description</th>
+                      <th> C </th>
+                      <th> Si </th>
+                      <th> Mn </th>
+                      <th> P </th>
+                      <th> S </th>
+                      <th> Y.S.<br />
+                        (ความเค้นคราก) </th>
+                      <th> T.S.<br />
+                        (ความเค้นสูงสุด) </th>
+                      <th> Elongation<br />
+                        (ความยืด) </th>
+                      <th> Hardness<br />
+                        (ความแข็ง) </th>
+                      <th> Bend Test<br />
+                        (การดัดโค้ง)</th>
+                      <th> Compression<br />
+                        (การกดแบน)</th>
+                      <th> Impact Energy<br />
+                        (การกระแทกชาร์ปี)</th>
+                      <th> </th>
+                    </tr>
+
+                    <tr *ngFor="let item of dataSourceCeritificate" class="overflow-auto" style="width: 100%;">
+                      <td style="min-width: 300px;"> <input class="form-control" [(ngModel)]="item.materialDecs" />
+                      </td>
+                      <td style="min-width: 70px;"> <input class="form-control right-form" [(ngModel)]="item.c" /> </td>
+                      <td style="min-width: 70px;"> <input class="form-control right-form" [(ngModel)]="item.si" />
+                      </td>
+                      <td style="min-width: 70px;"> <input class="form-control right-form" [(ngModel)]="item.mn" />
+                      </td>
+                      <td style="min-width: 70px;"> <input class="form-control right-form" [(ngModel)]="item.p" /> </td>
+                      <td style="min-width: 70px;"> <input class="form-control right-form" [(ngModel)]="item.s" /> </td>
+                      <td style="min-width: 100px;"> <input class="form-control right-form" [(ngModel)]="item.ys" />
+                      </td>
+                      <td style="min-width: 120px;"> <input class="form-control right-form" [(ngModel)]="item.ts" />
+                      </td>
+                      <td style="min-width: 90px;"> <input class="form-control right-form"
+                          [(ngModel)]="item.elongation" /> </td>
+                      <td style="min-width: 90px;"> <input class="form-control" [(ngModel)]="item.hardness" /> </td>
+                      <td style="min-width: 90px;"> <input class="form-control" [(ngModel)]="item.bendTest" /> </td>
+                      <td style="min-width: 90px;"> <input class="form-control" [(ngModel)]="item.compression" /> </td>
+                      <td style="min-width: 120px;"> <input *ngIf="item.impactEnergy == 0"
+                          class="form-control right-form" [(ngModel)]="'-' || item.impactEnergy" /> </td>
+                      <td style="min-width: 40px;"> <button class="btn" (click)="onClickDelete()"><i
+                            class="fa-solid fa-trash icon-delete click"></i></button> </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <div class="row mt-2">
+                  <div class="col-12 text-end">
+                    <span class="legend"><i class="fa-solid fa-trash icon-delete mx-2"></i>Delete</span>
+                  </div>
+                </div>
+              </div>
+
+              <div *ngIf="!canEdit">
+                <table class="text-center">
                   <tr class="text-center" style="width: 100%;">
                     <th> Material Description</th>
                     <th> C </th>
@@ -120,46 +247,72 @@
                       (การกดแบน)</th>
                     <th> Impact Energy<br />
                       (การกระแทกชาร์ปี)</th>
-                    <th> </th>
                   </tr>
 
-                  <tr *ngFor="let item of dataSourceCeritificate" class="overflow-auto" style="width: 100%;">
-                    <td style="min-width: 300px;"> <input class="form-control" [(ngModel)]="item.materialDecs" /> </td>
-                    <td style="min-width: 70px;"> <input class="form-control right-form" [(ngModel)]="item.c" /> </td>
-                    <td style="min-width: 70px;"> <input class="form-control right-form" [(ngModel)]="item.si" /> </td>
-                    <td style="min-width: 70px;"> <input class="form-control right-form" [(ngModel)]="item.mn" /> </td>
-                    <td style="min-width: 70px;"> <input class="form-control right-form" [(ngModel)]="item.p" /> </td>
-                    <td style="min-width: 70px;"> <input class="form-control right-form" [(ngModel)]="item.s" /> </td>
-                    <td style="min-width: 100px;"> <input class="form-control right-form"
-                        [(ngModel)]="item.ys" /> </td>
-                    <td style="min-width: 120px;"> <input class="form-control right-form" [(ngModel)]="item.ts" /> </td>
-                    <td style="min-width: 90px;"> <input class="form-control right-form"
-                        [(ngModel)]="item.elongation" /> </td>
-                    <td style="min-width: 90px;"> <input class="form-control" [(ngModel)]="item.hardness" /> </td>
-                    <td style="min-width: 90px;"> <input class="form-control" [(ngModel)]="item.bendTest" /> </td>
-                    <td style="min-width: 90px;"> <input class="form-control" [(ngModel)]="item.compression" /> </td>
-                    <td style="min-width: 120px;"> <input *ngIf="item.impactEnergy == 0" class="form-control right-form"
-                        [(ngModel)]="'-' || item.impactEnergy" /> </td>
-                    <td style="min-width: 40px;"> <button class="btn" (click)="onClickDelete()"><i
-                          class="fa-solid fa-trash icon-delete click"></i></button> </td>
+                  <tr class="overflow-auto text-center"  style="width: 100%;" >
+                    <td style="min-width: 300px;" class="text-center">
+                      <label>
+                        เหล็กฉากขาเท่ากัน 40x40x3.20 x6000mm
+                      </label>
+                    </td>
+                    <td style="min-width: 70px;" class="text-center">
+                      <label>
+                        0.107
+                      </label>
+                    </td>
+                    <td style="min-width: 70px;" class="text-center">
+                      0.0097
+                    </td>
+                    <td style="min-width: 70px;" class="text-center">
+                      0.484
+                    </td>
+                    <td style="min-width: 70px;" class="text-center">
+                      0.0126
+                    </td>
+                    <td style="min-width: 70px;" class="text-center">
+                      0.0076
+                    </td>
+                    <td style="min-width: 100px;" class="text-center">
+                      319
+                    </td>
+                    <td style="min-width: 120px;" class="text-center">
+                      440
+                    </td>
+                    <td style="min-width: 90px;" class="text-center">
+                      36
+                    </td>
+                    <td style="min-width: 90px;" class="text-center">
+                      -
+                    </td>
+                    <td style="min-width: 90px;" class="text-center">
+                      -
+                    </td>
+                    <td style="min-width: 90px;" class="text-center">
+                      -
+                    </td>
+                    <td style="min-width: 120px;" class="text-center"> 
+                      -
+                    </td>
+
                   </tr>
+
                 </table>
-              </div>
-
-              <div class="row mt-2">
-                <div class="col-12 text-end">
-                  <span class="legend"><i class="fa-solid fa-trash icon-delete mx-2"></i>Delete</span>
-                </div>
               </div>
 
               <div class="row">
                 <div class="col-12 text-center">
-                  <button class="btn btn-sm btn-success" (click)="onClickConfirm()"><i
-                      class="fa-solid fa-floppy-disk"></i>
-                    Confirm</button>
-                  <button class="btn btn-sm btn-secondary ms-2" (click)="onClickCancel()"><i
-                      class="fa-solid fa-xmark"></i>
-                    Cancel</button>
+                  <button class="btn btn-sm btn-primary" (click)="onClickViewDetail()">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    View Detail
+                  </button>
+                  <button class="btn btn-sm btn-success ms-2" (click)="onClickConfirm()">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    Confirm
+                  </button>
+                  <button class="btn btn-sm btn-secondary ms-2" (click)="onClickCancel()">
+                    <i class="fa-solid fa-xmark"></i>
+                    Cancel
+                  </button>
                 </div>
               </div>
 

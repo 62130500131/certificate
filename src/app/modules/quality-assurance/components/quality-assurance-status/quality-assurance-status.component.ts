@@ -1,7 +1,7 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { CertificateData, QaStatusCompleteSearchParam, QaStatusCompleteViewModel, QaStatusMonitorViewModel, QaStatusSearchParam } from '../../models/qa-status.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -295,7 +295,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
     this.modalRef.hide();
   }
 
-  public OnClickDownStatus(cellData : QaStatusCompleteViewModel): void {
+  public OnClickDownStatus(cellData: QaStatusCompleteViewModel): void {
     Swal.fire({
       title: "Do you want to down status to sample ready?",
       icon: "question",
@@ -305,5 +305,14 @@ export class QualityAssuranceStatusComponent implements OnInit {
       showCancelButton: true,
       showCloseButton: true
     });
+  }
+  public canEdit: boolean = true;
+  public OnClickViewDetail(): void {
+    const navigationExtras: NavigationExtras = {
+      state: {
+        canEdit: this.canEdit
+      }
+    };
+    this._router.navigate(['nac-certificate-view'], navigationExtras);
   }
 }
