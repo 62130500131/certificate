@@ -231,16 +231,40 @@ export class ProductionStatusComponent implements OnInit {
     }
   }
 
-  public OnClickDownStatus(): void {
-    Swal.fire({
-      title: "Do you want to down status to wait sample?",
-      icon: "question",
-      heightAuto: false,
-      confirmButtonText: "Yes",
-      cancelButtonText: "No",
-      showCancelButton: true,
-      showCloseButton: true
-    });
+  public OnClickDownStatus(cell: any): void {
+    if (cell.data.status == 'Cancel') {
+      Swal.fire({
+        title: "Do you want to down status to wait sample?",
+        icon: "question",
+        heightAuto: false,
+        confirmButtonText: "Yes",
+        cancelButtonText: "No",
+        showCancelButton: true,
+        showCloseButton: true
+      });
+    }
+    if (cell.data.status == 'Sample Ready') {
+      Swal.fire({
+        title: "Do you want to down status to wait sample?",
+        icon: "question",
+        heightAuto: false,
+        confirmButtonText: "Yes",
+        cancelButtonText: "No",
+        showCancelButton: true,
+        showCloseButton: true
+      });
+    }
+    if (cell.data.status == 'Film Ready') {
+      Swal.fire({
+        title: "Do you want to down status to wait film?",
+        icon: "question",
+        heightAuto: false,
+        confirmButtonText: "Yes",
+        cancelButtonText: "No",
+        showCancelButton: true,
+        showCloseButton: true
+      });
+    }
   }
 
   public radioChangeCancel($event: any): void {

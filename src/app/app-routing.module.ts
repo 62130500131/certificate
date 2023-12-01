@@ -48,6 +48,13 @@ const routes: Routes = [
     loadChildren: () => import('./modules/quality-assurance/quality-assurance.module').then(m => m.QualityAssuranceModule)
   },
   {
+    path: 'nac-certificate-view', component: NacCertificateEntryComponent,
+    data: {
+      isView: false
+    },
+    loadChildren: () => import('./modules/quality-assurance/quality-assurance.module').then(m => m.QualityAssuranceModule)
+  },
+  {
     path: 'quality-assurance-status', component: QualityAssuranceStatusComponent,
     loadChildren: () => import('./modules/quality-assurance/quality-assurance.module').then(m => m.QualityAssuranceModule)
   },

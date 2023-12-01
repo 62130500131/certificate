@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxExtendedPdfViewerService, pdfDefaultOptions } from 'ngx-extended-pdf-viewer';
 import { CertificateData } from '../../models/qa-status.model';
 import Swal from 'sweetalert2';
@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./nac-certificate-entry.component.css']
 })
 export class NacCertificateEntryComponent implements OnInit {
-
+  public canEdit: boolean = true;
   public today = '20-Nov-2023';
   public src = '/assets/pdfs/CNAC.pdf'
   public dataSourceCeritificate: CertificateData[] = [
@@ -32,9 +32,17 @@ export class NacCertificateEntryComponent implements OnInit {
   ];
 
   constructor(private router: Router,
-    private pdfService: NgxExtendedPdfViewerService) { }
+    private pdfService: NgxExtendedPdfViewerService,
+    private activatedRoute: ActivatedRoute) {
+
+  }
 
   ngOnInit() {
+    const { isView } = this.activatedRoute.snapshot.data;
+    if (isView != null) {
+      this.canEdit = isView;
+    }
+
   }
 
   public onClickCancel(): void {
@@ -45,7 +53,7 @@ export class NacCertificateEntryComponent implements OnInit {
     this.router.navigate(['quality-assurance-status']);
   }
 
-  public onClickDelete():void {
+  public onClickDelete(): void {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -65,6 +73,10 @@ export class NacCertificateEntryComponent implements OnInit {
         });
       }
     });
+  }
+
+  public onClickViewDetail(): void {
+    window.open('/assets/pdfs/TMTCert.pdf', '_blank');
   }
 
 }
