@@ -40,7 +40,7 @@ const routes: Routes = [
     loadChildren: () => import('./modules/certificate/certificate.module').then(m => m.CertificateModule)
   },
   {
-    path: 'certificate-edit/:id', component: CertificateEntryComponent,
+    path: 'certificate-edit/:id/:guid', component: CertificateEntryComponent,
     loadChildren: () => import('./modules/certificate/certificate.module').then(m => m.CertificateModule)
   },
   {

@@ -37,6 +37,7 @@ export class CertificateListViewModel {
     modifiedBy: string;
     modifiedTime: any;
     dataSource: CertificateListDetailViewModel[];
+    guid:string;
 
     public constructor() {
         this.certNo = ''
@@ -47,6 +48,7 @@ export class CertificateListViewModel {
         this.modifiedBy = ''
         this.modifiedTime = ''
         this.dataSource = [];
+        this.guid ="";
     }
 }
 

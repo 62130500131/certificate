@@ -17,6 +17,7 @@ export class CertificateService {
             uploadDate: new Date(),
             modifiedBy: "Connex",
             modifiedTime: new Date(),
+            guid: "",
             dataSource: [
               {
                 millDesc: 'H 148x100x6x12.00M',
@@ -64,6 +65,7 @@ export class CertificateService {
             uploadDate: new Date(),
             modifiedBy: "Connex",
             modifiedTime: new Date(),
+            guid: "",
             dataSource: [
               {
                 millDesc: 'H 148x100x6x12.00M',
@@ -93,6 +95,7 @@ export class CertificateService {
             uploadDate: new Date(),
             modifiedBy: "Connex",
             modifiedTime: new Date(),
+            guid: "",
             dataSource: [
               {
                 millDesc: 'H 148x100x6x12.00M',
@@ -122,6 +125,7 @@ export class CertificateService {
             uploadDate: new Date(),
             modifiedBy: "Connex",
             modifiedTime: new Date(),
+            guid: "",
             dataSource: [
               {
                 millDesc: 'H 200x60x11.80M',
@@ -211,8 +215,11 @@ export class CertificateService {
         return of()
     }
 
-    public saveCertificateWithPdf(param: ReadResult): Observable<void>{
-        this.certificateFileResults.push(param);
+    public saveCertificateWithPdf(param: ReadResult, isEdit:boolean): Observable<void>{
+
+      
+      if(!isEdit){
+
         var result = new CertificateListViewModel();
         result.certDate = param.certificateDate;
         result.certNo = param.certificateNo;
@@ -220,8 +227,8 @@ export class CertificateService {
             let con =  new CertificateListDetailViewModel();
             con.grade = x.grade;
             con.heatNo = x.heatNo;
-            con.material = x.tmtMaterial.split(":")[0].trim();
-            con.materialDesc = x.tmtMaterial.split(":")[1].trim();
+            con.material = x.tmtMaterial.split(":")[0];
+            con.materialDesc = x.tmtMaterial.split(":")[1];
             con.millDesc = param.certificateType;
             con.quantity = Number(x.mass);
             con.unit = x.unit;
@@ -230,19 +237,25 @@ export class CertificateService {
         result.mill = param.certificateType;
         result.modifiedBy = "Connex";
         result.modifiedTime = new Date();
+        result.guid = param.guid;
         let sum = result.dataSource.map(x => x.quantity)
                                    .reduce((a:number, c:number) => a + c, 0)
         result.totalMaterial = sum;
         result.uploadDate = new Date();
+
+        this.certificateFileResults.push(param);
         this.dataCertificateList.push(result)
+        
+      }
+        
         return of()
     }
 
-    public uploadCertificate(param: File): Observable<string> {
+    public uploadCertificate(param: File, mill:string): Observable<string> {
 
         const formData: FormData = new FormData();
         formData.append('formFile', param, param.name);
-        return this.http.post<ReadResult>('https://localhost:7130/api/Pdf/Import', formData).pipe(
+        return this.http.post<ReadResult>('https://localhost:7130/api/Pdf/Import/'+mill, formData).pipe(
             map((res: ReadResult) => {
                 this.certificateFileResults.push(res);
                 return res.guid;
@@ -250,9 +263,9 @@ export class CertificateService {
         );
     }
 
-    public getCertificateInfo(param:string) :Observable<ReadResult>{
+    public getCertificateInfo(guid:string) :Observable<ReadResult>{
         const result = this.certificateFileResults.find(x => {
-            return (x.guid == param) || (x.certificateNo == param);
+            return x.guid == guid; 
         }) ?? new ReadResult();
 
         return of(result);

@@ -4,6 +4,8 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { CertificateService } from '../../services/certificate.service';
+import { catchError, finalize, throwError } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-certificate-list',
@@ -73,25 +75,13 @@ export class CertificateListComponent {
       value: 'GJ'
     },
     {
+      text: 'GJS',
+      value: 'GJS'
+    },
+    {
       text: 'SYS',
       value: 'SYS'
     },
-    {
-      text: 'FMS',
-      value: 'FMS'
-    },
-    {
-      text: 'Posco',
-      value: 'Posco'
-    },
-    {
-      text: 'SPM',
-      value: 'SPM'
-    },
-    {
-      text: 'Other',
-      value: 'Other'
-    }
 
 
   ];
@@ -143,8 +133,9 @@ export class CertificateListComponent {
     this.param = new SearchParamCertificateList();
   }
 
-  public onClickCertNo(certNo: string): void {
-    this.router.navigate([`certificate-edit/${certNo}`])
+  public onClickCertNo(cellData: any): void {
+    let guid = !!cellData.guid ? cellData.guid : "0"
+    this.router.navigate(["certificate-edit/"+cellData.certNo+"/"+guid])
   }
 
   public onClickUpload(): void {
@@ -177,9 +168,28 @@ export class CertificateListComponent {
 
 
   public onClickConfirmUpload(): void {
-    this.service.uploadCertificate(this.fileToUpload).subscribe(res => {
-      this.modalRef.hide();
+    this.service.uploadCertificate(this.fileToUpload, this.millForUpload)
+    .pipe(catchError((httpErrorResponse: HttpErrorResponse) => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "warning",
+        title: "Please upload corrected format file"
+      });
+      return throwError(httpErrorResponse);
+    }))
+    .subscribe(res => {
       this.router.navigate([`certificate-entry/${res}`]);
+      this.modalRef.hide()
     });
   }
 

@@ -34,17 +34,21 @@ export class CertificateEntryComponent implements OnInit {
     this.isEdit = router.url.includes('certificate-edit');
     if (this.isEdit) {
       const split = router.url.split("/");
-      this.certNo = split[split.length - 1]
-      this.service.getCertificateInfo(this.certNo).subscribe(res => {
-        this.src = `https://localhost:7130/api/Pdf/File/${res.file?.fileName}`
-        this.certificateResultInfo = res;
-        if(!!res.guid){
-          this.certNo = res.certificateNo;
-          this.certDate = res.certificateDate ?? "";
-          this.certType = res.certificateType;
-          this.isFound = true;
-        }
-      })
+      this.certNo = split[split.length - 2]
+      let guid = split[split.length - 1]
+      if(guid != "0"){
+        this.service.getCertificateInfo(guid).subscribe(res => {
+          console.log(res)
+          this.src = `https://localhost:7130/api/Pdf/File/${res.file?.fileName}`
+          this.certificateResultInfo = res;
+          if(!!res.guid){
+            this.certNo = res.certificateNo;
+            this.certDate = res.certificateDate ?? "";
+            this.certType = res.certificateType;
+            this.isFound = true;
+          }
+        })
+      }
     } else {
       const split = router.url.split("/");
       let guid = split[split.length - 1];
@@ -69,8 +73,39 @@ export class CertificateEntryComponent implements OnInit {
   }
 
   public onClickSave(): void {
+    let isErrorGrade = this.certificateResultInfo.results.some(x => {
+      return !x.grade 
+    })
+    let isErrorMaterial = this.certificateResultInfo.results.some(x => {
+      return !x.tmtMaterial 
+    })
+    let errMessageMaterial = isErrorMaterial ? "Please Select Material \n" : ""
+    let errMessageGrade = isErrorGrade ? "Please Enter Grade \n" : ""
+    let errMessageMain = !this.certNo ? "Please Enter Certificate No. \n" : ""
+    if(!this.certNo || isErrorGrade || isErrorMaterial){
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      
+      
+      Toast.fire({
+        icon: "warning",
+        title: errMessageMain+errMessageMaterial+errMessageGrade
+      });
+      return
+    }
     if(this.isFound){
-      this.service.saveCertificateWithPdf(this.certificateResultInfo).subscribe()
+      this.certificateResultInfo.certificateNo = this.certNo;
+      this.certificateResultInfo.certificateDate = this.certDate;
+      this.service.saveCertificateWithPdf(this.certificateResultInfo,this.isEdit).subscribe()
     }else{
       this.service.saveCertificate(this.list).subscribe()
     }

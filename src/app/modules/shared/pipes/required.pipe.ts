@@ -10,7 +10,6 @@ export class RequiredDirective implements OnInit {
   }
   
   ngOnInit(): void {
-    console.log(this.el)
     this.el.nativeElement.innerHTML += `<span style="color:red">*</span>`
   }
 
