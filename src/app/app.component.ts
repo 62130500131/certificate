@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'certificate';
+  public showLoader: boolean;
+  constructor() {
+    this.showLoader = true;
+  }
 }

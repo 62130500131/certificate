@@ -77,9 +77,9 @@
                         </div>
                     </div>
 
-                    <div class="row p-2">
-                        <div class="col offset-2">
-                            <button class="btn btn-sm btn-success" (click)="onClickSearch()">
+                    <div class="row mt-2">
+                        <div class="col offset-2 ">
+                            <button class="btn btn-sm btn-success " (click)="onClickSearch()">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                                 Search
                             </button>
@@ -90,7 +90,7 @@
                         </div>
                     </div>
 
-                    <div class="row mt-2">
+                    <div class="row mt-4">
                         <div class="col-6 text-start">
                             <h6>Certificate Detail</h6>
                         </div>
@@ -100,7 +100,7 @@
                     <div class="row mt-2">
                         <div class="col-12 text-end">
                             <button class="btn btn-sm btn-primary" (click)="onClickUpload()">
-                                <i class="fa-solid fa-upload"></i>Upload
+                                <i class="fa-solid fa-upload me-1"></i>Upload
                             </button>
                         </div>
                     </div>
@@ -110,6 +110,8 @@
                             <dx-data-grid id="gridContainer" [dataSource]="list" [remoteOperations]="false"
                                 [allowColumnReordering]="true" [rowAlternationEnabled]="false" [showBorders]="true"
                                 [width]="'100%'" [showColumnLines]="true" [showRowLines]="true">
+                                
+
 
                             <!-- <dxo-paging [enabled]="true" [pageSize]="1"
                             [pageIndex]="1"></dxo-paging>
