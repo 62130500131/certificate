@@ -225,7 +225,7 @@
               </div>
 
               <div *ngIf="!canEdit">
-                <table class="text-center">
+                <table class="text-center mt-4">
                   <tr class="text-center" style="width: 100%;">
                     <th> Material Description</th>
                     <th> C </th>
@@ -299,13 +299,13 @@
                 </table>
               </div>
 
-              <div class="row">
+              <div class="row mt-4">
                 <div class="col-12 text-center">
                   <button class="btn btn-sm btn-primary" (click)="onClickViewDetail()">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     View Detail
                   </button>
-                  <button class="btn btn-sm btn-success ms-2" (click)="onClickConfirm()">
+                  <button *ngIf="canEdit" class="btn btn-sm btn-success ms-2" (click)="onClickConfirm()">
                     <i class="fa-solid fa-floppy-disk"></i>
                     Confirm
                   </button>
