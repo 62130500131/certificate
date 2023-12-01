@@ -288,19 +288,16 @@ ngx-extended-pdf-viewer #primaryEditorStamp {
 .dx-selectbox input.dx-texteditor-input {
     background-color: white;
     color: black;
-    font-size: 12px
 }
 
 .dx-selectbox input.dx-texteditor-input:hover {
     background-color: white;
     color: black;
-    font-size: 12px;
 }
 
 .dx-selectbox input.dx-texteditor-input:read-only {
     background-color: white;
     color: black;
-    font-size: 12px;
 }
 
 .dx-dropdowneditor.dx-state-active.dx-dropdowneditor-icon,
