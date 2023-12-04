@@ -16,20 +16,23 @@ export class QualityAssuranceStatusComponent implements OnInit {
   public info: InformationViewModel[] = [];
   public modalRef!: BsModalRef;
 
+  public img = "D:/Work/External/certificate/src/assets/pdfs/20.pdf"
   public productionOrder!: string;
   public fileToUpload!: File;
   public materialTypeUpload: string = '';
   public canClick!: false;
   public status!: string;
   public customerName!: string;
-  public dateSampleReady!: Date;
+  public dateSampleReady: Date = new Date();
   public material!: string;
   public materialDesc!: string;
   public coilNo!: string;
   public heatNo!: string;
   public grade!: string;
   public machine!: string;
-
+  public batch!: string;
+  public bundleNo!: string;
+  public date: Date = new Date();
   public selectMillorExcel: string = "isExcel";
   public selectMill: string = "isGJ";
   public selectExcel: string = "isTypeOne";
@@ -283,19 +286,30 @@ export class QualityAssuranceStatusComponent implements OnInit {
   public onClickClearComplete(): void {
     this.paramComplete = new QaStatusCompleteSearchParam();
   }
-
+  public isEdit = false;
   public OnClickUpdateStatus(cell: any): void {
     this.materialTypeUpload = '';
     this.productionOrder = cell.data.productionOrder;
     this.status = cell.data.status;
     this.customerName = cell.data.soldToName;
-    this.dateSampleReady = new Date;
+    this.dateSampleReady = new Date();
     this.materialDesc = cell.data.materialDesc;
     this.material = cell.data.materialCode;
     this.coilNo = "";
     this.heatNo = "";
     this.grade = "";
     this.machine = "4586";
+    if(cell.data.itemNo == 5){
+      this.dateSampleReady = new Date()
+      this.coilNo = "5220"
+      this.heatNo = "DB51002"
+      this.grade = "SS400"
+      this.batch = "AKSTL"
+      this.bundleNo = "1005836454"
+      this.isEdit = true;
+    }else{
+      this.isEdit = false;
+    }
 
     this.modalRef = this._modalService.show(this.uploadTestResult, {
       class: 'modal-xl'
