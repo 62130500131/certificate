@@ -1,0 +1,41 @@
+import { Injectable } from '@angular/core';
+import { InformationViewModel } from '../models/production.model';
+import { Observable, of } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ProductionService {
+
+  private info: InformationViewModel[] = [
+    {
+      status: "Wait Sample",
+      explanation: ""
+    },
+    {
+      status: "Wait Film",
+      explanation: ""
+    },
+    {
+      status: "Sample Ready",
+      explanation: ""
+    },
+    {
+      status: "Film Ready",
+      explanation: ""
+    },
+    {
+      status: "Complete",
+      explanation: ""
+    },
+    {
+      status: "Cancel",
+      explanation: ""
+    },
+  ]
+
+  public getInformation(): Observable<InformationViewModel[]> {
+    return of(this.info);
+  }
+
+}

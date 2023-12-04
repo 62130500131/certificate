@@ -124,6 +124,9 @@
                                 <div class="col text-end">
                                     <i class="fa-solid fa-circle-up icon-update-status"></i> <label
                                         class="ms-2 legend">Update Status</label>
+
+                                    <i class="fa-solid fa-circle-info ms-2 click icon-info"
+                                        (click)="onClickViewInformation()"></i>
                                 </div>
                             </div>
 
@@ -265,8 +268,14 @@
 
                             <div class="row mt-2">
                                 <div class="col text-end">
-                                    <i class="fa-solid fa-circle-down icon-delete"></i> <label class="ms-2 legend">Down
-                                        Status</label>
+                                    <i class="fa-solid fa-circle-down icon-delete"></i>
+                                    <label class="ms-2 legend">
+                                        Down Status
+                                    </label>
+
+                                    <i class="fa-solid fa-circle-info ms-2 click icon-info"
+                                        (click)="onClickViewInformation()">
+                                    </i>
                                 </div>
                             </div>
 
@@ -452,6 +461,39 @@
                     Confirm</button>
                 <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
                     Cancel</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #information>
+    <div class="modal-header">
+        <h5 class="modal-title">Status Information</h5>
+        <span style="cursor: pointer;" class="close-modal" name="close-modal-import"
+            (click)="modalRef.hide()">&times;</span>
+    </div>
+
+    <div class="modal-body">
+        <div class="row">
+            <div class="col">
+                <dx-data-grid id="gridContainer" [dataSource]="info" [remoteOperations]="false"
+                    [allowColumnReordering]="true" [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
+                    [showColumnLines]="true" [showRowLines]="true">
+
+                    <dxi-column dataField="status" caption="Status" dataType="number" [width]="130" alignment="center"
+                        cellTemplate="statusTemplate"></dxi-column>
+                    <dxi-column dataField="explanation" caption="Explanation" dataType="string" [width]="120"
+                        alignment="left"></dxi-column>
+
+                    <div *dxTemplate="let cell of 'statusTemplate'">
+                        <label [ngClass]="{'wait': cell.data.status == 'Wait Film' || cell.data.status == 'Wait Sample' ,
+                        'ready' : cell.data.status == 'Film Ready' || cell.data.status == 'Sample Ready' ,
+                        'cancel' : cell.data.status == 'Cancel' , 'complete' : cell.data.status == 'Complete'}">
+                            {{ cell.data.status }}
+                        </label>
+                    </div>
+
+                </dx-data-grid>
             </div>
         </div>
     </div>
