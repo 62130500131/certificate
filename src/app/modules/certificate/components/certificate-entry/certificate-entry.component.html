@@ -108,6 +108,7 @@
                 <ng-container class="overflow-auto mt-2" style="width: 100%;" *ngIf="!isFound">
                   <table>
                     <tr class="text-center" style="width: 100%;">
+                      <th> </th>
                       <th> Mill Material</th>
                       <th> Material </th>
                       <th> Grade </th>
@@ -119,9 +120,13 @@
                       <th> Elong </th>
                       <th> Remark </th>
                       <th> </th>
+
                     </tr>
 
                     <tr *ngFor="let item of list" class="overflow-auto" style="width: 100%;">
+                      <td style="min-width: 25px;"> <button class="btn" (click)="onClickAppendMaterial()">
+                          <i class="fa-solid fa-check-to-slot icon-info click"></i></button>
+                      </td>
                       <td style="min-width: 230px;"> <input class="form-control" [(ngModel)]="item.millDesc" /> </td>
                       <td style="min-width: 400px;"> <dx-select-box displayExpr="text" valueExpr="value"
                           [items]="materialDataSource" [(ngModel)]="item.tmtMaterial"></dx-select-box> </td>
@@ -138,8 +143,11 @@
                       <td style="min-width: 60px;"> <input class="form-control right-form" [(ngModel)]="item.elong" />
                       </td>
                       <td style="min-width: 150px;"> <input class="form-control" [(ngModel)]="item.remark" /> </td>
-                      <td style="min-width: 40px;"> <button class="btn" (click)="onClickDelete(item)"><i
-                            class="fa-solid fa-trash icon-delete click"></i></button> </td>
+
+                      <td style="min-width: 25px;"> <button class="btn" (click)="onClickDelete(item)">
+                          <i class="fa-solid fa-trash icon-delete click"></i></button>
+                      </td>
+
                     </tr>
                   </table>
                 </ng-container>
@@ -147,6 +155,7 @@
                 <ng-container class="overflow-auto mt-2" style="width: 100%;" *ngIf="isFound">
                   <table>
                     <tr class="text-center" style="width: 100%;">
+                      <th> </th>
                       <th> Mill Material</th>
                       <th> Material <span style="color: red;">*</span></th>
                       <th> Grade <span style="color: red;">*</span></th>
@@ -168,6 +177,9 @@
                     </tr>
 
                     <tr *ngFor="let item of certificateResultInfo.results" class="overflow-auto" style="width: 100%;">
+                      <td style="min-width: 25px;"> <button class="btn" (click)="onClickAppendMaterial()">
+                        <i class="fa-solid fa-check-to-slot icon-info click"></i></button>
+                    </td>
                       <td style="min-width: 230px;"> <input class="form-control" [(ngModel)]="item.productNo" /> </td>
                       <td style="min-width: 400px;"> <dx-select-box displayExpr="text" valueExpr="value"
                           [items]="materialDataSource" [(ngModel)]="item.tmtMaterial"></dx-select-box> </td>
@@ -196,8 +208,10 @@
                       </td>
 
                       <td style="min-width: 150px;"> <input class="form-control" [(ngModel)]="item.remark" /> </td>
-                      <td style="min-width: 40px;"> <button class="btn" (click)="onClickDelete(item)"><i
-                            class="fa-solid fa-trash icon-delete click"></i></button> </td>
+                      <td style="min-width: 25px;"> <button class="btn" (click)="onClickDelete(item)">
+                          <i class="fa-solid fa-trash icon-delete click"></i></button>
+                      </td>
+
                     </tr>
                   </table>
                 </ng-container>
@@ -206,11 +220,12 @@
               <div class="row mt-2">
                 <div class="col-12 text-end">
                   <span class="legend">
+                    <i class="fa-solid fa-check-to-slot icon-info mx-2"></i> Append Material
                     <i class="fa-solid fa-trash icon-delete mx-2"></i> Delete
                   </span>
                 </div>
               </div>
-              
+
               <div class="row mt-4">
                 <div class="col-12 text-center">
                   <button class="btn btn-sm btn-success" (click)="onClickSave()">
