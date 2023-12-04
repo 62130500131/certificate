@@ -231,12 +231,23 @@ fieldset:disabled .btn {
     padding: 2px;
     border-radius: 5px;
 }
+
 .not-sent {
     font-size: 12px;
     text-shadow: 0 0 0.1em rgb(255 214 104);
     color: rgb(255 191 0);
     background-color: rgb(255 224 140 / 40%);
     min-width: 80px;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+.failed {
+    font-size: 12px;
+    text-shadow: 0 0 0.1em rgb(255 91 91);
+    color: rgb(255 0 33);
+    background-color: rgb(255 140 140 / 40%);
+    min-width: 100px;
     padding: 2px;
     border-radius: 5px;
 }
@@ -331,10 +342,12 @@ ngx-extended-pdf-viewer #primaryEditorStamp {
 .dx-dropdowneditor.dx-state-hover:not(.dx-customer-button-hovered).dx-dropdowneditor-icon:hover {
     background-color: white;
 }
+
 .dx-dropdowneditor.dx-state-active.dx-dropdowneditor-icon,
 .dx-dropdowneditor.dx-state-hover:not(.dx-customer-button-hovered).dx-dropdowneditor-icon {
     background-color: white;
 }
+
 .dx-dropdowneditor.dx-state-active.dx-dropdowneditor-icon,
 .dx-dropdowneditor.dx-state-hover:not(.dx-customer-button-hovered).dx-dropdowneditor-icon:read-only {
     background-color: white;

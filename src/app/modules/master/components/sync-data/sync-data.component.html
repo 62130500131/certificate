@@ -14,7 +14,7 @@
                 [showColumnLines]="true" [showRowLines]="true">
 
                 <dxi-column dataField="syncName" caption="Sync" minWidth="300" alignment="left"></dxi-column>
-                <dxi-column dataField="status" caption="Status" width="100" alignment="center"></dxi-column>
+                <dxi-column dataField="status" caption="Status" width="120" alignment="center" cellTemplate="statusTemplate"></dxi-column>
                 <dxi-column dataField="lastSyncBy" caption="Last Sync By" width="150" alignment="left"></dxi-column>
                 <dxi-column dataField="lastSyncTime" caption="Last Sync Time" width="150" alignment="center"
                   cellTemplate="dateTemplate"></dxi-column>
@@ -34,6 +34,12 @@
                     </button>
                   </div>
                 </dxi-column>
+
+                <div *dxTemplate="let cell of 'statusTemplate'">
+                  <label [ngClass]="{'complete' : cell.data.status == 'Complete' , 'failed' : cell.data.status == 'Failed'}">
+                    {{ cell.data.status }}
+                  </label>
+                </div>
 
                 <div *dxTemplate="let cell of 'dateTemplate'">
                   {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
@@ -95,8 +101,12 @@
           <dxi-column dataField="syncTime" caption="Sync Time" minWidth="300" alignment="center"
             cellTemplate="dateTemplate"></dxi-column>
           <dxi-column dataField="actionBy" caption="Action By" minWidth="200" alignment="center"></dxi-column>
-          <dxi-column dataField="status" caption="Status" width="150" alignment="center"></dxi-column>
-
+          <dxi-column dataField="status" caption="Status" width="150" alignment="center" cellTemplate="statusTemplate"></dxi-column>
+          <div *dxTemplate="let cell of 'statusTemplate'">
+            <label [ngClass]="{'complete' : cell.data.status == 'Success' , 'failed' : cell.data.status == 'Failed'}">
+              {{ cell.data.status }}
+            </label>
+          </div>
           <div *dxTemplate="let cell of 'dateTemplate'">
             {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
           </div>
