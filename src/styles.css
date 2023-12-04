@@ -353,9 +353,9 @@ ngx-extended-pdf-viewer #primaryEditorStamp {
     background-color: white;
 }
 
-.dx-dropdownlist-popup-wrapper .dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item-content {
-    padding: 12px 10px;
-    background-color: white;
+.dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-state-focused {
+    background-color: #3C3C8C;
+    color: #fff;
 }
 
 .dx-dropdownlist-popup-wrapper .dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item-content:hover {

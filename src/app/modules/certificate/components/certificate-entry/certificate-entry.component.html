@@ -129,7 +129,7 @@
                       </td>
                       <td style="min-width: 230px;"> <input class="form-control" [(ngModel)]="item.millDesc" /> </td>
                       <td style="min-width: 400px;"> <dx-select-box displayExpr="text" valueExpr="value"
-                          [items]="materialDataSource" [(ngModel)]="item.tmtMaterial"></dx-select-box> </td>
+                          [items]="materialDataSource" [(ngModel)]="item.tmtMaterial" [searchEnabled]="true"></dx-select-box> </td>
                       <td style="min-width: 70px;"> <input class="form-control" [(ngModel)]="item.grade" /> </td>
                       <td style="min-width: 70px;"> <input class="form-control" [(ngModel)]="item.heatNo" /> </td>
                       <td style="min-width: 100px;"> <input class="form-control right-form"
@@ -182,7 +182,7 @@
                     </td>
                       <td style="min-width: 230px;"> <input class="form-control" [(ngModel)]="item.productNo" /> </td>
                       <td style="min-width: 400px;"> <dx-select-box displayExpr="text" valueExpr="value"
-                          [items]="materialDataSource" [(ngModel)]="item.tmtMaterial"></dx-select-box> </td>
+                          [items]="materialDataSource" [(ngModel)]="item.tmtMaterial" [searchEnabled]="true"></dx-select-box> </td>
                       <td style="min-width: 70px;"> <input class="form-control" [(ngModel)]="item.grade" /> </td>
                       <td style="min-width: 70px;"> <input class="form-control" [(ngModel)]="item.heatNo" /> </td>
                       <td style="min-width: 100px;"> <input class="form-control right-form" [(ngModel)]="item.mass" />
