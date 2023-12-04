@@ -1,3 +1,11 @@
 .size-radio {
     margin-left: 0.28rem;
 }
+
+.select-icon{
+    font-size: 35px;
+}
+
+.focus-icon {
+    color: blue;
+}

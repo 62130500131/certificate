@@ -81,7 +81,7 @@
                                         {{cell.value}}.
                                     </div>
                                 </dxi-column>
-                                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="120"
+                                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="150"
                                     alignment="left"></dxi-column>
                                 <dxi-column dataField="materialDesc" caption="Material Description" dataType="string"
                                     [minWidth]="280" alignment="left"></dxi-column>
@@ -112,9 +112,16 @@
 
                                 <dxi-column width="60" alignment="center" cellTemplate="toolsTemplate">
                                     <div *dxTemplate="let cell of 'toolsTemplate'">
-                                        <i style="cursor: pointer;" class="fa-solid fa-file-arrow-up icon-update"
-                                            (click)="OnClickUpdateStatus(cell)"
-                                            [ngClass]="{'': cell.data.status == 'Wait Film' || cell.data.status == 'Wait Sample' , 'fa-solid fa-file-arrow-up icon-update': cell.data.status == 'Film Ready' || cell.data.status == 'Sample Ready'}"></i>
+                                        <span *ngIf="cell.data.itemNo != 5">
+                                            <i style="cursor: pointer;" class="fa-solid fa-file-arrow-up icon-update"
+                                                (click)="OnClickUpdateStatus(cell)"
+                                                [ngClass]="{'': cell.data.status == 'Wait Film' || cell.data.status == 'Wait Sample' , 'fa-solid fa-file-arrow-up icon-update': cell.data.status == 'Film Ready' || cell.data.status == 'Sample Ready'}"></i>
+                                        </span>
+                                        <span *ngIf="cell.data.itemNo == 5">
+                                            <i style="cursor: pointer;" class="fa-solid fa-pen-to-square icon-edit"
+                                                (click)="OnClickUpdateStatus(cell)"></i>
+                                        </span>
+
                                     </div>
                                 </dxi-column>
 
@@ -131,9 +138,16 @@
                                         Upload Test Result
                                     </label>
 
+                                    <i class="fa-solid fa-pen-to-square icon-edit ms-2"></i>
+                                    <label class="ms-2 legend">
+                                        Edit Test Result
+                                    </label>
                                     <i class="fa-solid fa-circle-info ms-2 click icon-info"
                                         (click)="onClickViewInformation()">
                                     </i>
+                                    <label class="ms-2 legend">
+                                        Status Details
+                                    </label>
                                 </div>
                             </div>
 
@@ -225,7 +239,7 @@
                                         {{cell.value}}.
                                     </div>
                                 </dxi-column>
-                                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="120"
+                                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="150"
                                     alignment="left"></dxi-column>
                                 <dxi-column dataField="materialDesc" caption="Material Description" dataType="string"
                                     [minWidth]="280" alignment="left"></dxi-column>
@@ -259,8 +273,7 @@
                                         <i class="fa-solid fa-rotate-left icon-delete click"
                                             (click)="OnClickDownStatus(cell.data)"
                                             [ngClass]="{'': cell.data.status == 'Cancel', 'fa-solid fa-rotate-left icon-delete click': cell.data.status == 'Complete'}"></i>
-                                        <i class="fa-solid fa-magnifying-glass ms-2 click"
-                                            (click)="OnClickViewDetail()"
+                                        <i class="fa-solid fa-magnifying-glass ms-2 click" (click)="OnClickViewDetail()"
                                             [ngClass]="{'': cell.data.status == 'Cancel', 'fa-solid fa-magnifying-glass icon-view click': cell.data.status == 'Complete'}"></i>
                                     </div>
                                 </dxi-column>
@@ -275,17 +288,21 @@
                                 <div class="col text-end">
                                     <i class="fa-solid fa-rotate-left icon-delete"></i>
                                     <label class="ms-2 legend">
-                                       Undo Status
+                                        Undo Status
                                     </label>
                                     <i class="fa-solid fa-magnifying-glass icon-view ms-2"></i>
-                                    <label class="ms-1 legend">
+                                    <label class="ms-2 legend">
                                         View Detail
                                     </label>
 
 
                                     <i class="fa-solid fa-circle-info ms-2 click icon-info"
                                         (click)="onClickViewInformation()">
+
                                     </i>
+                                    <label class="ms-2 legend">
+                                        Status Details
+                                    </label>
                                 </div>
                             </div>
 
@@ -390,13 +407,13 @@
                     <label for="batch" class="form-label mt-2">Batch</label>
                 </div>
                 <div class="col-3">
-                    <input id="batch" class="form-control">
+                    <input id="batch" class="form-control" [value]="batch">
                 </div>
                 <div class="col-2 text-end">
                     <label for="bundleNo" class="form-label mt-2">Bundle No.</label>
                 </div>
                 <div class="col-3">
-                    <input id="bundleNo" class="form-control">
+                    <input id="bundleNo" class="form-control" [value]="bundleNo">
                 </div>
             </div>
 
@@ -428,55 +445,58 @@
 
         <div class="row mt-4 text-start offset-3">
             <div class="col-6">
-                <input [(ngModel)]="selectMillorExcel" value="isExcel" name="typeUpload" type="radio" id="isExcel"
-                    class="form-check-input me-2 click">
-                <label for="isExcel" class="me-3 click">
-                    Excel Test Result
-                </label>
-                <input *ngIf="status == 'Film Ready'" [(ngModel)]="selectMillorExcel" value="isMill" name="typeUpload" type="radio" id="isMill"
-                    class="form-check-input me-2 click">
-                <label *ngIf="status == 'Film Ready'" for="isMill" class="me-5 click">
-                    Mill
-                </label>
+                <div class="row">
+                    <div class="col-3 text-center click" (click)="selectMillorExcel = 'isExcel'" [ngClass]="{'focus-icon': selectMillorExcel=='isExcel'}">
+                        <i class="fa-regular fa-file-excel select-icon"></i>
+                        <p>Excel</p>
+                    </div>
+                    <div class="col-3 text-center click" (click)="selectMillorExcel = 'isMill'" [ngClass]="{'focus-icon': selectMillorExcel=='isMill'}"
+                        *ngIf="status == 'Film Ready'">
+                        <i class="fa-solid fa-file-pdf select-icon"></i>
+                        <p>Pdf</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row mt-2 text-start offset-3" *ngIf="selectMillorExcel == 'isMill'">
+        <div class="row mt-2 text-start offset-3"
+            *ngIf="selectMillorExcel == 'isMill'">
             <div class="col-6" *ngIf="status == 'Film Ready'">
-                <input [(ngModel)]="selectMill" value="isGJ" name="typeMill" type="radio" id="isGJ"
-                    class="form-check-input me-2 click">
-                <label for="isGJ" class="me-5 click size-radio">
-                    GJ
-                </label>
-                <input [(ngModel)]="selectMill" value="isGJS" name="typeMill" type="radio" id="isGJS"
-                    class="form-check-input me-2 ms-1 click">
-                <label for="isGJS" class="me-5 click size-radio">
-                    GJS
-                </label>
-                <input [(ngModel)]="selectMill" value="isSSI" name="typeMill" type="radio" id="isSSI"
-                    class="form-check-input me-2 click">
-                <label for="isSSI" class="me-2 click">
-                    SSI
-                </label>
+                <div class="row">
+                    <div class="col-3 text-center click" (click)="selectMill='GJ'" [ngClass]="{'focus-icon': selectMill=='GJ'}">
+                        <!-- <i class="fa-solid fa-warehouse select-icon"></i> -->
+                        <img src="" class="select-icon">
+                        <p>GJ</p>
+                    </div>
+                    <div class="col-3 text-center click" (click)="selectMill='GJS'" [ngClass]="{'focus-icon': selectMill=='GJS'}">
+                        <i class="fa-solid fa-warehouse select-icon"></i>
+                        <p>GJS</p>
+                    </div>
+                    <div class="col-3 text-center click" (click)="selectMill='SSI'" [ngClass]="{'focus-icon': selectMill=='SSI'}">
+                        <i class="fa-solid fa-warehouse select-icon"></i>
+                        <p>SSI</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row mt-2 text-start offset-3" *ngIf="selectMillorExcel == 'isExcel'">
+        <div class="row mt-2 text-start offset-3"
+            *ngIf="selectMillorExcel == 'isExcel'">
             <div class="col-6">
-                <input [(ngModel)]="selectExcel" value="isTypeOne" name="typeExcel" type="radio" id="isTypeOne"
-                    class="form-check-input me-2 click">
-                <label for="isTypeOne" class="me-3 click">
-                    ประเภท 1
-                </label>
-                <input [(ngModel)]="selectExcel" value="isTypeTwo" name="typeExcel" type="radio" id="isTypeTwo"
-                    class="form-check-input me-2 click size-radio">
-                <label for="isTypeTwo" class="me-2 click">
-                    ประเภท 2
-                </label>
+                <div class="row">
+                    <div class="col-3 text-center click" (click)="selectExcel='Type1'" [ngClass]="{'focus-icon': selectExcel=='Type1'}">
+                        <i class="fa-solid fa-file-invoice select-icon"></i>
+                        <p>Type 1</p>
+                    </div>
+                    <div class="col-3 text-center click" (click)="selectExcel='Type2'" [ngClass]="{'focus-icon': selectExcel=='Type2'}">
+                        <i class="fa-solid fa-file-invoice select-icon"></i>
+                        <p>Type 2</p>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row mt-2 text-center">
             <div class="col-6 offset-3 text-center">
                 <input #fileInput class="form-control rounded-pill" #myInput type="file" name="filename"
-                    (change)="handleFileInput($event)">
+                    (change)="handleFileInput($event)" [value]="img">
             </div>
         </div>
         <div class="row mt-4">
