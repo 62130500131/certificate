@@ -1,0 +1,26 @@
+<dx-data-grid id="gridContainer" [dataSource]="dataSource" [remoteOperations]="false" [allowColumnReordering]="true"
+  [rowAlternationEnabled]="true" [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
+  [showColumnLines]="true" [showRowLines]="true">
+
+  <dxi-column width="150" caption="Delivery Item No." alignment="center" dataField="itemNo"></dxi-column>
+  <dxi-column minWidth="150" caption="Material Description" alignment="left" dataField="materialDesc"></dxi-column>
+  <dxi-column width="150" caption="Quantity" alignment="right" dataField="qty" cellTemplate="numberTemplate"></dxi-column>
+  <dxi-column width="40" caption="Unit" alignment="center" dataField="unit"></dxi-column>
+
+  <dxi-column width="130" alignment="center" cellTemplate="downloadTemplate">
+    <div *dxTemplate="let cell of 'downloadTemplate'">
+      <button class="btn btn-sm btn-outline-info rounded-pill mx-2" (click)="onClickDownload()">
+        <i class="fa-solid fa-download"></i> Download
+      </button>
+    </div>
+  </dxi-column>
+
+  <div *dxTemplate="let cell of 'dateTemplate'">
+    {{ cell.value | date: 'dd-MMM-yyyy' }}
+  </div>
+
+  <div *dxTemplate="let cell of 'numberTemplate'">
+    {{cell.value | number: '.2'}}
+  </div>
+
+</dx-data-grid>

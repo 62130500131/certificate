@@ -1,0 +1,76 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card shadow-sm p-2 mb-2 bg-white rounded">
+                <div class="card-header">
+                    <h6>ประวัติการสั่งซื้อ</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row mt-4">
+                        <div class="col-2 text-end pt-2">
+                            <label class="form-label" for="poNo">PO No.</label>
+                        </div>
+                        <div class="col-3">
+                            <input [(ngModel)]="param.poNo" id="poNo" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-2 text-end pt-2">
+                            <label class="form-label" for="materialdesc">Material Description</label>
+                        </div>
+                        <div class="col-3">
+                            <input [(ngModel)]="param.materialDesc" id="materialdesc" class="form-control" type="text">
+                        </div>
+                        <div class="col-2 text-end pt-2">
+                            <label class="form-label">Delivery Date</label>
+                        </div>
+                        <div class="col-3">
+                            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource"
+                                [(ngModel)]="param.dateDo" class="mb-2">
+                            </dx-select-box>
+                            <date-range *ngIf="param.dateDo == 0" [start-date]="param.dateFrom"
+                                [end-date]="param.dateTo" (onUpdate)="onDateRangeChanged($event)">
+                            </date-range>
+                        </div>
+                    </div>
+
+                    <div class="row p-2">
+                        <div class="col offset-2" style="padding-left: inherit;">
+                            <button class="btn btn-sm btn-success">
+                                <i class="fa-solid fa-magnifying-glass me-1"></i>
+                                Search
+                            </button>
+                            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickClear()">
+                                <i class="fa-solid fa-broom me-1"></i>
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <dx-data-grid id="gridContainer" [dataSource]="dataCustomer" [remoteOperations]="false"
+                                [allowColumnReordering]="true" [rowAlternationEnabled]="false" [showBorders]="true"
+                                [width]="'100%'" [showColumnLines]="true" [showRowLines]="true">
+
+                                <dxo-master-detail [enabled]="true" template="detail"></dxo-master-detail>
+                                <div *dxTemplate="let detail of 'detail'">
+                                    <customer-template-detail [dataSource]="detail.data.dataSource"></customer-template-detail>
+                                </div>
+                                <dxi-column dataField="poNo" caption="PO No." dataType="string" [width]="150"
+                                    alignment="center"></dxi-column>
+                                <dxi-column dataField="soNo" caption="Sale Order No." dataType="string" [width]="150"
+                                    alignment="center"></dxi-column>
+                                <dxi-column dataField="doNo" caption="Ship to Name" dataType="string" [minWidth]="250"
+                                    alignment="shipToName"></dxi-column>
+                                <dxi-column dataField="address" caption="Ship to Address" dataType="date" [width]="350"
+                                    alignment="center"></dxi-column>
+
+                            </dx-data-grid>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

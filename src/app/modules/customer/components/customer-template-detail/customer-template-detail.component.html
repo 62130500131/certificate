@@ -1,0 +1,21 @@
+<dx-data-grid id="gridContainer" [dataSource]="dataSource" [remoteOperations]="false" [allowColumnReordering]="true"
+  [rowAlternationEnabled]="true" [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
+  [showColumnLines]="true" [showRowLines]="true">
+
+  <dxo-master-detail [enabled]="true" template="detail"></dxo-master-detail>
+  <div *dxTemplate="let detail of 'detail'">
+    <customer-template-item-detail [dataSource]="detail.data.dataSource"></customer-template-item-detail>
+  </div>
+  <dxi-column minWidth="200" caption="Delivery Order No." alignment="center" dataField="doNo"></dxi-column>
+  <dxi-column width="250" caption="Delivery Date" alignment="center" dataField="doDate"
+    cellTemplate="dateTemplate"></dxi-column>
+
+  <div *dxTemplate="let cell of 'dateTemplate'">
+    {{ cell.value | date: 'dd-MMM-yyyy' }}
+  </div>
+
+  <div *dxTemplate="let cell of 'numberTemplate'">
+    {{cell.value | number: '.2'}}
+  </div>
+
+</dx-data-grid>

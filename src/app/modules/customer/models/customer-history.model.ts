@@ -20,7 +20,7 @@ export class CustomerHistoryViewModel {
 
 export class CustomerHistorySearchParam {
     materialDesc: string;
-    poNo : string;
+    poNo: string;
     dateDo: number;
     dateFrom: string;
     dateTo: string;
@@ -33,5 +33,43 @@ export class CustomerHistorySearchParam {
         this.dateFrom = '';
         this.dateTo = '';
 
+    }
+}
+
+export class CustomerDOItemViewModel {
+    itemNo: string;
+    materialDesc: string;
+    qty: number;
+    unit: string;
+    constructor() {
+        this.itemNo = '';
+        this.materialDesc = '';
+        this.qty = 0;
+        this.unit = '';
+    }
+}
+export class CustomerDOViewModel {
+    doNo: string;
+    doDate: string;
+    dataSource: CustomerDOItemViewModel[];
+    constructor() {
+        this.doNo = '';
+        this.doDate = '';
+        this.dataSource = [];
+    }
+}
+
+export class CustomerPOViewModel {
+    poNo: string;
+    soNo: string;
+    shipToName: string;
+    address: string;
+    dataSource: CustomerDOViewModel[];
+    constructor() {
+        this.poNo = '';
+        this.soNo = '';
+        this.shipToName = '';
+        this.address = '';
+        this.dataSource = [];
     }
 }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponent } from './modules/core/components';
-import { CustomerPageComponent } from './modules/customer/components';
+import { CustomerPageComponent, CustomerTemplateComponent } from './modules/customer/components';
 import { CustomerContractComponent, MappingMaterialComponent, SyncDataComponent } from './modules/master/components';
 import { CertificateEntryComponent, CertificateListComponent } from './modules/certificate/components';
 import { DoPageComponent, DoShipmentEntryComponent } from './modules/map-certificate/components';
@@ -69,6 +69,10 @@ const routes: Routes = [
   {
     path: 'sync-data', component: SyncDataComponent,
     loadChildren: () => import('./modules/master/master.module').then(m => m.MasterModule)
+  },
+  {
+    path: 'customer-page', component: CustomerTemplateComponent,
+    loadChildren: () => import('./modules/customer/customer.module').then(m => m.CustomerModule)
   },
   {
     path: '',
