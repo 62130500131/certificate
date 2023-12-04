@@ -26,11 +26,11 @@ export class ProductionService {
     },
     {
       status: "Complete",
-      explanation: ""
+      explanation: "รายการแผนทดสอบที่เสร็จสิ้นแล้ว"
     },
     {
       status: "Cancel",
-      explanation: ""
+      explanation: "รายการที่ยกเลิกแผนการทดสอบ"
     },
   ]
 

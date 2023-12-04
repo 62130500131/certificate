@@ -80,7 +80,7 @@
                                 <dxi-column dataField="customerName" caption="Customer Name" dataType="string"
                                     [minWidth]="220" alignment="left"></dxi-column>
                                 <dxi-column dataField="status" caption="Status" dataType="string" [width]="100"
-                                    alignment="center"></dxi-column>
+                                    alignment="center" cellTemplate="statusTemplate"></dxi-column>
                                 <dxi-column dataField="modifiedBy" caption="Modified By" dataType="string" [width]="100"
                                     alignment="left"></dxi-column>
                                 <dxi-column dataField="modifiedTime" caption="Modified Time" dataType="string"
@@ -94,6 +94,12 @@
                                     <span class="action" (click)="onClickShipment(cell.data)">
                                         {{ cell.value }}
                                     </span>
+                                </div>
+
+                                <div *dxTemplate="let cell of 'statusTemplate'">
+                                    <label [ngClass]="{'sent' : cell.data.status == 'Sent' , 'not-sent' : cell.data.status == 'Not Sent'}">
+                                        {{ cell.data.status }}
+                                    </label>
                                 </div>
 
                                 <div *dxTemplate="let cell of 'dateTemplate'">
