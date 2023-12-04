@@ -326,7 +326,9 @@ export class ProductionStatusComponent implements OnInit {
   }
 
   public onClickViewInformation(): void {
-    this.modalRef = this._modalService.show(this.information);
+    this.modalRef = this._modalService.show(this.information, {
+      class: 'modal-lg'
+    });
   }
 
 

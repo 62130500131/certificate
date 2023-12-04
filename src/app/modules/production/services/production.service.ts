@@ -10,19 +10,19 @@ export class ProductionService {
   private info: InformationViewModel[] = [
     {
       status: "Wait Sample",
-      explanation: ""
+      explanation: "รายการแผนทดสอบประเภท"
     },
     {
       status: "Wait Film",
-      explanation: ""
+      explanation: "รายการแผนทดสอบประเภท"
     },
     {
       status: "Sample Ready",
-      explanation: ""
+      explanation: "รายการแผนทดสอบประเภท ที่พร้อมเข้ากระบวนการทดสอบ"
     },
     {
       status: "Film Ready",
-      explanation: ""
+      explanation: "รายการแผนทดสอบประเภท ที่พร้อมเข้ากระบวนการทดสอบ"
     },
     {
       status: "Complete",
@@ -30,7 +30,7 @@ export class ProductionService {
     },
     {
       status: "Cancel",
-      explanation: "รายการที่ยกเลิกแผนการทดสอบ"
+      explanation: "รายการแผนทดสอบที่ถูกยกเลิก"
     },
   ]
 
