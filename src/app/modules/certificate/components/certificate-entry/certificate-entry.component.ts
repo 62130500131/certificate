@@ -155,4 +155,9 @@ export class CertificateEntryComponent implements OnInit {
     });
   }
 
+  public onClickAdd():void{
+    this.list.push(new CertificateEntryListViewModel());
+    // this.certificateResultInfo.results.push();
+  }
+
 }

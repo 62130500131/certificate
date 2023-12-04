@@ -67,23 +67,31 @@ export class SyncDataComponent implements OnInit {
   public dataSource: SyncDataViewModel[] = [
     {
       syncName: "SAP Production Order",
+      status: "Complete",
       lastSyncBy: "CONNEX",
-      lastSyncTime: (new Date()).toString()
+      lastSyncTime: (new Date()).toString(),
+      lastUpdate: new Date(),
     },
     {
       syncName: "Blend Data Material",
+      status: "Complete",
       lastSyncBy: "CONNEX",
-      lastSyncTime: (new Date()).toString()
+      lastSyncTime: (new Date()).toString(),
+      lastUpdate: new Date(),
     },
     {
       syncName: "SAP Delivery Order",
+      status: "Complete",
       lastSyncBy: "CONNEX",
-      lastSyncTime: (new Date()).toString()
+      lastSyncTime: (new Date()).toString(),
+      lastUpdate: new Date(),
     },
     {
       syncName: "Blend Data Customer",
+      status: "Complete",
       lastSyncBy: "CONNEX",
-      lastSyncTime: (new Date()).toString()
+      lastSyncTime: (new Date()).toString(),
+      lastUpdate: new Date(),
     }
   ];
   constructor(private modalService: BsModalService) { }

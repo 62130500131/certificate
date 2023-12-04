@@ -148,6 +148,7 @@ export class CertificateService {
         unit: 'PC',
         yield: '325.60',
         tensile: '462.03',
+        elong: '462.03',
         remark: '',
     },
     {
@@ -159,6 +160,7 @@ export class CertificateService {
         unit: 'PC',
         yield: '332.92',
         tensile: '459.99',
+        elong: '459.99',
         remark: '',
     }]
 

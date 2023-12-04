@@ -82,6 +82,7 @@ export class CertificateEntryListViewModel {
     tensile: string;
     unit: string;
     remark: string;
+    elong: string;
 
     public constructor() {
         this.millDesc = '';
@@ -93,6 +94,7 @@ export class CertificateEntryListViewModel {
         this.remark = '';
         this.yield = '';
         this.tensile = '';
+        this.elong = '';
     }
 }
 

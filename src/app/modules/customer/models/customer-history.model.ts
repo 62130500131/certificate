@@ -20,6 +20,7 @@ export class CustomerHistoryViewModel {
 
 export class CustomerHistorySearchParam {
     materialDesc: string;
+    poNo : string;
     dateDo: number;
     dateFrom: string;
     dateTo: string;
@@ -27,6 +28,7 @@ export class CustomerHistorySearchParam {
 
     constructor() {
         this.materialDesc = '';
+        this.poNo = '';
         this.dateDo = 90;
         this.dateFrom = '';
         this.dateTo = '';

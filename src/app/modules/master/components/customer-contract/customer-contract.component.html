@@ -69,6 +69,8 @@
                 <dxi-column dataField="district" caption="District" width="150" alignment="left"></dxi-column>
                 <dxi-column dataField="province" caption="Province" width="150" alignment="left"></dxi-column>
                 <dxi-column dataField="line" caption="Line" width="150" alignment="left"></dxi-column>
+                <dxi-column dataField="contactName" caption="Contact Name" width="150" alignment="left"></dxi-column>
+                <dxi-column dataField="contactTel" caption="Telephone" width="150" alignment="left"></dxi-column>
                 <dxi-column dataField="modifiedBy" caption="Modified By" width="100" alignment="left"></dxi-column>
                 <dxi-column dataField="modifiedTime" caption="Modified Time" width="120" alignment="center"
                   cellTemplate="dateTemplate">
@@ -177,54 +179,54 @@
   <div class="modal-body">
 
     <div class="row mt-2">
-      <div class="col-2 text-end pt-1">
-        <label class="form-label">Customer</label>
+      <div class="col-2 text-end">
+        <label class="form-label">Customer : </label>
       </div>
-      
+
       <div class="col-3">
-        <dx-select-box displayExpr="text" valueExpr="value" [items]="customerData" [value]="addParam.customerCode" (onValueChanged)="onCustomerChange($event)"></dx-select-box>
+        <label class="form-label">{{addParam.customerCode}}</label>
       </div>
-      <div class="col-2 text-end pt-1">
-        <label class="form-label">Contact Name</label>
+      <div class="col-2 text-end">
+        <label class="form-label">Contact Name : </label>
 
       </div>
       <div class="col-3">
-        <input class="form-control" [(ngModel)]="addParam.contactName">
+        <label class="form-label">{{addParam.contactName}}</label>
       </div>
     </div>
 
     <div class="row mt-2">
-      <div class="col-2 text-end pt-1">
-        <label class="form-label">District</label>
+      <div class="col-2 text-end">
+        <label class="form-label">District : </label>
 
       </div>
       <div class="col-3">
-        <dx-select-box displayExpr="text" valueExpr="value" [items]="districtData" [value]="addParam.district" (onValueChanged)="onDistrictChange($event)"></dx-select-box>
+        <label class="form-label">{{addParam.district}}</label>
       </div>
-      <div class="col-2 text-end pt-1">
-        <label class="form-label">Province</label>
+      <div class="col-2 text-end">
+        <label class="form-label">Province : </label>
       </div>
 
       <div class="col-3">
-        <dx-select-box displayExpr="text" valueExpr="value" [items]="provinceData" [value]="addParam.province" (onValueChanged)="onProvinceChange($event)"></dx-select-box>
+        <label class="form-label">{{addParam.province}}</label>
       </div>
     </div>
 
     <div class="row mt-2">
-      
+
+      <div class="col-2 text-end">
+        <label class="form-label pt-1">Telephone : </label>
+
+      </div>
+      <div class="col-3">
+        <label class="form-label pt-1">{{addParam.contactTel}}</label>
+      </div>
       <div class="col-2 text-end pt-1">
-        <label class="form-label" >Line</label>
+        <label class="form-label">Line : </label>
 
       </div>
       <div class="col-3">
         <input class="form-control" [(ngModel)]="addParam.line">
-      </div>
-      <div class="col-2 text-end pt-1">
-        <label class="form-label" >Telephone</label>
-
-      </div>
-      <div class="col-3">
-        <input class="form-control" [(ngModel)]="addParam.contactTel">
       </div>
     </div>
 

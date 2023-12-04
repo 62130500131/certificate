@@ -179,7 +179,7 @@ export class CustomerContractService {
             modifiedBy: 'Connex',
             modifiedTime: (new Date()).toString(),
             contactName: '', 
-            contactTel: '084-665-6912'
+            contactTel: '038-783-061-3'
         },
         {
             customerCode: '10000021',
