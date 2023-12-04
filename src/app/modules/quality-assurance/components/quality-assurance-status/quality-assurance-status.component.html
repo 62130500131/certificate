@@ -81,7 +81,7 @@
                                         {{cell.value}}.
                                     </div>
                                 </dxi-column>
-                                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="120"
+                                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="150"
                                     alignment="left"></dxi-column>
                                 <dxi-column dataField="materialDesc" caption="Material Description" dataType="string"
                                     [minWidth]="280" alignment="left"></dxi-column>
@@ -112,9 +112,16 @@
 
                                 <dxi-column width="60" alignment="center" cellTemplate="toolsTemplate">
                                     <div *dxTemplate="let cell of 'toolsTemplate'">
-                                        <i style="cursor: pointer;" class="fa-solid fa-file-arrow-up icon-update"
-                                            (click)="OnClickUpdateStatus(cell)"
-                                            [ngClass]="{'': cell.data.status == 'Wait Film' || cell.data.status == 'Wait Sample' , 'fa-solid fa-file-arrow-up icon-update': cell.data.status == 'Film Ready' || cell.data.status == 'Sample Ready'}"></i>
+                                        <span *ngIf="cell.data.itemNo != 5">
+                                            <i style="cursor: pointer;" class="fa-solid fa-file-arrow-up icon-update"
+                                                (click)="OnClickUpdateStatus(cell)"
+                                                [ngClass]="{'': cell.data.status == 'Wait Film' || cell.data.status == 'Wait Sample' , 'fa-solid fa-file-arrow-up icon-update': cell.data.status == 'Film Ready' || cell.data.status == 'Sample Ready'}"></i>
+                                        </span>
+                                        <span *ngIf="cell.data.itemNo == 5">
+                                            <i style="cursor: pointer;" class="fa-solid fa-pen-to-square icon-edit"
+                                                (click)="OnClickUpdateStatus(cell)"></i>
+                                        </span>
+                                        
                                     </div>
                                 </dxi-column>
 
@@ -131,9 +138,16 @@
                                         Upload Test Result
                                     </label>
 
+                                    <i class="fa-solid fa-pen-to-square icon-edit ms-2"></i>
+                                    <label class="ms-2 legend">
+                                        Edit Test Result
+                                    </label>
                                     <i class="fa-solid fa-circle-info ms-2 click icon-info"
                                         (click)="onClickViewInformation()">
                                     </i>
+                                    <label class="ms-2 legend">
+                                        Status Details
+                                    </label>
                                 </div>
                             </div>
 
@@ -225,7 +239,7 @@
                                         {{cell.value}}.
                                     </div>
                                 </dxi-column>
-                                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="120"
+                                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="150"
                                     alignment="left"></dxi-column>
                                 <dxi-column dataField="materialDesc" caption="Material Description" dataType="string"
                                     [minWidth]="280" alignment="left"></dxi-column>
@@ -259,8 +273,7 @@
                                         <i class="fa-solid fa-rotate-left icon-delete click"
                                             (click)="OnClickDownStatus(cell.data)"
                                             [ngClass]="{'': cell.data.status == 'Cancel', 'fa-solid fa-rotate-left icon-delete click': cell.data.status == 'Complete'}"></i>
-                                        <i class="fa-solid fa-magnifying-glass ms-2 click"
-                                            (click)="OnClickViewDetail()"
+                                        <i class="fa-solid fa-magnifying-glass ms-2 click" (click)="OnClickViewDetail()"
                                             [ngClass]="{'': cell.data.status == 'Cancel', 'fa-solid fa-magnifying-glass icon-view click': cell.data.status == 'Complete'}"></i>
                                     </div>
                                 </dxi-column>
@@ -275,17 +288,21 @@
                                 <div class="col text-end">
                                     <i class="fa-solid fa-rotate-left icon-delete"></i>
                                     <label class="ms-2 legend">
-                                       Undo Status
+                                        Undo Status
                                     </label>
                                     <i class="fa-solid fa-magnifying-glass icon-view ms-2"></i>
-                                    <label class="ms-1 legend">
+                                    <label class="ms-2 legend">
                                         View Detail
                                     </label>
 
 
                                     <i class="fa-solid fa-circle-info ms-2 click icon-info"
                                         (click)="onClickViewInformation()">
+                                        
                                     </i>
+                                    <label class="ms-2 legend">
+                                        Status Details
+                                    </label>
                                 </div>
                             </div>
 

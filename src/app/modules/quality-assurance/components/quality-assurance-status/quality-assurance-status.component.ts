@@ -87,6 +87,18 @@ export class QualityAssuranceStatusComponent implements OnInit {
     grDate: (new Date()).toString(),
     status: "Film Ready",
     unit: "KG"
+  },
+  {
+    productionOrder: "1080035296",
+    itemNo: 5,
+    materialCode: "2CTSL050-1219-1050",
+    materialDesc: "เหล็กแผ่นดำ 5.0 x 1219 x 1050 mm SS400",
+    qty: 5,
+    soldTo: "10000007",
+    soldToName: "Recheck-หจก. รวีวรรณพาณิชย์",
+    grDate: (new Date()).toString(),
+    status: "Film Ready",
+    unit: "KG"
   }
   ];
 
