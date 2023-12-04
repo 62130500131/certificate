@@ -309,7 +309,7 @@
         <!-- <div class="row">
             <error-panel name="error-panel" #errorPanelModal></error-panel>
         </div> -->
-        <div *ngIf="status == 'Sample Ready'">
+        <div>
 
             <div class="row ">
                 <div class="col-2">
@@ -385,6 +385,21 @@
                 </div>
             </div>
 
+            <div class="row pt-2">
+                <div class="col-2 text-end">
+                    <label for="batch" class="form-label mt-2">Batch</label>
+                </div>
+                <div class="col-3">
+                    <input id="batch" class="form-control">
+                </div>
+                <div class="col-2 text-end">
+                    <label for="bundleNo" class="form-label mt-2">Bundle No.</label>
+                </div>
+                <div class="col-3">
+                    <input id="bundleNo" class="form-control">
+                </div>
+            </div>
+
             <div class="row pt-3 mb-4">
                 <div class="col-2 text-end">
                     <label for="detail">Remark</label>
@@ -397,7 +412,7 @@
             <hr>
         </div>
 
-        <div *ngIf="status == 'Film Ready'">
+        <!-- <div *ngIf="status == 'Film Ready'">
             <div class="row pt-2">
                 <div class="col-2 text-end">
                     <label for="detail">Remark</label>
@@ -408,25 +423,25 @@
             </div>
 
             <hr>
-        </div>
+        </div> -->
 
 
         <div class="row mt-4 text-start offset-3">
             <div class="col-6">
-                <input [(ngModel)]="selectMillorExcel" value="isMill" name="typeUpload" type="radio" id="isMill"
-                    class="form-check-input me-2 click">
-                <label for="isMill" class="me-5 click">
-                    Mill
-                </label>
                 <input [(ngModel)]="selectMillorExcel" value="isExcel" name="typeUpload" type="radio" id="isExcel"
                     class="form-check-input me-2 click">
-                <label for="isExcel" class="me-2 click">
+                <label for="isExcel" class="me-3 click">
                     Excel Test Result
+                </label>
+                <input *ngIf="status == 'Film Ready'" [(ngModel)]="selectMillorExcel" value="isMill" name="typeUpload" type="radio" id="isMill"
+                    class="form-check-input me-2 click">
+                <label *ngIf="status == 'Film Ready'" for="isMill" class="me-5 click">
+                    Mill
                 </label>
             </div>
         </div>
         <div class="row mt-2 text-start offset-3" *ngIf="selectMillorExcel == 'isMill'">
-            <div class="col-6">
+            <div class="col-6" *ngIf="status == 'Film Ready'">
                 <input [(ngModel)]="selectMill" value="isGJ" name="typeMill" type="radio" id="isGJ"
                     class="form-check-input me-2 click">
                 <label for="isGJ" class="me-5 click size-radio">

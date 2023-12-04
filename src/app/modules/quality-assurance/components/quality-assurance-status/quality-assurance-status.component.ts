@@ -30,7 +30,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
   public grade!: string;
   public machine!: string;
 
-  public selectMillorExcel: string = "isMill";
+  public selectMillorExcel: string = "isExcel";
   public selectMill: string = "isGJ";
   public selectExcel: string = "isTypeOne";
 
