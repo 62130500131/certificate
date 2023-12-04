@@ -81,6 +81,32 @@ export class ProductionStatusCompleteViewModel {
         this.unit = '';
     }
 }
+export class ProductionStatusViewModel {
+
+    productionOrder: string;
+    itemNo: number;
+    materialCode: string;
+    materialDesc: string;
+    qty: number;
+    soldTo: string;
+    soldToName: string;
+    grDate: string;
+    status: string;
+    unit: string;
+
+    constructor() {
+        this.productionOrder = '';
+        this.itemNo = 0;
+        this.materialCode = '';
+        this.materialDesc = '';
+        this.qty = 0;
+        this.soldTo = '';
+        this.soldToName = '';
+        this.grDate = '';
+        this.status = '';
+        this.unit = '';
+    }
+}
 
 export class InformationViewModel {
     status: string;

@@ -1,10 +1,14 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { CertificateData, QaStatusCompleteSearchParam, QaStatusCompleteViewModel, QaStatusMonitorViewModel, QaStatusSearchParam } from '../../models/qa-status.model';
+import { CertificateData, QaStatusCompleteSearchParam, QaStatusCompleteViewModel, QaStatusMonitorViewModel, QaStatusSearchParam, QaStatusViewModel } from '../../models/qa-status.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NavigationExtras, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ProductionService } from 'src/app/modules/production/services/production.service';
 import { InformationViewModel } from 'src/app/modules/production/models/production.model';
+import { QualityAssuranceService } from '../services/quality-assurance.service';
+import DataSource from 'devextreme/data/data_source';
+import { lastValueFrom } from 'rxjs';
+import { DxDataGridComponent } from 'devextreme-angular';
 
 @Component({
   selector: 'qa-status',
@@ -13,6 +17,8 @@ import { InformationViewModel } from 'src/app/modules/production/models/producti
 })
 export class QualityAssuranceStatusComponent implements OnInit {
 
+  public dataSourceCompleteStatus!: DataSource;
+  public dataSourceMonitorStatus!: DataSource;
   public info: InformationViewModel[] = [];
   public modalRef!: BsModalRef;
 
@@ -30,115 +36,19 @@ export class QualityAssuranceStatusComponent implements OnInit {
   public grade!: string;
   public machine!: string;
 
+  public canEdit: boolean = true;
+
   public selectMillorExcel: string = "isExcel";
   public selectMill: string = "isGJ";
   public selectExcel: string = "isTypeOne";
 
   @ViewChild('uploadTestResult') public uploadTestResult!: TemplateRef<any>;
   @ViewChild('information') public information!: TemplateRef<any>;
+  @ViewChild('monitorGrid') public monitorGrid!: DxDataGridComponent;
+  @ViewChild('completeGrid') public completeGrid!: DxDataGridComponent;
 
   public param: QaStatusSearchParam = new QaStatusSearchParam();
   public paramComplete: QaStatusCompleteSearchParam = new QaStatusCompleteSearchParam();
-
-  public dataSourceMonitorStatus: QaStatusMonitorViewModel[] = [{
-    productionOrder: "1080035252",
-    itemNo: 1,
-    materialCode: "1HC10000-015L",
-    materialDesc: "เหล็กม้วนดำ SS400 1.50mmxกว้างใดๆxC Long",
-    qty: 20,
-    soldTo: "10000001",
-    soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-    grDate: (new Date()).toString(),
-    status: "Wait Sample",
-    unit: "KG"
-  },
-  {
-    productionOrder: "1080035293",
-    itemNo: 2,
-    materialCode: "2CTFB",
-    materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
-    qty: 50,
-    soldTo: "10000001",
-    soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-    grDate: (new Date()).toString(),
-    status: "Sample Ready",
-    unit: "KG"
-  },
-  {
-    productionOrder: "1080035294",
-    itemNo: 3,
-    materialCode: "2CTFB",
-    materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
-    qty: 10,
-    soldTo: "10000001",
-    soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-    grDate: (new Date()).toString(),
-    status: "Wait Film",
-    unit: "KG"
-  },
-  {
-    productionOrder: "1080035295",
-    itemNo: 4,
-    materialCode: "1HC10000-015L",
-    materialDesc: "เหล็กม้วนดำ SS400 1.50mmxกว้างใดๆxC Long",
-    qty: 5,
-    soldTo: "10000001",
-    soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-    grDate: (new Date()).toString(),
-    status: "Film Ready",
-    unit: "KG"
-  }
-  ];
-
-  public dataSourceCompleteStatus: QaStatusCompleteViewModel[] = [{
-    productionOrder: "1080035293",
-    itemNo: 1,
-    materialCode: "1HC10000-015L",
-    materialDesc: "เหล็กม้วนดำ SS400 1.50mmxกว้างใดๆxC Long",
-    qty: 20,
-    soldTo: "10000001",
-    soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-    grDate: (new Date()).toString(),
-    status: "Complete",
-    unit: "KG"
-  },
-  {
-    productionOrder: "1080035294",
-    itemNo: 2,
-    materialCode: "2CTFB",
-    materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
-    qty: 50,
-    soldTo: "10000001",
-    soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-    grDate: (new Date()).toString(),
-    status: "Cancel",
-    unit: "KG"
-  },
-  {
-    productionOrder: "1080035295",
-    itemNo: 3,
-    materialCode: "2CTFB",
-    materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
-    qty: 10,
-    soldTo: "10000001",
-    soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-    grDate: (new Date()).toString(),
-    status: "Cancel",
-    unit: "KG"
-  },
-  {
-    productionOrder: "1080035252",
-    itemNo: 4,
-    materialCode: "1HC10000-015L",
-    materialDesc: "เหล็กม้วนดำ SS400 1.50mmxกว้างใดๆxC Long",
-    qty: 5,
-    soldTo: "10000001",
-    soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-    grDate: (new Date()).toString(),
-    status: "Complete",
-    unit: "KG"
-  }
-  ];
 
   public dateDataSource: any[] = [
     {
@@ -246,12 +156,28 @@ export class QualityAssuranceStatusComponent implements OnInit {
 
   constructor(public _modalService: BsModalService,
     public _router: Router,
-    private _productionService: ProductionService) { }
+    private _productionService: ProductionService,
+    private _qaService: QualityAssuranceService) { }
 
   ngOnInit() {
     this._productionService.getInformation().subscribe(res => {
       this.info = res;
     })
+
+    this.dataSourceCompleteStatus = new DataSource({
+      load: (options) => {
+        return this._qaService.queryCompleteGrid({ options }).toPromise();
+      }
+    })
+
+    this.dataSourceMonitorStatus = new DataSource({
+      load: (options) => {
+        return this._qaService.queryMonitorGrid({ options }).toPromise();
+      }
+    })
+
+
+
   }
 
   public onProductionDateRangeChanged($event: any): void {
@@ -303,7 +229,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
     this.modalRef.hide();
   }
 
-  public OnClickDownStatus(cellData: QaStatusCompleteViewModel): void {
+  public OnClickDownStatus(cellData: QaStatusViewModel): void {
     Swal.fire({
       title: "Do you want to down status to sample ready?",
       icon: "question",
@@ -312,9 +238,18 @@ export class QualityAssuranceStatusComponent implements OnInit {
       cancelButtonText: "No",
       showCancelButton: true,
       showCloseButton: true
+    }).then(result => {
+      if (result.isConfirmed) {
+        this._qaService.undoStatus(cellData)
+          .subscribe(() => { });
+        this.completeGrid.instance.refresh();
+        this.monitorGrid.instance.refresh();
+      }
     });
   }
-  public canEdit: boolean = true;
+
+
+
   public OnClickViewDetail(): void {
     const navigationExtras: NavigationExtras = {
       state: {

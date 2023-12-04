@@ -1,41 +1,14 @@
 import { Injectable } from '@angular/core';
-import { InformationViewModel, ProductionStatusViewModel } from '../models/production.model';
-import { Observable, of } from 'rxjs';
+import { QaStatusCompleteViewModel, QaStatusMonitorViewModel, QaStatusViewModel } from '../../models/qa-status.model';
+import { Observable, delay, filter, of } from 'rxjs';
 import { LoadResult } from 'devextreme/common/data/custom-store';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductionService {
+export class QualityAssuranceService {
 
-  private info: InformationViewModel[] = [
-    {
-      status: "Wait Sample",
-      explanation: "รายการแผนทดสอบประเภท"
-    },
-    {
-      status: "Wait Film",
-      explanation: "รายการแผนทดสอบประเภท"
-    },
-    {
-      status: "Sample Ready",
-      explanation: "รายการแผนทดสอบประเภท ที่พร้อมเข้ากระบวนการทดสอบ"
-    },
-    {
-      status: "Film Ready",
-      explanation: "รายการแผนทดสอบประเภท ที่พร้อมเข้ากระบวนการทดสอบ"
-    },
-    {
-      status: "Complete",
-      explanation: "รายการแผนทดสอบที่เสร็จสิ้นแล้ว"
-    },
-    {
-      status: "Cancel",
-      explanation: "รายการแผนทดสอบที่ถูกยกเลิก"
-    },
-  ];
-
-  private dataSource: ProductionStatusViewModel[] = [
+  public dataSource: QaStatusViewModel[] = [
     {
       productionOrder: "1080035252",
       itemNo: 1,
@@ -46,6 +19,54 @@ export class ProductionService {
       soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
       grDate: (new Date()).toString(),
       status: "Wait Sample",
+      unit: "KG"
+    },
+    {
+      productionOrder: "1080035293",
+      itemNo: 2,
+      materialCode: "2CTFB",
+      materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
+      qty: 50,
+      soldTo: "10000001",
+      soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
+      grDate: (new Date()).toString(),
+      status: "Sample Ready",
+      unit: "KG"
+    },
+    {
+      productionOrder: "1080035294",
+      itemNo: 3,
+      materialCode: "2CTFB",
+      materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
+      qty: 10,
+      soldTo: "10000001",
+      soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
+      grDate: (new Date()).toString(),
+      status: "Wait Film",
+      unit: "KG"
+    },
+    {
+      productionOrder: "1080035295",
+      itemNo: 4,
+      materialCode: "1HC10000-015L",
+      materialDesc: "เหล็กม้วนดำ SS400 1.50mmxกว้างใดๆxC Long",
+      qty: 5,
+      soldTo: "10000001",
+      soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
+      grDate: (new Date()).toString(),
+      status: "Film Ready",
+      unit: "KG"
+    },
+    {
+      productionOrder: "1080035293",
+      itemNo: 1,
+      materialCode: "1HC10000-015L",
+      materialDesc: "เหล็กม้วนดำ SS400 1.50mmxกว้างใดๆxC Long",
+      qty: 20,
+      soldTo: "10000001",
+      soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
+      grDate: (new Date()).toString(),
+      status: "Complete",
       unit: "KG"
     },
     {
@@ -53,31 +74,7 @@ export class ProductionService {
       itemNo: 2,
       materialCode: "2CTFB",
       materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
-      qty: 10,
-      soldTo: "10000001",
-      soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-      grDate: (new Date()).toString(),
-      status: "Wait Film",
-      unit: "KG"
-    },
-    {
-      productionOrder: "1080035252",
-      itemNo: 1,
-      materialCode: "1HC10000-015L",
-      materialDesc: "เหล็กม้วนดำ SS400 1.50mmxกว้างใดๆxC Long",
-      qty: 5,
-      soldTo: "10000001",
-      soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-      grDate: (new Date()).toString(),
-      status: "Sample Ready",
-      unit: "KG"
-    },
-    {
-      productionOrder: "1080035295",
-      itemNo: 2,
-      materialCode: "2CTFB",
-      materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
-      qty: 10,
+      qty: 50,
       soldTo: "10000001",
       soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
       grDate: (new Date()).toString(),
@@ -85,20 +82,8 @@ export class ProductionService {
       unit: "KG"
     },
     {
-      productionOrder: "1080035293",
+      productionOrder: "1080035295",
       itemNo: 3,
-      materialCode: "1HC10000-015L",
-      materialDesc: "เหล็กม้วนดำ SS400 1.50mmxกว้างใดๆxC Long",
-      qty: 20,
-      soldTo: "10000001",
-      soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-      grDate: (new Date()).toString(),
-      status: "Film Ready",
-      unit: "KG"
-    },
-    {
-      productionOrder: "1080035295",
-      itemNo: 4,
       materialCode: "2CTFB",
       materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
       qty: 10,
@@ -110,7 +95,7 @@ export class ProductionService {
     },
     {
       productionOrder: "1080035252",
-      itemNo: 5,
+      itemNo: 4,
       materialCode: "1HC10000-015L",
       materialDesc: "เหล็กม้วนดำ SS400 1.50mmxกว้างใดๆxC Long",
       qty: 5,
@@ -122,11 +107,9 @@ export class ProductionService {
     }
   ]
 
-  public getInformation(): Observable<InformationViewModel[]> {
-    return of(this.info);
-  }
+  constructor() { }
 
-  public queryMonitorGrid(param: any): Observable<LoadResult<ProductionStatusViewModel>> {
+  public queryMonitorGrid(param: any): Observable<any> {
     const data = this.dataSource.filter(e => e.status != 'Complete' && e.status != 'Cancel');
     return of({
       data: data,
@@ -134,12 +117,25 @@ export class ProductionService {
     })
   }
 
-  public queryCompleteGrid(param: any): Observable<LoadResult<ProductionStatusViewModel>> {
+  public queryCompleteGrid(param: any): Observable<LoadResult<QaStatusViewModel>> {
     const data = this.dataSource.filter(e => e.status == 'Complete' || e.status == 'Cancel');
     return of({
       data: data,
       totalCount: data.length
     })
+  }
+
+  public undoStatus(param: QaStatusViewModel): Observable<void> {
+    let item = this.dataSource.find(x => x.productionOrder === param.productionOrder && x.itemNo === param.itemNo)
+    if (!!item) {
+      if ((item.status === 'Cancel') || (item.status === 'Complete')) {
+        item.status = 'Sample Ready'
+        return of();
+      } else {
+        return of()
+      }
+    }
+    return of()
   }
 
 }
