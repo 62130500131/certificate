@@ -81,3 +81,12 @@ export class ProductionStatusCompleteViewModel {
         this.unit = '';
     }
 }
+
+export class InformationViewModel {
+    status: string;
+    explanation: string;
+    constructor() {
+        this.status = '';
+        this.explanation = '';
+    }
+}

@@ -1,8 +1,9 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { ProductionStatusCompleteViewModel, ProductionStatusMonitorViewModel, ProductionStatusSearchParam } from '../../models/production.model';
+import { InformationViewModel, ProductionStatusCompleteViewModel, ProductionStatusMonitorViewModel, ProductionStatusSearchParam } from '../../models/production.model';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import Swal from 'sweetalert2';
+import { ProductionService } from '../../services/production.service';
 
 @Component({
   selector: 'production-status',
@@ -25,11 +26,11 @@ export class ProductionStatusComponent implements OnInit {
   public grade!: string;
   public selectedStatus: string = "sampleReady";
   public selectedStatusFilm: string = "filmReady";
+  public info: InformationViewModel[] = [];
 
   @ViewChild('updateStatusWaitSample') public updateStatusWaitSample!: TemplateRef<any>;
   @ViewChild('updateStatusWaitFilm') public updateStatusWaitFilm!: TemplateRef<any>;
-
-
+  @ViewChild('information') public information!: TemplateRef<any>;
 
   public dataSourceMonitorStatus: ProductionStatusMonitorViewModel[] = [{
     productionOrder: "1080035252",
@@ -182,9 +183,14 @@ export class ProductionStatusComponent implements OnInit {
     },
   ];
 
-  constructor(public _modalService: BsModalService) { }
+  constructor(public _modalService: BsModalService,
+    private _productionService: ProductionService) { }
 
   ngOnInit() {
+
+    this._productionService.getInformation().subscribe(res => {
+      this.info = res;
+    })
   }
 
   public onProductionCompleteDateRangeChanged($event: any): void {
@@ -319,6 +325,11 @@ export class ProductionStatusComponent implements OnInit {
     }
   }
 
+  public onClickViewInformation(): void {
+    this.modalRef = this._modalService.show(this.information, {
+      class: 'modal-lg'
+    });
+  }
 
 
 

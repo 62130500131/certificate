@@ -3,6 +3,8 @@ import { CertificateData, QaStatusCompleteSearchParam, QaStatusCompleteViewModel
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NavigationExtras, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { ProductionService } from 'src/app/modules/production/services/production.service';
+import { InformationViewModel } from 'src/app/modules/production/models/production.model';
 
 @Component({
   selector: 'qa-status',
@@ -11,6 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class QualityAssuranceStatusComponent implements OnInit {
 
+  public info: InformationViewModel[] = [];
   public modalRef!: BsModalRef;
 
   public productionOrder!: string;
@@ -32,6 +35,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
   public selectExcel: string = "isTypeOne";
 
   @ViewChild('uploadTestResult') public uploadTestResult!: TemplateRef<any>;
+  @ViewChild('information') public information!: TemplateRef<any>;
 
   public param: QaStatusSearchParam = new QaStatusSearchParam();
   public paramComplete: QaStatusCompleteSearchParam = new QaStatusCompleteSearchParam();
@@ -241,9 +245,13 @@ export class QualityAssuranceStatusComponent implements OnInit {
 
 
   constructor(public _modalService: BsModalService,
-    public _router: Router) { }
+    public _router: Router,
+    private _productionService: ProductionService) { }
 
   ngOnInit() {
+    this._productionService.getInformation().subscribe(res => {
+      this.info = res;
+    })
   }
 
   public onProductionDateRangeChanged($event: any): void {
@@ -314,5 +322,11 @@ export class QualityAssuranceStatusComponent implements OnInit {
       }
     };
     this._router.navigate(['nac-certificate-view'], navigationExtras);
+  }
+
+  public onClickViewInformation(): void {
+    this.modalRef = this._modalService.show(this.information, {
+      class: 'modal-lg'
+    });
   }
 }

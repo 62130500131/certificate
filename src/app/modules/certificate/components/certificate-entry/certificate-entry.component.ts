@@ -13,13 +13,13 @@ import { SharedService } from 'src/app/modules/shared/services/Shared.service';
 export class CertificateEntryComponent implements OnInit {
 
   public certificateResultInfo = new ReadResult();
-  public isFound:boolean = false;
+  public isFound: boolean = false;
   public src = '/assets/pdfs/20.pdf'
   // public src = 'https://webcert.siamyamato.com/webcert/ViewPDF.aspx?certNo=y6frUhKCC2N2ky7j5AGPeA%3d%3d'
   public materialDataSource: any[] = []
   public today = (new Date()).toString();
   public isEdit: boolean = false;
-  public certType:string = "";
+  public certType: string = "";
   public certNo: any = "";
   public certDate: string = (new Date()).toString();
   public list: CertificateEntryListViewModel[] = [];
@@ -40,12 +40,12 @@ export class CertificateEntryComponent implements OnInit {
       const split = router.url.split("/");
       this.certNo = split[split.length - 2]
       let guid = split[split.length - 1]
-      if(guid != "0"){
+      if (guid != "0") {
         this.service.getCertificateInfo(guid).subscribe(res => {
           console.log(res)
           this.src = `https://localhost:7130/api/Pdf/File/${res.file?.fileName}`
           this.certificateResultInfo = res;
-          if(!!res.guid){
+          if (!!res.guid) {
             this.certNo = res.certificateNo;
             this.certDate = res.certificateDate ?? "";
             this.certType = res.certificateType;
@@ -78,15 +78,15 @@ export class CertificateEntryComponent implements OnInit {
 
   public onClickSave(): void {
     let isErrorGrade = this.certificateResultInfo.results.some(x => {
-      return !x.grade 
+      return !x.grade
     })
     let isErrorMaterial = this.certificateResultInfo.results.some(x => {
-      return !x.tmtMaterial 
+      return !x.tmtMaterial
     })
     let errMessageMaterial = isErrorMaterial ? "Please Select Material \n" : ""
     let errMessageGrade = isErrorGrade ? "Please Enter Grade \n" : ""
     let errMessageMain = !this.certNo ? "Please Enter Certificate No. \n" : ""
-    if(!this.certNo || isErrorGrade || isErrorMaterial){
+    if (!this.certNo || isErrorGrade || isErrorMaterial) {
       const Toast = Swal.mixin({
         toast: true,
         position: "top",
@@ -98,19 +98,19 @@ export class CertificateEntryComponent implements OnInit {
           toast.onmouseleave = Swal.resumeTimer;
         }
       });
-      
-      
+
+
       Toast.fire({
         icon: "warning",
-        title: errMessageMain+errMessageMaterial+errMessageGrade
+        title: errMessageMain + errMessageMaterial + errMessageGrade
       });
       return
     }
-    if(this.isFound){
+    if (this.isFound) {
       this.certificateResultInfo.certificateNo = this.certNo;
       this.certificateResultInfo.certificateDate = this.certDate;
-      this.service.saveCertificateWithPdf(this.certificateResultInfo,this.isEdit).subscribe()
-    }else{
+      this.service.saveCertificateWithPdf(this.certificateResultInfo, this.isEdit).subscribe()
+    } else {
       this.service.saveCertificate(this.list).subscribe()
     }
     const Toast = Swal.mixin({
@@ -124,8 +124,8 @@ export class CertificateEntryComponent implements OnInit {
         toast.onmouseleave = Swal.resumeTimer;
       }
     });
-    
-    
+
+
     Toast.fire({
       icon: "success",
       title: "Save Certificate Success!"
@@ -155,9 +155,30 @@ export class CertificateEntryComponent implements OnInit {
     });
   }
 
-  public onClickAdd():void{
+  public onClickAdd(): void {
     this.list.push(new CertificateEntryListViewModel());
     // this.certificateResultInfo.results.push();
+  }
+
+  public onClickAppendMaterial(): void {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to append this material",
+      icon: "info",
+      heightAuto: false,
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          heightAuto: false,
+          title: "Append Success!",
+          icon: "success"
+        });
+      }
+    });
   }
 
 }
