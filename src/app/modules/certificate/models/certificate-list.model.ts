@@ -1,3 +1,5 @@
+import { FileExtensionModel } from "../../shared/models/file.model";
+
 export class SearchParamCertificateList {
     certNo: string;
     material: string;
@@ -35,6 +37,7 @@ export class CertificateListViewModel {
     modifiedBy: string;
     modifiedTime: any;
     dataSource: CertificateListDetailViewModel[];
+    guid:string;
 
     public constructor() {
         this.certNo = ''
@@ -45,6 +48,7 @@ export class CertificateListViewModel {
         this.modifiedBy = ''
         this.modifiedTime = ''
         this.dataSource = [];
+        this.guid ="";
     }
 }
 
@@ -78,6 +82,7 @@ export class CertificateEntryListViewModel {
     tensile: string;
     unit: string;
     remark: string;
+    elong: string;
 
     public constructor() {
         this.millDesc = '';
@@ -89,5 +94,43 @@ export class CertificateEntryListViewModel {
         this.remark = '';
         this.yield = '';
         this.tensile = '';
+        this.elong = '';
     }
+}
+
+export class ReadResult {
+    guid :string;
+    certificateNo: string;
+    certificateDate: string | null;
+    results: MillResult[];
+    certificateType: string;
+    
+    file: FileExtensionModel | null;
+    constructor(){
+        this.guid = '';
+        this.certificateNo = '';
+        this.certificateDate = null;
+        this.results = [];
+        this.certificateType = "";
+        this.file = null;
+    }
+}
+
+export interface MillResult {
+    productNo: string;
+    extraSize: string;
+    grade: string;
+    mass: string;
+    heatNo: string;
+    yield: string;
+    tensile: string;
+    unit: string;
+    elong: string;
+    remark :string;
+    c:string;
+    si:string;
+    mn:string;
+    p:string;
+    s:string;
+    tmtMaterial: string;
 }

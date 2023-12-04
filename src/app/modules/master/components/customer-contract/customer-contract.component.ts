@@ -37,19 +37,20 @@ export class CustomerContractComponent implements OnInit {
 
   constructor(private modalService: BsModalService,
     private service: CustomerContractService,
-    private sharedService: DataStoreService) { }
+    private dataService: DataStoreService) { }
 
   ngOnInit() {
+    
     this.service.initial().subscribe(res => {
       this.dataSource = res;
     })
-    this.sharedService.getProvinceDataSource().subscribe(res => {
+    this.dataService.getProvinceDataSource().subscribe(res => {
       this.provinceData = res;
     })
-    this.sharedService.getDistrictDataSource().subscribe(res => {
+    this.dataService.getDistrictDataSource().subscribe(res => {
       this.districtData = res;
     })
-    this.sharedService.getCustomerDataSource().subscribe(res => {
+    this.dataService.getCustomerDataSource().subscribe(res => {
       this.customerData = res;
     })
   }

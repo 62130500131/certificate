@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, TemplateRef } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DxDataGridModule } from 'devextreme-angular/ui/data-grid';
 import { DxSelectBoxModule } from 'devextreme-angular/ui/select-box';
@@ -11,6 +11,7 @@ import { DateRangeComponent } from './common/date-range/date-range/date-range.co
 import { DxCheckBoxModule } from 'devextreme-angular/ui/check-box';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { RequiredDirective } from './pipes/required.pipe';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 @NgModule({
     declarations: [
         ExamplePdfViewerComponent,
@@ -19,6 +20,7 @@ import { RequiredDirective } from './pipes/required.pipe';
         RequiredDirective
     ],
     imports: [
+        HttpClientModule,
         FormsModule,
         DxDataGridModule,
         DxSelectBoxModule,
@@ -33,6 +35,7 @@ import { RequiredDirective } from './pipes/required.pipe';
         DatePipe
     ],
     exports: [
+        HttpClientModule,
         FormsModule,
         DxDataGridModule,
         DxSelectBoxModule,

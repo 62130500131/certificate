@@ -4,6 +4,9 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { CertificateService } from '../../services/certificate.service';
+import { catchError, finalize, throwError } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+import { SharedService } from 'src/app/modules/shared/services/Shared.service';
 
 @Component({
   selector: 'app-certificate-list',
@@ -73,155 +76,17 @@ export class CertificateListComponent {
       value: 'GJ'
     },
     {
+      text: 'GJS',
+      value: 'GJS'
+    },
+    {
       text: 'SYS',
       value: 'SYS'
     },
-    {
-      text: 'FMS',
-      value: 'FMS'
-    },
-    {
-      text: 'Posco',
-      value: 'Posco'
-    },
-    {
-      text: 'SPM',
-      value: 'SPM'
-    },
-    {
-      text: 'Other',
-      value: 'Other'
-    }
 
 
   ];
-  public list: CertificateListViewModel[] = [
-    {
-      certNo: "42523050482",
-      mill: "SYS",
-      totalMaterial: 80,
-      certDate: new Date(),
-      uploadDate: new Date(),
-      modifiedBy: "Connex",
-      modifiedTime: new Date(),
-      dataSource: [
-        {
-          millDesc: 'H 148x100x6x12.00M',
-          material: '2CTFB',
-          materialDesc: 'เหล็กแผ่นดำ ตัดซอยตามขนาด',
-          grade: 'SS400',
-          heatNo: 'DB10177',
-          quantity: 20,
-          unit: 'PC'
-        },
-        {
-          millDesc: 'H 200x60x11.80M',
-          material: '2CTFB020-0060-1180',
-          materialDesc: 'เหล็กแผ่นดำ 2.00 x 60 x 1180 mm SS400',
-          grade: 'SS400',
-          heatNo: 'DB10177',
-          quantity: 20,
-          unit: 'PC'
-        },
-        {
-          millDesc: 'H 200x60x11.80M',
-          material: '2CTFB020-0818-2128',
-          materialDesc: 'เหล็กแผ่นดำ 2.00 x 818 x 2128 mm SS400',
-          grade: 'SS400',
-          heatNo: 'DB10177',
-          quantity: 20,
-          unit: 'PC'
-        },
-        {
-          millDesc: 'H 200x60x11.80M',
-          material: '2CTFB020-0820-1762',
-          materialDesc: 'เหล็กแผ่นดำ 2.00 x 820 x 1762 mm SS400',
-          grade: 'SS400',
-          heatNo: 'DB10177',
-          quantity: 20,
-          unit: 'PC'
-        }
-      ]
-    },
-    {
-      certNo: "42523050483",
-      mill: "SSI",
-      totalMaterial: 10,
-      certDate: new Date(),
-      uploadDate: new Date(),
-      modifiedBy: "Connex",
-      modifiedTime: new Date(),
-      dataSource: [
-        {
-          millDesc: 'H 148x100x6x12.00M',
-          material: '2CTFB',
-          materialDesc: 'เหล็กแผ่นดำ ตัดซอยตามขนาด',
-          grade: 'SS400',
-          heatNo: 'DB10177',
-          quantity: 8,
-          unit: 'PC'
-        },
-        {
-          millDesc: 'H 200x60x11.80M',
-          material: '2CTFB020-0060-1180',
-          materialDesc: 'เหล็กแผ่นดำ 2.00 x 60 x 1180 mm SS400',
-          grade: 'SS400',
-          heatNo: 'DB10178',
-          quantity: 2,
-          unit: 'PC'
-        }
-      ]
-    },
-    {
-      certNo: "42523050484",
-      mill: "GJS",
-      totalMaterial: 20,
-      certDate: new Date(),
-      uploadDate: new Date(),
-      modifiedBy: "Connex",
-      modifiedTime: new Date(),
-      dataSource: [
-        {
-          millDesc: 'H 148x100x6x12.00M',
-          material: '2CTFB',
-          materialDesc: 'เหล็กแผ่นดำ ตัดซอยตามขนาด',
-          grade: 'SS400',
-          heatNo: 'DB10177',
-          quantity: 8,
-          unit: 'PC'
-        },
-        {
-          millDesc: 'H 200x60x11.80M',
-          material: '2CTFB020-0060-1180',
-          materialDesc: 'เหล็กแผ่นดำ 2.00 x 60 x 1180 mm SS400',
-          grade: 'SS400',
-          heatNo: 'DB10178',
-          quantity: 12,
-          unit: 'PC'
-        }
-      ]
-    },
-    {
-      certNo: "42523050496",
-      mill: "GJ",
-      totalMaterial: 2,
-      certDate: new Date(),
-      uploadDate: new Date(),
-      modifiedBy: "Connex",
-      modifiedTime: new Date(),
-      dataSource: [
-        {
-          millDesc: 'H 200x60x11.80M',
-          material: '2CTFB020-0060-1180',
-          materialDesc: 'เหล็กแผ่นดำ 2.00 x 60 x 1180 mm SS400',
-          grade: 'SS400',
-          heatNo: 'DB10178',
-          quantity: 2,
-          unit: 'PC'
-        }
-      ]
-    }
-  ];
+  public list: CertificateListViewModel[] = [];
 
   public dateDataSource: any[] = [
     {
@@ -248,9 +113,17 @@ export class CertificateListComponent {
 
   constructor(private modalService: BsModalService,
     private router: Router,
-    private service: CertificateService) {
+    private service: CertificateService,
+    private sharedService: SharedService) {
+      this.sharedService.showLoading();
       this.service.getMaterialDataSource().subscribe(res => {
         this.materialDataSource = res
+        
+      })
+
+      this.service.initialCertificateList().subscribe(res => {
+        this.list = res
+        this.sharedService.hideLoading();
       })
   }
 
@@ -265,12 +138,14 @@ export class CertificateListComponent {
     this.param = new SearchParamCertificateList();
   }
 
-  public onClickCertNo(certNo: string): void {
-    this.router.navigate([`certificate-edit/${certNo}`])
+  public onClickCertNo(cellData: any): void {
+    let guid = !!cellData.guid ? cellData.guid : "0"
+    this.router.navigate(["certificate-edit/"+cellData.certNo+"/"+guid])
   }
 
   public onClickUpload(): void {
     this.millForUpload = '';
+    
     this.modalRef = this.modalService.show(this.importTemplate, {
       class: 'modal-lg'
     })
@@ -296,9 +171,31 @@ export class CertificateListComponent {
     });
   }
 
+
   public onClickConfirmUpload(): void {
-    this.router.navigate(['certificate-entry']);
-    this.modalRef.hide();
+    this.service.uploadCertificate(this.fileToUpload, this.millForUpload)
+    .pipe(catchError((httpErrorResponse: HttpErrorResponse) => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "warning",
+        title: "Please upload corrected format file"
+      });
+      return throwError(httpErrorResponse);
+    }))
+    .subscribe(res => {
+      this.router.navigate([`certificate-entry/${res}`]);
+      this.modalRef.hide()
+    });
   }
 
   public onUploadDateRangeChanged($event: any): void {

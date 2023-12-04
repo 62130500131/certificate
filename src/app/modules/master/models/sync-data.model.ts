@@ -2,10 +2,14 @@ export class SyncDataViewModel {
     syncName: string;
     lastSyncBy: string;
     lastSyncTime: string;
+    status: string;
+    lastUpdate: Date;
     constructor() {
         this.syncName = '';
         this.lastSyncBy = '';
         this.lastSyncTime = '';
+        this.status = "Complete";
+        this.lastUpdate = new Date();
     }
 }
 
@@ -25,7 +29,6 @@ export class SyncLogsParam {
     dateTo: string;
     statusFailed: string;
     statusSuccess: string;
-    
     constructor() {
         this.date = 0;
         this.dateFrom = '';

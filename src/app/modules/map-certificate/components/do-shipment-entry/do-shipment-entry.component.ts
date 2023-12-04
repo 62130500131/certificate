@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import Swal from 'sweetalert2';
 import { MapCertificateService } from '../../services/map-certificate.sevice';
+import { SharedService } from 'src/app/modules/shared/services/Shared.service';
 
 @Component({
   selector: 'do-shipment-entry',
@@ -38,7 +39,8 @@ export class DoShipmentEntryComponent implements OnInit {
   public shiptoCode!: string;
   constructor(private router: Router,
     private modalService: BsModalService,
-    private service: MapCertificateService) {
+    private service: MapCertificateService,
+    private sharedService: SharedService) {
     const split = this.router.url.split('/');
     this.shipmentNo = split[split.length - 2];
     this.shiptoCode = split[split.length - 1];
@@ -46,9 +48,11 @@ export class DoShipmentEntryComponent implements OnInit {
 
   public ngOnInit(): void {
 
+    this.sharedService.showLoading()
     this.service.initial().subscribe(res => {
       this.list = res
       this.checkCanSentLink();
+      this.sharedService.hideLoading()
     })
 
     this.service.getShipmentInfo({

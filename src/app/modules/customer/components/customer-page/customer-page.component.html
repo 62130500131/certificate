@@ -8,13 +8,21 @@
                 <div class="card-body">
                     <div class="row mt-4">
                         <div class="col-2 text-end pt-2">
+                            <label class="form-label" for="poNo">PO No.</label>
+                        </div>
+                        <div class="col-3">
+                            <input [(ngModel)]="param.poNo" id="poNo" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-2 text-end pt-2">
                             <label class="form-label" for="materialdesc">Material Description</label>
                         </div>
                         <div class="col-3">
                             <input [(ngModel)]="param.materialDesc" id="materialdesc" class="form-control" type="text">
                         </div>
                         <div class="col-2 text-end pt-2">
-                            <label class="form-label">Date</label>
+                            <label class="form-label">Delivery Date</label>
                         </div>
                         <div class="col-3">
                             <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource"
@@ -45,19 +53,19 @@
                                 [allowColumnReordering]="true" [rowAlternationEnabled]="false" [showBorders]="true"
                                 [width]="'100%'" [showColumnLines]="true" [showRowLines]="true">
 
-                                <dxi-column dataField="poNo" caption="PO No." dataType="string" [width]="120"
+                                <dxi-column dataField="poNo" caption="PO No." dataType="string" [width]="150"
                                     alignment="center"></dxi-column>
-                                <dxi-column dataField="soNo" caption="Sale Order No." dataType="string" [width]="120"
+                                <dxi-column dataField="soNo" caption="Sale Order No." dataType="string" [width]="150"
                                     alignment="center"></dxi-column>
                                 <dxi-column dataField="doNo" caption="Delivery Order No." dataType="string"
-                                    [width]="120" alignment="center"></dxi-column>
-                                <dxi-column dataField="date" caption="Date" dataType="date" [width]="100"
-                                    alignment="center"></dxi-column>
-                                <dxi-column dataField="itemNo" caption="Item No." dataType="number" [width]="70"
+                                    [width]="150" alignment="center"></dxi-column>
+                                <dxi-column dataField="date" caption="Delivery Date" dataType="date" [width]="100"
+                                    alignment="center" cellTemplate="dateTemplate"></dxi-column>
+                                <dxi-column dataField="itemNo" caption="DO Item No." dataType="number" [width]="100"
                                     alignment="center"></dxi-column>
                                 <dxi-column dataField="materialDesc" caption="Material Description" dataType="string"
                                     [minWidth]="150" alignment="left"></dxi-column>
-                                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="80"
+                                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="120"
                                     cellTemplate="numberTemplate" alignment="right"></dxi-column>
 
                                 <dxi-column width="130" alignment="center" cellTemplate="downloadTemplate">
@@ -71,6 +79,10 @@
 
                                 <div *dxTemplate="let cell of 'numberTemplate'">
                                     {{cell.value | number: '.2'}}
+                                </div>
+
+                                <div *dxTemplate="let cell of 'dateTemplate'">
+                                    {{ cell.value | date: 'dd-MMM-yyyy' }}
                                 </div>
 
                             </dx-data-grid>
