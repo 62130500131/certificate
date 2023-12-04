@@ -76,12 +76,12 @@
                                 <dxi-column dataField="productionOrder" caption="Production Order" dataType="number"
                                     [width]="130" alignment="center"></dxi-column>
                                 <dxi-column dataField="itemNo" caption="No." dataType="number" [width]="40"
-                                    alignment="center" cellTemplate="indexTemplate">
-                                    <div *dxTemplate="let cell of 'indexTemplate'">
-                                        {{cell.value}}.
+                                    alignment="center" cellTemplate="rowIndexTemplate">
+                                    <div *dxTemplate="let cell of 'rowIndexTemplate'">
+                                        {{ cell.rowIndex +1 }}.
                                     </div>
                                 </dxi-column>
-                                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="150"
+                                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="120"
                                     alignment="left"></dxi-column>
                                 <dxi-column dataField="materialDesc" caption="Material Description" dataType="string"
                                     [minWidth]="280" alignment="left"></dxi-column>
@@ -234,12 +234,12 @@
                                 <dxi-column dataField="productionOrder" caption="Production Order" dataType="number"
                                     [width]="130" alignment="center"></dxi-column>
                                 <dxi-column dataField="itemNo" caption="No." dataType="number" [width]="40"
-                                    alignment="center" cellTemplate="indexTemplate">
-                                    <div *dxTemplate="let cell of 'indexTemplate'">
-                                        {{cell.value}}.
+                                    alignment="center" cellTemplate="rowIndexTemplate">
+                                    <div *dxTemplate="let cell of 'rowIndexTemplate'">
+                                        {{ cell.rowIndex +1 }}.
                                     </div>
                                 </dxi-column>
-                                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="150"
+                                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="120"
                                     alignment="left"></dxi-column>
                                 <dxi-column dataField="materialDesc" caption="Material Description" dataType="string"
                                     [minWidth]="280" alignment="left"></dxi-column>
