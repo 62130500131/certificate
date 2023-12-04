@@ -254,9 +254,9 @@
 
                                 <dxi-column width="60" alignment="center" cellTemplate="toolsTemplate">
                                     <div *dxTemplate="let cell of 'toolsTemplate'">
-                                        <i style="cursor: pointer;" class="fa-solid fa-circle-down icon-delete"
+                                        <i class="fa-solid fa-rotate-left icon-delete click"
                                             (click)="OnClickDownStatus(cell)"
-                                            [ngClass]="{'fa-solid fa-circle-down icon-delete': cell.data.status == 'Cancel' || cell.data.status == 'Sample Ready' || cell.data.status == 'Film Ready' , '': cell.data.status == 'Complete'}"></i>
+                                            [ngClass]="{'fa-solid fa-rotate-left icon-delete click': cell.data.status == 'Cancel' || cell.data.status == 'Sample Ready' || cell.data.status == 'Film Ready' , '': cell.data.status == 'Complete'}"></i>
                                     </div>
                                 </dxi-column>
 
@@ -268,9 +268,9 @@
 
                             <div class="row mt-2">
                                 <div class="col text-end">
-                                    <i class="fa-solid fa-circle-down icon-delete"></i>
+                                    <i class="fa-solid fa-rotate-left icon-delete"></i>
                                     <label class="ms-2 legend">
-                                        Down Status
+                                        Undo Status
                                     </label>
 
                                     <i class="fa-solid fa-circle-info ms-2 click icon-info"
