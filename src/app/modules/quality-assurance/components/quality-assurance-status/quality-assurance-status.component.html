@@ -112,12 +112,12 @@
 
                                 <dxi-column width="60" alignment="center" cellTemplate="toolsTemplate">
                                     <div *dxTemplate="let cell of 'toolsTemplate'">
-                                        <span *ngIf="cell.data.itemNo != 5">
+                                        <span *ngIf="cell.rowIndex < 4">
                                             <i style="cursor: pointer;" class="fa-solid fa-file-arrow-up icon-update"
                                                 (click)="OnClickUpdateStatus(cell)"
                                                 [ngClass]="{'': cell.data.status == 'Wait Film' || cell.data.status == 'Wait Sample' , 'fa-solid fa-file-arrow-up icon-update': cell.data.status == 'Film Ready' || cell.data.status == 'Sample Ready'}"></i>
                                         </span>
-                                        <span *ngIf="cell.data.itemNo == 5">
+                                        <span *ngIf="cell.rowIndex >= 4">
                                             <i style="cursor: pointer;" class="fa-solid fa-pen-to-square icon-edit"
                                                 (click)="OnClickUpdateStatus(cell)"></i>
                                         </span>
@@ -226,9 +226,8 @@
                         <div class="col-12">
 
                             <dx-data-grid #completeGrid id="gridContainer" [dataSource]="dataSourceCompleteStatus"
-                                [remoteOperations]="true" [allowColumnReordering]="true"
-                                [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
-                                [showColumnLines]="true" [showRowLines]="true">
+                                [remoteOperations]="true" [allowColumnReordering]="true" [rowAlternationEnabled]="false"
+                                [showBorders]="true" [width]="'100%'" [showColumnLines]="true" [showRowLines]="true">
 
 
                                 <dxi-column dataField="productionOrder" caption="Production Order" dataType="number"
@@ -329,17 +328,18 @@
         <div>
 
             <div class="row ">
-                <div class="col-2">
+                <div class="col-2 text-end">
                     <h6>Sticker Detail</h6>
                 </div>
             </div>
-            <hr>
             <div class="row mt-4">
                 <div class="col-2 text-end">
                     <label for="dateSampleReady" class="form-label mt-2">Date</label>
                 </div>
                 <div class="col-3">
-                    <input type="date" [value]="dateSampleReady" id="dateSampleReady" class="form-control">
+                    <dx-date-box type="date" [value]="dateSampleReady " displayFormat="dd-MMM-yyyy" [inputAttr]="{ 'aria-label': 'Date' }"></dx-date-box>
+                        <!-- <date-picker [value]="dateSampleReady" (onUpdate)="dateSampleReady = $event.value">
+                        </date-picker> -->
                 </div>
             </div>
 
@@ -353,7 +353,7 @@
                 <div class="col-2 text-end">
                     <label for="productionOrder" class="form-label mt-2">Production Order</label>
                 </div>
-                <div class="col-3 pt-2">
+                <div class="col pt-2">
                     {{ productionOrder }}
                 </div>
             </div>
@@ -367,7 +367,7 @@
                 <div class="col-2 text-end">
                     <label for="materialDesc" class="form-label mt-2">Material Description</label>
                 </div>
-                <div class="col-3 pt-2">
+                <div class="col pt-2">
                     {{ materialDesc }}
                 </div>
             </div>
@@ -398,7 +398,8 @@
                     <label for="grade" class="form-label mt-2">Grade</label>
                 </div>
                 <div class="col-3">
-                    <dx-select-box displayExpr="text" valueExpr="value" [items]="gradeDataSource"></dx-select-box>
+                    <dx-select-box displayExpr="text" valueExpr="value" [items]="gradeDataSource"
+                        [value]="grade"></dx-select-box>
                 </div>
             </div>
 
@@ -442,51 +443,60 @@
             <hr>
         </div> -->
 
-
+        <!-- 
+        <div class="row mt-3">
+            <div class="col-2 text-end">
+                <h6>Upload File</h6>
+            </div>
+        </div> -->
         <div class="row mt-4 text-start offset-3">
             <div class="col-6">
                 <div class="row">
-                    <div class="col-3 text-center click" (click)="selectMillorExcel = 'isExcel'" [ngClass]="{'focus-icon': selectMillorExcel=='isExcel'}">
+                    <div class="col-3 text-center click" (click)="selectMillorExcel = 'isExcel'"
+                        [ngClass]="{'focus-icon': selectMillorExcel=='isExcel'}">
                         <i class="fa-regular fa-file-excel select-icon"></i>
                         <p>Excel</p>
                     </div>
-                    <div class="col-3 text-center click" (click)="selectMillorExcel = 'isMill'" [ngClass]="{'focus-icon': selectMillorExcel=='isMill'}"
-                        *ngIf="status == 'Film Ready'">
+                    <div class="col-3 text-center click" (click)="selectMillorExcel = 'isMill'"
+                        [ngClass]="{'focus-icon': selectMillorExcel=='isMill'}" *ngIf="status == 'Film Ready'">
                         <i class="fa-solid fa-file-pdf select-icon"></i>
                         <p>Pdf</p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row mt-2 text-start offset-3"
-            *ngIf="selectMillorExcel == 'isMill'">
+        <div class="row mt-2 text-start offset-3" *ngIf="selectMillorExcel == 'isMill'">
             <div class="col-6" *ngIf="status == 'Film Ready'">
                 <div class="row">
-                    <div class="col-3 text-center click" (click)="selectMill='GJ'" [ngClass]="{'focus-icon': selectMill=='GJ'}">
+                    <div class="col-3 text-center click" (click)="selectMill='GJ'"
+                        [ngClass]="{'focus-icon': selectMill=='GJ'}">
                         <!-- <i class="fa-solid fa-warehouse select-icon"></i> -->
                         <img src="" class="select-icon">
                         <p>GJ</p>
                     </div>
-                    <div class="col-3 text-center click" (click)="selectMill='GJS'" [ngClass]="{'focus-icon': selectMill=='GJS'}">
+                    <div class="col-3 text-center click" (click)="selectMill='GJS'"
+                        [ngClass]="{'focus-icon': selectMill=='GJS'}">
                         <i class="fa-solid fa-warehouse select-icon"></i>
                         <p>GJS</p>
                     </div>
-                    <div class="col-3 text-center click" (click)="selectMill='SSI'" [ngClass]="{'focus-icon': selectMill=='SSI'}">
+                    <div class="col-3 text-center click" (click)="selectMill='SSI'"
+                        [ngClass]="{'focus-icon': selectMill=='SSI'}">
                         <i class="fa-solid fa-warehouse select-icon"></i>
                         <p>SSI</p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row mt-2 text-start offset-3"
-            *ngIf="selectMillorExcel == 'isExcel'">
+        <div class="row mt-2 text-start offset-3" *ngIf="selectMillorExcel == 'isExcel'">
             <div class="col-6">
                 <div class="row">
-                    <div class="col-3 text-center click" (click)="selectExcel='Type1'" [ngClass]="{'focus-icon': selectExcel=='Type1'}">
+                    <div class="col-3 text-center click" (click)="selectExcel= isEdit ? selectExcel : 'Type1'"
+                        [ngClass]="{'focus-icon': selectExcel=='Type1'}">
                         <i class="fa-solid fa-file-invoice select-icon"></i>
                         <p>Type 1</p>
                     </div>
-                    <div class="col-3 text-center click" (click)="selectExcel='Type2'" [ngClass]="{'focus-icon': selectExcel=='Type2'}">
+                    <div class="col-3 text-center click" (click)="selectExcel= isEdit ? selectExcel : 'Type2'"
+                        [ngClass]="{'focus-icon': selectExcel=='Type2'}">
                         <i class="fa-solid fa-file-invoice select-icon"></i>
                         <p>Type 2</p>
                     </div>

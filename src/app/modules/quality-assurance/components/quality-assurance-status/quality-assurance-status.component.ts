@@ -37,15 +37,15 @@ export class QualityAssuranceStatusComponent implements OnInit {
   public heatNo!: string;
   public grade!: string;
   public machine!: string;
-  public batch!: string;
-  public bundleNo!: string;
+  public batch: string = "";
+  public bundleNo: string = "";
   public date: Date = new Date();
 
   public canEdit: boolean = true;
 
   public selectMillorExcel: string = "isExcel";
   public selectMill: string = "isGJ";
-  public selectExcel: string = "isTypeOne";
+  public selectExcel: string = "Type1";
 
   @ViewChild('uploadTestResult') public uploadTestResult!: TemplateRef<any>;
   @ViewChild('information') public information!: TemplateRef<any>;
@@ -218,7 +218,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
     this.heatNo = "";
     this.grade = "";
     this.machine = "4586";
-    if(cell.data.itemNo == 5){
+    if(cell.rowIndex >= 4){
       this.dateSampleReady = new Date()
       this.coilNo = "5220"
       this.heatNo = "DB51002"
