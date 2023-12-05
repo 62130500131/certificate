@@ -44,7 +44,7 @@ export class QualityAssuranceStatusComponent implements OnInit {
   public canEdit: boolean = true;
 
   public selectMillorExcel: string = "isExcel";
-  public selectMill: string = "isGJ";
+  public selectMill: string = "GJ";
   public selectExcel: string = "Type1";
 
   @ViewChild('uploadTestResult') public uploadTestResult!: TemplateRef<any>;

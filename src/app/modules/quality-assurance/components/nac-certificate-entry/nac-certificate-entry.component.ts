@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 export class NacCertificateEntryComponent implements OnInit {
   public canEdit: boolean = true;
   public today = '20-Nov-2023';
-  public src = '/assets/pdfs/CNAC.pdf'
+  public src = './assets/pdfs/CNAC.pdf'
   public dataSourceCeritificate: CertificateData[] = [
     {
       materialDecs: "เหล็กฉากขาเท่ากัน 40x40x3.20 x6000mm",
