@@ -1,3 +1,13 @@
+<div class="row navbar" style="background-color: rgb(244 244 255); width: 100%;">
+    <div class="col-6 text-end click" (click)="userType = 'TMT'" [ngClass]="{'focus-icon': userType == 'TMT'}">
+        <i class="fa-solid fa-user-lock "></i>
+        <span class="ms-2">TMT Employees</span>
+    </div>
+    <div class="col-6 click" (click)="userType = 'Customer'" [ngClass]="{'focus-icon': userType == 'Customer'}">
+        <i class="fa-solid fa-user-large"></i>
+        <span class="ms-2">Customer</span>
+    </div>
+</div>
 <div class="container-fluid-login">
     <div class="row">
         <div class="col-8 offset-2">

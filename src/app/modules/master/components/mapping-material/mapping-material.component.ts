@@ -10,6 +10,7 @@ import { Workbook } from 'exceljs';
 import * as saveAs from 'file-saver';
 import Swal from 'sweetalert2';
 import { CertificateService } from 'src/app/modules/certificate/services/certificate.service';
+import { SharedService } from 'src/app/modules/shared/services/Shared.service';
 
 @Component({
   selector: 'mapping-material',
@@ -70,13 +71,16 @@ export class MappingMaterialComponent implements OnInit {
 
   constructor(private modalService: BsModalService,
     private service: MappingMaterialService,
-    private certificateService: CertificateService) {
+    private certificateService: CertificateService,
+    private sharedService: SharedService) {
 
   }
 
   ngOnInit(): void {
+    this.sharedService.showLoading();
     this.certificateService.getMaterialDataSource().subscribe(res => {
       this.materialDataSource = res
+      this.sharedService.hideLoading();
     })
   }
 

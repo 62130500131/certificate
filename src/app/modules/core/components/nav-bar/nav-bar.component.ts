@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, WritableSignal, computed, signal } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'nav-bar',
@@ -8,12 +8,26 @@ import { Router } from '@angular/router';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  // public url: string = ""
+  constructor(private router: Router) {
+    // this.router.events.subscribe((event) => {
+    //   if (event instanceof NavigationEnd) {
+    //     const url = this.router.url.split("/")
+    //     console.log(url[url.length - 1])
+    //     this.url = url[url.length - 1]
+    //   }
+    // })
+  }
 
   ngOnInit() {
   }
 
-  public get isShow(){
-    return this.router.url != '/login-page' && this.router.url != '/customer-entry' && this.router.url != '/customer-page' 
+  public get isShow() {
+    return this.router.url != '/login-page' && this.router.url != '/customer-entry' && this.router.url != '/customer-page'
+  }
+
+  public get url() {
+    const url = this.router.url.split("/")
+    return url[url.length - 1]
   }
 }

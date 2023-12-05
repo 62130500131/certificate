@@ -14,7 +14,7 @@ export class CertificateEntryComponent implements OnInit {
 
   public certificateResultInfo = new ReadResult();
   public isFound: boolean = false;
-  public src = '/assets/pdfs/20.pdf'
+  public src = './assets/pdfs/20.pdf'
   // public src = 'https://webcert.siamyamato.com/webcert/ViewPDF.aspx?certNo=y6frUhKCC2N2ky7j5AGPeA%3d%3d'
   public materialDataSource: any[] = []
   public today = (new Date()).toString();

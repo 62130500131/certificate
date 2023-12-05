@@ -10,6 +10,7 @@ import { Workbook } from 'exceljs';
 import { exportDataGrid } from "devextreme/excel_exporter";
 import { SelectBox } from 'src/app/modules/shared/models/selectBox.model';
 import { DataStoreService } from 'src/app/modules/shared/services/data-store.service';
+import { SharedService } from 'src/app/modules/shared/services/shared.service';
 @Component({
   selector: 'app-customer-contract',
   templateUrl: './customer-contract.component.html',
@@ -37,12 +38,14 @@ export class CustomerContractComponent implements OnInit {
 
   constructor(private modalService: BsModalService,
     private service: CustomerContractService,
-    private dataService: DataStoreService) { }
+    private dataService: DataStoreService,
+    private sharedService: SharedService) { }
 
   ngOnInit() {
-    
+    this.sharedService.showLoading();
     this.service.initial().subscribe(res => {
       this.dataSource = res;
+      this.sharedService.hideLoading();
     })
     this.dataService.getProvinceDataSource().subscribe(res => {
       this.provinceData = res;
