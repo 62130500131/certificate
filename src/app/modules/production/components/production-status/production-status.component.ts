@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { ProductionService } from '../../services/production.service';
 import DataSource from 'devextreme/data/data_source';
 import { DxDataGridComponent } from 'devextreme-angular';
+import { SharedService } from 'src/app/modules/shared/services/Shared.service';
 
 @Component({
   selector: 'production-status',
@@ -103,12 +104,15 @@ export class ProductionStatusComponent implements OnInit {
   ];
 
   constructor(public _modalService: BsModalService,
-    private _productionService: ProductionService) { }
+    private _productionService: ProductionService,
+    private sharedService: SharedService) { }
 
   ngOnInit() {
 
+    this.sharedService.showLoading();
     this._productionService.getInformation().subscribe(res => {
       this.info = res;
+      this.sharedService.hideLoading();
     })
 
     this.dataSourceCompleteStatus = new DataSource({

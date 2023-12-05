@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 })
 export class LoginPageComponent {
   public loginParam: auth = new auth();
-
+  public userType = "TMT";
   constructor(private router: Router) {
   }
 

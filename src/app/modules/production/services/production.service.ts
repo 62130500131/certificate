@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { InformationViewModel, ProductionStatusViewModel } from '../models/production.model';
-import { Observable, of } from 'rxjs';
+import { Observable, delay, of } from 'rxjs';
 import { LoadResult } from 'devextreme/common/data/custom-store';
 
 @Injectable({
@@ -11,19 +11,19 @@ export class ProductionService {
   private info: InformationViewModel[] = [
     {
       status: "Wait Sample",
-      explanation: "รายการแผนทดสอบประเภท"
+      explanation: "รายการแผนทดสอบประเภท 'Sample' ที่ยังไม่พร้อมเข้ากระบวนการทดสอบ "
     },
     {
       status: "Wait Film",
-      explanation: "รายการแผนทดสอบประเภท"
+      explanation: "รายการแผนทดสอบประเภท 'Film' ที่ยังไม่พร้อมเข้ากระบวนการทดสอบ"
     },
     {
       status: "Sample Ready",
-      explanation: "รายการแผนทดสอบประเภท ที่พร้อมเข้ากระบวนการทดสอบ"
+      explanation: "รายการแผนทดสอบประเภท 'Sample' ที่พร้อมเข้ากระบวนการทดสอบ"
     },
     {
       status: "Film Ready",
-      explanation: "รายการแผนทดสอบประเภท ที่พร้อมเข้ากระบวนการทดสอบ"
+      explanation: "รายการแผนทดสอบประเภท 'Film' ที่พร้อมเข้ากระบวนการทดสอบ"
     },
     {
       status: "Complete",
@@ -123,7 +123,9 @@ export class ProductionService {
   ]
 
   public getInformation(): Observable<InformationViewModel[]> {
-    return of(this.info);
+    return of(this.info).pipe(
+      delay(500)
+    );
   }
 
   public queryMonitorGrid(param: any): Observable<LoadResult<ProductionStatusViewModel>> {

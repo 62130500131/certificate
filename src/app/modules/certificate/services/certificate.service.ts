@@ -208,7 +208,7 @@ export class CertificateService {
 
     public getMaterialDataSource() {
         return of(this.materialDataSource).pipe(
-            delay(0)
+            delay(500)
         )
     }
 

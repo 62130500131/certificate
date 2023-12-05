@@ -9,6 +9,7 @@ import { QualityAssuranceService } from '../services/quality-assurance.service';
 import DataSource from 'devextreme/data/data_source';
 import { lastValueFrom } from 'rxjs';
 import { DxDataGridComponent } from 'devextreme-angular';
+import { SharedService } from 'src/app/modules/shared/services/Shared.service';
 
 @Component({
   selector: 'qa-status',
@@ -161,11 +162,14 @@ export class QualityAssuranceStatusComponent implements OnInit {
   constructor(public _modalService: BsModalService,
     public _router: Router,
     private _productionService: ProductionService,
-    private _qaService: QualityAssuranceService) { }
+    private _qaService: QualityAssuranceService,
+    private _sharedService: SharedService) { }
 
   ngOnInit() {
+    this._sharedService.showLoading();
     this._productionService.getInformation().subscribe(res => {
       this.info = res;
+      this._sharedService.hideLoading();
     })
 
     this.dataSourceCompleteStatus = new DataSource({
