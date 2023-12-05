@@ -337,8 +337,9 @@
                     <label for="dateSampleReady" class="form-label mt-2">Date</label>
                 </div>
                 <div class="col-3">
-                    <dx-date-box type="date" [value]="dateSampleReady " displayFormat="dd-MMM-yyyy" [inputAttr]="{ 'aria-label': 'Date' }"></dx-date-box>
-                        <!-- <date-picker [value]="dateSampleReady" (onUpdate)="dateSampleReady = $event.value">
+                    <dx-date-box type="date" [value]="dateSampleReady " displayFormat="dd-MMM-yyyy"
+                        [inputAttr]="{ 'aria-label': 'Date' }"></dx-date-box>
+                    <!-- <date-picker [value]="dateSampleReady" (onUpdate)="dateSampleReady = $event.value">
                         </date-picker> -->
                 </div>
             </div>
@@ -504,14 +505,21 @@
             </div>
         </div>
         <div class="row mt-2 text-center">
-            <div class="col-6 offset-3 text-center">
+            <div class="col-6 offset-3 text-center" *ngIf="!isEdit">
                 <input #fileInput class="form-control rounded-pill" #myInput type="file" name="filename"
                     (change)="handleFileInput($event)" [value]="img">
+            </div>
+            <div class="col-6 offset-3 text-start" style="margin-left: 28%;" *ngIf="isEdit">
+                <input #fileInput class="form-control rounded-pill" #myInput type="file" name="filename" id="inputField"
+                (change)="handleFileInput($event)" [value]="img" [disabled]="true" placeholder="testResult.xlsx" [disabled]="true">
+            </div>
+            <div class="col-1" *ngIf="isEdit">
+                <label for="inputField" class="btn btn-danger ms-2" (click)="isEdit = false">Clear</label>
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-12 text-center">
-                <button class="btn btn-sm btn-primary" [disabled]="!fileToUpload || !selectMillorExcel"
+                <button class="btn btn-sm btn-primary" [disabled]="(!fileToUpload || !selectMillorExcel) && !isEdit"
                     (click)="onClickConfirmUpload()"><i class="fa-solid fa-upload"></i> Upload</button>
                 <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
                     Cancel</button>
