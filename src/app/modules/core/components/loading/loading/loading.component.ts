@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SharedService } from 'src/app/modules/shared/services/Shared.service';
+import { SharedService } from 'src/app/modules/shared/services/shared.service';
 
 @Component({
   selector: 'loading',

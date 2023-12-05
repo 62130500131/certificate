@@ -3,7 +3,7 @@ import { CertificateEntryListViewModel, ReadResult } from '../../models/certific
 import { Router } from '@angular/router';
 import { CertificateService } from '../../services/certificate.service';
 import Swal from 'sweetalert2';
-import { SharedService } from 'src/app/modules/shared/services/Shared.service';
+import { SharedService } from 'src/app/modules/shared/services/shared.service';
 
 @Component({
   selector: 'app-certificate-entry',
