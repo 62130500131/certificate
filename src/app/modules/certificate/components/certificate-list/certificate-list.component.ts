@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import { CertificateService } from '../../services/certificate.service';
 import { catchError, finalize, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { SharedService } from 'src/app/modules/shared/services/Shared.service';
+import { SharedService } from 'src/app/modules/shared/services/shared.service';
 
 @Component({
   selector: 'app-certificate-list',

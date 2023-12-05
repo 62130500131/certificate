@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MappingCertificateSearchParam, ShipmentInfoViewModel } from '../../models/do.model';
 import { Router } from '@angular/router';
 import { MapCertificateService } from '../../services/map-certificate.sevice';
-import { SharedService } from 'src/app/modules/shared/services/Shared.service';
+import { SharedService } from 'src/app/modules/shared/services/shared.service';
 
 @Component({
   selector: 'do-page',

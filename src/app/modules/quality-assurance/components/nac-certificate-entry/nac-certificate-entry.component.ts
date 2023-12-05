@@ -76,7 +76,7 @@ export class NacCertificateEntryComponent implements OnInit {
   }
 
   public onClickViewDetail(): void {
-    window.open('/assets/pdfs/TMTCert.pdf', '_blank');
+    window.open('./assets/pdfs/TMTCert.pdf', '_blank');
   }
 
 }

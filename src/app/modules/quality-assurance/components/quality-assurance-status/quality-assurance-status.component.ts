@@ -9,7 +9,7 @@ import { QualityAssuranceService } from '../services/quality-assurance.service';
 import DataSource from 'devextreme/data/data_source';
 import { lastValueFrom } from 'rxjs';
 import { DxDataGridComponent } from 'devextreme-angular';
-import { SharedService } from 'src/app/modules/shared/services/Shared.service';
+import { SharedService } from 'src/app/modules/shared/services/shared.service';
 
 @Component({
   selector: 'qa-status',

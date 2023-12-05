@@ -129,7 +129,8 @@
                       </td>
                       <td style="min-width: 230px;"> <input class="form-control" [(ngModel)]="item.millDesc" /> </td>
                       <td style="min-width: 400px;"> <dx-select-box displayExpr="text" valueExpr="value"
-                          [items]="materialDataSource" [(ngModel)]="item.tmtMaterial" [searchEnabled]="true"></dx-select-box> </td>
+                          [items]="materialDataSource" [(ngModel)]="item.tmtMaterial"
+                          [searchEnabled]="true"></dx-select-box> </td>
                       <td style="min-width: 70px;"> <input class="form-control" [(ngModel)]="item.grade" /> </td>
                       <td style="min-width: 70px;"> <input class="form-control" [(ngModel)]="item.heatNo" /> </td>
                       <td style="min-width: 100px;"> <input class="form-control right-form"
@@ -178,11 +179,12 @@
 
                     <tr *ngFor="let item of certificateResultInfo.results" class="overflow-auto" style="width: 100%;">
                       <td style="min-width: 25px;"> <button class="btn" (click)="onClickAppendMaterial()">
-                        <i class="fa-solid fa-check-to-slot icon-info click"></i></button>
-                    </td>
+                          <i class="fa-solid fa-check-to-slot icon-info click"></i></button>
+                      </td>
                       <td style="min-width: 230px;"> <input class="form-control" [(ngModel)]="item.productNo" /> </td>
                       <td style="min-width: 400px;"> <dx-select-box displayExpr="text" valueExpr="value"
-                          [items]="materialDataSource" [(ngModel)]="item.tmtMaterial" [searchEnabled]="true"></dx-select-box> </td>
+                          [items]="materialDataSource" [(ngModel)]="item.tmtMaterial"
+                          [searchEnabled]="true"></dx-select-box> </td>
                       <td style="min-width: 70px;"> <input class="form-control" [(ngModel)]="item.grade" /> </td>
                       <td style="min-width: 70px;"> <input class="form-control" [(ngModel)]="item.heatNo" /> </td>
                       <td style="min-width: 100px;"> <input class="form-control right-form" [(ngModel)]="item.mass" />
