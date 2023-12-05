@@ -27,60 +27,6 @@ export class ProductionStatusSearchParam {
     }
 
 }
-
-export class ProductionStatusMonitorViewModel {
-
-    productionOrder: string;
-    itemNo: number;
-    materialCode: string;
-    materialDesc: string;
-    qty: number;
-    soldTo: string;
-    soldToName: string;
-    grDate: string;
-    status: string;
-    unit: string;
-
-    constructor() {
-        this.productionOrder = '';
-        this.itemNo = 0;
-        this.materialCode = '';
-        this.materialDesc = '';
-        this.qty = 0;
-        this.soldTo = '';
-        this.soldToName = '';
-        this.grDate = '';
-        this.status = '';
-        this.unit = '';
-    }
-}
-
-export class ProductionStatusCompleteViewModel {
-
-    productionOrder: string;
-    itemNo: number;
-    materialCode: string;
-    materialDesc: string;
-    qty: number;
-    soldTo: string;
-    soldToName: string;
-    grDate: string;
-    status: string;
-    unit: string;
-
-    constructor() {
-        this.productionOrder = '';
-        this.itemNo = 0;
-        this.materialCode = '';
-        this.materialDesc = '';
-        this.qty = 0;
-        this.soldTo = '';
-        this.soldToName = '';
-        this.grDate = '';
-        this.status = '';
-        this.unit = '';
-    }
-}
 export class ProductionStatusViewModel {
 
     productionOrder: string;

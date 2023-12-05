@@ -61,7 +61,7 @@
                     <div class="row mt-4">
                         <div class="col-12">
 
-                            <dx-data-grid id="gridContainer" [dataSource]="dataSourceMonitorStatus"
+                            <dx-data-grid #monitorGrid id="gridContainer" [dataSource]="dataSourceMonitorStatus"
                                 [remoteOperations]="false" [allowColumnReordering]="true"
                                 [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
                                 [showColumnLines]="true" [showRowLines]="true">
@@ -212,7 +212,7 @@
                     <div class="row mt-4">
                         <div class="col-12">
 
-                            <dx-data-grid id="gridContainer" [dataSource]="dataSourceCompleteStatus"
+                            <dx-data-grid #completeGrid id="gridContainer" [dataSource]="dataSourceCompleteStatus"
                                 [remoteOperations]="false" [allowColumnReordering]="true"
                                 [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
                                 [showColumnLines]="true" [showRowLines]="true">

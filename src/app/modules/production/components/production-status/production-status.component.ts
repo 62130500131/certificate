@@ -1,9 +1,11 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { InformationViewModel, ProductionStatusCompleteViewModel, ProductionStatusMonitorViewModel, ProductionStatusSearchParam } from '../../models/production.model';
+import { InformationViewModel, ProductionStatusSearchParam, ProductionStatusViewModel } from '../../models/production.model';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import Swal from 'sweetalert2';
 import { ProductionService } from '../../services/production.service';
+import DataSource from 'devextreme/data/data_source';
+import { DxDataGridComponent } from 'devextreme-angular';
 
 @Component({
   selector: 'production-status',
@@ -12,6 +14,8 @@ import { ProductionService } from '../../services/production.service';
 })
 export class ProductionStatusComponent implements OnInit {
 
+  public dataSourceCompleteStatus!: DataSource;
+  public dataSourceMonitorStatus!: DataSource;
   public isLoading: boolean = false;
   public modalRef!: BsModalRef;
   public paramComplete: ProductionStatusSearchParam = new ProductionStatusSearchParam();
@@ -28,98 +32,13 @@ export class ProductionStatusComponent implements OnInit {
   public selectedStatusFilm: string = "filmReady";
   public info: InformationViewModel[] = [];
 
+  public dataMonitor!: any;
+
   @ViewChild('updateStatusWaitSample') public updateStatusWaitSample!: TemplateRef<any>;
   @ViewChild('updateStatusWaitFilm') public updateStatusWaitFilm!: TemplateRef<any>;
   @ViewChild('information') public information!: TemplateRef<any>;
-
-  public dataSourceMonitorStatus: ProductionStatusMonitorViewModel[] = [{
-    productionOrder: "1080035252",
-    itemNo: 1,
-    materialCode: "1HC10000-015L",
-    materialDesc: "เหล็กม้วนดำ SS400 1.50mmxกว้างใดๆxC Long",
-    qty: 20,
-    soldTo: "10000001",
-    soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-    grDate: (new Date()).toString(),
-    status: "Wait Sample",
-    unit: "KG"
-  },
-  {
-    productionOrder: "1080035294",
-    itemNo: 2,
-    materialCode: "2CTFB",
-    materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
-    qty: 10,
-    soldTo: "10000001",
-    soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-    grDate: (new Date()).toString(),
-    status: "Wait Film",
-    unit: "KG"
-  }
-  ];
-
-  public dataSourceCompleteStatus: ProductionStatusCompleteViewModel[] = [
-    {
-      productionOrder: "1080035252",
-      itemNo: 1,
-      materialCode: "1HC10000-015L",
-      materialDesc: "เหล็กม้วนดำ SS400 1.50mmxกว้างใดๆxC Long",
-      qty: 5,
-      soldTo: "10000001",
-      soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-      grDate: (new Date()).toString(),
-      status: "Sample Ready",
-      unit: "KG"
-    },
-    {
-      productionOrder: "1080035295",
-      itemNo: 2,
-      materialCode: "2CTFB",
-      materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
-      qty: 10,
-      soldTo: "10000001",
-      soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-      grDate: (new Date()).toString(),
-      status: "Cancel",
-      unit: "KG"
-    },
-    {
-      productionOrder: "1080035293",
-      itemNo: 3,
-      materialCode: "1HC10000-015L",
-      materialDesc: "เหล็กม้วนดำ SS400 1.50mmxกว้างใดๆxC Long",
-      qty: 20,
-      soldTo: "10000001",
-      soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-      grDate: (new Date()).toString(),
-      status: "Film Ready",
-      unit: "KG"
-    },
-    {
-      productionOrder: "1080035295",
-      itemNo: 4,
-      materialCode: "2CTFB",
-      materialDesc: "เหล็กแผ่นดำ ตัดซอยตามขนาด",
-      qty: 10,
-      soldTo: "10000001",
-      soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-      grDate: (new Date()).toString(),
-      status: "Cancel",
-      unit: "KG"
-    },
-    {
-      productionOrder: "1080035252",
-      itemNo: 5,
-      materialCode: "1HC10000-015L",
-      materialDesc: "เหล็กม้วนดำ SS400 1.50mmxกว้างใดๆxC Long",
-      qty: 5,
-      soldTo: "10000001",
-      soldToName: "บริษัท ซี เอ็ม ซี สตีลเทรดดิ้ง จำกัด มหาชน",
-      grDate: (new Date()).toString(),
-      status: "Complete",
-      unit: "KG"
-    }
-  ];
+  @ViewChild('monitorGrid') public monitorGrid!: DxDataGridComponent;
+  @ViewChild('completeGrid') public completeGrid!: DxDataGridComponent;
 
   public dateDataSource: any[] = [
     {
@@ -191,6 +110,18 @@ export class ProductionStatusComponent implements OnInit {
     this._productionService.getInformation().subscribe(res => {
       this.info = res;
     })
+
+    this.dataSourceCompleteStatus = new DataSource({
+      load: (options) => {
+        return this._productionService.queryCompleteGrid({ options }).toPromise();
+      }
+    })
+
+    this.dataSourceMonitorStatus = new DataSource({
+      load: (options) => {
+        return this._productionService.queryMonitorGrid({ options }).toPromise();
+      }
+    })
   }
 
   public onProductionCompleteDateRangeChanged($event: any): void {
@@ -214,6 +145,7 @@ export class ProductionStatusComponent implements OnInit {
 
 
   public rowIndex: number = 0;
+
   public OnClickUpdateStatus(cell: any): void {
     if (cell.data.status == 'Wait Sample') {
       this.rowIndex = cell.rowIndex;
@@ -235,10 +167,11 @@ export class ProductionStatusComponent implements OnInit {
         class: 'modal-xl'
       });
     }
+    this.dataMonitor = cell.data;
   }
 
   public OnClickDownStatus(cell: any): void {
-    if (cell.data.status == 'Cancel') {
+    if (cell.data.status === 'Cancel') {
       Swal.fire({
         title: "Do you want to down status to wait sample?",
         icon: "question",
@@ -247,9 +180,16 @@ export class ProductionStatusComponent implements OnInit {
         cancelButtonText: "No",
         showCancelButton: true,
         showCloseButton: true
+      }).then(result => {
+        if (result.isConfirmed) {
+          this._productionService.undoStatus(cell.data)
+            .subscribe(() => { });
+          this.completeGrid.instance.refresh();
+          this.monitorGrid.instance.refresh();
+        }
       });
     }
-    if (cell.data.status == 'Sample Ready') {
+    if (cell.data.status === 'Sample Ready') {
       Swal.fire({
         title: "Do you want to down status to wait sample?",
         icon: "question",
@@ -258,9 +198,16 @@ export class ProductionStatusComponent implements OnInit {
         cancelButtonText: "No",
         showCancelButton: true,
         showCloseButton: true
+      }).then(result => {
+        if (result.isConfirmed) {
+          this._productionService.undoStatus(cell.data)
+            .subscribe(() => { });
+          this.completeGrid.instance.refresh();
+          this.monitorGrid.instance.refresh();
+        }
       });
     }
-    if (cell.data.status == 'Film Ready') {
+    if (cell.data.status === 'Film Ready') {
       Swal.fire({
         title: "Do you want to down status to wait film?",
         icon: "question",
@@ -269,6 +216,13 @@ export class ProductionStatusComponent implements OnInit {
         cancelButtonText: "No",
         showCancelButton: true,
         showCloseButton: true
+      }).then(result => {
+        if (result.isConfirmed) {
+          this._productionService.undoStatus(cell.data)
+            .subscribe(() => { });
+          this.completeGrid.instance.refresh();
+          this.monitorGrid.instance.refresh();
+        }
       });
     }
   }
@@ -281,7 +235,10 @@ export class ProductionStatusComponent implements OnInit {
   }
   public onClickConfirm(): void {
     if (this.selectedStatus == "sampleReady") {
-      this.dataSourceMonitorStatus.splice(this.rowIndex, 1);
+      this._productionService.updateStatus(this.dataMonitor, this.selectedStatus)
+        .subscribe(() => { });
+      this.completeGrid.instance.refresh();
+      this.monitorGrid.instance.refresh();
       this.modalRef.hide();
     }
     if (this.selectedStatus == "cancelRadio") {
@@ -295,7 +252,10 @@ export class ProductionStatusComponent implements OnInit {
         showCloseButton: true
       }).then((result) => {
         if (result.isConfirmed) {
-          this.dataSourceMonitorStatus.splice(this.rowIndex, 1);
+          this._productionService.updateStatus(this.dataMonitor, this.selectedStatus)
+            .subscribe(() => { });
+          this.completeGrid.instance.refresh();
+          this.monitorGrid.instance.refresh();
           this.modalRef.hide();
         }
       });
@@ -304,7 +264,10 @@ export class ProductionStatusComponent implements OnInit {
 
   public onClickConfirmWaitFilm(): void {
     if (this.selectedStatusFilm == "filmReady") {
-      this.dataSourceMonitorStatus.splice(this.rowIndex, 1);
+      this._productionService.updateStatus(this.dataMonitor, this.selectedStatusFilm)
+        .subscribe(() => { });
+      this.completeGrid.instance.refresh();
+      this.monitorGrid.instance.refresh();
       this.modalRef.hide();
     }
     if (this.selectedStatusFilm == "cancelRadio") {
@@ -318,7 +281,10 @@ export class ProductionStatusComponent implements OnInit {
         showCloseButton: true
       }).then((result) => {
         if (result.isConfirmed) {
-          this.dataSourceMonitorStatus.splice(this.rowIndex, 1);
+          this._productionService.updateStatus(this.dataMonitor, this.selectedStatusFilm)
+            .subscribe(() => { });
+          this.completeGrid.instance.refresh();
+          this.monitorGrid.instance.refresh();
           this.modalRef.hide();
         }
       });

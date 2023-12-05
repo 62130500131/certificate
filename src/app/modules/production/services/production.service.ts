@@ -61,7 +61,7 @@ export class ProductionService {
       unit: "KG"
     },
     {
-      productionOrder: "1080035252",
+      productionOrder: "1080035258",
       itemNo: 1,
       materialCode: "1HC10000-015L",
       materialDesc: "เหล็กม้วนดำ SS400 1.50mmxกว้างใดๆxC Long",
@@ -127,7 +127,7 @@ export class ProductionService {
   }
 
   public queryMonitorGrid(param: any): Observable<LoadResult<ProductionStatusViewModel>> {
-    const data = this.dataSource.filter(e => e.status != 'Complete' && e.status != 'Cancel');
+    const data = this.dataSource.filter(e => e.status != 'Complete' && e.status != 'Cancel' && e.status != 'Film Ready' && e.status != 'Sample Ready');
     return of({
       data: data,
       totalCount: data.length
@@ -135,11 +135,56 @@ export class ProductionService {
   }
 
   public queryCompleteGrid(param: any): Observable<LoadResult<ProductionStatusViewModel>> {
-    const data = this.dataSource.filter(e => e.status == 'Complete' || e.status == 'Cancel');
+    const data = this.dataSource.filter(e => e.status == 'Complete' || e.status == 'Cancel' || e.status == 'Sample Ready' || e.status == 'Film Ready');
     return of({
       data: data,
       totalCount: data.length
     })
+  }
+
+  public undoStatus(param: ProductionStatusViewModel): Observable<void> {
+    let item = this.dataSource.find(x => x.productionOrder === param.productionOrder && x.itemNo === param.itemNo)
+    if (!!item) {
+      if (item.status === 'Cancel') {
+        item.status = 'Wait Sample'
+        return of();
+      }
+      else if (item.status === 'Sample Ready') {
+        item.status = 'Wait Sample'
+        return of();
+      }
+      else if (item.status === 'Film Ready') {
+        item.status = 'Wait Film'
+        return of();
+      }
+    }
+    return of()
+  }
+
+  public updateStatus(param: ProductionStatusViewModel, status: string): Observable<void> {
+    let item = this.dataSource.find(x => x.productionOrder === param.productionOrder && x.itemNo === param.itemNo);
+    if (!!item) {
+      if (item.status === 'Wait Sample') {
+        switch (status) {
+          case "sampleReady":
+            item.status = 'Sample Ready';
+            break;
+          default:
+            item.status = 'Cancel';
+            break;
+        }
+      }
+      else if (item.status === 'Wait Film') {
+        switch (status) {
+          case "filmReady":
+            item.status = 'Film Ready';
+            break;
+          default:
+            item.status = 'Cancel';
+            break;
+        }
+      }
+    } return of()
   }
 
 }
