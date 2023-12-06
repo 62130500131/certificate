@@ -197,7 +197,6 @@ export class CustomerContractComponent implements OnInit {
 
   public onClickEditContact(cell: any): void {
     this.isEdit = true;
-    console.log(cell)
     this.addParam.customerCode = cell.data.customerCode ?? null
     this.addParam.customerName = cell.data.customerName ?? null
     this.addParam.district = cell.data.district ?? null

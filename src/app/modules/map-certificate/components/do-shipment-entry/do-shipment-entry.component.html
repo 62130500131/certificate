@@ -52,13 +52,15 @@
                             <label for="">Customer Contact :</label>
                         </div>
                         <div class="col-2">
-                            <input appRequiredInput id="customerContact" type="text" class="form-control" [(ngModel)]="shipmentInfo.customerContact">
+                            <input appRequiredInput id="customerContact" type="text" class="form-control"
+                                [(ngModel)]="shipmentInfo.customerContact">
                         </div>
                         <div class="col-2 offset-2 text-end pt-1">
                             <label>Line :</label>
                         </div>
                         <div class="col-2">
-                            <input appRequiredInput id="line" type="text" class="form-control" [(ngModel)]="shipmentInfo.line">
+                            <input appRequiredInput id="line" type="text" class="form-control"
+                                [(ngModel)]="shipmentInfo.line">
                         </div>
                     </div>
                     <div class="row mt-2 mb-4">
@@ -66,7 +68,8 @@
                             <label for="">Telephone :</label>
                         </div>
                         <div class="col-2">
-                            <input appRequiredInput id="customerContact" type="text" class="form-control" [(ngModel)]="shipmentInfo.contactTel">
+                            <input appRequiredInput id="customerContact" type="text" class="form-control"
+                                [(ngModel)]="shipmentInfo.contactTel">
                         </div>
                     </div>
                     <hr>
@@ -135,10 +138,83 @@
                             </div>
                         </div>
                     </div>
+                    <!-- <div class="row mt-4">
+                        <div class="col">
+                            <div class="row">
+                                <input #fileInput class="form-control rounded-pill" type="file" id="fileInput"
+                                    (change)="handleFileInput($event)" style="display: none;">
+                                <div class="col-1 text-center">
+                                    <label for="fileInput">
+                                        <i class="fa-regular fa-square-plus click"
+                                            style="color: green; font-size: xx-large;"></i>
+                                    </label>
+
+                                </div>
+                                <ng-container *ngFor="let item of fileToUploads">
+                                    <div class="col-1 text-center">
+                                        <i class="fa-solid fa-file-lines file-icon" (click)="Test(item)"></i><br>
+                                        <span>{{item.name}}</span>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div> -->
+                    <hr class="mt-4">
+                    <div class="row mt-4">
+                        <div class="col">
+                            <h6>Attachment File</h6>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">                            
+                            <input type="checkbox" id="standard" class="form-check-input me-2">
+                            <label for="standard" class="click">ใบรับรองการสั่งซื้อสินค้า</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-end">
+                            <input #fileInput class="form-control rounded-pill" type="file" id="fileInput"
+                                (change)="handleFileInput($event)" style="display: none;">
+                            <label>
+                                <button class="btn btn-sm btn-success" (click)="upload(fileInput)">
+                                    <i class="fa-solid fa-plus"></i>
+                                    Attach
+                                </button>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <dx-data-grid id="gridContainer" [dataSource]="fileToUploads" [remoteOperations]="false"
+                                [allowColumnReordering]="true" [rowAlternationEnabled]="false" [showBorders]="true"
+                                [width]="'100%'" [showColumnLines]="true" [showRowLines]="true">
+
+                                <dxi-column caption="No." width="60" alignment="center" cellTemplate="noTemplate">
+                                    <div *dxTemplate="let cell of 'noTemplate'">
+                                        {{ cell.rowIndex + 1 }}
+                                    </div>
+                                </dxi-column>
+                                <dxi-column dataField="file" caption="Description" minWidth="150"
+                                    alignment="left"></dxi-column>
+                                <dxi-column dataField="uploadTime" caption="Upload Time" width="150" alignment="center"
+                                    cellTemplate="dateTimeTemplate"></dxi-column>
+                                <div *dxTemplate="let cell of 'dateTimeTemplate'">
+                                    {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
+                                </div>
+                            </dx-data-grid>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col">
+
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-12 text-center mt-4">
-                            <button class="btn btn-sm btn-primary" [disabled]="!canSent || !shipmentInfo.customerContact || !shipmentInfo.contactTel || !shipmentInfo.line" (click)="onClickSentLink()"><i
-                                    class="fa-regular fa-paper-plane"></i> Sent
+                            <button class="btn btn-sm btn-primary"
+                                [disabled]="!canSent || !shipmentInfo.customerContact || !shipmentInfo.contactTel || !shipmentInfo.line"
+                                (click)="onClickSentLink()"><i class="fa-regular fa-paper-plane"></i> Sent
                                 Link</button>
                             <button class="btn btn-sm btn-success ms-2 me-2" (click)="onClickSave()"><i
                                     class="fa-regular fa-floppy-disk"></i> Save</button>

@@ -5,7 +5,8 @@ import { SharedModule } from '../shared/shared.module';
     declarations: [
         comps.MappingMaterialComponent,
         comps.CustomerContractComponent,
-        comps.SyncDataComponent
+        comps.SyncDataComponent,
+        comps.MasterMillComponent
     ],
     imports: [
         SharedModule
