@@ -63,7 +63,7 @@
     </div>
     <div class="collapse navbar-collapse text-end" style="flex-grow: 0;" id="navbarSupportedContent">
 
-      <label class="me-2"><i class="fa-solid fa-circle-user me-2"></i>Connex</label>
+      <label *ngIf="isCustomer" class="me-2"><i class="fa-solid fa-circle-user me-2"></i>บริษัท ธุรกิจเหล็กดี จำกัด</label>
       <ul class="navbar-nav">
         <li class="nav-item">
           <a [routerLink]="['/login-page']" class="nav-link">
