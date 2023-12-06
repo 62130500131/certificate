@@ -23,7 +23,11 @@ export class NavBarComponent implements OnInit {
   }
 
   public get isShow() {
-    return this.router.url != '/login-page' && this.router.url != '/customer-entry' && this.router.url != '/customer-page'
+    return this.router.url != '/login-page'
+  }
+
+  public get isCustomer() {
+    return this.router.url == '/customer-entry'
   }
 
   public get url() {

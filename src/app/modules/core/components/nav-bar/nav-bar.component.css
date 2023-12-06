@@ -12,3 +12,12 @@ a:hover {
 .nav-font {
     font-size: 0.65rem;
 }
+
+.btn-logout {
+    background-color: #184c6d;
+    color: white;
+    border-radius: 5px;
+    min-width: 50px;
+    min-height: 30px;
+    border-color: white;
+}
