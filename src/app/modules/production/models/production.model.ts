@@ -23,7 +23,7 @@ export class ProductionStatusSearchParam {
         this.selectSampleReady = 'sampleReady';
         this.selectFilmReady = 'filmReady';
         this.selectCancel = 'cancel';
-        this.selectComplete = '';
+        this.selectComplete = 'complete';
         this.soldTo = '';
         this.productionOrder = '';
     }
