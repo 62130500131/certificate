@@ -19,6 +19,7 @@ export class DoShipmentEntryComponent implements OnInit {
   public isStamp: boolean = true;
   public isType3: boolean = false;
   public selectStemp: string = 'isStamp';
+  public fileToUploads: any[] = [];
   public modalRef!: BsModalRef;
   public selected: DoShipmentDetail = new DoShipmentDetail();
   public shipmentInfo: ShipmentInfoViewModel = new ShipmentInfoViewModel();
@@ -64,6 +65,10 @@ export class DoShipmentEntryComponent implements OnInit {
         this.checkCanSentLink();
       })
 
+  }
+
+  public handleFileInput($event: any): void {
+    this.fileToUploads.push({ file:$event?.target?.files[0].name, uploadTime: new Date()});
   }
 
   public onClickExit(): void {
@@ -214,4 +219,10 @@ export class DoShipmentEntryComponent implements OnInit {
     this.service.saveMapCertificate(param).subscribe()
     this.router.navigate(['mapping-certificate'])
   }
+
+
+  public upload(fileInput: any): void {
+    fileInput?.click()
+  }
+
 }

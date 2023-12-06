@@ -129,10 +129,9 @@ export class ProductionService {
   }
 
   public queryMonitorGrid(param: any): Observable<LoadResult<ProductionStatusViewModel>> {
-    const data = this.dataSource.filter(e => e.status != 'Complete' && e.status != 'Cancel' && e.status != 'Film Ready' && e.status != 'Sample Ready');
     return of({
-      data: data,
-      totalCount: data.length
+      data: this.dataSource,
+      totalCount: this.dataSource.length
     })
   }
 

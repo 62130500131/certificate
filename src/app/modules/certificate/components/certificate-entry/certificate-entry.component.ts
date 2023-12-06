@@ -42,7 +42,6 @@ export class CertificateEntryComponent implements OnInit {
       let guid = split[split.length - 1]
       if (guid != "0") {
         this.service.getCertificateInfo(guid).subscribe(res => {
-          console.log(res)
           this.src = `https://localhost:7130/api/Pdf/File/${res.file?.fileName}`
           this.certificateResultInfo = res;
           if (!!res.guid) {

@@ -1,0 +1,149 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="card shadow-sm p-2 mb-2 bg-white rounded">
+        <div class="card-header">
+          <h6>Mill</h6>
+        </div>
+        <div class="card-body">
+          <div class="row mt-4">
+            <div class="col-2 text-end pt-2">
+              <label class="form-label" for="mill">Mill</label>
+            </div>
+            <div class="col-3">
+              <input [(ngModel)]="param.mill" id="mill" class="form-control" type="text">
+            </div>
+          </div>
+
+          <div class="row p-2">
+            <div class="col-3 offset-2" style="padding-left: inherit;">
+              <button class="btn btn-sm btn-success" (click)="onClickSearch()"><i
+                  class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
+              <button class="btn btn-sm btn-secondary ms-2" (click)="onClickClear()"><i
+                  class="fa-solid fa-broom me-1"></i>Clear</button>
+            </div>
+          </div>
+          <hr>
+
+
+          <!-- <div class="row pt-2">
+            <div class="col-12 text-end">
+              <button class="btn btn-sm btn-success" (click)="onClickImport()"><i
+                  class="fa-solid fa-file-import me-1"></i>Import</button>
+              <button class="btn btn-sm btn-primary ms-2" (click)="onClickExport()"><i
+                  class="fa-solid fa-file-excel me-1"></i>Export</button>
+            </div>
+          </div> -->
+
+          <div class="row mt-2">
+            <div class="col-12">
+              <dx-data-grid #grid id="grid" [dataSource]="dataSource" [remoteOperations]="false"
+                [allowColumnReordering]="true" [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
+                [showColumnLines]="true" [showRowLines]="true">
+
+                <dxi-column width="40" alignment="center" cellTemplate="toolsTemplate">
+                  <div *dxTemplate="let cell of 'toolsTemplate'">
+                    <i style="cursor: pointer;" class="fa-solid fa-pen-to-square icon-edit"
+                      (click)="onClickEdit(cell.data)"></i>
+                  </div>
+                </dxi-column>
+                <dxi-column dataField="millCode" caption="Mill" width="100" alignment="center"></dxi-column>
+                <dxi-column dataField="millDesc" caption="Mill Description" minWidth="250" alignment="left"></dxi-column>
+                <dxi-column dataField="modifiedBy" caption="Modified By" width="150" alignment="left"></dxi-column>
+                <dxi-column dataField="modifiedTime" caption="Modified Time" width="120" alignment="center" cellTemplate="dateTemplate"></dxi-column>
+
+
+
+                <div *dxTemplate="let cell of 'dateTemplate'">
+                  {{ cell.value | date: 'dd-MMM-yyyy HH:mm' }}
+                </div>
+
+              </dx-data-grid>
+
+              <div class="row mt-2">
+                <div class="col text-end">
+                  <i class="fa-solid fa-pen-to-square icon-edit"></i>
+                  <label class="ms-2 legend">
+                    Edit
+                  </label>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <ng-template #editContact>
+  <div class="modal-header">
+    <h5 class="modal-title">Edit Customer Contact</h5>
+  </div>
+
+  <div class="modal-body">
+
+    <div class="row mt-2">
+      <div class="col-2 text-end">
+        <label class="form-label">Customer : </label>
+      </div>
+
+      <div class="col-3">
+        <label class="form-label">{{addParam.customerCode}}</label>
+      </div>
+      <div class="col-2 text-end">
+        <label class="form-label">Contact Name : </label>
+
+      </div>
+      <div class="col-3">
+        <label class="form-label">{{addParam.contactName}}</label>
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-2 text-end">
+        <label class="form-label">District : </label>
+
+      </div>
+      <div class="col-3">
+        <label class="form-label">{{addParam.district}}</label>
+      </div>
+      <div class="col-2 text-end">
+        <label class="form-label">Province : </label>
+      </div>
+
+      <div class="col-3">
+        <label class="form-label">{{addParam.province}}</label>
+      </div>
+    </div>
+
+    <div class="row mt-2">
+
+      <div class="col-2 text-end">
+        <label class="form-label pt-1">Telephone : </label>
+
+      </div>
+      <div class="col-3">
+        <label class="form-label pt-1">{{addParam.contactTel}}</label>
+      </div>
+      <div class="col-2 text-end pt-1">
+        <label class="form-label">Line : </label>
+
+      </div>
+      <div class="col-3">
+        <input class="form-control" [(ngModel)]="addParam.line">
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-12 text-center">
+        <button class="btn btn-sm btn-success" (click)="onClickConfirm()"><i class="fa-regular fa-circle-check"></i>
+          Confirm</button>
+        <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
+          Cancel</button>
+      </div>
+    </div>
+  </div>
+</ng-template> -->

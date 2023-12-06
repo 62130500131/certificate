@@ -3,10 +3,20 @@
         <div class="col-xl-12">
             <div class="card shadow-sm p-2 mb-2 bg-white rounded">
                 <div class="card-header">
-                    <h6>Production Monitor</h6>
+                    <h6>Production Order</h6>
                 </div>
                 <div class="card-body">
                     <div class="row mt-4">
+                        <div class="col-2 text-end pt-2">
+                            <label class="form-label" for="materialCode">Production Order</label>
+                        </div>
+                        <div class="col-3">
+                            <input id="materialCode" class="form-control" type="text"
+                                [(ngModel)]="paramMonitor.productionOrder">
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
                         <div class="col-2 text-end pt-2">
                             <label class="form-label" for="materialCode">Material</label>
                         </div>
@@ -37,13 +47,25 @@
                         <div class="col-2 text-end pt-2">
                             <label class="form-label" for="materialdesc">Status</label>
                         </div>
-                        <div class="col-3 mt-2">
+                        <div class="col mt-2">
                             <input [(ngModel)]="paramMonitor.selectWaitSample" class="form-check-input" type="checkbox"
                                 id="waitSample">
                             <label for="waitSample" class="mx-2">Wait Sample</label>
                             <input [(ngModel)]="paramMonitor.selectWaitFilm" class="form-check-input" type="checkbox"
                                 id="waitFilm">
                             <label for="waitFilm" class="mx-2">Wait Film</label>
+                            <input [(ngModel)]="paramMonitor.selectSampleReady" class="form-check-input" type="checkbox"
+                                id="waitSample">
+                            <label for="waitSample" class="mx-2">Sample Ready</label>
+                            <input [(ngModel)]="paramMonitor.selectFilmReady" class="form-check-input" type="checkbox"
+                                id="waitFilm">
+                            <label for="waitFilm" class="mx-2">Film Ready</label>
+                            <input [(ngModel)]="paramMonitor.selectComplete" class="form-check-input" type="checkbox"
+                                id="waitSample">
+                            <label for="waitSample" class="mx-2">Complete</label>
+                            <input [(ngModel)]="paramMonitor.selectCancel" class="form-check-input" type="checkbox"
+                                id="waitFilm">
+                            <label for="waitFilm" class="mx-2">Cancel</label>
                         </div>
                     </div>
 
@@ -99,18 +121,24 @@
                                 <dxi-column dataField="status" caption="Status" dataType="string" [width]="120"
                                     alignment="center" cellTemplate="statusTemplate">
                                     <div *dxTemplate="let cell of 'statusTemplate'">
-                                        <label
-                                            [ngClass]="{'wait': cell.data.status == 'Wait Film' || cell.data.status == 'Wait Sample' }">{{
+                                        <label [ngClass]="{'wait': cell.data.status == 'Wait Film' || cell.data.status == 'Wait Sample',
+                                             'ready': cell.data.status == 'Film Ready' || cell.data.status == 'Sample Ready', 
+                                             'complete': cell.data.status == 'Complete',
+                                             'cancel': cell.data.status == 'Cancel' }">{{
                                             cell.data.status }}</label>
                                     </div>
                                 </dxi-column>
 
 
-                                <dxi-column width="60" alignment="center" cellTemplate="toolsTemplate">
+                                <dxi-column width="40" alignment="center" cellTemplate="toolsTemplate">
                                     <div *dxTemplate="let cell of 'toolsTemplate'">
-                                        <i style="cursor: pointer;" class="fa-solid fa-circle-up icon-update-status"
-                                            (click)="OnClickUpdateStatus(cell)"
-                                            [ngClass]="{'fa-solid fa-circle-up icon-update-status': cell.data.status == 'Wait Film' || cell.data.status == 'Wait Sample' , '': cell.data.status == 'Film Ready' || cell.data.status == 'Sample Ready'}"></i>
+                                        <i *ngIf="cell.data.status.includes('Wait')"
+                                            class="fa-solid fa-circle-xmark click" (click)="onClickCancel(cell)"
+                                            style="color: red;"></i>
+                                        <i *ngIf="cell.data.status.includes('Ready')"
+                                            class="fa-solid fa-rotate-left icon-delete click" (click)="onClickUndo(cell)"
+                                            style="color: red;"></i>
+                                        
                                     </div>
                                 </dxi-column>
 
@@ -122,161 +150,12 @@
 
                             <div class="row mt-2">
                                 <div class="col text-end">
-                                    <i class="fa-solid fa-circle-up icon-update-status"></i> <label
-                                        class="ms-2 legend">Update Status</label>
-
-                                    <i class="fa-solid fa-circle-info ms-2 click icon-info"
-                                        (click)="onClickViewInformation()">
-                                    </i>
-                                    <label class="ms-2 legend">
-                                        Status Details
-                                    </label>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-xl-12">
-            <div class="card shadow-sm p-2 mb-2 bg-white rounded">
-                <div class="card-header">
-                    <h6>Production Completed</h6>
-                </div>
-                <div class="card-body">
-                    <div class="row mt-4">
-                        <div class="col-2 text-end pt-2">
-                            <label class="form-label" for="materialCode">Material</label>
-                        </div>
-                        <div class="col-3">
-                            <input id="materialCode" class="form-control" type="text"
-                                [(ngModel)]="paramComplete.materialCode">
-                        </div>
-                        <div class="col-2 text-end pt-2">
-                            <label class="form-label">Production Date</label>
-                        </div>
-                        <div class="col-3">
-                            <dx-select-box displayExpr="text" valueExpr="value" [items]="dateDataSource"
-                                [(ngModel)]="paramComplete.productionDate" class="mb-2"></dx-select-box>
-                            <date-range *ngIf="paramComplete.productionDate == 0"
-                                [start-date]="paramComplete.productionFrom" [end-date]="paramComplete.productionTo"
-                                (onUpdate)="onProductionCompleteDateRangeChanged($event)">
-                            </date-range>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-2 text-end pt-2">
-                            <label class="form-label" for="materialCode">Sold to</label>
-                        </div>
-                        <div class="col-3">
-                            <input id="materialCode" class="form-control" type="text"
-                                [(ngModel)]="paramComplete.soldTo">
-                        </div>
-                        <div class="col-2 text-end pt-2">
-                            <label class="form-label" for="materialdesc">Status</label>
-                        </div>
-                        <div class="col-4 mt-2">
-                            <input [(ngModel)]="paramComplete.selectSampleReady" class="form-check-input"
-                                type="checkbox" id="cancel">
-                            <label for="cancel" class="mx-2">Sample Ready</label>
-                            <input [(ngModel)]="paramComplete.selectFilmReady" class="form-check-input" type="checkbox"
-                                id="cancel">
-                            <label for="cancel" class="mx-2">Film Ready</label>
-                            <input [(ngModel)]="paramComplete.selectCancel" class="form-check-input" type="checkbox"
-                                id="cancel">
-                            <label for="cancel" class="mx-2">Cancel</label>
-                            <input [(ngModel)]="paramComplete.selectComplete" class="form-check-input" type="checkbox"
-                                id="complete">
-                            <label for="complete" class="mx-2">Complete</label>
-                        </div>
-                    </div>
-
-                    <div class="row p-2">
-                        <div class="col offset-2" style="padding-left: inherit;">
-                            <button class="btn btn-sm btn-success "><i
-                                    class="fa-solid fa-magnifying-glass me-1"></i>Search</button>
-                            <button class="btn btn-sm btn-secondary ms-2" (click)="onClickCompleteClear()"><i
-                                    class="fa-solid fa-broom me-1"></i>Clear</button>
-                        </div>
-                    </div>
-
-                    <hr>
-
-                    <div class="row mt-4">
-                        <div class="col-12">
-
-                            <dx-data-grid #completeGrid id="gridContainer" [dataSource]="dataSourceCompleteStatus"
-                                [remoteOperations]="false" [allowColumnReordering]="true"
-                                [rowAlternationEnabled]="false" [showBorders]="true" [width]="'100%'"
-                                [showColumnLines]="true" [showRowLines]="true">
-
-
-                                <dxi-column dataField="productionOrder" caption="Production Order" dataType="number"
-                                    [width]="130" alignment="center"></dxi-column>
-                                <dxi-column dataField="itemNo" caption="No." dataType="number" [width]="40"
-                                    alignment="center" cellTemplate="rowIndexTemplate">
-                                    <div *dxTemplate="let cell of 'rowIndexTemplate'">
-                                        {{ cell.rowIndex +1 }}.
-                                    </div>
-                                </dxi-column>
-                                <dxi-column dataField="materialCode" caption="Material" dataType="string" [width]="120"
-                                    alignment="left"></dxi-column>
-                                <dxi-column dataField="materialDesc" caption="Material Description" dataType="string"
-                                    [minWidth]="240" alignment="left"></dxi-column>
-                                <dxi-column dataField="qty" caption="Quantity" dataType="number" [width]="70"
-                                    cellTemplate="numberTemplate" alignment="right">
-                                </dxi-column>
-                                <dxi-column dataField="unit" caption="Unit" dataType="string" [width]="40"
-                                    alignment="center">
-                                </dxi-column>
-                                <dxi-column dataField="soldTo" caption="Sold to" dataType="string" [width]="80"
-                                    alignment="center"></dxi-column>
-                                <dxi-column dataField="soldToName" caption="Sold to Name" dataType="string"
-                                    [width]="220" alignment="left"></dxi-column>
-                                <dxi-column dataField="grDate" caption="GR Date" dataType="string" [width]="100"
-                                    alignment="center" cellTemplate="dateTemplate">
-                                    <div *dxTemplate="let cell of 'dateTemplate'">
-                                        {{ cell.value | date: 'dd-MMM-yyyy' }}
-                                    </div>
-                                </dxi-column>
-
-                                <dxi-column dataField="status" caption="Status" dataType="string" [width]="120"
-                                    alignment="center" cellTemplate="statusTemplate">
-                                    <div *dxTemplate="let cell of 'statusTemplate'">
-                                        <label
-                                            [ngClass]="{'cancel': cell.data.status == 'Cancel' , 'complete': cell.data.status == 'Complete', 'ready': cell.data.status == 'Sample Ready' || cell.data.status == 'Film Ready' }">{{
-                                            cell.data.status }}</label>
-                                    </div>
-                                </dxi-column>
-
-                                <dxi-column width="60" alignment="center" cellTemplate="toolsTemplate">
-                                    <div *dxTemplate="let cell of 'toolsTemplate'">
-                                        <i class="fa-solid fa-rotate-left icon-delete click"
-                                            (click)="OnClickDownStatus(cell)"
-                                            [ngClass]="{'fa-solid fa-rotate-left icon-delete click': cell.data.status == 'Cancel' || cell.data.status == 'Sample Ready' || cell.data.status == 'Film Ready' , '': cell.data.status == 'Complete'}"></i>
-                                    </div>
-                                </dxi-column>
-
-                                <div *dxTemplate="let cell of 'numberTemplate'">
-                                    {{cell.value | number: '.2'}}
-                                </div>
-
-                            </dx-data-grid>
-
-                            <div class="row mt-2">
-                                <div class="col text-end">
-                                    <i class="fa-solid fa-rotate-left icon-delete"></i>
+                                    <i class="fa-solid fa-circle-xmark" style="color: red;"></i> <label
+                                        class="ms-2 legend">Cancel</label>
+                                    <i class="fa-solid fa-rotate-left icon-delete ms-2"></i>
                                     <label class="ms-2 legend">
                                         Undo Status
                                     </label>
-
                                     <i class="fa-solid fa-circle-info ms-2 click icon-info"
                                         (click)="onClickViewInformation()">
                                     </i>
@@ -286,7 +165,6 @@
                                 </div>
                             </div>
 
-
                         </div>
                     </div>
                 </div>
@@ -294,189 +172,6 @@
         </div>
     </div>
 </div>
-
-<ng-template #updateStatusWaitSample>
-    <div class="modal-header">
-        <h5 class="modal-title">Production Order No. {{productionOrder}}</h5>
-        <span style="cursor: pointer;" class="close-modal" name="close-modal-import"
-            (click)="modalRef.hide()">&times;</span>
-
-    </div>
-
-    <div class="modal-body">
-
-        <div class="row ">
-            <div class="col-2 text-end">
-                <h6>Sticker Detail</h6>
-            </div>
-        </div>
-        <div class="row mt-2">
-            <div class="col-2 text-end">
-                <label class="form-label">Status</label>
-
-            </div>
-            <div class="col">
-                <input [(ngModel)]="selectedStatus" value="sampleReady" name="status" type="radio" id="sampleReadyRadio"
-                    class="form-check-input me-2 click"><label for="sampleReadyRadio" class="me-2 click">Sample
-                    Ready</label>
-                <input [(ngModel)]="selectedStatus" value="cancelRadio" name="status" type="radio" id="cancelRadio"
-                    class="form-check-input mx-2 click"><label for="cancelRadio" class="click">Cancel</label>
-            </div>
-        </div>
-
-        <div *ngIf="selectedStatus == 'sampleReady'">
-            <div class="row pt-2">
-                <div class="col-2 text-end">
-                    <label for="dateSampleReady" class="form-label mt-2">Date</label>
-                </div>
-                <div class="col-3">
-                    <input type="date" [value]="dateSampleReady | date: 'dd-MMM-yyyy'" id="dateSampleReady"
-                        class="form-control">
-                </div>
-                <div class="col-2 text-end">
-                    <label for="customerName" class="form-label mt-2">Customer Name</label>
-                </div>
-                <div class="col-3 pt-2">
-                    {{ customerName }}
-                </div>
-            </div>
-
-            <div class="row pt-2">
-                <div class="col-2 text-end">
-                    <label for="productionOrder" class="form-label mt-2">Production Order</label>
-                </div>
-                <div class="col-3 pt-2">
-                    {{ productionOrder }}
-                </div>
-                <div class="col-2 text-end">
-                    <label for="materialDesc" class="form-label mt-2">Material Description</label>
-                </div>
-                <div class="col-3 pt-2">
-                    {{ materialDesc }}
-                </div>
-            </div>
-
-            <div class="row pt-2">
-                <div class="col-2 text-end">
-                    <label for="coilNo" class="form-label mt-2">Coil No.</label>
-                </div>
-                <div class="col-3">
-                    <input [value]="coilNo" id="coilNo" class="form-control">
-                </div>
-                <div class="col-2 text-end">
-                    <label for="heatNo" class="form-label mt-2">Heat No.</label>
-                </div>
-                <div class="col-3">
-                    <input [value]="heatNo" id="heatNo" class="form-control">
-                </div>
-            </div>
-
-            <div class="row pt-2">
-                <div class="col-2 text-end">
-                    <label for="machine" class="form-label mt-2">เครื่องจักร</label>
-                </div>
-                <div class="col-3">
-                    <input [value]="machine" id="machine" class="form-control">
-                </div>
-                <div class="col-2 text-end">
-                    <label for="grade" class="form-label mt-2">Grade</label>
-                </div>
-                <div class="col-3">
-                    <dx-select-box displayExpr="text" valueExpr="value" [items]="gradeDataSource"></dx-select-box>
-                </div>
-            </div>
-
-            <div class="row pt-2">
-                <div class="col-2 text-end pt-1">
-                    <label for="detail">Remark</label>
-                </div>
-                <div class="col-8">
-                    <textarea type="text" id="detail" class="form-control" rows="4"></textarea>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="row mt-2" *ngIf="selectedStatus == 'cancelRadio'">
-            <div class="col-2 text-end pt-1">
-                <label for="detail">Remark</label>
-            </div>
-            <div class="col-8">
-                <textarea type="text" id="detail" class="form-control" rows="4"></textarea>
-            </div>
-        </div>
-
-        <div class="row mt-4">
-            <div class="col-12 text-center">
-                <button class="btn btn-sm btn-success" (click)="onClickConfirm()"><i
-                        class="fa-regular fa-circle-check"></i>
-                    Confirm</button>
-                <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
-                    Cancel</button>
-            </div>
-        </div>
-    </div>
-</ng-template>
-
-<ng-template #updateStatusWaitFilm>
-    <div class="modal-header">
-        <h5 class="modal-title">Production Order No. {{productionOrder}}</h5>
-        <span style="cursor: pointer;" class="close-modal" name="close-modal-import"
-            (click)="modalRef.hide()">&times;</span>
-    </div>
-
-    <div class="modal-body">
-
-        <div class="row mt-2">
-            <div class="col-2 text-end">
-                <label class="form-label">Status</label>
-            </div>
-            <div class="col">
-                <input [(ngModel)]="selectedStatusFilm" value="filmReady" name="status" type="radio" id="filmReadyRadio"
-                    class="form-check-input me-2 click">
-                <label for="filmReadyRadio" class="me-2 click">
-                    Film Ready
-                </label>
-                <input [(ngModel)]="selectedStatusFilm" value="cancelRadio" name="status" type="radio" id="cancelRadio"
-                    class="form-check-input mx-2">
-                <label for="cancelRadio" class="click">
-                    Cancel
-                </label>
-            </div>
-        </div>
-
-        <div *ngIf="selectedStatusFilm == 'filmReady'">
-            <div class="row pt-2">
-                <div class="col-2 text-end">
-                    <label for="detail">Remark</label>
-                </div>
-                <div class="col-8">
-                    <textarea type="text" id="detail" class="form-control" rows="4"></textarea>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="row mt-2" *ngIf="selectedStatusFilm == 'cancelRadio'">
-            <div class="col-2 text-end">
-                <label for="detail">Remark</label>
-            </div>
-            <div class="col-8">
-                <textarea type="text" id="detail" class="form-control" rows="4"></textarea>
-            </div>
-        </div>
-
-        <div class="row mt-4">
-            <div class="col-12 text-center">
-                <button class="btn btn-sm btn-success" (click)="onClickConfirmWaitFilm()"><i
-                        class="fa-regular fa-circle-check"></i>
-                    Confirm</button>
-                <button class="btn btn-sm btn-secondary ms-2" (click)="modalRef.hide()"><i class="fa-solid fa-ban"></i>
-                    Cancel</button>
-            </div>
-        </div>
-    </div>
-</ng-template>
 
 <ng-template #information>
     <div class="modal-header">
@@ -506,6 +201,36 @@
                     </div>
 
                 </dx-data-grid>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #actionTemplate>
+    <div class="modal-header">
+        <h5 class="modal-title" *ngIf="isCancel">Cancel</h5>
+        <span style="cursor: pointer;font-size: x-large;" class="close-modal " name="close-modal-import"
+            (click)="modalRef.hide()">&times;</span>
+    </div>
+
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-2 text-end">
+                <label for="remark-cancel">Remark : </label>
+            </div>
+            <div class="col-8">
+                <textarea type="text" id="remark-cancel" class="form-control" rows="4"></textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col text-center mt-4">
+                <button class="btn btn-danger" (click)="onClickConfirmCancel()">
+                    <i class="fa-solid fa-circle-xmark"></i> Cancel
+                </button>
+                <button class="btn btn-secondary ms-2" (click)="modalRef.hide()">
+                    <i class="fa-solid fa-ban"></i> Exit
+                </button>
             </div>
         </div>
     </div>

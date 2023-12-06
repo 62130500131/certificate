@@ -32,12 +32,14 @@ export class ProductionStatusComponent implements OnInit {
   public selectedStatus: string = "sampleReady";
   public selectedStatusFilm: string = "filmReady";
   public info: InformationViewModel[] = [];
+  public batch = "";
+  public bundleNo = "";
+  public isCancel = false;
 
   public dataMonitor!: any;
 
-  @ViewChild('updateStatusWaitSample') public updateStatusWaitSample!: TemplateRef<any>;
-  @ViewChild('updateStatusWaitFilm') public updateStatusWaitFilm!: TemplateRef<any>;
   @ViewChild('information') public information!: TemplateRef<any>;
+  @ViewChild('actionTemplate') public actionTemplate!: TemplateRef<any>;
   @ViewChild('monitorGrid') public monitorGrid!: DxDataGridComponent;
   @ViewChild('completeGrid') public completeGrid!: DxDataGridComponent;
 
@@ -150,86 +152,6 @@ export class ProductionStatusComponent implements OnInit {
 
   public rowIndex: number = 0;
 
-  public OnClickUpdateStatus(cell: any): void {
-    if (cell.data.status == 'Wait Sample') {
-      this.rowIndex = cell.rowIndex;
-      this.productionOrder = cell.data.productionOrder;
-      this.customerName = cell.data.soldToName;
-      this.dateSampleReady = new Date;
-      this.materialDesc = cell.data.materialDesc;
-      this.coilNo = "";
-      this.heatNo = "";
-      this.grade = "";
-      this.machine = "4586";
-      this.modalRef = this._modalService.show(this.updateStatusWaitSample, {
-        class: 'modal-xl'
-      });
-    }
-    else {
-      this.rowIndex = cell.rowIndex;
-      this.modalRef = this._modalService.show(this.updateStatusWaitFilm, {
-        class: 'modal-xl'
-      });
-    }
-    this.dataMonitor = cell.data;
-  }
-
-  public OnClickDownStatus(cell: any): void {
-    if (cell.data.status === 'Cancel') {
-      Swal.fire({
-        title: "Do you want to down status to wait sample?",
-        icon: "question",
-        heightAuto: false,
-        confirmButtonText: "Yes",
-        cancelButtonText: "No",
-        showCancelButton: true,
-        showCloseButton: true
-      }).then(result => {
-        if (result.isConfirmed) {
-          this._productionService.undoStatus(cell.data)
-            .subscribe(() => { });
-          this.completeGrid.instance.refresh();
-          this.monitorGrid.instance.refresh();
-        }
-      });
-    }
-    if (cell.data.status === 'Sample Ready') {
-      Swal.fire({
-        title: "Do you want to down status to wait sample?",
-        icon: "question",
-        heightAuto: false,
-        confirmButtonText: "Yes",
-        cancelButtonText: "No",
-        showCancelButton: true,
-        showCloseButton: true
-      }).then(result => {
-        if (result.isConfirmed) {
-          this._productionService.undoStatus(cell.data)
-            .subscribe(() => { });
-          this.completeGrid.instance.refresh();
-          this.monitorGrid.instance.refresh();
-        }
-      });
-    }
-    if (cell.data.status === 'Film Ready') {
-      Swal.fire({
-        title: "Do you want to down status to wait film?",
-        icon: "question",
-        heightAuto: false,
-        confirmButtonText: "Yes",
-        cancelButtonText: "No",
-        showCancelButton: true,
-        showCloseButton: true
-      }).then(result => {
-        if (result.isConfirmed) {
-          this._productionService.undoStatus(cell.data)
-            .subscribe(() => { });
-          this.completeGrid.instance.refresh();
-          this.monitorGrid.instance.refresh();
-        }
-      });
-    }
-  }
 
   public radioChangeCancel($event: any): void {
 
@@ -237,62 +159,12 @@ export class ProductionStatusComponent implements OnInit {
   public radioChangeSampleRaedy($event: any): void {
 
   }
-  public onClickConfirm(): void {
-    if (this.selectedStatus == "sampleReady") {
-      this._productionService.updateStatus(this.dataMonitor, this.selectedStatus)
-        .subscribe(() => { });
-      this.completeGrid.instance.refresh();
-      this.monitorGrid.instance.refresh();
-      this.modalRef.hide();
-    }
-    if (this.selectedStatus == "cancelRadio") {
-      Swal.fire({
-        title: "Do you want to cancel this order?",
-        icon: "question",
-        heightAuto: false,
-        confirmButtonText: "Yes",
-        cancelButtonText: "No",
-        showCancelButton: true,
-        showCloseButton: true
-      }).then((result) => {
-        if (result.isConfirmed) {
-          this._productionService.updateStatus(this.dataMonitor, this.selectedStatus)
-            .subscribe(() => { });
-          this.completeGrid.instance.refresh();
-          this.monitorGrid.instance.refresh();
-          this.modalRef.hide();
-        }
-      });
-    }
-  }
 
-  public onClickConfirmWaitFilm(): void {
-    if (this.selectedStatusFilm == "filmReady") {
-      this._productionService.updateStatus(this.dataMonitor, this.selectedStatusFilm)
-        .subscribe(() => { });
-      this.completeGrid.instance.refresh();
-      this.monitorGrid.instance.refresh();
-      this.modalRef.hide();
-    }
-    if (this.selectedStatusFilm == "cancelRadio") {
-      Swal.fire({
-        title: "Do you want to cancel this order?",
-        icon: "question",
-        heightAuto: false,
-        confirmButtonText: "Yes",
-        cancelButtonText: "No",
-        showCancelButton: true,
-        showCloseButton: true
-      }).then((result) => {
-        if (result.isConfirmed) {
-          this._productionService.updateStatus(this.dataMonitor, this.selectedStatusFilm)
-            .subscribe(() => { });
-          this.completeGrid.instance.refresh();
-          this.monitorGrid.instance.refresh();
-          this.modalRef.hide();
-        }
-      });
-    }
+  public onClickCancel(cellData: any): void {
+    this.isCancel = true;
+    this.modalRef = this._modalService.show(this.actionTemplate, {
+      class: 'modal-lg'
+    })
   }
 
   public onClickViewInformation(): void {
@@ -301,6 +173,55 @@ export class ProductionStatusComponent implements OnInit {
     });
   }
 
+  public onClickUndo(cellData: any): void {
+    Swal.fire({
+      title: "Do you want to undo status?",
+      icon: "question",
+      heightAuto: false,
+      confirmButtonText: "Yes",
+      cancelButtonText: "No",
+      showCancelButton: true,
+      showCloseButton: true
+    });
+  }
+
+  public onClickConfirmCancel(): void {
+    this.modalRef.hide();
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top",
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Cancel Success!"
+    });
+  }
+
+  public onClickConfirmUndo(): void {
+    this.modalRef.hide();
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top",
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Undo Success!"
+    });
+  }
 
 
 }

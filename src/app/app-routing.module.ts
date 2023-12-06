@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponent } from './modules/core/components';
 import { CustomerPageComponent, CustomerTemplateComponent } from './modules/customer/components';
-import { CustomerContractComponent, MappingMaterialComponent, SyncDataComponent } from './modules/master/components';
+import { CustomerContractComponent, MappingMaterialComponent, MasterMillComponent, SyncDataComponent } from './modules/master/components';
 import { CertificateEntryComponent, CertificateListComponent } from './modules/certificate/components';
 import { DoPageComponent, DoShipmentEntryComponent } from './modules/map-certificate/components';
 import { NacCertificateEntryComponent, QualityAssuranceStatusComponent } from './modules/quality-assurance/components';
@@ -63,7 +63,7 @@ const routes: Routes = [
     loadChildren: () => import('./modules/master/master.module').then(m => m.MasterModule)
   },
   {
-    path: 'production-status', component: ProductionStatusComponent,
+    path: 'production-order-list', component: ProductionStatusComponent,
     loadChildren: () => import('./modules/production/production.module').then(m => m.ProductionModule)
   },
   {
@@ -73,6 +73,10 @@ const routes: Routes = [
   {
     path: 'customer-page', component: CustomerTemplateComponent,
     loadChildren: () => import('./modules/customer/customer.module').then(m => m.CustomerModule)
+  },
+  {
+    path: 'master-mill', component: MasterMillComponent,
+    loadChildren: () => import('./modules/master/master.module').then(m => m.MasterModule)
   },
   {
     path: '',

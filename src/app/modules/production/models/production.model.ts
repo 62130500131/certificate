@@ -11,6 +11,7 @@ export class ProductionStatusSearchParam {
     selectCancel: string;
     selectComplete: string;
     soldTo: string;
+    productionOrder: string;
 
     constructor() {
         this.materialCode = '';
@@ -24,6 +25,7 @@ export class ProductionStatusSearchParam {
         this.selectCancel = 'cancel';
         this.selectComplete = '';
         this.soldTo = '';
+        this.productionOrder = '';
     }
 
 }
