@@ -63,7 +63,7 @@ const routes: Routes = [
     loadChildren: () => import('./modules/master/master.module').then(m => m.MasterModule)
   },
   {
-    path: 'production-order-list', component: ProductionStatusComponent,
+    path: 'production-order', component: ProductionStatusComponent,
     loadChildren: () => import('./modules/production/production.module').then(m => m.ProductionModule)
   },
   {
