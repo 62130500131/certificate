@@ -17,49 +17,59 @@
   </label>
   <div class="container-fluid" style="padding-left: 0.725rem;">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+      <ul *ngIf="!isCustomer" class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a [routerLink]="['/certificate-list']" class="nav-link mx-2 nav-font" [ngClass]="{'focus-icon': url == 'certificate-list'}">
+          <a [routerLink]="['/certificate-list']" class="nav-link mx-2 nav-font"
+            [ngClass]="{'focus-icon': url == 'certificate-list'}">
             <i class="fa-solid fa-laptop-file me-2"></i>Certificate List
           </a>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/mapping-certificate']" class="nav-link mx-2 nav-font" [ngClass]="{'focus-icon': url == 'mapping-certificate'}">
+          <a [routerLink]="['/mapping-certificate']" class="nav-link mx-2 nav-font"
+            [ngClass]="{'focus-icon': url == 'mapping-certificate'}">
             <i class="fa-solid fa-handshake-simple me-2"></i>Map Certificate
           </a>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/mapping-material']" class="nav-link mx-2 nav-font" [ngClass]="{'focus-icon': url == 'mapping-material'}">
+          <a [routerLink]="['/mapping-material']" class="nav-link mx-2 nav-font"
+            [ngClass]="{'focus-icon': url == 'mapping-material'}">
             <i class="fa-solid fa-check-to-slot me-2"></i>Map Material
           </a>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/quality-assurance-status']" class="nav-link mx-2 nav-font" [ngClass]="{'focus-icon': url == 'quality-assurance-status'}">
+          <a [routerLink]="['/quality-assurance-status']" class="nav-link mx-2 nav-font"
+            [ngClass]="{'focus-icon': url == 'quality-assurance-status'}">
             <i class="fa-solid fa-user-gear me-2"></i>Quality Assurance
           </a>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/production-order-list']" class="nav-link mx-2 nav-font" [ngClass]="{'focus-icon': url == 'production-status'}">
+          <a [routerLink]="['/production-order-list']" class="nav-link mx-2 nav-font"
+            [ngClass]="{'focus-icon': url == 'production-status'}">
             <i class="fa-solid fa-users me-2"></i>Production Order</a>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/customer-contract']" class="nav-link mx-2 nav-font" [ngClass]="{'focus-icon': url == 'customer-contract'}">
+          <a [routerLink]="['/customer-contract']" class="nav-link mx-2 nav-font"
+            [ngClass]="{'focus-icon': url == 'customer-contract'}">
             <i class="fa-solid fa-id-card-clip me-2"></i>Customer Contact
           </a>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/sync-data']" class="nav-link mx-2 nav-font" [ngClass]="{'focus-icon': url == 'sync-data'}">
+          <a [routerLink]="['/sync-data']" class="nav-link mx-2 nav-font"
+            [ngClass]="{'focus-icon': url == 'sync-data'}">
             <i class="fa-solid fa-rotate me-2"></i>Sync Data
           </a>
         </li>
       </ul>
     </div>
     <div class="collapse navbar-collapse text-end" style="flex-grow: 0;" id="navbarSupportedContent">
+
+      <label class="me-2"><i class="fa-solid fa-circle-user me-2"></i>Connex</label>
       <ul class="navbar-nav">
         <li class="nav-item">
           <a [routerLink]="['/login-page']" class="nav-link">
-            <button class="btn btn-primary">
-              Logout
+
+            <button class="btn btn-logout">
+              <i class="fa-solid fa-right-from-bracket me-1"></i> Logout
             </button>
           </a>
         </li>
