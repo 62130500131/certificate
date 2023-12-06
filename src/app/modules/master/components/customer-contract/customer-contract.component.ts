@@ -9,8 +9,8 @@ import * as saveAs from 'file-saver';
 import { Workbook } from 'exceljs';
 import { exportDataGrid } from "devextreme/excel_exporter";
 import { SelectBox } from 'src/app/modules/shared/models/selectBox.model';
-import { DataStoreService } from 'src/app/modules/shared/services/DataStore.service';
-import { SharedService } from 'src/app/modules/shared/services/Shared.service';
+import { DataStoreService } from 'src/app/modules/shared/services/data-store.service';
+import { SharedService } from 'src/app/modules/shared/services/shared.service';
 @Component({
   selector: 'app-customer-contract',
   templateUrl: './customer-contract.component.html',
