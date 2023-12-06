@@ -1,0 +1,43 @@
+.btn-login {
+    width: 100%;
+    height: 45px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    background-color: #3C3C8D;
+    color: white;
+}
+
+.min-vh-100 {
+    min-height: 100vh!important;
+    background-color: white;
+}
+
+.auth-login {
+    padding-top: 15%;
+}
+
+.input-icons i {
+    position: absolute;
+}
+ 
+.input-icons {
+    width: 100%;
+    margin-bottom: 10px;
+}
+ 
+.icon {
+    font-size: 13px;
+    padding: 12px 5px 0px 0px;
+    color: #9595a4;
+    min-width: 50px;
+    text-align: center;
+}
+ 
+.input-field {
+    width: 100%;
+    padding: 10px;
+    padding-left: 40px;
+    text-align: left;
+}
+
