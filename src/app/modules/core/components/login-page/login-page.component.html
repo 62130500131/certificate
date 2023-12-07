@@ -79,14 +79,14 @@
                                 <label>Username</label>
                                 <div class="input-icons">
                                     <i class="fa-solid fa-user icon"></i>
-                                    <input class="form-control input-field" type="password" [(ngModel)]="loginParam.username">
+                                    <input name="username" id="username" class="form-control input-field" type="username" [(ngModel)]="loginParam.username">
                                 </div>
                             </div>
                             <div class="mb-4">
                                 <label>Password</label>
                                 <div class="input-icons">
                                     <i class="fa fa-key icon"></i>
-                                    <input class="form-control input-field" type="password" [(ngModel)]="loginParam.password">
+                                    <input name="password" id="password" class="form-control input-field" type="password" [(ngModel)]="loginParam.password">
                                 </div>
                             </div>
 
@@ -99,7 +99,7 @@
                             </div>
 
                             <div class="text-center">
-                                <button class="btn btn-login mt-4">
+                                <button (click)="onClickLogin()" class="btn btn-login mt-4">
                                     Login
                                 </button>
                             </div>
