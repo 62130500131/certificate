@@ -246,6 +246,26 @@ fieldset:disabled .btn {
     border-radius: 5px;
 }
 
+.wait-picking {
+    font-size: 12px;
+    text-shadow: 0 0 0.1em rgb(226 190 255);
+    color: rgb(219 89 214);
+    background-color: rgb(230 172 255 / 40%);
+    min-width: 80px;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+.complete-picking {
+    font-size: 12px;
+    text-shadow: 0 0 0.1em rgb(60, 255, 157);
+    color: rgb(39, 203, 91);
+    background-color: rgba(149, 255, 188, 0.4);
+    min-width: 80px;
+    padding: 2px;
+    border-radius: 5px;
+}
+
 .failed {
     font-size: 12px;
     text-shadow: 0 0 0.1em rgb(255 91 91);

@@ -34,6 +34,7 @@ export class DoShipmentDetail {
     grade: string;
     weight: number;
     unit: string;
+    pkStatus: string;
 
     constructor() {
         this.itemIndex = 0;
@@ -45,7 +46,8 @@ export class DoShipmentDetail {
         this.status = 'Select';
         this.grade = '';
         this.weight = 0;
-        this.unit = ''
+        this.unit = '';
+        this.pkStatus = '';
     }
 }
 export class SelectQuantity {
@@ -117,6 +119,7 @@ export class ShipmentInfoViewModel {
     province: string;
     carRegistration: string;
     outTime: Date;
+    pkStatus: string;
     status: string;
     modifiedBy: string | null;
     modifiedTime: Date | null;
@@ -135,6 +138,7 @@ export class ShipmentInfoViewModel {
         this.province = '';
         this.carRegistration = '';
         this.outTime = new Date();
+        this.pkStatus = '';
         this.status = '';
         this.modifiedBy = null;
         this.modifiedTime = null;

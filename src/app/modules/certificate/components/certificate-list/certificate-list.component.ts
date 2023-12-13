@@ -83,6 +83,10 @@ export class CertificateListComponent {
       text: 'SYS',
       value: 'SYS'
     },
+    {
+      text: 'Other',
+      value: 'Other'
+    }
 
 
   ];

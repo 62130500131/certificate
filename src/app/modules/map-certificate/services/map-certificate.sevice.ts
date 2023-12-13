@@ -24,7 +24,8 @@ export class MapCertificateService {
             status: 'Not Sent',
             customerContact: null,
             line: null,
-            contactTel: null
+            contactTel: null,
+            pkStatus: 'Wait'
         },
         {
             shipmentNo: '2311092791',
@@ -43,7 +44,8 @@ export class MapCertificateService {
             status: 'Not Sent',
             customerContact: null,
             line: null,
-            contactTel: null
+            contactTel: null,
+            pkStatus: 'Wait'
         },
         {
             shipmentNo: '2311092792',
@@ -62,7 +64,8 @@ export class MapCertificateService {
             status: 'Not Sent',
             customerContact: null,
             line: null,
-            contactTel: null
+            contactTel: null,
+            pkStatus: 'Complete'
         }
     ];
     private data: DoShipmentEntryViewModel[] = [
@@ -79,7 +82,8 @@ export class MapCertificateService {
                     quantity: 40,
                     status: 'Select',
                     weight: 2000,
-                    unit: 'PC'
+                    unit: 'PC',
+                    pkStatus: 'Wait'
                 },
                 {
                     itemIndex: 2,
@@ -91,7 +95,8 @@ export class MapCertificateService {
                     quantity: 20,
                     status: 'Select',
                     weight: 1020,
-                    unit: 'PC'
+                    unit: 'PC',
+                    pkStatus: 'Wait'
                 },
                 {
                     itemIndex: 3,
@@ -103,7 +108,8 @@ export class MapCertificateService {
                     quantity: 40,
                     status: 'Select',
                     weight: 3500,
-                    unit: 'PC'
+                    unit: 'PC',
+                    pkStatus: 'Wait'
                 },
                 {
                     itemIndex: 4,
@@ -115,7 +121,8 @@ export class MapCertificateService {
                     quantity: 30,
                     status: 'Select',
                     weight: 2900,
-                    unit: 'PC'
+                    unit: 'PC',
+                    pkStatus: 'Wait'
                 }
             ]
         },
@@ -132,7 +139,8 @@ export class MapCertificateService {
                     quantity: 22,
                     status: 'Edit',
                     weight: 2000,
-                    unit: 'PC'
+                    unit: 'PC',
+                    pkStatus: 'Complete'
                 }
             ]
         },
@@ -149,7 +157,8 @@ export class MapCertificateService {
                     quantity: 20,
                     status: 'Edit',
                     weight: 2010,
-                    unit: 'PC'
+                    unit: 'PC',
+                    pkStatus: 'Complete'
                 }
             ]
         },

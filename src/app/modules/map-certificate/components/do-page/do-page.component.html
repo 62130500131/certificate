@@ -13,15 +13,16 @@
                         <div class="col-3">
                             <input id="shipment" class="form-control" [(ngModel)]="param.shipment" type="text">
                         </div>
+                    </div>
+
+                    <div class="row mt-2">
                         <div class="col-2 text-end pt-2">
                             <label class="form-label" for="customer">Customer</label>
                         </div>
                         <div class="col-3">
                             <input id="customer" class="form-control" [(ngModel)]="param.customer" type="text">
                         </div>
-                    </div>
 
-                    <div class="row mt-2">
                         <div class="col-2 text-end pt-2">
                             <label class="form-label">Delivery Date</label>
                         </div>
@@ -33,7 +34,9 @@
                                 [end-date]="param.deliveryTo" (onUpdate)="onDeliveryDateRangeChanged($event)">
                             </date-range>
                         </div>
+                    </div>
 
+                    <div class="row mt-1">
                         <div class="col-2 text-end pt-2">
                             <label class="form-label">Status</label>
                         </div>
@@ -45,6 +48,19 @@
                             <input [(ngModel)]="param.notSent" class="form-check-input" type="checkbox" id="notSent">
                             <label for="notSent" class="mx-2">
                                 Not Sent
+                            </label>
+                        </div>
+                        <div class="col-2 text-end pt-2">
+                            <label for="shipment" class="form-label">Picking Status</label>
+                        </div>
+                        <div class="col-3 mt-2">
+                            <input [(ngModel)]="param.sent" class="form-check-input" type="checkbox" id="sent">
+                            <label for="sent" class="mx-2">
+                                Wait
+                            </label>
+                            <input [(ngModel)]="param.notSent" class="form-check-input" type="checkbox" id="notSent">
+                            <label for="notSent" class="mx-2">
+                                Complete
                             </label>
                         </div>
                     </div>
@@ -69,8 +85,8 @@
                                 [width]="'100%'" [showColumnLines]="true" [showRowLines]="true">
 
 
-                                <dxi-column dataField="shipmentNo" caption="Shipment No." dataType="number"
-                                    [width]="85" alignment="center" cellTemplate="shipmentTemplate"></dxi-column>
+                                <dxi-column dataField="shipmentNo" caption="Shipment No." dataType="number" [width]="85"
+                                    alignment="center" cellTemplate="shipmentTemplate"></dxi-column>
                                 <dxi-column dataField="outTime" caption="Delivery Date" [width]="90" alignment="center"
                                     cellTemplate="dateTemplate"></dxi-column>
                                 <dxi-column dataField="customerCode" caption="Customer Code" dataType="number"
@@ -78,7 +94,9 @@
                                 <dxi-column dataField="shiptoCode" caption="Shipto Code" [width]="100"
                                     alignment="center"></dxi-column>
                                 <dxi-column dataField="customerName" caption="Customer Name" dataType="string"
-                                    [minWidth]="200" alignment="left"></dxi-column>
+                                    [minWidth]="180" alignment="left"></dxi-column>
+                                <dxi-column dataField="pkStatus" caption="Picking Status" dataType="string" [width]="100"
+                                    alignment="center" cellTemplate="pkStatusTemplate"></dxi-column>
                                 <dxi-column dataField="status" caption="Status" dataType="string" [width]="100"
                                     alignment="center" cellTemplate="statusTemplate"></dxi-column>
                                 <dxi-column dataField="modifiedBy" caption="Modified By" dataType="string" [width]="100"
@@ -97,8 +115,16 @@
                                 </div>
 
                                 <div *dxTemplate="let cell of 'statusTemplate'">
-                                    <label [ngClass]="{'sent' : cell.data.status == 'Sent' , 'not-sent' : cell.data.status == 'Not Sent'}">
+                                    <label
+                                        [ngClass]="{'sent' : cell.data.status == 'Sent' , 'not-sent' : cell.data.status == 'Not Sent'}">
                                         {{ cell.data.status }}
+                                    </label>
+                                </div>
+
+                                <div *dxTemplate="let cell of 'pkStatusTemplate'">
+                                    <label
+                                        [ngClass]="{'complete-picking' : cell.data.pkStatus == 'Complete','wait-picking' : cell.data.pkStatus == 'Wait' }">
+                                        {{ cell.data.pkStatus }}
                                     </label>
                                 </div>
 

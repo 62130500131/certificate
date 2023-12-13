@@ -109,6 +109,9 @@
                                             cellTemplate="numberTemplate" alignment="right"></dxi-column>
                                         <dxi-column dataField="unit" caption="Unit" [width]="60"
                                             alignment="center"></dxi-column>
+                                        <dxi-column dataField="pkStatus" caption="Picking Status" dataType="string"
+                                            [width]="100" alignment="center"
+                                            cellTemplate="pkStatusTemplate"></dxi-column>
                                         <dxi-column [width]="120" alignment="center" cellTemplate="selectTemplate">
                                             <div *dxTemplate="let cell of 'selectTemplate'">
                                                 <button style="width: 90px;" *ngIf="cell.data.status == 'Select'"
@@ -129,6 +132,13 @@
                                                     Detail</button>
                                             </div>
                                         </dxi-column>
+
+                                        <div *dxTemplate="let cell of 'pkStatusTemplate'">
+                                            <label
+                                                [ngClass]="{'complete-picking' : cell.data.pkStatus == 'Complete','wait-picking' : cell.data.pkStatus == 'Wait' }">
+                                                {{ cell.data.pkStatus }}
+                                            </label>
+                                        </div>
 
                                         <div *dxTemplate="let cell of 'numberTemplate'">
                                             {{cell.value | number: '.2'}}
@@ -166,7 +176,7 @@
                         </div>
                     </div>
                     <div class="row mt-2">
-                        <div class="col">                            
+                        <div class="col">
                             <input type="checkbox" id="standard" class="form-check-input me-2">
                             <label for="standard" class="click">ใบรับรองการสั่งซื้อสินค้า</label>
                         </div>
@@ -296,6 +306,78 @@
             </div>
             <div class="col-4">
                 {{totalSelectTMT() | number: '.2'}} PC.
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-2 text-end">
+                Certificate No. :
+            </div>
+            <div class="col-3">
+                <input class="form-control">
+            </div>
+            <div class="col-1">
+
+            </div>
+            <div class="col-2 text-end">
+                Mill :
+            </div>
+            <div class="col-3">
+                <input class="form-control">
+            </div>
+            
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-2 text-end">
+                Heat No. :
+            </div>
+            <div class="col-3">
+                <input class="form-control">
+            </div>
+            <div class="col-1">
+
+            </div>
+            <div class="col-2 text-end">
+                Grade :
+            </div>
+            <div class="col-3">
+                <input class="form-control">
+            </div>
+            
+            
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-2 text-end">
+                ความหนา :
+            </div>
+            <div class="col-3">
+                <input class="form-control">
+            </div>
+            <div class="col-1">
+
+            </div>
+            <div class="col-2 text-end">
+                หน้ากว้าง :
+            </div>
+            <div class="col-3">
+                <input class="form-control">
+            </div>
+            
+
+        </div>
+
+        <div class="row mt-2">
+            <div class="col offset-2 ">
+                <button class="btn btn-sm btn-success ">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    Search
+                </button>
+                <button class="btn btn-sm btn-secondary ms-2">
+                    <i class=" fa-solid fa-broom"></i>
+                    Clear
+                </button>
             </div>
         </div>
 
